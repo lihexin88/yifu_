@@ -18,7 +18,7 @@ define('REG_PASS', '/^[0-9A-Za-z]{6,32}$/');
  * @param $code
  * @return array
  */
-function msg_handle($msg, $code, $data)
+function msg_handle($msg, $code, $data = array() )
 {
     return array('msg' => $msg, 'code' => $code ,'data'=>$data);
 }

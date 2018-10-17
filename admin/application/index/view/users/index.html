@@ -89,6 +89,11 @@
                         <td>{$vo.re_status}</td>
                         <td>{$vo.subsidiary_organ}</td>
                         <td>
+                        	{$vo.re_status}
+                        	{if condition="($vo.re_status) eq '未通过'"}
+                        	{elseif condition="($vo.re_status) eq '已通过'"}1
+                        	{else /}2
+                        	{/if}
                             <a href="rechange?id={$vo.id}&a={$a}&b={$b}" class="am-btn am-btn-success am-btn-xs">充值</a>
                             <a href="#" onclick="sub(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">修改状态</a>
                             <a href="#" onclick="subs(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">注册审核</a>

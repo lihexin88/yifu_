@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:76:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\index.html";i:1539764674;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:76:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\index.html";i:1539772142;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,6 +162,10 @@
                         <td><?php echo $vo['re_status']; ?></td>
                         <td><?php echo $vo['subsidiary_organ']; ?></td>
                         <td>
+                        	<?php echo $vo['re_status']; if(($vo['re_status']) == 0): ?>0
+                        	<?php elseif(($vo['re_status']) == 1): ?>1
+                        	<?php else: ?>2
+                        	<?php endif; ?>
                             <a href="rechange?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">充值</a>
                             <a href="#" onclick="sub(id=<?php echo $vo['id']; ?>)" class="am-btn am-btn-success am-btn-xs">修改状态</a>
                             <a href="#" onclick="subs(id=<?php echo $vo['id']; ?>)" class="am-btn am-btn-success am-btn-xs">注册审核</a>

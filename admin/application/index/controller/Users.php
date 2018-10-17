@@ -100,8 +100,8 @@ class Users extends Common
             $r = msg_handle("失败",-1,"未接收到数据");
         }
         $r = $this->get_one_question($data);
-        print_r($r);
-        exit;
+//        print_r($r);
+//        exit;
         return json($r);
     }
     /**
@@ -115,7 +115,7 @@ class Users extends Common
         $get_one_question = FeedbackModel::get($data['question_id']);
         if($get_one_question){
             $get_one_question->question_create_time = date('Y-m-d H:i:s',$get_one_question->question_create_time);
-            print_r($get_one_question);
+//            print_r($get_one_question);
 //            exit();
             $r = msg_handle("成功",1,$get_one_question);
         }else{
