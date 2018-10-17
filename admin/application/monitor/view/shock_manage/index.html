@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left"/}
+    {include file="public/content_top" /}
+                <ol class="am-breadcrumb">
+                    <li><a href="../homes/home.html" class="am-icon-home">首页</a></li>
+                    <li><a href="javascript:void(0)">股票管理</a></li>
+                    <li class="am-active">股票列表</li>
+                </ol>
+                <div class="widget-body am-fr">
+                    <div class="am-form-inline" role="form">
+                        <label style="line-height: 32px;margin-bottom: 0">股票信息： </label>
+                        <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                            <input type="text" id="name" class="am-form-field am-input-sm" placeholder="请输入股票信息"
+                                   value="{$arr.name}"/>
+                        </div>
+                        <div class="am-form-group am-btn-toolbar">
+                            <div class="am-btn-group am-btn-group-sm">
+                                <button type="button" class="am-btn am-btn-success" onclick="info_query()">查询
+                                </button>
+                                <button type="button" class="am-btn am-btn-primary" onclick="location.reload()">刷新
+                                </button>
+                                <button type="button" class="am-btn am-btn-secondary" onclick="index_sss()">一键停牌
+                                </button>
+                                <button type="button" class="am-btn am-btn-warning" onclick="index_s()">一键更新股票池</button>
+                                <button type="button" class="am-btn am-btn-danger" onclick="index_ss()">检查新股票</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+                    <div class="am-scrollable-horizontal">
+                        <table class="{$table}">
+                            <thead>
+                            <tr>
+                                <th>股票代码</th>
+                                <th>股票名称</th>
+                                <th>当前价位</th>
+                                <th>涨跌额</th>
+                                <th>涨幅%</th>
+                                <th>振幅%</th>
+                                <th>是否停牌</th>
+                                <th>是否交易</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="list">
+                            {volist name="list" id="vo" empty="$empty"}
+                            <tr>
+                                <td>{$vo.code}</td>
+                                <td>{$vo.name}</td>
+                                <td>{$vo.price}</td>
+                                {if condition="$vo.up_down lt 0"}
+                                <td style="color: #008000">{$vo.up_down}</td>
+                                <td style="color: #008000">{$vo.percent}</td>
+                                <td style="color: #008000">{$vo.amplitude}</td>
+                                {else /}
+                                <td style="color: #f00">{$vo.up_down}</td>
+                                <td style="color: #f00">{$vo.percent}</td>
+                                <td style="color: #f00">{$vo.amplitude}</td>
+                                {/if}
+                                <td>{$vo.stop_name}</td>
+                                <td>{$vo.status_name}</td>
+                                <td>
+                                    <button onclick="frozen('{$vo.id}',4)" class="am-btn am-btn-warning am-btn-xs">停牌
+                                    </button>
+                                    <button onclick="frozen('{$vo.id}',3)" class="am-btn am-btn-success am-btn-xs">
+                                        禁止交易
+                                    </button>
+                                </td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="am-fr">{$page}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/foot" /}
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+    function index_ss() {
+        $.ajax({
+            url: "{:url('StockIndex/index')}",
+            type: "post",
+            beforeSend: function () {
+                layer.msg('请耐心等待...', {offset: ['34%', '40%'], time: 0});
+                layer.load(0, {shade: false, offset: ['40%', '41%']});
+            },
+            success: function () {
+                layer.closeAll();
+                alert_open('操作成功');
+            }
+        });
+    }
+    function index_s() {
+        $.ajax({
+            url: "{:url('StockStop/stock')}",
+            type: "post",
+            beforeSend: function () {
+                layer.msg('请耐心等待...', {offset: ['34%', '40%'], time: 0});
+                layer.load(0, {shade: false, offset: ['40%', '41%']});
+            },
+            success: function () {
+                return false;
+                layer.closeAll();
+                alert_open('操作成功');
+            }
+        });
+    }
+
+    function index_sss(id, type) {
+        $.ajax({
+            url: "{:url('StockStop/index')}",
+            type: "post",
+            beforeSend: function () {
+                layer.msg('请耐心等待...', {offset: ['34%', '40%'], time: 0});
+                layer.load(0, {shade: false, offset: ['40%', '41%']});
+            },
+            success: function () {
+                layer.closeAll();
+                alert_open('操作成功');
+            }
+        });
+    }
+
+    function frozen(id, type) {
+        $.ajax({
+            url: "{:url('shock_manage/frozen')}",
+            type: "post",
+            data: {id: id, type: type},
+            success: function (r) {
+                if (r == 1) {
+                    alert_open('操作成功');
+                } else {
+                    alert_msg('操作失败');
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

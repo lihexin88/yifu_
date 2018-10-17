@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">风控中心</a></li>
+        <li class="am-active"><a href="#">持仓监控</a></li>
+    </ol>
+
+     <!-- <div class="am-form-inline" role="form">
+
+            <span>信息查询：</span>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+
+                       data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+
+                       onfocus="this.blur()" value="{$arr.end_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" id="name" class="am-form-field am-input-sm" placeholder="请输入用户名称或手机号"
+
+                       value="{$arr.name}"/>
+
+            </div>
+
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+
+
+    </div> -->
+
+    <div class="widget am-cf">
+        <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+        <div class="widget-body widget-body-lg am-fr">
+            <div class="am-scrollable-horizontal">
+                <table class="{$table}">
+                    <thead>
+                    <tr>
+                        <th>登录账号</th>
+                        <th>用户名称</th>
+                        <th>合约代码</th>
+                        <th>方向</th>
+                        <th>持仓手数</th>
+                        <th>止盈价格</th>
+                        <th>止损价格</th>
+                        <th>开仓均价</th>
+                        <th>开仓保证金</th>
+                        <th>累计仓息</th>
+                    </tr>
+                    </thead>
+                    {volist name="list" id="vo" empty="$empty"}
+                        <tbody id="list">
+                            <td>{$vo.user.phone}</td>
+                            <td>{$vo.user.real_name}</td>
+                            <td>{$vo.contract.code}</td>
+                            <td>{$vo.type}</td>
+                            <td>{$vo.number}</td>
+                            <td>{$vo.profit_close}</td>
+                            <td>{$vo.lose_close}</td>
+                            <td>{$vo.money}</td>
+                            <td>{$vo.number*$vo.contract.bond}</td>
+                            <td>{$vo.add_interest}</td>
+                        </tbody>
+                    {/volist}
+                </table>
+                <div class="am-pagination-left">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="{:url('Pneumatic/position')}" class="am-form-inline" role="form" id="form" method="get">
+    <input type="hidden" name="name"/>
+    <input type="hidden" name="start_query">
+    <input type="hidden" name="end_query">
+    <input type="hidden" name="status">
+    <input type="hidden" name="page">
+</form>
+{include file="public/foot" /}
+<script type="text/javascript">
+    function test1() {
+            location.reload()
+        }
+    setInterval(test1, 5000);
+
+    function del(id) {
+        if (confirm("确定要删除吗？")) {
+            $.ajax({
+                url: "{:url('delete_bar')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    if (r == 1) {
+                        alert_msg('操作成功');
+                        setTimeout(location.reload(),50000);
+                    } else {
+                        alert_msg('操作失败');
+                    }
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+</script>
+</body>
+</html>

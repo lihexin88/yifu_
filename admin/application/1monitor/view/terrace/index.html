@@ -1,0 +1,63 @@
+{include file="public/header" /}
+<title>平台管理</title>
+</head>
+<body>
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 平台管理 <span class="c-gray en">&gt;</span> 推广链接 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <div class="page-container">
+        <div class="searchall">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--账户信息-->
+                    <div class="cl pd-10" style=" background-color:#006dcc">
+                        <dl style="margin-left:40px; color:#fff">
+                            <dt>
+                                <span class="f-l">我的推广码</span>
+                            </dt>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <table class="table">
+                        <tbody>
+
+                            <tr><th class="text-r" width="80">推广链接：</th><td>{$url}</td></tr>
+                            <tr><th class="text-r" width="80">推广二维码：</th><td><img src="{$image}"></td></tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--_footer 作为公共模版分离出去-->
+        {include file="public/footer" /}
+
+        <!--请在下方写此页面业务相关的脚本-->
+        <script type="text/javascript" src="__ROOT__/static/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+        <script type="text/javascript" src="__ROOT__/static/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+        <script type="text/javascript" src="__ROOT__/static/admin/lib/laypage/1.2/laypage.js"></script>
+        <script type="text/javascript">
+            $('.table-sort').dataTable({
+                "aaSorting": [[1, "desc"]], //默认第几个排序
+                "bStateSave": true, //状态保存
+                "aoColumnDefs": [
+                    //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                    {"orderable": false, "aTargets": [0]}// 制定列不参与排序
+                ]
+            });
+            /*
+             参数解释：
+             title	标题
+             url		请求的url
+             id		需要操作的数据id
+             w		弹出层宽度（缺省调默认值）
+             h		弹出层高度（缺省调默认值）
+             */
+            /*管理员-增加*/
+            function admin_add(title, url, w, h) {
+                layer_show(title, url, w, h);
+            }
+
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<div class="left-sidebar">
+    <ul class="sidebar-nav">
+        <li class="sidebar-nav-link">
+            <a href="../home/index.html">
+                <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+            </a>
+        </li>
+        {volist name="left" id='vo' }
+            <li class="sidebar-nav-link">
+                <a href="#" class="sidebar-nav-sub-title">
+                    <i class="{$vo.name.class} sidebar-nav-link-logo"></i> {$vo.name.name}
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                {volist name="vo.rela" id="v" key="k"}
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li>
+                            <a href="{$v['url']}?a={$i}&b={$k-1}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {$v['name']}
+                            </a>
+                        </li>
+                    </ul>
+                {/volist}
+            </li>
+        {/volist}
+    </ul>
+</div>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {include file="public/meta" /}
+
+    {include file="public/link" /}
+
+    {include file="public/form" /}
+    <style>
+        input.check_box{
+            width:100px;
+        }
+        .p_checkbox{
+            width: 25%;
+            float: left;
+        }
+    </style>
+
+</head>
+
+<body data-type="index" class="theme-white">
+
+<div class="am-g tpl-g">
+
+    {include file="public/header" /}
+
+    {include file="public/left" /}
+
+    {include file="public/content_top" /}
+
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+
+        <li><a href="#">角色管理</a></li>
+
+        <li class="am-active">角色编辑</li>
+
+    </ol>
+
+    <div class="widget am-cf">
+
+        <form class="am-cf" id="form" onsubmit="return false">
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">基础信息</div>
+                <div class="am-form-group">
+                    <span class="s1">角色名称：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="title" class="am-form-field am-input-sm" name="name" value="{$list['name']}" />
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">选择功能：</span>
+                    <label class="am-form-label">
+                        {volist name="func" id="vo"}
+                        <div class="p_checkbox">
+                            <input type="checkbox"  value="{$vo['id']}" class=" check_box" name="functions[]" {if condition="in_array($vo['id'],$rids)"}checked{/if} >{$vo['name']}
+                        </div>
+                        {/volist}
+                    </label>
+                </div>
+                <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub('{$list.id}') ">确定</button>
+                    <a href="role.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                </div>
+            </div>
+    </div>
+    </form>
+</div>
+</div>
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+    function sub(id) {
+        var arr = parseFormJson("#form");
+        var func=arr['functions[]'];
+        if(!func){
+           alert_msg('请选择功能');
+           return false;
+        }
+        $.ajax({
+            url: "{:url('Admins/role_add')}",
+            data: {arr: arr,func:func,id:id},
+            type: "post",
+            success: function (r) {
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    {include file="public/form" /}
+    <style>
+            .am-form-group1 input {
+            width: 50px;
+            display: inline-block;
+        }
+        .am-form-label1{
+            margin-left: 12%;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">管理员账户</a></li>
+        <li class="am-active">管理员添加</li>
+    </ol>
+    <div class="widget am-cf">
+        <form class="am-cf" id="form" onsubmit="return false">
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">基础信息</div>
+                <div class="am-panel-bd">
+                    <div class="am-form-group">
+                        <span class="s1">管理员名称：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="title" class="am-form-field am-input-sm" name="name"
+                                   value="{$list.name}"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">密码：</span>
+                        <label class="am-form-label">
+                            <input type="password" id="title" class="am-form-field am-input-sm" name="password"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">确认密码：</span>
+                        <label class="am-form-label">
+                            <input type="password" id="title" class="am-form-field am-input-sm" name="pass"
+                                   value=""/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">选择角色：</span>
+                        <label class="am-form-label">
+                            <select name="ro_id" title="" class="am-form-field am-input-sm">
+                            <option value="">--选择角色--</option>
+                                {foreach $role as $val}
+                                 {if condition ="($list['ro_id'])==($val['id'])"}
+                                <option selected value="{$val['id']}">{$val.name}</option>
+                                {else/}
+                                <option value="{$val['id']}">{$val.name}</option>
+                                {/if}
+                                {/foreach}
+                            </select>
+                        </label>
+                    </div>
+                    <div class="am-form-group1">
+                        <span class="s1">状态:</span>
+                        <label class="am-form-label1">
+                            {if condition ="$list.status eq 1"}
+                            <input type="radio" name="status" value="1"  checked="true">启用
+                            {else/}
+                            <input type="radio" name="status" value="1"  >启用
+                            {/if}
+                            {if condition ="$list.status eq 0"}
+                            <input type="radio" name="status" value="0" checked="true">禁用
+                            {else/}
+                            <input type="radio" name="status" value="0">禁用
+                            {/if}
+                        </label>
+                    </div>
+                    <input type="hidden" id="title" class="am-form-field am-input-sm" name="id" value="{$list.id}"/>
+                    <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                        <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() ">确定</button>
+                        <a href="index.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+
+    function sub() {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('Admins/admin_add')}",
+            data: {arr: arr},
+            type: "post",
+            success: function (r) {
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> {include file="public/meta" /} {include file="public/link" /}</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g"> {include file="public/header" /} {include file="public/left" /} {include
+    file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">用户管理</a></li>
+        <li class="am-active">用户出入金</li>
+    </ol>
+    <div class="widget am-cf">
+        <div class="am-form-inline" role="form"><span>日期范围：</span>
+            <div class="am-form-group "><input type="text" class="am-form-field am-input-sm" name="start"
+                                               placeholder="请选择起始日期" data-am-datepicker onfocus="this.blur()"
+                                               value="{$arr.start_query}"/></div>
+            <div class="am-form-group "><input type="text" class="am-form-field am-input-sm" name="end"
+                                               placeholder="请选择结束日期" data-am-datepicker onfocus="this.blur()"
+                                               value="{$arr.end_query}"/></div>
+            <div class="am-form-group "><input type="text" id="name" class="am-form-field am-input-sm" name="name"
+                                               placeholder="请输入会员信息" value="{$arr.name}"/></div>
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+        </div>
+        <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+        <div class="widget-body widget-body-lg am-fr">
+            <div class="am-scrollable-horizontal">
+                <table class="{$table}">
+                    <thead>
+                    <tr>
+                        <th>用户ID</th>
+                        <th>代理ID</th>
+                        <th>用户手机</th>
+                        <th>用户姓名</th>
+                        <th>业务名称</th>
+                        <th>收入</th>
+                        <th>支出</th>
+                        <th>当时金额</th>
+                        <th>发生时间</th>
+                        <th>备注</th>
+                    </tr>
+                    </thead>
+                    <tbody> {volist name="list" id="vo" empty="$empty"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.agent}</td>
+                        <td>{$vo.user.phone}</td>
+                        <td> {if condition="empty($vo['user']['real_name'])"}/ {else /} {$vo.user.real_name} {/if}</td>
+                        <td>{$vo.type}</td>
+                        {if condition="$vo.mold eq '加钱'"}
+                        <td>{$vo.number}</td>
+                        {else /}
+                        <td>0</td>
+                        {/if} {if condition="$vo.mold eq '减钱'"}
+                        <td>{$vo.number}</td>
+                        {else /}
+                        <td>0</td>
+                        {/if}
+                        <td>{$vo.balance}</td>
+                        <td>{$vo.time}</td>
+                        <td> {if condition="empty($vo['desc'])"}/ {else /}{$vo.desc} {/if}</td>
+                    </tr>
+                    {/volist}
+                    <tr>
+                        <th colspan="5"></th>
+                        <th>{$sum.increase}</th>
+                        <th>{$sum.reduce}</th>
+                        <th colspan="3"></th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="dataTables_info" id="DataTables_Table_1_info">
+                    <div class="am-pagination-left">{$page}</div>
+                </div>
+            </div>
+        </div>
+        {include file="public/content_foot" /}
+    </div>
+    <form action="{:url('Users/user_flowlog')}" class="am-form-inline" role="form" id="form" method="get"><input
+            type="hidden" name="name"/> <input type="hidden" name="start_query"> <input type="hidden" name="end_query">
+        <input type="hidden" name="status"> <input type="hidden" name="page"></form>
+    {include file="public/foot" /}
+    <script type="text/javascript">    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });</script>
+</body>
+</html>

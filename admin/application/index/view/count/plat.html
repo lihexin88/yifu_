@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {include file="public/meta" /}
+
+    {include file="public/link" /}
+
+</head>
+
+<body data-type="index" class="theme-white">
+
+<div class="am-g tpl-g">
+
+    {include file="public/header" /}
+
+    {include file="public/left" /}
+
+    {include file="public/content_top" /}
+
+    <ol class="am-breadcrumb">
+
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+
+        <li><a href="#">交易查询</a></li>
+
+        <li class="am-active">平台资金</li>
+    </ol>
+    <div class="widget am-cf">
+
+            <div class="am-form-inline" role="form">
+
+            <span>日期范围：</span>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+
+                       data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+
+                       onfocus="this.blur()" value="{$arr.end_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" id="name" class="am-form-field am-input-sm" placeholder="请输入会员信息"
+
+                       value="{$arr.name}"/>
+
+            </div>
+
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+
+        </div>
+
+    <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+
+    <div class="widget-body widget-body-lg am-fr">
+
+        <div class="am-scrollable-horizontal">
+
+            <table class="{$table}">
+
+                <thead>
+
+                <tr>
+                    <th>业务名称</th>
+                    <th>发生时间</th>
+                    <th>发生金额</th>
+                    <th>剩余金额</th>
+                    <th>历史累计成交金额</th>
+                    <th>备注</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="list">
+
+                {foreach $list as $val}
+
+                <tr class="text-c">
+                   
+                    <td>{$val.bus_name}</td>
+                    <td>{$val.time}</td>
+                    <td>{$val.hap_price}</td>
+                    <td>{$val.sur_price}</td>
+                    <td>{$val.acc_price}</td>
+                    <td>{$val.desc}</td>
+                </tr>
+
+                {/foreach}
+                    <tr>
+                        <th colspan="2"></th>
+                        <th>{$hap_price}</th>
+                        <th>{$sur_price}</th>
+                        <th>{$acc_price}</th>
+                        <th colspan="1"></th>
+                    </tr>  
+
+                </tbody>
+
+            </table>
+
+            <div class="am-pagination-left">{$page}</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+{include file="public/foot" /}
+
+<script type="text/javascript">
+    
+    $(function () {
+
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+
+        nav.removeClass("active");
+
+        nav.eq(4).find('ul').show();
+
+        nav.eq(4).find('ul li').eq(4).find('a').addClass('active');
+
+    });
+    
+
+</script>
+
+</body>
+
+</html>

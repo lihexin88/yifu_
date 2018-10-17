@@ -1,0 +1,59 @@
+{include file="public/header" /}
+<article class="page-container">
+    <form action="" method="post" class="form form-horizontal" id="form-member-add">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>提现金额：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="" placeholder="" id="number" name="number">
+                <span style="color: red">手续费:
+                    <p>1.2000以内2元,2000以上提现金额的1%</p>
+                    <p>2.手续费从余额里面扣除</p>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <div class="btn btn-primary radius" id="do_submit" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">提交</div>
+            </div>
+        </div>
+        <input type="hidden" id="uid" value="">
+    </form>
+</article>
+{include file="public/footer" /}
+<script>
+    $(function () {
+        $("#do_submit").click(function () {
+            var number = $("#number").val();
+            if ($.trim(number) == '') {
+                layer.msg("提现金额不能为空！！！", {icon: 5, time: 2000});
+                return false;
+
+            }
+            var reg = /^[0-9]+(.[0-9]{1,2})?$/; //验证规则
+            var flag = reg.test(number); //true
+            if (flag == false) {
+                layer.msg("请输入数字", {icon: 5, time: 2000});
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                url: "{:url('Agent/Terrace/withdraw')}",
+                dataType: 'json',
+                data: {number: number},
+                success: function (data) {
+                    if (data.status == 1) {
+                        layer.msg(data.msg, {icon: 6, time: 10000});
+                        window.parent.location.reload();
+                    } else {
+                        layer.msg(data.msg, {icon: 5, time: 10000});
+                    }
+                },
+                // error:function(data) {
+                // 	console.log(data.info);
+                // },
+            });
+        })
+
+    })
+
+</script>

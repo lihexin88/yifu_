@@ -1,0 +1,58 @@
+{extend name="/base/index"}
+<!--标题-->
+{block name="title"}
+		<title>出金</title>
+{/block}
+<!--首部 -- 出金-->
+{block name="header_withdraw"}
+				<a class="ground-item active" href="/withdrawal/apply.html" style="text-decoration:none;">出金</a>
+{/block}
+<!--左侧边--出金记录-->
+{block name="left_bar_withdraw_record"}
+							<li class="submeun-6"><i class="ioc active"></i>
+								<a class="l-m-icon active" href="/withdrawal/record.html">出金记录</a>
+								<span class="active"></span>
+							</li>
+{/block}
+<!--右侧显示内容--顶部-->
+{block name="right_bar_box_top"}
+					<input type="hidden" id="ACTIVE_MENU" value="submeun-1" autocomplete="off">
+					<div class="crumbs">
+						<div class="container"> 管理系统&nbsp;&gt;&nbsp;出金记录 </div>
+					</div>
+{/block}
+<!--右侧显示内容-->
+{block name="right_bar_box"}
+<h1 class="page_title">出金记录</h1>
+	<div class="full" id="dg1">
+		<table class="table table-bordered tablerecord table-hover" width="100%" align="center">
+			<thead>
+				<tr class="tr-th-text-center">
+					<th>出金时间</th>
+					<th>出金金额(RMB)</th>
+					<th>实际金额</th>
+					<th>手续费</th>
+					<th>出金状态</th>
+					<th>审核时间</th>
+					<th>备注</th>
+				</tr>
+			</thead>
+			<tbody id="table">
+				
+				{volist name="withdraw_log" id="withdraw_log" }
+					<tr>
+						<td>{:date("Y-m-d H:i:s",$withdraw_log.time)}</td>
+						<td>{$withdraw_log.number}</td>
+						<td>{$withdraw_log.total}</td>
+						<td>{$withdraw_log.fee}</td>
+						<td>{if condition="($withdraw_log.status) eq 0"}审核中{elseif condition="($withdraw_log.status) eq 1"}提现成功{elseif condition="($withdraw_log.status eq 2)"}提现失败{elseif condition="($withdraw_log.status eq 3)"}已撤回{/if}</td>
+						<td></td>
+						<td>{$withdraw_log.remark}</td>
+					</tr>
+				{/volist}
+			</tbody>
+		</table>
+		<!--显示分页-->
+		{$withdraw_page}
+	</div>
+{/block}

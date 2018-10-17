@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        {include file="public/header" /}
+        <title>询价管理</title>
+    </head>
+    <body>
+        <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 交易管理 <span class="c-gray en">&gt;</span> 询价管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+        <div class="page-container">
+            <div class="mt-20">
+                <table class="table table-border table-bordered table-hover table-bg table-sort">
+                    <thead>
+                        <tr class="text-c">
+                            <!-- <th width="25"><input name="" type="checkbox" value=""></th> -->
+                            <th width="80">ID</th>
+                            <th width="80">姓名</th>    
+                            <th width="80">手机号</th>    
+                            <th width="80">股票名称</th>    
+                            <th width="80">股票编号</th>    
+                            <th width="80">名义本金</th>  
+                            <th width="80">支付金额</th>   
+                            <th width="80">行权周期</th>    
+                            <th width="80">权利金比例</th>    
+                            <th width="120">到期时间</th>    
+                            <th width="120">创建时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach name='list' item='vo' }
+                        <tr class="text-c">
+                            <!-- <td><input name="id" type="checkbox" value="{$vo.id}"></td> -->
+                            <td>{$vo.id}</td>
+                            <td>{$vo.real_name}</td>
+                            <td>{$vo.phone}</td>
+                            <td>{$vo.name}</td>
+                            <td>{$vo.short}</td>
+                            <td>{$vo.capital}</td>
+                            <td>{$vo.capital*$vo.ratio/100}</td>
+                            <td>{$vo.cycle}</td>
+                            <td>{$vo.ratio}</td>
+                            <td>{$vo.expiry_time|date="Y-m-d H:i:s",###}</td>
+                            <td>{$vo.time|date="Y-m-d H:i:s",###}</td>	
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--_footer 作为公共模版分离出去-->
+        {include file="public/footer" /}
+        <!--/_footer 作为公共模版分离出去-->
+        <!--请在下方写此页面业务相关的脚本-->
+        <!--请在下方写此页面业务相关的脚本-->
+        <script type="text/javascript" src="__ROOT__/static/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+        <script type="text/javascript" src="__ROOT__/static/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+        <script type="text/javascript" src="__ROOT__/static/admin/lib/laypage/1.2/laypage.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('.table-sort').dataTable({
+                    "aaSorting": [[1, "desc"]], //默认第几个排序
+                    "bStateSave": true, //状态保存
+                    "aoColumnDefs": [
+                        //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                        {"orderable": false, "aTargets": [3]}// 制定列不参与排序
+                    ]
+                });
+
+            });
+
+
+            /*询价记录-删除*/
+            function image_del(obj, id) {
+                layer.confirm('确认要删除吗？', function (index) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{:url('admin/QueryLog/del')}",
+                        data: {id: id},
+                        dataType: 'json',
+                        success: function (data) {
+
+                            layer.msg('已删除!', {icon: 1, time: 1000});
+                            window.location.href = "{:url('admin/QueryLog/index')}";
+                        },
+                        error: function (data) {
+                            layer.msg('删除失败!', {icon: 0, time: 1000});
+                        },
+                    });
+                });
+            }
+
+
+            /*询价记录-编辑*/
+            function member_edit(id) {
+
+                $.get("{:url('Admin/QueryLog/edit')}", {id: id},
+                        function (abc) {
+                            // console.log(abc);
+                            layer.open({
+                                type: 2,
+                                title: '编辑个人信息',
+                                shadeClose: true,
+                                shade: false,
+                                maxmin: true, //开启最大化最小化按钮
+                                area: ['1073px', '376px'],
+                                content: "edit/?id=" + id
+                            });
+                        }
+                )
+            }
+        </script> 
+    </body>
+</html>

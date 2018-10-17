@@ -1,0 +1,48 @@
+{extend name="/base/index"} 
+{block name="header_recharge"}
+<a class="ground-item active" href="/recharge/index.html" style="text-decoration:none;">入金</a>
+{/block}
+{block name="left_bar_recharge_record"}
+<li class="submeun-5"><i class="ioc active" style="top: 12px"></i>
+	<a class="l-m-icon active" href="/recharge/record.html">入金记录</a>
+	<span class="active"></span>
+</li>
+{/block}
+<!--标题-->
+{block name="title"}
+		<title>入金记录</title>
+{/block}
+<!--右侧显示内容--顶部-->
+{block name="right_bar_box_top"}
+<input type="hidden" id="ACTIVE_MENU" value="submeun-1" autocomplete="off">
+<div class="crumbs">
+	<div class="container"> 管理系统&nbsp;&gt;&nbsp;个人中心&nbsp;&gt;&nbsp;入金记录 </div>
+</div>
+{/block}
+<!--右侧显示内容-->
+{block name="right_bar_box"}
+<h1 class="page_title">入金记录</h1>
+<div class="full" id="dg1">
+	<table class="table table-bordered tablerecord table-hover" width="100%" align="center">
+		<thead>
+			<tr class="tr-th-text-center">
+				<th>充值时间</th>
+				<th>订单编号</th>
+				<th>充值金额(RMB)</th>
+				<th>入金资金(USD)</th>
+				<th>订单状态</th>
+			</tr>
+		</thead>
+		<tbody id="table">
+			{volist name = "record" id = "record"}
+			<tr>
+				<td>{:date("Y-m-d H:i:s",$record.time)}</td>
+				<td>{$record.order}</td>
+				<td>{$record.number}</td>
+				<td>{$record.usd}</td>
+				<td>{if condition="($record.status eq 0)"}未支付{elseif condition="($record.status eq 1)"}已支付{elseif condition="($record.status eq 2)"}已拒绝{/if}</td>
+			</tr>
+			{/volist}
+		</tbody>
+	</table>
+	{$record_page} {/block}

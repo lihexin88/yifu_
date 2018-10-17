@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {include file="public/meta" /}
+        {include file="public/link" /}
+    </head>
+    <body data-type="index" class="theme-white">
+        <div class="am-g tpl-g">
+            {include file="public/header" /}
+            {include file="public/left" /}
+            <div class="tpl-content-wrapper">
+                <div class="row-content am-cf">
+                    <div class="row am-cf">
+                        <table class="am-table am-table-border am-table-bordered am-table-bg">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" scope="col">基本信息</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>网站域名</td>
+                                    <td>{$name}</td>
+                                </tr>
+                                <tr>
+                                    <td>IP地址</td>
+                                    <td>{$ip}</td>
+                                </tr>
+                                <tr>
+                                    <td>代理编号</td>
+                                    <td>{$user.number}</td>
+                                </tr>
+                                <tr>
+                                    <td>联系人姓名 </td>
+                                    <td>{$user.real_name}</td>
+                                </tr>
+                                <tr>
+                                    <td>联系人手机 </td>
+                                    <td>{$user.phone}</td>
+                                </tr>
+                                <tr>
+                                    <td>推广链接 </td>
+                                    <td>{$recom}</td>
+                                </tr>
+                                <tr>
+                                    <td>WAP版推广链接 </td>
+                                    <td>Chinese (People's Republic of China)</td>
+                                </tr>
+                                <tr>
+                                    <td>推广二维码 </td>
+                                    <td><img style="max-width:200px;" src="{$img}" alt=""></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/foot" /}
+    </body>
+<script type="text/javascript" src="/static/js/echarts.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+    var nav = $('.left-sidebar li.sidebar-nav-link');
+    nav.removeClass("active");
+    nav.eq(1).find('ul').show();
+    // nav.eq(0).find('a').addClass("active");
+    nav.eq(1).find('ul li').eq(0).find('a').addClass('active');
+    });
+</script>
+</html>

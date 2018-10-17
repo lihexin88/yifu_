@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {include file="public/meta" /}
+
+    {include file="public/link" /}
+
+</head>
+
+<body data-type="index" class="theme-white">
+
+<div class="am-g tpl-g">
+
+    {include file="public/header" /}
+
+    {include file="public/left" /}
+
+    {include file="public/content_top" /}
+
+    <ol class="am-breadcrumb">
+
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+
+        <li><a href="#">查询统计</a></li>
+
+        <li class="am-active">员工总报表</li>
+
+    </ol>
+   
+    <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+
+    <div class="widget-body widget-body-lg am-fr">
+
+        <div class="am-scrollable-horizontal">
+
+            <table class="{$table}">
+
+                <thead>
+
+                <tr>
+                    <th>姓名</th>
+                    <th>累计充值</th>
+                    <th>累计提现</th>
+                    <th>可用余额</th>
+                    <th>配资金额</th>
+                    <th>交易金额</th>
+                    <th>用户递延费</th>
+                    <th>用户推广费</th>
+                    <th>用户服务费</th>
+                    <th>代理服务费</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody id="list">
+
+                 {volist name="list" id="vo" empty="$empty"}
+
+                <tr class="text-c">
+                    <td>{$vo.name}</td>
+                    <td>{$vo.rec_total}</td>
+                    <td>{$vo.wit_total}</td>
+                    <td>{$vo.account}</td>
+                    <td>{$vo.capital_total}</td>
+
+                    <td>{$vo.trade_total}</td>
+                    <td>{$vo.fee_total}</td>
+                    <td>{$vo.push_total}</td>
+                    <td>{$vo.user_server_total}</td>
+                    <td>{$vo.agent_server_total}</td>
+                </tr>
+
+                {/volist}     
+                <tr>
+                    <td colspan="">代理数:{$number.total}</td>
+                    <td>{$number.number}</td>
+                    <td>{$number.number1}</td>
+                    <td>{$number.number2}</td>
+                    <td>{$number.number3}</td>
+                    <td>{$number.number4}</td>
+                    <td>{$number.number5}</td>
+                    <td>{$number.number6}</td>
+                    <td>{$number.number8}</td>
+                    <td>{$number.number9}</td>
+                </tr>         
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+{include file="public/foot" /}
+
+<script type="text/javascript">
+
+    function del(id) {
+        if (confirm("确定要删除吗？")) {
+            $.ajax({
+            url: "{:url('Point/del')}",
+            data: {id:id},
+            type: "post",
+            success: function (r) {
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    $(function () {
+
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+
+        nav.removeClass("active");
+
+        nav.eq(7).find('ul').show();
+
+        nav.eq(7).find('ul li').eq(5).find('a').addClass('active');
+
+    });
+    
+
+</script>
+
+</body>
+
+</html>
