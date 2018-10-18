@@ -56,6 +56,7 @@ class Common extends Controller
      * @param $num
      * @return string
      */
+
     public function null_html($num)
     {
         return '<td colspan=' . $num . '>暂时没有数据</td>';

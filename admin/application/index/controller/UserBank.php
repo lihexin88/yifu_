@@ -40,7 +40,6 @@ class UserBank extends Common {
             $bank=$this->Bank->where(array("id"=>$val["bank_id"]))->find();
             $list["data"][$key]["phone"]=$user["phone"];
             $list["data"][$key]["number"]=$user["card"];
-            $list["data"][$key]["address"]=$bank["code"];
             $list["data"][$key]["username"]=$user["name"];
             $list["data"][$key]["time"]=date("Y-m-d H:i:s",$list["data"][$key]["time"]);
         }
@@ -65,9 +64,12 @@ class UserBank extends Common {
 
     public function edit() {
 
+//        ajax传过来的数据
         if (request()->isAjax()) {
+//            检验用户ajax是否合法
+
             $data = $_POST['arr'];
-            var_dump($data);
+//            var_dump($data);
             if (empty($data['province'])) {
                 $r = msg_handle('请选择开户省份', 0);
             } elseif (empty($data['city'])) {
@@ -91,22 +93,23 @@ class UserBank extends Common {
             } elseif (!preg_match(REG_BANKCARD, $data['card'])) {
                 $r = msg_handle('银行卡号格式错误', 0);
             } else {
-
+//
                 $bankname = $this->Bank->where(['id' => $data['bank'], 'status' => 1])->find();
-
+//                echo Db::name('sn_bank')->getLastSql();
                 $admin = [
-                    'bank' => $data['bank'],
+                    'bank_name' => Bank::get(['id'=>$data['bank']])['name'],
                     'name' => $bankname['name'],
                     'address' => $data['address'],
                     'province' => $data['province'],
                     'city' => $data['city'],
                     'country' => $data['country'],
-                    'username' => $data['username'],
-                    'card' => $data['card'],
-                    'number' => $data['number'],
+                    'bank_username' => $data['username'],
+                    'bank_card' => $data['card'],
+                    'id_number' => $data['number'],
                     'phone' => $data['phone'],
                     'time'=>time(),
                 ];
+//                outpause($admin,111);
                 // $r = msg_handle('银行卡号格式错误', 0);
                 // return json($r);
                 $r = $this->UserBanks->where('id', $data['id'])->update($admin);
@@ -119,17 +122,16 @@ class UserBank extends Common {
             }
             return json($r);
         }
+//        非ajax传递，根据用户get数据进行显示
         $id = $_GET["id"];
         $list = $this->UserBanks->getOne($id);
         $info = $this->Bank->getList();
-
-        $where = ['id' => $list['city_id']];
+        $where = ['id' => $list['city']];
         $province = $this->City->getLi($where);
-
         $admin = ['id' => $list['city']];
         $city = $this->City->getLi($admin);
-
-        $ab = ['id' => $list['country']];
+//        outpause($list);
+        $ab = ['id' => $list['city']];
         $country = $this->City->getLi($ab);
         $province_lixt = $this->City->getListById(0);
         $city_lixt = $this->City->getCity($province['id']);

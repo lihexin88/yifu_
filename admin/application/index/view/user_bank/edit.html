@@ -25,7 +25,7 @@
                         <label class="am-form-label">
                             <select name="bank">
                                 {volist name="info" id="vo" empty="$empty"}
-                                {if condition ="($list['bank'])==($vo['id'])"}
+                                {if condition ="($list['bank_name'])==($vo['id'])"}
                                 <option selected value="{$vo.id}">{$vo.name}</option>
                                 {else/}
                                 <option value="{$vo.id}">{$vo.name}</option>
@@ -81,7 +81,7 @@
                         <span class="s1">开户姓名：</span>
                         <label class="am-form-label">
                             <input type="text" id="username" class="am-form-field am-input-sm" name="username"
-                                   value="{$list.username??''}" placeholder="请输入开户姓名"/>
+                                   value="{$list.bank_username??''}" placeholder="请输入开户姓名"/>
                         </label>
                     </div>
                     <div class="am-form-group">
@@ -95,14 +95,14 @@
                         <span class="s1">开户身份证：</span>
                         <label class="am-form-label">
                             <input type="text" id="number" class="am-form-field am-input-sm" name="number"
-                                   value="{$list.number??''}" placeholder="请输入开户身份证"/>
+                                   value="{$list.id_number??''}" placeholder="请输入开户身份证"/>
                         </label>
                     </div>
                     <div class="am-form-group">
                         <span class="s1">银行卡号：</span>
                         <label class="am-form-label">
                             <input type="text" id="card" class="am-form-field am-input-sm" name="card"
-                                   value="{$list.card??''}" placeholder="请输入银行卡号"/>
+                                   value="{$list.bank_card??''}" placeholder="请输入银行卡号"/>
                         </label>
                     </div>
                     <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
@@ -190,16 +190,21 @@
 
     function sub() {
         var arr = parseFormJson("#form");
+        console.log(arr);
         $.ajax({
             url: "{:url('UserBank/edit')}",
             data: {arr: arr},
             type: "post",
             success: function (r) {
+            	console.log(r);
                 if (r['code'] == 1) {
                     alert_open(r['msg'])
                 } else {
                     alert_msg(r['msg']);
                 }
+            },
+            error:function(r){
+				console.log(r);            	
             }
         });
     }

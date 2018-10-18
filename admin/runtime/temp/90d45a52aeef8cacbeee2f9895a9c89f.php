@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:80:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\user_bank\index.html";i:1539856023;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:80:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\user_bank\Index.html";i:1539677141;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,7 +137,7 @@
                         <th>账户手机</th>
                         <th>账户身份证</th>
                         <th>开户行</th>
-                        <th>开户分行</th>
+                        <!--<th>开户分行</th>-->
                         <th>开户名</th>
                         <th>银行卡号</th>
                         <th>操作时间</th>
@@ -150,10 +150,10 @@
                         <td><input id="rptList_chkId_3" type="checkbox" name="rptList$ctl04$chkId"></td>
                         <td><?php echo $vo['uid']; ?></td>
                         <td><?php echo $vo['phone']; ?></td>
-                        <td><?php echo $vo['id_number']; ?></td>
+                        <td><?php echo $vo['number']; ?></td>
                         <td><?php echo $vo['bank_name']; ?></td>
-                        <td><?php echo $vo['address']; ?></td>
-                        <td><?php echo $vo['bank_username']; ?></td>
+                        <!--<td><?php echo $vo['address']; ?></td>-->
+                        <td><?php echo $vo['username']; ?></td>
                         <td><?php echo $vo['bank_card']; ?></td>
                         <td><?php echo $vo['time']; ?></td>
                         <td>

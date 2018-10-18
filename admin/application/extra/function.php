@@ -86,6 +86,24 @@ function createToken()
 }
 
 /**
+ * 输出当前变量的数值，并暂停方法
+ */
+
+function outpause($data,$position='',$type = '1')
+{
+    if($position){
+        echo "当前位置：".$position."   ______<br>";
+    }
+    print_r($data);
+    if($type == 1){
+        echo "暂停程序";
+        echo "<br>";
+        exit;
+    }
+
+}
+
+/**
  * 加密TOKEN
  * @param $str
  * @return string

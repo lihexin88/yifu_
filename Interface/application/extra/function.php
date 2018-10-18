@@ -41,6 +41,8 @@ function day_time()
 {
     return strtotime(date('Ymd', time()));
 }
+
+
 /**
  * 获取创建策略时续费时间
  */
