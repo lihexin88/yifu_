@@ -101,7 +101,24 @@ function outpause($data,$position='',$type = '1')
         exit;
     }
 
+}/**
+ *输出lastSQL
+ */
+
+function sql($sqlname,$position='',$type = '1')
+{
+    if($position){
+        echo "当前位置：".$position."   ______<br>";
+    }
+    echo \think\Db::name($sqlname)->getLastSql();
+    if($type == 1){
+        echo "暂停程序";
+        echo "<br>";
+        exit;
+    }
+
 }
+
 
 /**
  * 加密TOKEN

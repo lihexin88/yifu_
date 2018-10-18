@@ -85,7 +85,7 @@
                         <td>{$vo.bank.bank_card}</td>
 
                         <td>{$vo.time}</td>
-                        {if condition="$vo.pay_time == 0"}
+                        {if condition="$vo.pay_time eq 0"}
                         <td>暂未处理</td>
                         {else /}
                         <td>{$vo.pay_time}</td>
@@ -135,12 +135,14 @@
                 data: {id: id, edit_type: 1},
                 dataType: 'json',
                 success: function (r) {
+                	console.log(r);
                     layer.msg(r.msg);
                     setTimeout(function (){
                         window.location.reload();
                     },1500);
                 },
                 error: function (r) {
+                	console.log(r);
                     layer.msg('审核失败!', {icon: 0, time: 1000});
                 },
             });

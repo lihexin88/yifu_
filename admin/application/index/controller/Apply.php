@@ -205,7 +205,7 @@ class Apply extends Common
         $data['pay_time'] = time();
         $data['status'] = 1;
         $res2 = $this->Recharge->where('id', $info['id'])->update($data);
-
+        sql('sn_recharge');
         $rech["uid"] = $info["uid"];
         $rech["number"] = $info['number'];
         //$rech["balance"] = $info['balance'];
