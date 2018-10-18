@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\login\login.html";i:1539671472;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\login\login.html";i:1539830121;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
@@ -63,9 +63,15 @@
 							layer.msg(result['msg']);
 							document.cookie = "token="+result['data']['token'];
 							window.location.href = "/home/index";
-						}else{
+						}else if(result['code'] == -1){
 							layer.confirm(
 							'登录失败！请检查您的用户名或密码！',
+							function(index){
+								window.location.reload();
+							})
+						}else{
+							layer.confirm(
+							result['msg'],
 							function(index){
 								window.location.reload();
 							})

@@ -22,12 +22,13 @@
     <ol class="am-breadcrumb" style="    margin-bottom: 0;">
         <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
         <li><a href="#">内容管理</a></li>
-        <li class="am-active">修改用户信息</li>
+        <li class="am-active">帮助中心</li>
     </ol>
     <div class="widget am-cf">
-        <form class="am-cf" id="user_edit_form" onsubmit="return false">
+        <form class="am-cf" id="form" onsubmit="return false">
             <div class="am-panel am-panel-primary">
                 <div class="am-panel-hd">基础信息</div>
+               
                 <div class="am-form-group">
                     <span class="s1">名称：</span>
                     <label class="am-form-label">
@@ -40,6 +41,7 @@
                     <span class="s1">身份证号：</span>
                     <label class="am-form-label">
                         <input type="text" id="card" class="am-form-field am-input-sm" name="card" value="{$list['card']}"  placeholder=""/>
+                        
                     </label>
                 </div>
                 <div class="am-form-group">
@@ -49,15 +51,9 @@
                     </label>
                 </div>
                 <div class="am-form-group">
-                    <span class="s1">QQ</span>
-                    <label class="am-form-label">
-                        <input type="text" id="qq" class="am-form-field am-input-sm" name="qq" value="{$list['qq']}"  placeholder=""/>
-                    </label>
-                </div>
-                <div class="am-form-group">
                     <span class="s1">密码：</span>
                     <label class="am-form-label">
-                        <input type="password" id="password" class="am-form-field am-input-sm" name="password" value=""  placeholder=""/>
+                        <input type="password" id="card" class="am-form-field am-input-sm" name="password" value=""  placeholder=""/>
 
                     </label>
                 </div>
@@ -72,8 +68,8 @@
                     <span class="s1">账号类型：</span>
                     <label class="am-form-label">
                         <select name="type" title="" class="am-form-field am-input-sm">
-                            <option value="1" class="am-form-field am-input-sm" >行情账户</option>
-                            <option value="2" class="am-form-field am-input-sm" >交易账户</option>
+                            <option value="0" class="am-form-field am-input-sm" >0行情账户</option>
+                            <option value="1" class="am-form-field am-input-sm" >1交易账户</option>
                         </select>
 
                     </label>
@@ -87,6 +83,7 @@
     </form>
 </div>
 </div>
+{include file="public/editor" /}
 {include file="public/foot" /}
 <script type="text/javascript" src="/static/ajaxupload.js"></script>
 <script type="text/javascript">
@@ -97,22 +94,20 @@
         nav.eq(2).find('ul li').eq(0).find('a').addClass('active');
     });
     function sub() {
-        var arr = parseFormJson("#user_edit_form");
+        var arr = parseFormJson("#form");
         $.ajax({
             url: "{:url('Users/user_edits')}",
             data: {arr: arr},
             type: "post",
             success: function (r) {
-//          	console.log(r);return;
+                // console.log(r);
+                // return false;
                 if (r['code'] == 1) {
-                    alert_open(r['msg']);
+                    alert_open(r['msg'])
                 } else {
                     alert_msg(r['msg']);
                 }
-            },
-            error:function(r){
-            	console.log(r);
-            },
+            }
         });
     }
 </script>

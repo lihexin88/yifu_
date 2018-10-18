@@ -89,15 +89,16 @@
                         <td>{$vo.re_status}</td>
                         <td>{$vo.subsidiary_organ}</td>
                         <td>
-                        	{$vo.re_status}
-                        	{if condition="($vo.re_status) eq '未通过'"}
-                        	{elseif condition="($vo.re_status) eq '已通过'"}1
-                        	{else /}2
+                        	{if condition="($vo.re_status) eq '未处理'"}
+                        		<a href="#" onclick="subs(id={$vo['id']},type='agree')" class="am-btn am-btn-success am-btn-xs">通过</a>
+                        		<a href="#" onclick="subs(id={$vo['id']},type='disagree')" class="am-btn am-btn-warning am-btn-xs">驳回</a>
+                        	{elseif condition="($vo.re_status) eq '已拒绝'" /}
+                        		<a href="#" onclick="subs(id={$vo['id']},type='agree')" class="am-btn am-btn-success am-btn-xs">通过</a>
+                        	{else /}
+	                        	<a href="rechange?id={$vo.id}&a={$a}&b={$b}" class="am-btn am-btn-success am-btn-xs">充值</a>
+	                        	<a href="#" onclick="sub(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">修改状态</a>
+	                        	<a href="user_edit?id={$vo.id}&a={$a}&b={$b}" class="am-btn am-btn-success am-btn-xs">信息修改</a>
                         	{/if}
-                            <a href="rechange?id={$vo.id}&a={$a}&b={$b}" class="am-btn am-btn-success am-btn-xs">充值</a>
-                            <a href="#" onclick="sub(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">修改状态</a>
-                            <a href="#" onclick="subs(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">注册审核</a>
-                            <a href="user_edit?id={$vo.id}&a={$a}&b={$b}" class="am-btn am-btn-success am-btn-xs">信息修改</a>
                             <!-- <a href="http://hengrui.jinjifuweng.com/index/aotu_login?id={$vo.id}&token={$vo.token}" target="_blank" class="am-btn am-btn-success am-btn-xs">登录前台</a> -->
                         </td>
                     </tr>
@@ -150,11 +151,11 @@
         });
     }
     //修改注册状态
-    function subs(id) {
+    function subs(id,type) {
         $.ajax({
             url: "{:url('Users/editReStatus')}",
             type: "post",
-            data: {id: id},
+            data: {id: id,type:type},
             success: function (r) {
                 if (r['code'] == 1) {
                     layer.msg(r['msg']);

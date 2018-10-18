@@ -36,7 +36,7 @@ class Login extends Controller
             $map['password'] = md5($password);
             $user = $this->User->query_info($map);
             if (empty($user)) {
-                $r = msg_handle('用户信息或密码错误', 0);
+                $r = msg_handle('用户信息或密码错误', -1);
             } elseif ($user['status'] == 0) {
                 $r = msg_handle('此账号已被禁用.请联系管理员', 0);
             } else {

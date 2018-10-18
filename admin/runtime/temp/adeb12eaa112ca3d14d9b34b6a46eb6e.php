@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:9:{s:80:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\user_edit.html";i:1534933538;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\form.html";i:1529999356;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\editor.html";i:1521772962;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:80:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\user_edit.html";i:1539831498;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\form.html";i:1529999356;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,13 +127,12 @@
     <ol class="am-breadcrumb" style="    margin-bottom: 0;">
         <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
         <li><a href="#">内容管理</a></li>
-        <li class="am-active">帮助中心</li>
+        <li class="am-active">修改用户信息</li>
     </ol>
     <div class="widget am-cf">
-        <form class="am-cf" id="form" onsubmit="return false">
+        <form class="am-cf" id="user_edit_form" onsubmit="return false">
             <div class="am-panel am-panel-primary">
                 <div class="am-panel-hd">基础信息</div>
-               
                 <div class="am-form-group">
                     <span class="s1">名称：</span>
                     <label class="am-form-label">
@@ -146,7 +145,42 @@
                     <span class="s1">身份证号：</span>
                     <label class="am-form-label">
                         <input type="text" id="card" class="am-form-field am-input-sm" name="card" value="<?php echo $list['card']; ?>"  placeholder=""/>
-                        
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">手机号</span>
+                    <label class="am-form-label">
+                        <input type="text" id="phone" class="am-form-field am-input-sm" name="phone" value="<?php echo $list['phone']; ?>"  placeholder=""/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">QQ</span>
+                    <label class="am-form-label">
+                        <input type="text" id="qq" class="am-form-field am-input-sm" name="qq" value="<?php echo $list['qq']; ?>"  placeholder=""/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">密码：</span>
+                    <label class="am-form-label">
+                        <input type="password" id="password" class="am-form-field am-input-sm" name="password" value=""  placeholder=""/>
+
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">交易密码：</span>
+                    <label class="am-form-label">
+                        <input type="password" id="trade_password" class="am-form-field am-input-sm" name="trade_password" value=""  placeholder=""/>
+
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">账号类型：</span>
+                    <label class="am-form-label">
+                        <select name="type" title="" class="am-form-field am-input-sm">
+                            <option value="1" class="am-form-field am-input-sm" >行情账户</option>
+                            <option value="2" class="am-form-field am-input-sm" >交易账户</option>
+                        </select>
+
                     </label>
                 </div>
                 <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
@@ -158,26 +192,6 @@
     </form>
 </div>
 </div>
-<script type="text/javascript" charset="utf-8" src="/static/ud/ueditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="/static/ud/ueditor.all.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="/static/ud/lang/zh-cn/zh-cn.js"></script>
-<script type="text/javascript">
-    UE.getEditor('content', {
-        autoHeight: true,
-        toolbars: [
-            [
-                'anchor', 'undo', 'redo', 'bold', 'indent', 'italic', 'underline', 'strikethrough', 'subscript',
-                'fontborder', 'superscript', 'formatmatch', 'blockquote', 'pasteplain', 'selectall', 'horizontal',
-                'removeformat', 'time', 'date', 'unlink', 'inserttitle', 'cleardoc', 'insertcode', 'fontfamily',
-                'fontsize', 'paragraph', 'simpleupload', 'edittable', 'edittd', 'link', 'spechars', 'searchreplace',
-                'justifyleft', 'justifyright', 'justifycenter', 'justifyjustify', 'forecolor', 'backcolor',
-                'insertorderedlist', 'insertunorderedlist', 'directionalityltr', 'directionalityrtl', 'rowspacingtop',
-                'rowspacingbottom', 'insertframe', 'imagenone', 'imageleft', 'imageright', 'attachment', 'imagecenter',
-                'lineheight', 'edittip ', 'customstyle', 'autotypeset', 'touppercase', 'tolowercase', 'background'
-            ]
-        ]
-    });
-</script>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/amazeui.min.js"></script>
 <script type="text/javascript" src="/static/js/amazeui.datatables.min.js"></script>
@@ -202,20 +216,22 @@
         nav.eq(2).find('ul li').eq(0).find('a').addClass('active');
     });
     function sub() {
-        var arr = parseFormJson("#form");
+        var arr = parseFormJson("#user_edit_form");
         $.ajax({
             url: "<?php echo url('Users/user_edits'); ?>",
             data: {arr: arr},
             type: "post",
             success: function (r) {
-                // console.log(r);
-                // return false;
+//          	console.log(r);return;
                 if (r['code'] == 1) {
-                    alert_open(r['msg'])
+                    alert_open(r['msg']);
                 } else {
                     alert_msg(r['msg']);
                 }
-            }
+            },
+            error:function(r){
+            	console.log(r);
+            },
         });
     }
 </script>

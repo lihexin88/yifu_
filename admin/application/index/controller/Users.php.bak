@@ -39,32 +39,7 @@ class Users extends Common
  * */
     public function feedback()
     {
-//        按条件查询
-        $where = null;
-        $start_time = null;
-        $end_time = null;
-        if($_POST){
-//            print_r($_POST);
-            if($_POST['uid']){
-              $where['user_id'] = $_POST['uid'];
-            }
-            if(strtotime($_POST['start_query'])){
-                $start_time = strtotime($_POST['start_query']);
-            }else{
-                $start_time = time();
-            }
-            if(strtotime($_POST['end_query'])){
-                $end_time = strtotime($_POST['end_query']);
-            }else{
-                $end_time = time();
-            }
-            $where['question_create_time'] = ['between time',[$start_time,$end_time]];
-//            print_r($where);
-//            return;
-        }else{
-            echo "未接收到数据";
-        }
-//        未定义变量，查询全部反馈信息
+
         $all_feedback_log = new FeedbackModel;
         if(empty($all_feedback_log['question_id'])){
             $r = msg_handle("最近没有反馈记录",0);
@@ -74,8 +49,7 @@ class Users extends Common
         $page_size = 10;
         $get_all_feedback = new FeedbackModel();
 
-        $get_all_feedback = $get_all_feedback->where($where)->paginate($page_size);
-        echo Db::name('sn_feedback')->getLastSql();
+        $get_all_feedback = $get_all_feedback->paginate($page_size);
         $page = $get_all_feedback->render();
 
 
@@ -108,6 +82,8 @@ class Users extends Common
         $this->assign('end_query', input('get.end_query'));
         $this->assign('list', $list['data']);
         $this->assign('sum', $sum);
+
+
 
         return $this->fetch();
     }
@@ -184,12 +160,12 @@ class Users extends Common
     }
 
 
-    /*
+  /*
     充值记录
      */
     public function recharge_record()
     {
-        $map = "";
+        $map = array();
         $name = input('get.name/s');
         if ($name) {
             $user = $this->User->where(array("phone|name" => ['like', $name]))->find();
@@ -199,8 +175,8 @@ class Users extends Common
                 $map['uid'] = ['like', 0];
             }
         }
+        $map['status']  =array('neq',0);
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
-
 
         $current_page = page_judge(input('get.page/d'));
         $list = $this->Recharge->query_log($map, $current_page, $this->num);
@@ -219,7 +195,6 @@ class Users extends Common
             //$list["data"][$key]["time"]=date("Y-m-d H:i:s",$list["data"][$key]["time"]);
             $list["data"][$key]["user"] = $bank;
         }
-
         //$sum = $this->Account->sum('account');
         $this->assign('arr', $this->arr_info(input('get.')));
         $this->assign('empty', $this->null_html(12));
@@ -338,7 +313,7 @@ class Users extends Common
     public function user_edit()
     {
         $id = Request::instance()->param('id');
-        $list = $this->User->where('id=' . $id)->find();
+        $list = $this->User->where('id=' . $id)->field('id,real_name,card')->find();
         $this->assign('list', $list);
         return $this->fetch();
     }
@@ -351,44 +326,21 @@ class Users extends Common
     {
         if (request()->isAjax()) {
             $data = $_POST['arr'];
-//            var_dump($data);
             if (empty($data['real_name'])) {
                 $r = msg_handle('请输入姓名', 0);
                 return $r;
             } elseif (empty($data['card'])) {
                 $r = msg_handle('请输入身份证号', 0);
                 return $r;
-            } elseif (empty($data['phone'])) {
-                $r = msg_handle('请输入手机号', 0);
-                return $r;
-            } elseif (!(string)$data['type']) {
-                $r = msg_handle('请选择账号类型', 0);
-                return $r;
-            } elseif (!(string)$data['qq']){
-                $r = msg_handle('请输入QQ！',0);
-                return $r;
-            }
-            if($data['type'] == '2'){
-                $data['type'] = 1;
-            }else{
-                $data['type'] = 0;
-            }
-            if(empty($data['password'])){
-                $data['password'] = md5("123456");
-            }else{
-                $data['password'] = md5($data['password']);
-            }
-            if(empty($data['trade_password'])){
-                $data['trade_password'] = md5("123456");
-            }else{
-                $data['trade_password'] = md5($data['trade_password']);
-            }
-            $data['modify_time'] = time();
-            $list = $this->User->update($data);
-            if ($list) {
-                $r = msg_handle('操作成功！',1);
             } else {
-                $r = msg_handle('操作失败！',-1);
+                $list = $this->User->update($data);
+            }
+            if ($list) {
+                //设置成功后跳转页面的地址，默认的返回页面是$_SERVER['HTTP_REFERER']
+                $this->success('操作成功', 'Users/index');
+            } else {
+                //错误页面的默认跳转页面是返回前一页，通常不需要设置
+                $this->error('操作失败,未改动数据!');
             }
         } else {
             $r = msg_handle('错误操作', 0);
@@ -476,6 +428,7 @@ class Users extends Common
 
     public function user_add()
     {
+
         if ($_POST) {
             $data = $_POST['arr'];
             if (empty($data["real_name"])) {
@@ -499,12 +452,10 @@ class Users extends Common
             }
 
             if ($data["reid"] != "无") {
-
                 $p_user = $this->User->where(array("phone" => $data["reid"]))->find();
                 if ($p_user) {
-                    //$acc_data["reid"] = $p_user["id"];
+                    $acc_data["reid"] = $p_user["id"];
                     $parents = $this->find_parents($p_user["id"]);//查询出所有推荐人
-
                     if ($parents) {
                         foreach ($parents as $k => $v) {
                             if ($k == 1) {
@@ -528,23 +479,34 @@ class Users extends Common
                 return $r;
             }
 
+//                $data["password"]=md5($data["password"]);
+//                $data["name"]=$data["phone"];
+//                $data["trade_password"]=md5($data["trade_password"]);
+//                $data["time"]=time();
+//                $data["re_type"]=3;
+//                $data["idcard"]=$data["card"];
+//                $data["login_ip"]=$_SERVER["REMOTE_ADDR"];
+//                $data["token"]=md5($data["phone"].time());
+//                $data["agent_id"]=$data["agent"];
 
-            $res["name"] = $data["real_name"];
+            $res["name"] = md5($data["real_name"]);
             $res["phone"] = $data["phone"];
+            $res["card"] = $data["card"];
+            $res["subsidiary_organ"] = $data["subsidiary_organ"];
             $res["password"] = md5($data["password"]);
             $res["trade_password"] = md5($data["trade_password"]);
+            $res["agent_id"] = $data["agent"];
             $res["time"] = time();
-            $res["type"] = $data['type'];
-            $res["card"] = $data["card"];
+            $res["re_type"] = 3;
             $res["login_ip"] = $_SERVER["REMOTE_ADDR"];
             $res["token"] = md5($data["phone"] . time());
             $res["agent_id"] = $data["agent"];
-            $res["re_status"] = 1;
-
-            $add = $this->User->insert($res);
+            echo "<pre>";
+            var_dump($data);
+            $add = $this->User->insert($data);
             if ($add) {
                 $userId = $this->User->getLastInsID();
-                $parents = $this->find_parents($userId);
+
                 if ($parents) {//修改用户的path字段
                     $path = "0";
                     $suoarray = array_reverse($parents);
@@ -552,7 +514,6 @@ class Users extends Common
                         $path .= ",{$val['id']}";
                     }
                     $path .= ",{$userId}";
-
                     $this->User->where(array("id" => $userId))->update(array("path" => $path));
                 }
 
@@ -579,6 +540,7 @@ class Users extends Common
         $this->assign("agent", $agent_s);
         $this->assign("p_name", $p_name);
         return $this->fetch();
+
     }
 
     public function p_name()

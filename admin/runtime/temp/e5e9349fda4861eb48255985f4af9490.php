@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:79:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\feedback.html";i:1539770466;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:79:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\feedback.html";i:1539834877;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,7 +97,7 @@
 
             <div class="am-form-group ">
 
-                <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+                <input type="text" class="am-form-field am-input-sm" name="start" id="start_time" placeholder="请选择起始日期"
 
                        data-am-datepicker onfocus="this.blur()" value="<?php echo $arr['start_query']; ?>"/>
 
@@ -105,7 +105,7 @@
 
             <div class="am-form-group ">
 
-                <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+                <input type="text" class="am-form-field am-input-sm" name="end" id="end_time" placeholder="请选择结束日期" data-am-datepicker
 
                        onfocus="this.blur()" value="<?php echo $arr['end_query']; ?>"/>
 
@@ -113,18 +113,15 @@
 
             <div class="am-form-group ">
 
-                <input type="text" id="name" class="am-form-field am-input-sm" placeholder="请输入名称或手机号"
+                <input type="text" id="feedback_id" class="am-form-field am-input-sm" placeholder="请输入问题编号"
 
                        value="<?php echo $arr['name']; ?>"/>
 
             </div>
 
-            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="query_feedback()">查询</button>
 
             <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
-            <!-- ,array('excel'=>1,'name'=>$name,'start_query'=>$start_query,'end_query'=>$end_query)) -->
-            <a href="<?php echo url('index'); ?>?excel=1&name=<?php echo $name; ?>&start_query=<?php echo $start_query; ?>&end_query=<?php echo $end_query; ?>">导出Excel表格</a>
-            <!-- <button type="button" class="am-btn am-btn-primary am-btn-sm" style="margin-left: 200px: " onclick="Derive_excel()">导出Excel表格</button> -->
 
     </div>
 
@@ -134,6 +131,7 @@
                 <table class="table table-bordered tablerecord table-hover">
                     <thead>
                     <tr>
+                        <th>用户id</th>
                         <th>问题编号</th>
                         <th>问题类别</th>
                         <th>问题描述</th>
@@ -148,6 +146,7 @@
 					<?php else: ?>
 						<tr>
 					<?php endif; ?>
+							<td><?php echo $feedback_log['user_id']; ?></td>
 							<td><?php echo $feedback_log['question_id']; ?></td>
 							<td><?php if(($feedback_log['question_type']) == 1): ?>交易<?php elseif(($feedback_log['question_type']) == 2): ?>出入金<?php else: ?>其他<?php endif; ?></td>
 							<td title="<?php echo $feedback_log['question_describe']; ?>"><?php if((strlen($feedback_log['question_describe']) < 24 )): ?> <?php echo $feedback_log['question_describe']; else: ?> <?php echo substr($feedback_log['question_describe'],0,24); ?>... <?php endif; ?></td>
@@ -166,11 +165,11 @@
             <!--没有记录时显示 end-->
         </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <button type="button" class="close" data-dismiss="modal" >
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
@@ -231,12 +230,10 @@
     </div>
 </div>
 </div>
-<form action="<?php echo url('Users/index'); ?>" class="am-form-inline" role="form" id="form" method="get">
-    <input type="hidden" name="name"/>
-    <input type="hidden" name="start_query">
-    <input type="hidden" name="end_query">
-    <input type="hidden" name="status">
-    <input type="hidden" name="page">
+<form action="<?php echo url('feedback'); ?>" class="am-form-inline" role="form" id="form" method="post">
+    <input type="hidden" id="form_start_time" name="start_query">
+    <input type="hidden" id="form_end_time" name="end_query">
+    <input type="hidden" name="uid" id="form_user_id" />
 </form>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/amazeui.min.js"></script>
@@ -261,65 +258,17 @@
         nav.eq(<?php echo $a; ?>).find('ul').show();
         nav.eq(<?php echo $a; ?>).find('ul li').eq(<?php echo $b; ?>).find('a').addClass('active');
     });
-    function sub(id) {
-        $.ajax({
-            url: "<?php echo url('Users/edit'); ?>",
-            type: "post",
-            data: {id: id},
-            success: function (r) {
-                if (r['code'] == 1) {
-                    layer.msg(r['msg']);
-                    setTimeout(function (){
-                        window.location.reload();
-                    },1500);
-                } else {
-                    layer.msg(r['msg']);
-                }
-            }
-        });
-    }
-    //修改注册状态
-    function subs(id) {
-        $.ajax({
-            url: "<?php echo url('Users/editReStatus'); ?>",
-            type: "post",
-            data: {id: id},
-            success: function (r) {
-                if (r['code'] == 1) {
-                    layer.msg(r['msg']);
-                    setTimeout(function (){
-                        window.location.reload();
-                    },1500);
-                } else {
-                    layer.msg(r['msg']);
-                }
-            }
-        });
-    }
-    function mold(id) {
-        $.ajax({
-            url: "<?php echo url('Users/mold'); ?>",
-            type: "post",
-            data: {id: id},
-            success: function (r) {
-                if (r == 1) {
-                    alert_open('操作成功');
-                } else {
-                    alert_msg('操作失败');
-                }
-            }
-        });
-    }
-
-    function Derive_excel(){
-        $.ajax({
-            url: "<?php echo url('Users/index'); ?>",
-            type: "post",
-            data: {excel: 1},
-            success: function (r) {
-                
-            }
-        });
+    function query_feedback()
+    {
+//  	var data = {"start_time":$("#start_time").val(),"end_time":$("#end_time").val()};
+//  	data['start_time'] = $("#start_time").val();
+//  	data['end_time'] = $("#end_time").val();
+//  	console.log(data);
+    	$("#form_start_time").val($("#start_time").val());
+    	$("#form_end_time").val($("#end_time").val());
+    	$("#form_user_id").val($("#feedback_id").val());
+    	$("#form").submit();
+//  	console.log(data);
     }
 </script>
 </body>

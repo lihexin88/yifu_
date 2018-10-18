@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:76:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\index.html";i:1539772142;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:76:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\index.html";i:1539773165;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,14 +162,16 @@
                         <td><?php echo $vo['re_status']; ?></td>
                         <td><?php echo $vo['subsidiary_organ']; ?></td>
                         <td>
-                        	<?php echo $vo['re_status']; if(($vo['re_status']) == 0): ?>0
-                        	<?php elseif(($vo['re_status']) == 1): ?>1
-                        	<?php else: ?>2
+                        	<?php if(($vo['re_status']) == '未处理'): ?>
+                        		<a href="#" onclick="subs(id=<?php echo $vo['id']; ?>,type='agree')" class="am-btn am-btn-success am-btn-xs">通过</a>
+                        		<a href="#" onclick="subs(id=<?php echo $vo['id']; ?>,type='disagree')" class="am-btn am-btn-warning am-btn-xs">驳回</a>
+                        	<?php elseif(($vo['re_status']) == '已拒绝'): ?>
+                        		<a href="#" onclick="subs(id=<?php echo $vo['id']; ?>,type='agree')" class="am-btn am-btn-success am-btn-xs">通过</a>
+                        	<?php else: ?>
+	                        	<a href="rechange?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">充值</a>
+	                        	<a href="#" onclick="sub(id=<?php echo $vo['id']; ?>)" class="am-btn am-btn-success am-btn-xs">修改状态</a>
+	                        	<a href="user_edit?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">信息修改</a>
                         	<?php endif; ?>
-                            <a href="rechange?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">充值</a>
-                            <a href="#" onclick="sub(id=<?php echo $vo['id']; ?>)" class="am-btn am-btn-success am-btn-xs">修改状态</a>
-                            <a href="#" onclick="subs(id=<?php echo $vo['id']; ?>)" class="am-btn am-btn-success am-btn-xs">注册审核</a>
-                            <a href="user_edit?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">信息修改</a>
                             <!-- <a href="http://hengrui.jinjifuweng.com/index/aotu_login?id=<?php echo $vo['id']; ?>&token=<?php echo $vo['token']; ?>" target="_blank" class="am-btn am-btn-success am-btn-xs">登录前台</a> -->
                         </td>
                     </tr>
@@ -240,11 +242,11 @@
         });
     }
     //修改注册状态
-    function subs(id) {
+    function subs(id,type) {
         $.ajax({
             url: "<?php echo url('Users/editReStatus'); ?>",
             type: "post",
-            data: {id: id},
+            data: {id: id,type:type},
             success: function (r) {
                 if (r['code'] == 1) {
                     layer.msg(r['msg']);
