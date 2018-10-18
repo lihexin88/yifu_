@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:79:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\feedback.html";i:1539834877;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:79:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\feedback.html";i:1539849000;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,6 +118,13 @@
                        value="<?php echo $arr['name']; ?>"/>
 
             </div>
+            <div class="am-form-group ">
+
+                <input type="text" id="user_id" class="am-form-field am-input-sm" placeholder="请输入用户id"
+                	
+                       value=""/>
+
+            </div>
 
             <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="query_feedback()">查询</button>
 
@@ -165,11 +172,11 @@
             <!--没有记录时显示 end-->
         </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >
+<div  id="myModal" style="display: none;top: 10px;position: fixed;z-index: 9999;left: 30%;" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" >
+                <button type="button" onclick="hiden_detial()" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
@@ -205,11 +212,14 @@
                 </div>
                 <div class="detailBox">
                     <p>处理意见：</p>
-                    <textarea id="question_display_headle_suggestion" disabled="disabled"></textarea>
+                    <textarea id="question_display_headle_suggestion" ></textarea>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btnqure" data-dismiss="modal">
+            	<button type="button" style="float: left;" onclick="submit_this_question()" class="btn btnqure" data-dismiss="modal">
+                    提交
+                </button>
+                <button type="button" onclick="hiden_detial()" class="btn btnqure" data-dismiss="modal">
                     取消
                 </button>
             </div>
@@ -221,6 +231,7 @@
 <script src="/static/js/bootstrap.min.js"></script>
 <script src="/static/layui-v2.3.0/layui/layui.js"></script>
 <script src="/static/js/question.js"></script>
+<script src="/static/js/layer.js"></script>
 
 
     </div>
@@ -233,6 +244,7 @@
 <form action="<?php echo url('feedback'); ?>" class="am-form-inline" role="form" id="form" method="post">
     <input type="hidden" id="form_start_time" name="start_query">
     <input type="hidden" id="form_end_time" name="end_query">
+    <input type="hidden" name="question_id" id="form_feedback_id" />
     <input type="hidden" name="uid" id="form_user_id" />
 </form>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
@@ -266,9 +278,37 @@
 //  	console.log(data);
     	$("#form_start_time").val($("#start_time").val());
     	$("#form_end_time").val($("#end_time").val());
-    	$("#form_user_id").val($("#feedback_id").val());
+    	$("#form_feedback_id").val($("#feedback_id").val());
+    	$("#form_user_id").val($("#user_id").val());
     	$("#form").submit();
 //  	console.log(data);
+    }
+    function submit_this_question()
+    {
+    	//问题id和问题处理意见
+    	var data = {"question_id":$("#question_display_id").html(),"question_suggest":$("#question_display_headle_suggestion").val()};
+    	console.log(data);
+		$.ajax({
+			type:"post",
+			data:data,
+			url:"edit_feedback",
+			success:function(result){
+				console.log(result);
+				if(result['code'] == 1){
+					console.log(11111);
+					layer.alert("问题已处理",function(index){						
+						$("#myModal").slideUp(500);
+						location.reload();
+					});
+				}else{
+					layer.alert('问题处理失败~<br>请稍后再试！');
+				}
+			},
+			error:function(result){
+				console.log(result);
+			},
+			async:true
+		});
     }
 </script>
 </body>

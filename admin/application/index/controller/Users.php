@@ -44,14 +44,19 @@ class Users extends Common
         $start_time = null;
         $end_time = null;
         if($_POST){
-//            print_r($_POST);
+//            print_r($_POST);return;
             if($_POST['uid']){
               $where['user_id'] = $_POST['uid'];
             }
+            if($_POST['question_id']){
+                $where['question_id'] = $_POST['question_id'];
+            }
             if(strtotime($_POST['start_query'])){
+//                开始时间为空，则按照时间为0查询记录
                 $start_time = strtotime($_POST['start_query']);
             }else{
-                $start_time = time();
+
+                $start_time = 0;
             }
             if(strtotime($_POST['end_query'])){
                 $end_time = strtotime($_POST['end_query']);
@@ -61,8 +66,6 @@ class Users extends Common
             $where['question_create_time'] = ['between time',[$start_time,$end_time]];
 //            print_r($where);
 //            return;
-        }else{
-            echo "未接收到数据";
         }
 //        未定义变量，查询全部反馈信息
         $all_feedback_log = new FeedbackModel;
@@ -75,7 +78,7 @@ class Users extends Common
         $get_all_feedback = new FeedbackModel();
 
         $get_all_feedback = $get_all_feedback->where($where)->paginate($page_size);
-        echo Db::name('sn_feedback')->getLastSql();
+//        echo Db::name('sn_feedback')->getLastSql();
         $page = $get_all_feedback->render();
 
 
@@ -112,6 +115,41 @@ class Users extends Common
         return $this->fetch();
     }
 
+
+    /*
+     * 修改问题反馈信息
+     */
+    public function edit_feedback()
+    {
+//        print_r($_POST);
+//        echo "get";return;
+//        接收post传递过来的数据
+        $data['question_id'] = $_POST['question_id'];
+//        print_r($data);
+//        按数据读取
+        $get_this_question = FeedbackModel::get($data);
+//        echo Db::name('sn_feedback')->getLastSql();
+//        获取到信息
+        if($get_this_question){
+            $data['question_headle_suggestion'] = $_POST['question_suggest'];
+//            echo "已赋值";
+
+//            抛出异常
+            try{
+                $data['question_headle'] = 1;
+                $get_this_question->save($data);
+//                echo Db::name('sn_feedback')->getLastSql();
+                $r = msg_handle('问题已处理',1);
+                return $r;
+            }catch (\Exception $e){
+                throw $e;
+            }
+
+        }
+//        未获取到信息
+        $r = msg_handle('处理失败！',-1);
+        return $r;
+    }
     /*
      * 获取一条反馈信息
      */
