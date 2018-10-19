@@ -11,6 +11,7 @@ namespace app\index\controller;
 
 use app\index\model\User;
 use app\index\model\Agree;
+use app\index\model\UserAccount;
 use app\index\model\UserBank;
 use app\index\model\Withdraw;
 use think\Controller;
@@ -32,6 +33,9 @@ class Withdrawal extends IndexController
 //    提现主页
     public function apply()
     {
+        $get_user_balance = UserAccount::get($this->user_id);
+//        print_r($get_user_balance);return;
+        $this->assign('user_account',$get_user_balance);
         return $this->fetch();
     }
 //    显示提现记录
@@ -63,6 +67,10 @@ class Withdrawal extends IndexController
     }
     private function do_withdraw($data)
     {
+        if(!(is_int($data['amount'])&&$data['amount']>0)){
+            $r = msg_handle('提现数据格式错误！',-1);
+            return $r;
+        }
         $new_withdraw = new Withdraw();
         $new_withdraw->uid = $this->user_id;
         $new_withdraw->order = createOrderNum(1);

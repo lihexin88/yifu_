@@ -195,10 +195,10 @@
             url: "{:url('UserBank/edit')}",
             data: {arr: arr},
             type: "post",
+            dataType:'json',
             success: function (r) {
-            	console.log(r);
                 if (r['code'] == 1) {
-                    alert_open(r['msg'])
+                    alert_open(r['msg']);
                 } else {
                     alert_msg(r['msg']);
                 }

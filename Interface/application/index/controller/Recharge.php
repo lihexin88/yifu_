@@ -7,6 +7,7 @@ use app\index\model\Recharge as RechargeModel;
 
 use app\index\model\Config;
 
+use app\index\model\UserAccount;
 use think\Controller;
 use think\Request;
 use think\Db;
@@ -85,12 +86,20 @@ class Recharge extends IndexController
 //        print_r($data);
         $get_rmbt_usd = $this->usdt_rmb;
 //        print_r($get_rmbt_usd);
+//       声明美金
         $usd = 0;
+//       声明手续费
         $exchange_fee = 0;
         if($data['pay_type'] == 1){
             $exchange_fee = $data['amount']*$this->recharge_ratio;
         }else if($data['pay_type'] == 3){
         }
+
+//        验证用户充值金额规范性
+       if(!(is_int($data['amount']) && $data['amount'] > 0)){
+            $r = msg_handle('入金数据错误！',-1);
+            return $r;
+       }
 
        $data['amount'] -= $exchange_fee;
        $usd = $data['amount']/$get_rmbt_usd;
@@ -112,7 +121,15 @@ class Recharge extends IndexController
         $new_recharge->usd = $usd;
         $new_recharge->fee = $exchange_fee;
         if($new_recharge->save()){
-            $r = msg_handle("成功！",1);
+//           修改用户余额
+            $get_user_account = UserAccount::get($this->user_id);
+            $get_user_account['change_time'] = time();
+            $get_user_account['balance'] +=$new_recharge['number'];
+//            echo "开始显示用户帐户";
+//            print_r($get_user_account);return;
+            if($get_user_account->save()){
+                $r = msg_handle("成功！",1);
+            }
         }else{
             $r = msg_handle("失败!",-1);
         }

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\recharge\index.html";i:1539909119;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539676179;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\recharge\index.html";i:1539918819;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539676179;}*/ ?>
 <!--首部加载文件-->
 
 <!DOCTYPE html>
@@ -413,7 +413,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label" style="width: 199px !important;padding-top: 0;">充值金额<span class="required" aria-required="true">*</span></label>
 				<div class="col-md-4">
-					<input type="number" id="amount" class="form-control required chinaMobile" name="amount" onkeyup="amount_change(this.value)" autocomplete="off">
+					<input type="number" step="0.01" min="0.01" id="amount" class="form-control required chinaMobile" name="amount" onkeyup="amount_change(this.value)" autocomplete="off">
 				</div>
 			</div>
 			<div class="form-group">
@@ -547,7 +547,8 @@
 						layer.alert("入金申请已提交",{time:1000});
 						window.location.href = "/recharge/record";						
 					}else{
-						console.log(result);
+						layer.alert(result['msg']);
+						return false;
 					}
 				},
 				error: function(result) {

@@ -45,8 +45,8 @@ class Banks extends Common
         $this->assign('list', $list['data']);
         return $this->fetch();
     }
-   
-        /**
+
+    /**
      * 添加/修改功能
      * @return mixed
      */
@@ -55,13 +55,14 @@ class Banks extends Common
         if ($id) {
             $list = $this->Bank->where('id='.$id)->find();
             if ($list) {
-                $list['pic'] = 'http://www.admin.com'.$list['pic'].'.jpg';
+                $list['pic'] = 'http://www.admin.com'.$list['pic'].'.'.$list['pic_extension'];
                 $this->assign('list', $list);
             } else {
                 $this->redirect('Banks/index');
             }
         }else{
-            $list=array('id'=>'','code'=>'','name'=>'','status'=>'1');
+            $list=array('id'=>'','code'=>'','name'=>'','status'=>'1','pic'=>'');
+//                outpause($list);
             $this->assign('list', $list);
         }
         return $this->fetch();

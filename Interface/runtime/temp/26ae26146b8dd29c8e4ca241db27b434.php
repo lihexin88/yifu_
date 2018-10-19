@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\withdrawal\apply.html";i:1539688837;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539676179;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\withdrawal\apply.html";i:1539919093;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539676179;}*/ ?>
 <!--首部加载文件-->
 
 <!DOCTYPE html>
@@ -161,7 +161,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">金额(人民币)<span class="required" aria-required="true">*</span></label>
 					<div class="col-md-4">
-						<input type="number" step="0.01" min="0.0" placeholder="请输入金额" required="required" title="请输入金额" class="form-control required" name="amount" autocomplete="off">
+						<input type="number" step="0.01" min="0.01" placeholder="请输入金额" required="required"  class="form-control required" name="amount" autocomplete="off">
 					</div>
 				</div><br>
 				<div class="form-group" style="display: ;">
@@ -217,6 +217,14 @@
 <script type="text/javascript">
 			$("#btn_sub").click(
 				function(){
+					if($("input[name='amount']").val()><?php echo $user_account['balance']; ?>){
+						layer.alert("可用余额不足！");
+						return false;
+					}else if($("input[name='amount']").val()<0){
+						layer.alert("数据格式错误！！");
+						$("input[name='amount']").focus();
+						return false;
+					}
 					$.ajax({
 						type:"post",
 						data:{
