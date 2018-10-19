@@ -20,7 +20,11 @@ class Bank extends Model
             }else{
                 $value['time'] = detail_time($value['time']);
             }
-            $value['pic'] =config('HOSTADMIN').$value['pic'] ;
+
+//            原地址拼接
+//            $value['pic'] =config('HOSTADMIN').$value['pic'].'.jpg' ;
+//            若为空，则显示default.png
+            $value['pic'] =!empty($value['pic'])?"http://www.admin.com".$value['pic'].'.jpg':"http://www.admin.com/uploads/default.png";
             switch ($value['status']) {
                 case '1':
                     $value['status'] = '正常';

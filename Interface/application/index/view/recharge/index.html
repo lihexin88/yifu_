@@ -387,7 +387,7 @@
 				success: function(result) {
 //					console.log(result);return false;
 					if(result['code'] == 1){
-						layer.alert("入金成功！");
+						layer.alert("入金申请已提交",{time:1000});
 						window.location.href = "/recharge/record";						
 					}else{
 						console.log(result);

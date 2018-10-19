@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\recharge\index.html";i:1539683562;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539676179;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:83:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\recharge\index.html";i:1539909119;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539676179;}*/ ?>
 <!--首部加载文件-->
 
 <!DOCTYPE html>
@@ -544,7 +544,7 @@
 				success: function(result) {
 //					console.log(result);return false;
 					if(result['code'] == 1){
-						layer.alert("入金成功！");
+						layer.alert("入金申请已提交",{time:1000});
 						window.location.href = "/recharge/record";						
 					}else{
 						console.log(result);

@@ -29,7 +29,13 @@ class Banks extends Common
         }
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
         $current_page = page_judge(input('get.page'));
+//        Bank Model 中原地址拼接为
+        /**
+         *        $value['pic'] =config('HOSTADMIN').$value['pic'].'.jpg' ;
+         * 暂时改为固定链接拼接
+         */
         $list = $this->Bank->query_log($map, $current_page, $this->num);
+//        outpause($list['data'],'图片',0);
         $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
 //        echo "<pre>";
 //        print_r($list);exit;
@@ -48,8 +54,8 @@ class Banks extends Common
         $id=Request::instance()->param('id');
         if ($id) {
             $list = $this->Bank->where('id='.$id)->find();
-
             if ($list) {
+                $list['pic'] = 'http://www.admin.com'.$list['pic'].'.jpg';
                 $this->assign('list', $list);
             } else {
                 $this->redirect('Banks/index');
@@ -87,6 +93,8 @@ class Banks extends Common
                     $map['code']=$data['code'];
                     $map['status'] = $data['status'];
                     $map['pic'] = $data['pic'];
+//                    outpause($map);
+                    $map['time'] = time();
                     $list = $this->Bank->where('id='.$data['id'])->update($map);
                 }
                 if ($list) {

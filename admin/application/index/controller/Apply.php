@@ -205,7 +205,7 @@ class Apply extends Common
         $data['pay_time'] = time();
         $data['status'] = 1;
         $res2 = $this->Recharge->where('id', $info['id'])->update($data);
-        sql('sn_recharge');
+//        sql('sn_recharge','sql',0);
         $rech["uid"] = $info["uid"];
         $rech["number"] = $info['number'];
         //$rech["balance"] = $info['balance'];
@@ -218,6 +218,7 @@ class Apply extends Common
         $res3 = $this->Recharge->insertGetId($rech);
         if ($res1 && $res2 && $res3) {
             $this->UserAccount->commit();
+//            sql('sn_recharge','sql',0);
             $r = msg_handle('操作成功', 1);
         } else {
             $this->UserAccount->rollback();

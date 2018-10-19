@@ -222,7 +222,7 @@ class Users extends Common
     }
 
 
-    /*
+    /**
     充值记录
      */
     public function recharge_record()
@@ -270,7 +270,7 @@ class Users extends Common
         return $this->fetch();
     }
 
-    /*
+    /**
       删除充值记录
     */
     public function del()
@@ -293,9 +293,8 @@ class Users extends Common
         return $r;
     }
 
-    /*
+    /**
        用户资金流水
-
       */
     public function user_flowlog()
     {
