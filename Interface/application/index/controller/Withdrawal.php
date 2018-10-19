@@ -15,6 +15,7 @@ use app\index\model\UserAccount;
 use app\index\model\UserBank;
 use app\index\model\Withdraw;
 use think\Controller;
+use think\Exception;
 use think\Request;
 use think\Db;
 
@@ -67,8 +68,16 @@ class Withdrawal extends IndexController
     }
     private function do_withdraw($data)
     {
-        if(!(is_int($data['amount'])&&$data['amount']>0)){
-            $r = msg_handle('提现数据格式错误！',-1);
+
+        //        将数据转换为int
+        try{
+            $data['amount'] = (int) $data['amount'];
+            if($data['amount']<0){
+//                数据小于0，主动抛出异常
+                throw new Exception("数据格式错误");
+            }
+        }catch (\Exception $e){
+            $r = msg_handle("提现数据格式错误！",-1);
             return $r;
         }
         $new_withdraw = new Withdraw();

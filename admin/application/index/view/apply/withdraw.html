@@ -50,7 +50,6 @@
                         
                         <th>开户名</th>
                         <th>开户银行</th>
-                        <th>开户支行</th>
                         <th>银行卡号</th>
 
                         <th>申请时间</th>
@@ -74,7 +73,6 @@
 
                         <td>{$vo.bank.name}</td>
                         <td>{$vo.name}</td>
-                        <td>*</td>
                         <td>{$vo.card}</td>
 
                         <td>{$vo.time}</td>
@@ -92,14 +90,14 @@
                         <td>已拒绝</td>
                         {/if}
 
-                        <td>{$vo.remark}</td>
+                        <td><input type="text" name="remark" id="remark{$vo.id}" value="{$vo.remark?($vo.remark):null }" /></td>
                         <td>
                             {if condition="$vo.status neq 0"}
                             <a href="#" class="am-btn am-btn-warning am-btn-xs">已处理</a>
                             {else /}
-                            <a href="javascript:" onClick="pass(this, {$vo.id})"
+                            <a href="javascript:" onClick="pass(this, {$vo.id},$('#remark{$vo.id}').val())"
                                class="am-btn am-btn-success am-btn-xs">通过</a>
-                            <a href="javascript:" onClick="del(this, {$vo.id})" class="am-btn am-btn-warning am-btn-xs">驳回</a>
+                            <a href="javascript:" onClick="del(this, {$vo.id},$('#remark{$vo.id}').val())" class="am-btn am-btn-warning am-btn-xs">驳回</a>
                             {/if}
                         </td>
                     </tr>
@@ -119,15 +117,17 @@
 </div>
 {include file="public/foot" /}
 <script type="text/javascript">
-    function pass(obj, id) {
+    function pass(obj, id,remark) {
+    	console.log(obj,id,remark);
         layer.confirm('确认要通过审核吗？', function (index) {
             $.ajax({
                 type: 'POST',
                 url: "{:url('index/Apply/modify_withdrawals')}",
-                data: {id: id, edit_type: 1},
+                data: {id: id, edit_type: 1,remark:remark},
                 dataType: 'json',
                 success: function (r) {
                     layer.msg(r.msg);
+                    return false;
                     setTimeout(function (){
                         window.location.reload();
                     },1500);
@@ -139,18 +139,19 @@
         });
     }
 
-    function del(obj, id) {
+    function del(obj, id,remark) {
         layer.confirm('确认要驳回吗？', function (index) {
             $.ajax({
                 type: 'POST',
                 url: "{:url('index/Apply/modify_withdrawals')}",
-                data: {id: id, edit_type: 0},
+                data: {id: id, edit_type: 0,remark:remark},
                 dataType: 'json',
                 success: function (data) {
                     layer.msg('已驳回!', {icon: 1, time: 1000});
                     window.location.href = "{:url('index/Apply/withdraw')}";
                 },
                 error: function (data) {
+                	console.log(data);
                     layer.msg('驳回失败!', {icon: 0, time: 1000});
                 },
             });

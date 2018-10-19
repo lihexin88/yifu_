@@ -92,12 +92,12 @@ function createToken()
 function outpause($data,$position='',$type = '1')
 {
     if($position){
-        echo "当前位置：".$position."   ______<br>";
+        echo "now position:_____".$position."   ______<br>";
     }
     dump($data);
     if($type == 1){
-        echo "暂停程序";
-        echo "<br>";
+        echo "___________________program stoped";
+        echo "<br>_____________________________";
         exit;
     }
 
@@ -111,6 +111,7 @@ function sql($sqlname,$position='',$type = '1')
         echo "当前位置：".$position."   ______<br>";
     }
     echo \think\Db::name($sqlname)->getLastSql();
+    echo " _____";
     if($type == 1){
         echo "暂停程序";
         echo "<br>";

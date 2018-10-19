@@ -46,7 +46,7 @@
 						<td>{$withdraw_log.total}</td>
 						<td>{$withdraw_log.fee}</td>
 						<td>{if condition="($withdraw_log.status) eq 0"}审核中{elseif condition="($withdraw_log.status) eq 1"}提现成功{elseif condition="($withdraw_log.status eq 2)"}提现失败{elseif condition="($withdraw_log.status eq 3)"}已撤回{/if}</td>
-						<td></td>
+						<td>{if condition="$withdraw_log.pay_time neq 0"}{:date("Y-m-d H:i:s",$withdraw_log.pay_time)}{else /}-{/if}</td>
 						<td>{$withdraw_log.remark}</td>
 					</tr>
 				{/volist}

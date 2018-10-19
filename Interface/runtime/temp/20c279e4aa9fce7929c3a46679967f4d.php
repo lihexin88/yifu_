@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\withdrawal\record.html";i:1539687860;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539676179;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\withdrawal\record.html";i:1539920271;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539676179;}*/ ?>
 <!--首部加载文件-->
 
 <!DOCTYPE html>
@@ -166,7 +166,7 @@
 						<td><?php echo $withdraw_log['total']; ?></td>
 						<td><?php echo $withdraw_log['fee']; ?></td>
 						<td><?php if(($withdraw_log['status']) == 0): ?>审核中<?php elseif(($withdraw_log['status']) == 1): ?>提现成功<?php elseif(($withdraw_log['status'] == 2)): ?>提现失败<?php elseif(($withdraw_log['status'] == 3)): ?>已撤回<?php endif; ?></td>
-						<td></td>
+						<td><?php if($withdraw_log['pay_time'] != 0): ?><?php echo date("Y-m-d H:i:s",$withdraw_log['pay_time']); else: ?>-<?php endif; ?></td>
 						<td><?php echo $withdraw_log['remark']; ?></td>
 					</tr>
 				<?php endforeach; endif; else: echo "" ;endif; ?>

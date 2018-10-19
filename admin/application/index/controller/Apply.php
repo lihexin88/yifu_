@@ -240,6 +240,12 @@ class Apply extends Common
             $this->redirect('Apply/withdrawals');
         }
         $info = $this->Withdraw->where('id=' . $id)->find();
+//        outpause($info);
+//        outpause($_POST);
+        if(!empty($_POST['remark'])){
+            $info['remark'] = $_POST['remark'];
+        }
+//        outpause($info);
         $user = $this->User->where('id', $info['uid'])->field('id,real_name')->find();
         $user_bank = $this->UserBanks->where('uid', $info['uid'])->find();
         if (empty($user['real_name']) || empty($user_bank['bank_card'])) {
@@ -249,6 +255,7 @@ class Apply extends Common
             if ($edit_type == 1) {
                 $r = $this->agree_data($account, $info, $user, $user_bank);
             } else {
+//                outpause($info,'skip',0);
                 $r = $this->reject_data($account, $info);
             }
         }
@@ -279,9 +286,16 @@ class Apply extends Common
                 'frozen_bond' => $frozen,
             )
         ); //交易账户累计提现
+//        outpause($info);
+//        sql('sn_user_account',"sql__",1);
         $data['pay_time'] = time();
         $data['status'] = 1;
+        if($info['remark']){
+            $data['remark'] = $info['remark'];
+        }
         $res2 = $this->Withdraw->where('id', $info['id'])->update($data);
+//        outpause($res1,"1",0);
+//        outpause($res2,"2",1);
         if ($res1 && $res2) {
             $this->UserAccount->commit();
             //$r = $this->pay_data($user, $user_bank, $info['number'], $info, $account);
@@ -355,18 +369,21 @@ class Apply extends Common
     public function reject_data($account, $info)
     {
         $da['account'] = $account['account'] + $info['number'] + $info['fee'];
-        if ($account['frozen'] > $info['number']) {
-            $frozen = $account['frozen'] - $info['number'];
+        if ($account['frozen_bond'] > $info['number']) {
+            $frozen = $account['frozen_bond'] - $info['number'];
         } else {
             $frozen = 0;
         }
-        $da['frozen'] = $frozen;
+//        outpause($account);
+//        $da['frozen'] = $frozen;
+//        outpause($info,'拒绝',0);
         $this->UserAccount->startTrans();
         $res1 = $this->UserAccount->where('uid', $account['uid'])->update($da); //返回提现金额
-        $data['agree_time'] = time();
+        $data['pay_time'] = time();
         $data['status'] = 2;
+        $data['remark'] = $info['remark'];
         $res2 = $this->Withdraw->where('id', $info['id'])->update($data);
-        if ($res1 && $res2) {
+        if (isset($res1) && $res2) {
             $this->UserAccount->commit();
             $r = msg_handle('操作成功', 1);
         } else {
