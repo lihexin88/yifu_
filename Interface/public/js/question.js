@@ -7,10 +7,10 @@ $('.navTab button').hover(function () {
     $(this).toggleClass('pitchTab');
 });
 $('#question').click(function () {
-    window.location.href = 'question.html';
+    window.location.href = '/feedback/question';
 });
 $('#feedback').click(function () {
-    window.location.href = 'feedback.html';
+    window.location.href = '/feedback/feedback';
 });
 //重置
 $('#resetBtn').click(function () {

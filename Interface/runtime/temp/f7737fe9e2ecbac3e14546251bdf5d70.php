@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\feedback\feedback.html";i:1539747581;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\feedback\feedback.html";i:1539771534;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/modules.css">
     <link rel="stylesheet" href="../css/question.css">
 </head>
-<body>
+<body >
 
 <main class="main">
     <nav class="navTab">

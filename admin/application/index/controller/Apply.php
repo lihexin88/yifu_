@@ -374,9 +374,7 @@ class Apply extends Common
         } else {
             $frozen = 0;
         }
-//        outpause($account);
-//        $da['frozen'] = $frozen;
-//        outpause($info,'拒绝',0);
+//        开始一个事务
         $this->UserAccount->startTrans();
         $res1 = $this->UserAccount->where('uid', $account['uid'])->update($da); //返回提现金额
         $data['pay_time'] = time();
@@ -401,6 +399,7 @@ class Apply extends Common
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
      */
+//    用户充值不需要申请，此方法弃用
     public function recharge()
     {
 //        $map = array();

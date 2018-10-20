@@ -103,16 +103,10 @@ class Recharge extends IndexController
 
        $data['amount'] -= $exchange_fee;
        $usd = $data['amount']/$get_rmbt_usd;
-//        print_r($exchange_fee);
-//        echo "<br>";
-//        print_r($usd);
-//        echo "   asdf";
-//        print_r($data);
-//       exit;
+
         $new_recharge = new RechargeModel();
         $new_recharge->uid = $this->user_id;
        //        订单编号
-//        $order=createOrderNum(1);
         $new_recharge->order = $order=createOrderNum(1);
         $new_recharge->pay_type = $data['pay_type'];
         $new_recharge->time = time();
@@ -126,7 +120,6 @@ class Recharge extends IndexController
             $get_user_account['change_time'] = time();
             $get_user_account['balance'] +=$new_recharge['number'];
 //            echo "开始显示用户帐户";
-//            print_r($get_user_account);return;
             if($get_user_account->save()){
                 $r = msg_handle("成功！",1);
             }
@@ -134,7 +127,6 @@ class Recharge extends IndexController
             $r = msg_handle("失败!",-1);
         }
        return $r;
-//        print_r($new_recharge);
    }
 
 

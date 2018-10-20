@@ -71,7 +71,9 @@ return [
         'taglib_begin' => '{',        // 标签库标签开始标记
         'taglib_end' => '}',  // 标签库标签结束标记
     ],
-    'view_replace_str' => [],    // 视图输出字符串内容替换
+    'view_replace_str' => [
+        '__PUBLIC__'=>dirname($_SERVER['SCRIPT_NAME']) == DS ? '':dirname($_SERVER['SCRIPT_NAME'])
+    ],    // 视图输出字符串内容替换
     'dispatch_success_tmpl' => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',    // 默认跳转页面对应的模板文件
     'dispatch_error_tmpl' => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
     // +----------------------------------------------------------------------

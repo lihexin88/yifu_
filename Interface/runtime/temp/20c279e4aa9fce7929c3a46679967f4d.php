@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\withdrawal\record.html";i:1539920271;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539676179;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\withdrawal\record.html";i:1539920271;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539943090;}*/ ?>
 <!--首部加载文件-->
 
 <!DOCTYPE html>
