@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:88:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\public/../application/index\view\users\index.html";i:1539748084;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:80:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:85:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:86:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:88:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\public/../application/index\view\users\index.html";i:1540518074;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:80:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\header.html";i:1540460820;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:85:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:86:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +44,7 @@
                 </li>
                 <!-- 退出 -->
                 <li class="am-text-sm">
-                    <a href="../index/index.html">
+                    <a href="../system/logout">
                         <span class="am-icon-sign-out"></span> 退出
                     </a>
                 </li>
@@ -119,9 +119,9 @@
             <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
 
             <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
-            <!-- ,array('excel'=>1,'name'=>$name,'start_query'=>$start_query,'end_query'=>$end_query)) -->
-            <a href="<?php echo url('index'); ?>?excel=1&name=<?php echo $name; ?>&start_query=<?php echo $start_query; ?>&end_query=<?php echo $end_query; ?>">导出Excel表格</a>
-            <!-- <button type="button" class="am-btn am-btn-primary am-btn-sm" style="margin-left: 200px: " onclick="Derive_excel()">导出Excel表格</button> -->
+            <?php if((!empty($name))): ?>            
+            	<a href="<?php echo url('index'); ?>?excel=1&name=<?php echo $name; ?>&start_query=<?php echo $start_query; ?>&end_query=<?php echo $end_query; ?>">导出Excel表格</a>
+            <?php endif; ?>
 
     </div>
 
@@ -150,6 +150,7 @@
                     </thead>
                     <tbody>
                     <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "$empty" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                    
                     <tr>
                         <td><?php echo $vo['id']; ?></td>
                         <td><?php echo $vo['phone']; ?></td>
@@ -162,10 +163,16 @@
                         <td><?php echo $vo['re_status']; ?></td>
                         <td><?php echo $vo['subsidiary_organ']; ?></td>
                         <td>
-                            <a href="rechange?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">充值</a>
-                            <a href="#" onclick="sub(id=<?php echo $vo['id']; ?>)" class="am-btn am-btn-success am-btn-xs">修改状态</a>
-                            <a href="#" onclick="subs(id=<?php echo $vo['id']; ?>)" class="am-btn am-btn-success am-btn-xs">注册审核</a>
-                            <a href="user_edit?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">信息修改</a>
+                        	<?php if(($vo['re_status']) == '未处理'): ?>
+                        		<a href="#" onclick="subs(id=<?php echo $vo['id']; ?>,type='agree')" class="am-btn am-btn-success am-btn-xs">通过</a>
+                        		<a href="#" onclick="subs(id=<?php echo $vo['id']; ?>,type='disagree')" class="am-btn am-btn-warning am-btn-xs">驳回</a>
+                        	<?php elseif(($vo['re_status']) == '已拒绝'): ?>
+                        		<a href="#" onclick="subs(id=<?php echo $vo['id']; ?>,type='agree')" class="am-btn am-btn-success am-btn-xs">通过</a>
+                        	<?php else: ?>
+	                        	<a href="rechange?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">充值</a>
+	                        	<a href="#" onclick="sub(id=<?php echo $vo['id']; ?>)" class="am-btn am-btn-success am-btn-xs">修改状态</a>
+	                        	<a href="user_edit?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">信息修改</a>
+                        	<?php endif; ?>
                             <!-- <a href="http://hengrui.jinjifuweng.com/index/aotu_login?id=<?php echo $vo['id']; ?>&token=<?php echo $vo['token']; ?>" target="_blank" class="am-btn am-btn-success am-btn-xs">登录前台</a> -->
                         </td>
                     </tr>
@@ -236,11 +243,11 @@
         });
     }
     //修改注册状态
-    function subs(id) {
+    function subs(id,type) {
         $.ajax({
             url: "<?php echo url('Users/editReStatus'); ?>",
             type: "post",
-            data: {id: id},
+            data: {id: id,type:type},
             success: function (r) {
                 if (r['code'] == 1) {
                     layer.msg(r['msg']);

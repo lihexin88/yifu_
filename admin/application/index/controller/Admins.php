@@ -141,6 +141,7 @@ class Admins extends Common
             $func = $_POST['func'];
             $cou= count($func);
             unset($data['functions[']);
+
             if ($id) {
                 $name = $this->AdminRole->where(" id != {$id}  AND name='{$data['name']}' ")->find();
             }else{

@@ -35,7 +35,7 @@
                                 </label>
                             </div>
                             <div class="am-form-group">
-                                <span class="s1">元编号：</span>
+                                <span class="s1">员工编号：</span>
                                 <label class="am-form-label">
                                     <input type="text" disabled id="num_name" class="am-form-field am-input-sm" name="num_name" value="{$list['num_name']??''}" placeholder="请输入员工编号"/>
                                 </label>
@@ -53,17 +53,21 @@
                                 </label>
                             </div>
                             <div class="am-form-group">
-                                <span class="s1">禁用状态：</span>
+                                <span class="s1">员工状态：</span>
                                 <label class="am-form-label">
                                     <select name="status" title="" class="am-form-field am-input-sm">
                                         {if condition ="$list['status'] eq 1"}
-                                        <option value="1">否</option>
-                                        {elseif condition ="$list['status'] eq 2"}
-                                        <option value="2">是</option>  
+                                        <option value="">请选择</option>
+                                        <option value="1" selected>正常</option>
+                                        <option value="0">锁定</option>
+                                        {elseif condition ="$list['status'] eq 0"}
+                                        <option value="">请选择</option>
+                                        <option value="1">正常</option>
+                                        <option value="0" selected>锁定</option>
                                         {else/}
                                         <option value="">请选择</option>
-                                        <option value="1">否</option>
-                                        <option value="2">是</option>   
+                                        <option value="1">正常</option>
+                                        <option value="0">锁定</option>
                                         {/if}
                                     </select>
                                 </label>
@@ -79,13 +83,17 @@
                                 <label class="am-form-label">
                                     <select name="bank_status" title="" class="am-form-field am-input-sm">
                                         {if condition ="$list['bank_status'] eq 1"}
-                                        <option value="1">否</option>
-                                        {elseif condition ="$list['bank_status'] eq 2"}
-                                        <option value="2">是</option>  
+                                        <option value="">请选择</option>
+                                        <option value="1" selected>允许</option>
+                                        <option value="0">禁止</option>
+                                        {elseif condition ="$list['bank_status'] eq 0"}
+                                        <option value="">请选择</option>
+                                        <option value="1">允许</option>
+                                        <option value="0" selected>禁止</option>
                                         {else/}
                                         <option value="">请选择</option>
-                                        <option value="1">否</option>
-                                        <option value="2">是</option>   
+                                        <option value="1">允许</option>
+                                        <option value="0">禁止</option>
                                         {/if}
                                     </select>
                                 </label>

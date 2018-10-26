@@ -124,8 +124,8 @@ class Recharge extends IndexController
         if($new_recharge->save()){
 //           修改用户余额
             $get_user_account = UserAccount::get($this->user_id);
-            $get_user_account['change_time'] = time();
-            $get_user_account['balance'] +=$new_recharge['number'];
+            $get_user_account['time'] = time();
+            $get_user_account['account'] +=$new_recharge['number'];
 //            echo "开始显示用户帐户";
             if($get_user_account->save()){
                 $r = msg_handle("成功！",1);

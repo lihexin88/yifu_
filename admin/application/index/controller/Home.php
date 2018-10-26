@@ -74,12 +74,15 @@ class Home extends Common
      * @return mixed
      */
     public function index()
-    {
-        $map['id'] = 1;
-        $list = $this->Acc->where($map)->find();
-        $this->assign('list',$list);
-        return $this->fetch();
-    }
+{
+    $map['id'] = 1;
+//        $list = $this->Acc->where($map)->find();
+    $list['money']=10333;
+    $list['sum_deal']=9999;
+    $list['sum_deal']=9999;
+    $this->assign('list',$list);
+    return $this->fetch();
+}
 
     private function trade_total()
     {

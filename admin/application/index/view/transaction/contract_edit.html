@@ -29,21 +29,21 @@
                     <span class="s1">品　种：　　</span>
                     <input type="hidden" name="id" value="{$list.id??''}"/>
                     <label class="am-form-label">
-                        <select name="variety_id" title="" class="am-form-field am-input-sm">
+                        <select name="futures" title="" class="am-form-field am-input-sm">
                         {if condition="$list != ''"}
 
                         {volist name="exchange" id="vo" empty="$empty"}
-                            {if condition="$vo['id'] == $list['variety_id']"}
-                                      <option selected value="{$vo.id}" class="am-form-field am-input-sm">{$vo.code}</option>
+                            {if condition="$vo['id'] == $list['futures']"}
+                                      <option selected value="{$vo.id}" class="am-form-field am-input-sm">{$vo.name}</option>
                             {else  /}
-                                      <option value="{$vo.id}" class="am-form-field am-input-sm">{$vo.code}</option>
+                                      <option value="{$vo.id}" class="am-form-field am-input-sm">{$vo.name}</option>
                             {/if}
                         {/volist}
 
                         {else  /}
 
                             {volist name="exchange" id="vo" empty="$empty"}
-                                      <option value="{$vo.id}" class="am-form-field am-input-sm">{$vo.code}</option>
+                                      <option value="{$vo.id}" class="am-form-field am-input-sm">{$vo.name}</option>
                             {/volist}
 
                         {/if}
@@ -68,48 +68,16 @@
                 </div>
 
                 <div class="am-form-group">
-                    <span class="s1">开仓跳数：　</span>
+                    <span class="s1">合约短码：　</span>
                     <label class="am-form-label">
-                        <input type="text" id="open_position_fee" class="am-form-field am-input-sm" name="open_position_fee" value="{$list['open_position_fee']?$list['open_position_fee']:''}" />
+                        <input type="text" id="short" class="am-form-field am-input-sm" name="short" value="{$list['short']?$list['short']:''}" />
                     </label>
                 </div>
 
                 <div class="am-form-group">
-                    <span class="s1">平仓跳数：　</span>
+                    <span class="s1">合约类型：　</span>
                     <label class="am-form-label">
-                        <input type="text" id="close_position_fee" class="am-form-field am-input-sm" name="close_position_fee" value="{$list['close_position_fee']?$list['close_position_fee']:''}" />
-                    </label>
-                </div>
-
-                <div class="am-form-group">
-                    <span class="s1">交易货币：　　</span>
-                    <label class="am-form-label">
-                        <select name="currency_type" title="" class="am-form-field am-input-sm">
-                        {if condition="$list != ''"}
-                                      <option {$list['currency_type']==1?'selected':''} value="1" class="am-form-field am-input-sm">美金</option>
-                                      <option {$list['currency_type']==2?'selected':''} value="2" class="am-form-field am-input-sm">欧元</option>
-                                      <option {$list['currency_type']==3?'selected':''} value="3" class="am-form-field am-input-sm">港币</option>
-                                      <option {$list['currency_type']==4?'selected':''} value="4" class="am-form-field am-input-sm">人民币</option>
-
-                        {else  /}
-
-                                      <option value="1" class="am-form-field am-input-sm">美金</option>
-                                      <option value="2" class="am-form-field am-input-sm">欧元</option>
-                                      <option value="3" class="am-form-field am-input-sm">港币</option>
-                                      <option value="4" class="am-form-field am-input-sm">人民币</option>
-
-                        {/if}
-
-                        </select>
-                    </label>
-                </div>
-
-
-
-                <div class="am-form-group">
-                    <span class="s1">合约交割日：</span>
-                    <label class="am-form-label">
-                        <input type="text" class="am-form-field am-input-sm" name="trading_time" placeholder="请选择日期" data-am-datepicker onfocus="this.blur()" value="{$list['trading_time']?$list['trading_time']:''}"/>
+                        <input type="text" id="industry" class="am-form-field am-input-sm" name="industry" value="{$list['industry']?$list['industry']:''}" />
                     </label>
                 </div>
 

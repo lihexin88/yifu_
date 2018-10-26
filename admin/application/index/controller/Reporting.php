@@ -8,6 +8,12 @@ use app\common\model\User;
 use app\common\model\Account;
 use app\common\model\Order;
 use app\common\model\Agent;
+use app\common\model\Entrust;
+use app\common\model\Contract;
+use app\common\model\CapitalFlow;
+use app\common\model\Deal;
+use app\common\model\Depot;
+
 use think\Controller;
 use think\Db;
 use think\Session;
@@ -27,13 +33,18 @@ class Reporting extends Common
         $this->Account = new Account();
         $this->Order = new Order();
         $this->Agent = new Agent();
+        $this->Enturst = new Entrust();
+        $this->Constract = new Contract();
+        $this->CapitalFlow = new CapitalFlow();
+        $this->Deal = new Deal();
+        $this->Depot = new Depot();
     }
 
      /*
      * 委托记录
      */
     public function index(){
-        $map = "";
+        $map =array();
         $name = input('get.name/s');
         if ($name) {
             $user=$this->User->where(array("phone|name"=>['like',$name]))->find();
@@ -46,7 +57,8 @@ class Reporting extends Common
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
         $current_page = page_judge(input('get.page'));
         $map["status"]=['<','2'];
-        $list = $this->Order->query_log($map, $current_page, $this->num);
+        $list = $this->Enturst->query_log($map, $current_page, $this->num);
+//        return json($map);
         $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
         foreach($list["data"] as $k=>$v){
             $user=$this->User->where(array("id"=>$v["uid"]))->find();
@@ -54,6 +66,7 @@ class Reporting extends Common
             $agent=$this->Agent->where(array("id"=>$user["agent"]))->find();
             $list["data"][$k]["user"]=$user;
             $list["data"][$k]["p_user"]=$p_user;
+//            outpause($p_user);
             $list["data"][$k]["agent"]=$agent;
         }
 
@@ -89,7 +102,8 @@ class Reporting extends Common
         }
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
         $current_page = page_judge(input('get.page'));
-        $list = $this->Flow->query_log($map, $current_page, $this->num);
+        $list = $this->CapitalFlow->query_log($map, $current_page, $this->num);
+//        outpause($list);
         $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
         foreach($list["data"] as $k=>$v){
             $list["data"][$k]["user"]=$this->User->where(array("id"=>$v["uid"]))->find();
@@ -128,16 +142,20 @@ class Reporting extends Common
         }
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
         $current_page = page_judge(input('get.page'));
-        $map["status"]=2;
-        $list = $this->Order->query_log($map, $current_page, $this->num);
+//        $map["status"]=2;
+        $list = $this->Deal->query_log($map, $current_page, $this->num);
+//        outpause($list);
         $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
         foreach($list["data"] as $k=>$v){
             $user=$this->User->where(array("id"=>$v["uid"]))->find();
             $p_user=$this->User->where(array("id"=>$user["reid"]))->find();
+//            outpause($user);
             $agent=$this->Agent->where(array("id"=>$user["agent"]))->find();
+//            sql('sn_agent');
+//            outpause($agent);
             $list["data"][$k]["user"]=$user;
             $list["data"][$k]["p_user"]=$p_user;
-            $list["data"][$k]["agent"]=$agent;
+            $list["data"][$k]["agent"]=$agent['name'];
         }
 
         if(isset($_GET["excel"])){
@@ -172,14 +190,15 @@ class Reporting extends Common
         }
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
         $current_page = page_judge(input('get.page'));
-        $map["status"]=2;
-        $map["type"]=1;
-        $list = $this->Order->query_log($map, $current_page, $this->num);
+//        $map["status"]=2;
+//        $map["mold"]=1;
+        $list = $this->Depot->query_log($map, $current_page, $this->num);
         $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
         foreach($list["data"] as $k=>$v){
             $user=$this->User->where(array("id"=>$v["uid"]))->find();
             $p_user=$this->User->where(array("id"=>$user["reid"]))->find();
             $agent=$this->Agent->where(array("id"=>$user["agent"]))->find();
+
             $list["data"][$k]["user"]=$user;
             $list["data"][$k]["p_user"]=$p_user;
             $list["data"][$k]["agent"]=$agent;
@@ -207,7 +226,7 @@ class Reporting extends Common
     
     public function delete_bar(){
         if(isset($_POST["id"])){
-            $delete=$this->Order->where(array("id"=>$_POST["id"]))->delete();
+            $delete=$this->Depot->where(array("id"=>$_POST["id"]))->delete();
             if($delete){
                 $r = 1;
             }else{
@@ -219,10 +238,22 @@ class Reporting extends Common
     /*
     删除资金记录
      */
-    
+    public function delete_enturst()
+    {
+        if(isset($_POST["id"])){
+            $delete=$this->Enturst->where(array("id"=>$_POST["id"]))->delete();
+            if($delete){
+                $r = 1;
+            }else{
+                $r = 0;
+            }
+            echo json_encode($r);
+        }
+    }
+
     public function delete_cap(){
         if(isset($_POST["id"])){
-            $delete=$this->Flow->where(array("id"=>$_POST["id"]))->delete();
+            $delete=$this->CapitalFlow  ->where(array("id"=>$_POST["id"]))->delete();
             if($delete){
                 $r = 1;
             }else{

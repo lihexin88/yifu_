@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\home\index.html";i:1539687924;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539943090;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:79:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\home\index.html";i:1540522200;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539943090;}*/ ?>
 <!--首部加载文件-->
 
 <!DOCTYPE html>
@@ -162,7 +162,7 @@
 							<div class="zijin-right-content" style="width:100%;text-align: center;">
 								<div class="mymoney" style="width:16.7%;margin-top: 60px;">
 									<div class="avalible count">
-										<span class="money" id="quanbu"><?php echo $user_account_info['balance']; ?></span>
+										<span class="money" id="quanbu"><?php echo $user_account_info['account']; ?></span>
 										<p>当前权益（USD）</p>
 									</div>
 								</div>

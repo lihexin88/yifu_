@@ -20,6 +20,12 @@ class Contract extends Model
             }else{
                 $value['time'] = detail_time($value['time']);
             }
+
+            if($value["type"] == 1){
+                $value["type"] = "国外";
+            }else{
+                $value["type"] = "国内";
+            }
             //$value['pic'] =config('HOSTADMIN').$value['pic'] ;
             // switch ($value['status']) {
             //     case '1':

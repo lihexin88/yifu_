@@ -50,12 +50,10 @@ class Apply extends Common
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
         $current_page = page_judge(input('get.page'));
         $list = $this->Withdraw->query_log($map, $current_page, $this->num);
-
         foreach ($list["data"] as $key => $val) {
             $bank = $this->UserBanks->where(array('uid' => $val["uid"]))->find();
             $list["data"][$key]["bank"] = $bank;
         }
-
         $sum['withdraw_num'] = $this->Withdraw->where($map)->sum('number');//提现申请总和
         $sum['fee_num'] = $this->Withdraw->where($map)->sum('fee');//手续费总和
         $sum['num'] = $sum['withdraw_num'] - $sum['fee_num'];//到账总和
@@ -64,11 +62,8 @@ class Apply extends Common
             if ($_GET["excel"]) {
                 //$list = $this->User->query($_post["excel"]);
                 $this->export($list['data']);
-
             }
-
         }
-
         $this->assign('name', $name);
         $this->assign('start_query', input('get.start_query'));
         $this->assign('end_query', input('get.end_query'));
@@ -89,7 +84,6 @@ class Apply extends Common
      */
     public function recharges()
     {
-
         $map = array();
         $name = trim(input('get.name'));
         if ($name) {
@@ -100,12 +94,10 @@ class Apply extends Common
                 $map['uid'] = $name;
             }
         }
-        $map['status']  =array('neq',1);
+        $map['status'] = array('neq', 1);
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
         $current_page = page_judge(input('get.page'));
         $list = $this->Recharge->query_log($map, $current_page, $this->num);
-
-
         foreach ($list["data"] as $key => $val) {
             $bank = $this->UserBanks->where(array('uid' => $val["uid"]))->find();
             // $user=$this->User->where(array("id"=>$val["uid"]))->find();
@@ -117,15 +109,14 @@ class Apply extends Common
         $sum['recharge_num'] = $this->Recharge->where($map)->sum('number');//充值申请总和
         $sum['usd_num'] = $this->Recharge->where($map)->sum('usd');//美金总和
         $sum['fee_num'] = $this->Recharge->where($map)->sum('fee');//手续费总和
+//        return json($list);
         $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
-
         if (isset($_GET["excel"])) {
             if ($_GET["excel"]) {
                 //$list = $this->User->query($_post["excel"]);
                 $this->export($list['data']);
             }
         }
-
         $this->assign('name', $name);
         $this->assign('start_query', input('get.start_query'));
         $this->assign('end_query', input('get.end_query'));
@@ -145,7 +136,6 @@ class Apply extends Common
     {
         $id = $_POST['id'];
         $edit_type = $_POST['edit_type'];
-
         if (!$id) {
             $this->redirect('Apply/recharges');
         }
@@ -188,7 +178,6 @@ class Apply extends Common
         return $r;
     }
 
-
     /**
      * @param $account
      * @param $info
@@ -200,7 +189,7 @@ class Apply extends Common
     public function agree_recharges($account, $info)
     {
         $this->UserAccount->startTrans();
-        $res1 = $this->UserAccount->where('uid', $account['uid'])->setInc('balance',$info['usd'] - $info['fee']); //交易账户累计提现
+        $res1 = $this->UserAccount->where('uid', $account['uid'])->setInc('balance', $info['usd'] - $info['fee']); //交易账户累计提现
         $bank = $this->UserBanks->where("uid", $info["uid"])->find();
         $data['pay_time'] = time();
         $data['status'] = 1;
@@ -227,7 +216,6 @@ class Apply extends Common
         return $r;
     }
 
-
     /**
      * 处理提现申请 同意OR拒绝
      * @throws \Exception
@@ -242,7 +230,7 @@ class Apply extends Common
         $info = $this->Withdraw->where('id=' . $id)->find();
 //        outpause($info);
 //        outpause($_POST);
-        if(!empty($_POST['remark'])){
+        if (!empty($_POST['remark'])) {
             $info['remark'] = $_POST['remark'];
         }
 //        outpause($info);
@@ -281,7 +269,7 @@ class Apply extends Common
         }
         $res1 = $this->UserAccount->where('uid', $account['uid'])->update(
             array(
-                'balance' =>$account['balance']-$info['number'],
+                'balance' => $account['balance'] - $info['number'],
                 'wit_total' => $info['number'] + $account['wit_total'],
                 'frozen_bond' => $frozen,
             )
@@ -290,7 +278,7 @@ class Apply extends Common
 //        sql('sn_user_account',"sql__",1);
         $data['pay_time'] = time();
         $data['status'] = 1;
-        if($info['remark']){
+        if ($info['remark']) {
             $data['remark'] = $info['remark'];
         }
         $res2 = $this->Withdraw->where('id', $info['id'])->update($data);
@@ -390,8 +378,6 @@ class Apply extends Common
         }
         return $r;
     }
-
-
     /**
      * 申请充值列表recharge
      * @return mixed
@@ -469,7 +455,6 @@ class Apply extends Common
         }
     }
 
-
     /*
      *充值申请Excel表格导出
      */
@@ -482,7 +467,6 @@ class Apply extends Common
         $objExcel = new \PHPExcel();
         //set document Property
         $objWriter = \PHPExcel_IOFactory::createWriter($objExcel, 'Excel2007');
-
         $objActSheet = $objExcel->getActiveSheet();
         $key = ord("A");
         $letter = explode(',', "A,B,C,D,E,F,G,H,I,J,K,L,M");
@@ -517,7 +501,7 @@ class Apply extends Common
             $objActSheet->setCellValue('G' . $k, $v['bank']['bank_name']);
             $objActSheet->setCellValue('H' . $k, $v['bank']['bank_card']);
             $objActSheet->setCellValue('I' . $k, $v['time']);
-            $objActSheet->setCellValue('J' . $k, $v['pay_time'] ? $v['pay_time']: "未处理");
+            $objActSheet->setCellValue('J' . $k, $v['pay_time'] ? $v['pay_time'] : "未处理");
             if ($v['status'] == 1) {
                 $objActSheet->setCellValue('K' . $k, "已同意");
             } else if ($v['status'] == 2) {
@@ -526,11 +510,9 @@ class Apply extends Common
                 $objActSheet->setCellValue('K' . $k, "未处理");
             }
             $objActSheet->setCellValue('L' . $k, $v['remark']);
-
             // 表格高度
             $objActSheet->getRowDimension($k)->setRowHeight(20);
         }
-
         $width = array(20, 20, 15, 10, 10, 30, 10, 15);
         //设置表格的宽度
         $objActSheet->getColumnDimension('A')->setWidth($width[3]);
@@ -546,7 +528,6 @@ class Apply extends Common
         $objActSheet->getColumnDimension('K')->setWidth($width[3]);
         $objActSheet->getColumnDimension('L')->setWidth($width[3]);
         $objActSheet->getColumnDimension('M')->setWidth($width[3]);
-
         $outfile = "出入金记录表.xls";
         ob_end_clean();
         header("Content-Type: application/force-download");
@@ -558,7 +539,4 @@ class Apply extends Common
         header("Pragma: no-cache");
         $objWriter->save('php://output');
     }
-
-
 }
-

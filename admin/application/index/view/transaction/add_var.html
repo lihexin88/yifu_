@@ -27,8 +27,9 @@
 
                 <div class="am-form-group">
                     <span class="s1">交易所名称：</span>
+                    <input type="hidden" name="id" value="{$list.id??''}"/>
                     <label class="am-form-label">
-                        <select name="exchange_id" title="" class="am-form-field am-input-sm">
+                        <select name="bourse" id="bourse" title="" class="am-form-field am-input-sm">
                         {volist name="exchange" id="vo" empty="$empty"}
                             <option value="{$vo.id}" class="am-form-field am-input-sm">{$vo.name}</option>
                         {/volist}
@@ -42,7 +43,7 @@
                 <div class="am-form-group">
                     <span class="s1">品种名称：　</span>
                     <label class="am-form-label">
-                        <input type="text" id="variety_name" class="am-form-field am-input-sm" name="variety_name" value="" />
+                        <input type="text" id="name" class="am-form-field am-input-sm" name="name" value="" />
                     </label>
                 </div>
 
@@ -54,33 +55,18 @@
                 </div>
 
                 <div class="am-form-group">
-                    <span class="s1">最小变动单位:</span>
+                    <span class="s1">短　码：　　</span>
                     <label class="am-form-label">
-                        <input type="text" id="min_unit" class="am-form-field am-input-sm" name="min_unit" value=""  placeholder=""/>
-                        
-                    </label>
-                </div>
-            
-                <div class="am-form-group">
-                    <span class="s1">合约乘数：　</span>
-                    <label class="am-form-label">
-                        <input type="text" id="contract_multipler" class="am-form-field am-input-sm" name="contract_multipler" value="" />
+                        <input type="text" id="short" class="am-form-field am-input-sm" name="short" value="" />
                     </label>
                 </div>
 
                 <div class="am-form-group">
-                    <span class="s1">开仓手续费：</span>
+                    <span class="s1">类  型：　　</span>
                     <label class="am-form-label">
-                        <input type="text" id="open_position_fee" class="am-form-field am-input-sm" name="open_position_fee" value=""  placeholder=""/>
+                        <input type="text" id="industry" class="am-form-field am-input-sm" name="industry" value="" />
                     </label>
-                </div>
-
-                <div class="am-form-group">
-                    <span class="s1">平仓手续费：</span>
-                    <label class="am-form-label">
-                        <input type="text" id="close_position_fee" class="am-form-field am-input-sm" name="close_position_fee" value="" />
-                    </label>
-                </div>
+                </div>               
 
                 <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
                     <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() " >确定</button>

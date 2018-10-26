@@ -29,29 +29,25 @@
                     <thead>
                     <tr>
                         <th>品种名称</th>
+                        <th>交易所代码</th>
                         <th>合约名称</th>
                         <th>合约代码</th>
-                        <th>最小变动单位</th>
-                        <th>合约乘数</th>
-                        <th>开仓跳数</th>
-                        <th>平仓跳数</th>
-                        <th>交易货币</th>
-                        <th>合约交割日</th>
+                        <th>合约短码</th>
+                        <th>合约类型</th>
+                        <th>最近修改日期</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     {volist name="list" id="vo" empty="$empty"}
                     <tr>
-                        <td>{$vo['variety']['variety_name'].'('.$vo['variety']['exchan_name'].')'}</td>
+                        <td>{$vo['variety']['name'].'('.$vo['variety']['bourse_name'].')'}</td>
+                        <td>{$vo.bourse_code}</td>
                         <td>{$vo.name}</td>
                         <td>{$vo.code}</td>
-                        <td>{$vo['variety']['min_unit']}</td>
-                        <td>{$vo['variety']['contract_multipler']}</td>
-                        <td>{$vo['open_position_fee']}</td>
-                        <td>{$vo['close_position_fee']}</td>
-                        <td>{$vo.trading_currency}</td>
-                        <td>{$vo.trading_time}</td>
+                        <td>{$vo.short}</td>
+                        <td>{$vo.type}</td>
+                        <td>{$vo['time']}</td>
                         <td>
                             <a href="#" onclick="del_contract({$vo.id})" class="am-btn am-btn-success am-btn-xs">删除合约</a>
                             <a href="contract_edit?id={$vo.id}&a={$a}&b={$b}" class="am-btn am-btn-success am-btn-xs">合约修改</a>

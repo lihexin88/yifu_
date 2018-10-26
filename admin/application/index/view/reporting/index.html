@@ -78,17 +78,17 @@
                     <tbody id="list">
                     {volist name="list" id="vo" empty="$empty"}
                     <tr>
-                        <td>{$vo['order_sn']}</td>
+                        <td>{$vo['order']}</td>
                         <td>{$vo['user']['phone']}</td>
                         <td>{$vo['user']['name']}</td>
                         <td>{$vo['code']}</td>
                         <td style="color: {$vo['direction'] > 1?'green':'red'}">{$vo['direction'] > 1?'卖':'买'}</td>
-                        <td>{$vo.order_type}</td>
-                        <td>{$vo.buy_price}</td>
+                        <td>{$vo.type}</td>
+                        <td>{$vo.price}</td>
                         <td>{$vo.number}</td>
                         <td>{$vo['agent']['name']}</td>
                         <td>{$vo['p_user']['name']}</td>
-                        <td>{$vo.cap_name}</td>
+                        <td>{$vo.uid}</td>
                         <td>{$vo['status']}</td>
                         <td>{$vo.time}</td>
                         <td>
@@ -115,7 +115,7 @@
     function del(id) {
         if (confirm("确定要删除吗？")) {
             $.ajax({
-                url: "{:url('delete_bar')}",
+                url: "{:url('delete_enturst')}",
                 type: "post",
                 data: {id: id},
                 success: function (r) {

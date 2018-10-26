@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:97:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\public/../application/index\view\transaction\contract.html";i:1535112838;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:80:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:85:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:86:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:97:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\public/../application/index\view\transaction\contract.html";i:1540464968;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:80:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\header.html";i:1540460820;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:85:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:86:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +44,7 @@
                 </li>
                 <!-- 退出 -->
                 <li class="am-text-sm">
-                    <a href="../index/index.html">
+                    <a href="../system/logout">
                         <span class="am-icon-sign-out"></span> 退出
                     </a>
                 </li>
@@ -102,29 +102,25 @@
                     <thead>
                     <tr>
                         <th>品种名称</th>
+                        <th>交易所代码</th>
                         <th>合约名称</th>
                         <th>合约代码</th>
-                        <th>最小变动单位</th>
-                        <th>合约乘数</th>
-                        <th>开仓跳数</th>
-                        <th>平仓跳数</th>
-                        <th>交易货币</th>
-                        <th>合约交割日</th>
+                        <th>合约短码</th>
+                        <th>合约类型</th>
+                        <th>最近修改日期</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "$empty" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                     <tr>
-                        <td><?php echo $vo['variety']['variety_name'].'('.$vo['variety']['exchan_name'].')'; ?></td>
+                        <td><?php echo $vo['variety']['name'].'('.$vo['variety']['bourse_name'].')'; ?></td>
+                        <td><?php echo $vo['bourse_code']; ?></td>
                         <td><?php echo $vo['name']; ?></td>
                         <td><?php echo $vo['code']; ?></td>
-                        <td><?php echo $vo['variety']['min_unit']; ?></td>
-                        <td><?php echo $vo['variety']['contract_multipler']; ?></td>
-                        <td><?php echo $vo['open_position_fee']; ?></td>
-                        <td><?php echo $vo['close_position_fee']; ?></td>
-                        <td><?php echo $vo['trading_currency']; ?></td>
-                        <td><?php echo $vo['trading_time']; ?></td>
+                        <td><?php echo $vo['short']; ?></td>
+                        <td><?php echo $vo['type']; ?></td>
+                        <td><?php echo $vo['time']; ?></td>
                         <td>
                             <a href="#" onclick="del_contract(<?php echo $vo['id']; ?>)" class="am-btn am-btn-success am-btn-xs">删除合约</a>
                             <a href="contract_edit?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">合约修改</a>

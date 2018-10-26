@@ -39,14 +39,14 @@ class Transaction extends Common
         $current_page = page_judge(input('get.page'));
         $list = $this->Variety->query_log($map, $current_page, $this->num);
         $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
-        foreach($list["data"] as $k=>$v){
-            $list["data"][$k]["exchange"]=$this->Exchange->where(array("id"=>$v["exchange_id"]))->find();
-        }
+
 
         if(isset($_GET["excel"])){
             if($_GET["excel"]){
+                $lists = $this->Variety->query_log($map, 1, 10000);
+
                 //$list = $this->User->query($_post["excel"]);
-                $this->export_exchange($list['data']);
+                $this->export_exchange($lists['data']);
             }
          }
         $this->assign('arr', $this->arr_info(input('get.')));
@@ -66,14 +66,17 @@ class Transaction extends Common
         $list = $this->Contract->query_log($map, $current_page, $this->num);
         $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
         foreach($list["data"] as $k=>&$v){
-            $list["data"][$k]["variety"]=$this->Variety->where(array("id"=>$v["variety_id"]))->find();
-            $v["trading_time"]=detail_time($v["trading_time"]);
+            $list["data"][$k]["variety"]=$this->Variety->where(array("id"=>$v["bourse"]))->find();
         }
 
         if(isset($_GET["excel"])){
             if($_GET["excel"]){
+                $lists = $this->Contract->query_log($map, 1, 10000);
+                foreach($lists["data"] as $k=>&$v){
+                    $lists["data"][$k]["variety"]=$this->Variety->where(array("id"=>$v["bourse"]))->find();
+                }
                 //$list = $this->User->query($_post["excel"]);
-                $this->export_contract($list['data']);
+                $this->export_contract($lists['data']);
             }
          }
         $this->assign('arr', $this->arr_info(input('get.')));
@@ -216,8 +219,8 @@ class Transaction extends Common
         if(isset($id)){
             $id = Request::instance()->param('id');
             $list = $this->Contract->where('id='.$id)->find();
-            if($list['trading_time']){
-                $list['trading_time']=date('Y-m-d',$list['trading_time']);
+            if($list['time']){
+                $list['time']=date('Y-m-d',$list['time']);
             }
             $this->assign('list', $list);
         }else{
@@ -239,47 +242,39 @@ class Transaction extends Common
             $data = $_POST['arr'];
             if (empty($data['name'])) {
                 $r = msg_handle('请输入合约名称', 0);
-                return $r;
             } elseif (empty($data['code'])) {
                 $r = msg_handle('请输入合约代码', 0);
-                return $r;
-            } elseif (empty($data['open_position_fee'])) {
-                $r = msg_handle('请输入开仓跳数', 0);
-                return $r;
-            } elseif (empty($data['close_position_fee'])) {
-                $r = msg_handle('请输入平仓跳数', 0);
-                return $r;
-            } elseif (empty($data['trading_time'])) {
-                $r = msg_handle('请选择合约交割日', 0);
-                return $r;
-            } else {
-                $data['trading_time']=strtotime($data['trading_time']);
-                if($data["currency_type"] == 1){
-                   $data["trading_currency"]="美金";
-                }else if($data["currency_type"] == 2){
-                    $data["trading_currency"]="欧元";
-                }else if($data["currency_type"] == 3){
-                    $data["trading_currency"]="港币";
-                }else if($data["currency_type"] == 4){
-                    $data["trading_currency"]="人民币";
-                }
+            } elseif (empty($data['short'])) {
+                $r = msg_handle('请输入合约短码', 0);
+            }  else {
+                
+                $data['time']=time();
+                $futures=$this->Variety->where(array("id"=>$data["futures"]))->find();
+                $exchange=$this->Exchange->where(array("id"=>$futures["bourse"]))->find();
                 if(!empty($data['id'])){
+                    $data["bourse"]=$exchange["id"];
+                    $data["bourse_name"]=$exchange["name"];
+                    $data["bourse_code"]=$exchange["code"];
                     $data["time"]=time();
                     $list = $this->Contract->where('id='.$data['id'])->update($data);
                 }else{
+                    $data["bourse"]=$exchange["id"];
+                    $data["bourse_name"]=$exchange["name"];
+                    $data["bourse_code"]=$exchange["code"];
                     $data["time"]=time();
                     $list = $this->Contract->insertGetId($data);;
+                }
+                if ($list) {
+                    //设置成功后跳转页面的地址，默认的返回页面是$_SERVER['HTTP_REFERER']
+                    $this->success('操作成功', 'Transaction/index');
+                } else {
+                    //错误页面的默认跳转页面是返回前一页，通常不需要设置
+                    $this->error('操作失败,未改动数据!');
                 }
                 
                 
             }
-            if ($list) {
-                //设置成功后跳转页面的地址，默认的返回页面是$_SERVER['HTTP_REFERER']
-                $this->success('操作成功', 'Transaction/index');
-            } else {
-                //错误页面的默认跳转页面是返回前一页，通常不需要设置
-                $this->error('操作失败,未改动数据!');
-            }
+            
         } else {
             $r = msg_handle('错误操作', 0);
         }
@@ -338,41 +333,39 @@ class Transaction extends Common
     {
         if (request()->isAjax()) {
             $data = $_POST['arr'];
-            if (empty($data['variety_name'])) {
-                $r = msg_handle('请输入名称', 0);
-                return $r;
-            } elseif (empty($data['min_unit'])) {
-                $r = msg_handle('请输入最小变动单位', 0);
-                return $r;
-            } elseif (empty($data['contract_multipler'])) {
-                $r = msg_handle('请输入合约乘数', 0);
-                return $r;
-            } elseif (empty($data['open_position_fee'])) {
-                $r = msg_handle('请输入开仓手续费', 0);
-                return $r;
-            } elseif (empty($data['close_position_fee'])) {
-                $r = msg_handle('请输入平仓手续费', 0);
-                return $r;
-            } else {
-                $exchange=$this->Exchange->where(array("id"=>$data["exchange_id"]))->find();
-                if(isset($data['id'])){
-                    $data["exchan_name"]=$exchange["name"];
+            
+            if (empty($data['name'])) {
+                $r = msg_handle('请输入品种名称', 0);
+            } elseif (empty($data['code'])) {
+                $r = msg_handle('请输入合约代码', 0);
+            } elseif (empty($data['short'])) {
+                $r = msg_handle('请输入合约短码', 0);
+            } elseif (empty($data['industry'])) {
+                $r = msg_handle('请输入合约类型', 0);
+            }  else {
+
+                $exchange=$this->Exchange->where(array("id"=>$data["bourse"]))->find();
+                if(!empty($data['id'])){
+                    $data["bourse_name"]=$exchange["short"];
+                    $data["bourse_code"]=$exchange["code"];
                     $data["time"]=time();
                     $list = $this->Variety->where('id='.$data['id'])->update($data);
                 }else{
-                    $data["exchan_name"]=$exchange["name"];
+                    $data["bourse_name"]=$exchange["short"];
+                    $data["bourse_code"]=$exchange["code"];
                     $data["time"]=time();
-                    $list = $this->Variety->insertGetId($data);;
+                    $list = $this->Variety->insertGetId($data);
+                }
+                if ($list) {
+                    //设置成功后跳转页面的地址，默认的返回页面是$_SERVER['HTTP_REFERER']
+                    $this->success('操作成功', 'Transaction/index');
+                } else {
+                    //错误页面的默认跳转页面是返回前一页，通常不需要设置
+                    $this->error('操作失败,未改动数据!');
                 }
                 
             }
-            if ($list) {
-                //设置成功后跳转页面的地址，默认的返回页面是$_SERVER['HTTP_REFERER']
-                $this->success('操作成功', 'Transaction/index');
-            } else {
-                //错误页面的默认跳转页面是返回前一页，通常不需要设置
-                $this->error('操作失败,未改动数据!');
-            }
+            
         } else {
             $r = msg_handle('错误操作', 0);
         }
@@ -393,7 +386,7 @@ class Transaction extends Common
         $objActSheet = $objExcel->getActiveSheet();
         $key = ord("A");
         $letter =explode(',',"A,B,C,D,E,F,G");
-        $arrHeader = array('交易所名称','品种名称','最小变动单位','合约乘数','开仓手续费','平仓手续费','添加时间');
+        $arrHeader = array('交易所名称','交易所类型','品种名称','短码','代码','类型','添加时间');
         //填充表头信息
         $lenth =  count($arrHeader);
         for($i = 0;$i < $lenth;$i++) {
@@ -402,8 +395,8 @@ class Transaction extends Common
         //填充表格信息
         foreach($xlsData as $k=>$v){
             $k +=2;
-            $objActSheet->setCellValue('A'.$k,$v['exchange']['name']);
-            $objActSheet->setCellValue('B'.$k, $v['variety_name']);
+            $objActSheet->setCellValue('A'.$k,$v['bourse_name']);
+            $objActSheet->setCellValue('B'.$k, $v['type']);
             // // 图片生成
             // $objDrawing[$k] = new \PHPExcel_Worksheet_Drawing();
             // $objDrawing[$k]->setPath('public/static/admin/images/profile_small.jpg');
@@ -417,10 +410,10 @@ class Transaction extends Common
             // $objDrawing[$k]->setOffsetY(12);
             // $objDrawing[$k]->setWorksheet($objPHPExcel->getActiveSheet());
             // 表格内容
-            $objActSheet->setCellValue('C'.$k, $v['min_unit']);
-            $objActSheet->setCellValue('D'.$k, $v['contract_multipler']);
-            $objActSheet->setCellValue('E'.$k, $v['open_position_fee']);
-            $objActSheet->setCellValue('F'.$k, $v['close_position_fee']);
+            $objActSheet->setCellValue('C'.$k, $v['name']);
+            $objActSheet->setCellValue('D'.$k, $v['short']);
+            $objActSheet->setCellValue('E'.$k, $v['code']);
+            $objActSheet->setCellValue('F'.$k, $v['industry']);
             $objActSheet->setCellValue('G'.$k, $v['time']);
  
  
@@ -428,7 +421,7 @@ class Transaction extends Common
             $objActSheet->getRowDimension($k)->setRowHeight(20);
         }
  
-        $width = array(20,20,15,10,10,30,10,15);
+        $width = array(20,20,15,10,10,10,30);
         //设置表格的宽度
         $objActSheet->getColumnDimension('A')->setWidth($width[3]);
         $objActSheet->getColumnDimension('B')->setWidth($width[3]);
@@ -462,8 +455,8 @@ class Transaction extends Common
  
         $objActSheet = $objExcel->getActiveSheet();
         $key = ord("A");
-        $letter =explode(',',"A,B,C,D,E,F,G,H,I");
-        $arrHeader = array('品种名称','合约名称','合约代码','最小变动单位','合约乘数','开仓跳数','平仓跳数','交易货币','合约交割日');
+        $letter =explode(',',"A,B,C,D,E,F,G");
+        $arrHeader = array('品种名称','交易所代码','合约名称','合约代码','合约短码','合约类型','合约交割日');
         //填充表头信息
         $lenth =  count($arrHeader);
         for($i = 0;$i < $lenth;$i++) {
@@ -472,8 +465,8 @@ class Transaction extends Common
         //填充表格信息
         foreach($xlsData as $k=>$v){
             $k +=2;
-            $objActSheet->setCellValue('A'.$k,$v['variety']['variety_name']."(".$v['variety']['exchan_name'].")");
-            $objActSheet->setCellValue('B'.$k, $v['name']);
+            $objActSheet->setCellValue('A'.$k,$v['variety']['name']."(".$v['variety']['bourse_name'].")");
+            $objActSheet->setCellValue('B'.$k, $v['bourse_code']);
             // // 图片生成
             // $objDrawing[$k] = new \PHPExcel_Worksheet_Drawing();
             // $objDrawing[$k]->setPath('public/static/admin/images/profile_small.jpg');
@@ -487,30 +480,26 @@ class Transaction extends Common
             // $objDrawing[$k]->setOffsetY(12);
             // $objDrawing[$k]->setWorksheet($objPHPExcel->getActiveSheet());
             // 表格内容
-            $objActSheet->setCellValue('C'.$k, $v['code']);
-            $objActSheet->setCellValue('D'.$k, $v['variety']['min_unit']);
-            $objActSheet->setCellValue('E'.$k, $v['variety']['contract_multipler']);
-            $objActSheet->setCellValue('F'.$k, $v['open_position_fee']);
-            $objActSheet->setCellValue('G'.$k, $v['close_position_fee']);
-            $objActSheet->setCellValue('H'.$k, $v['trading_currency']);
-            $objActSheet->setCellValue('I'.$k, $v['trading_time']);
+            $objActSheet->setCellValue('C'.$k, $v['name']);
+            $objActSheet->setCellValue('D'.$k, $v['code']);
+            $objActSheet->setCellValue('E'.$k, $v['short']);
+            $objActSheet->setCellValue('F'.$k, $v['type']);
+            $objActSheet->setCellValue('G'.$k, $v['variety']['trading_time']);
  
  
             // 表格高度
             $objActSheet->getRowDimension($k)->setRowHeight(20);
         }
  
-        $width = array(20,20,15,10,10,30,10,15);
+        $width = array(30,20,15,10,10,30,10,15);
         //设置表格的宽度
-        $objActSheet->getColumnDimension('A')->setWidth($width[3]);
+        $objActSheet->getColumnDimension('A')->setWidth($width[5]);
         $objActSheet->getColumnDimension('B')->setWidth($width[3]);
         $objActSheet->getColumnDimension('C')->setWidth($width[3]);
         $objActSheet->getColumnDimension('D')->setWidth($width[3]);
         $objActSheet->getColumnDimension('E')->setWidth($width[3]);
         $objActSheet->getColumnDimension('F')->setWidth($width[3]);
         $objActSheet->getColumnDimension('G')->setWidth($width[3]);
-        $objActSheet->getColumnDimension('H')->setWidth($width[3]);
-        $objActSheet->getColumnDimension('I')->setWidth($width[3]);
 
         $outfile = "合约信息表.xls";
         ob_end_clean();

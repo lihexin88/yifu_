@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\withdrawal\apply.html";i:1539919926;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539943090;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\phpStudy\WWW\yifu\Interface\public/../application/index\view\withdrawal\apply.html";i:1540522025;s:69:"D:\phpStudy\WWW\yifu\Interface\application\index\view\base\index.html";i:1539943090;}*/ ?>
 <!--首部加载文件-->
 
 <!DOCTYPE html>
@@ -217,7 +217,8 @@
 <script type="text/javascript">
 			$("#btn_sub").click(
 				function(){
-					if($("input[name='amount']").val()><?php echo $user_account['balance']; ?>){
+					console.log(<?php echo $user_account['account']; ?>);
+					if($("input[name='amount']").val()><?php echo $user_account['account']; ?>){
 						layer.alert("可用余额不足！");
 						return false;
 					}else if($("input[name='amount']").val()<0){

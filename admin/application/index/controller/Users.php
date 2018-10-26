@@ -10,6 +10,9 @@ use app\common\model\Account;
 use app\common\model\Flow;
 use app\common\model\Feedback as FeedbackModel;
 use app\common\model\Recharge;
+use app\common\model\RegisterApply;
+
+
 use think\Controller;
 use think\Db;
 
@@ -26,6 +29,7 @@ class Users extends Common
     {
         parent::__construct($request);
         $this->User = new User();
+        $this->RegisterApply = new RegisterApply();
         $this->Miner = new Miner();
         $this->Account = new Account();
         $this->Recharge = new Recharge();
@@ -136,13 +140,15 @@ class Users extends Common
 
 //            抛出异常
             try{
+                $data['headle_time'] = time();
                 $data['headle'] = 1;
                 $get_this_question->save($data);
 //                echo Db::name('sn_feedback')->getLastSql();
                 $r = msg_handle('问题已处理',1);
                 return $r;
             }catch (\Exception $e){
-                throw $e;
+                $r = msg_handle($e->getMessage(),-1);
+                return $r;
             }
 
         }
@@ -179,6 +185,7 @@ class Users extends Common
 //        outpause($get_one_question);
         if($get_one_question){
             $get_one_question->time = date('Y-m-d H:i:s',$get_one_question->time);
+            $get_one_question->headle_time = date('Y-m-d H:i:s',$get_one_question->headle_time);
 //            print_r($get_one_question);
 //            exit();
             $r = msg_handle("成功",1,$get_one_question);
@@ -187,31 +194,34 @@ class Users extends Common
         }
         return $r;
     }
-    /*
-       会员列表
-      */
+    /**
+     * 会员列表
+     * @return mixed
+     * @throws \PHPExcel_Exception
+     * @throws \PHPExcel_Reader_Exception
+     * @throws \PHPExcel_Writer_Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public function index()
     {
-        $map = "";
+        $map = array();
         $name = input('get.name/s');
         if ($name) {
             $map['name|phone'] = ['like', $name];
         }
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
-        $map['re_status'] = 1;
         $current_page = page_judge(input('get.page/d'));
         $list = $this->User->query_log($map, $current_page, $this->num);
-
         $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
-
+        //如果url里含有excel参数，则将结果导出到Excel
         if (isset($_GET["excel"])) {
             if ($_GET["excel"]) {
                 //$list = $this->User->query($_post["excel"]);
                 $this->export_users($list['data']);
             }
         }
-//         echo "<pre>";
-//         var_dump($list);
         $sum = $this->Account->sum('account');
         $this->assign('arr', $this->arr_info(input('get.')));
         $this->assign('empty', $this->null_html(12));
@@ -677,7 +687,14 @@ class Users extends Common
         return $shuzu;
     }
 
-
+    /**
+     *
+     * 用户注册申请
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public function apply()
     {
         $map = "";
@@ -687,7 +704,7 @@ class Users extends Common
         }
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
         $current_page = page_judge(input('get.page/d'));
-        $list = $this->User->query_log($map, $current_page, $this->num);
+        $list = $this->RegisterApply->query_log($map, $current_page, $this->num);
 
         $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
 
@@ -707,6 +724,12 @@ class Users extends Common
         $this->assign('list', $list['data']);
         $this->assign('sum', $sum);
         return $this->fetch();
+    }
+
+
+    public function hand_apply()
+    {
+        outpause($_POST);
     }
     public function banks()
     {

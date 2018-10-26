@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:79:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\feedback.html";i:1540517098;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:79:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\feedback.html";i:1540518827;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1540460820;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +47,7 @@
                 </li>
                 <!-- 退出 -->
                 <li class="am-text-sm">
-                    <a href="../index/index.html">
+                    <a href="../system/logout">
                         <span class="am-icon-sign-out"></span> 退出
                     </a>
                 </li>
@@ -295,7 +295,7 @@
 			success:function(result){
 				console.log(result);
 				if(result['code'] == 1){
-					console.log(11111);
+//					console.log(11111);
 					layer.alert("问题已处理",function(index){						
 						$("#myModal").slideUp(500);
 						location.reload();

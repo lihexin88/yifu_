@@ -6,6 +6,7 @@ use think\Request;
 // use app\common\model\ConfigRatio;
 use app\common\model\Rechar;
 use app\common\model\Level;
+use think\Session;
 
 class System extends Common
 {
@@ -87,7 +88,11 @@ class System extends Common
         }
         return $r;
     }
- 
+
+    public function logout(){
+        Session::clear();
+        $this->redirect('/');
+    }
 }
 
 

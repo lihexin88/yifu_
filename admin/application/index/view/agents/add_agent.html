@@ -46,12 +46,12 @@
                                 </label>
                             </div>
                             <div class="am-form-group">
-                                <span class="s1">禁用状态：</span>
+                                <span class="s1">代理状态：</span>
                                 <label class="am-form-label">
                                     <select name="status" title="" class="am-form-field am-input-sm">
                                         <option value="">请选择</option>
-                                        <option value="1">否</option>
-                                        <option value="2">是</option>   
+                                        <option value="1">正常</option>
+                                        <option value="0">禁用</option>
                                     </select>
                                 </label>
                             </div>
@@ -84,8 +84,8 @@
                                 <label class="am-form-label">
                                     <select name="withdrawals_status" title="" class="am-form-field am-input-sm">
                                         <option value="">请选择</option>
-                                        <option value="1">否</option>
-                                        <option value="2">是</option>   
+                                        <option value="1">允许</option>
+                                        <option value="0">禁止</option>
                                     </select>
                                 </label>
                                 <span class="s2">*是否禁止该代理提现</span>
@@ -168,7 +168,7 @@
             function sub() {
                 var arr = parseFormJson("#form");
                 $.ajax({
-                    url: "{:url('Agents/add')}",
+                    url: "{:url('Agents/add_agent')}",
                     data: {arr: arr},
                     type: "post",
                     success: function (r) {

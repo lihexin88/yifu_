@@ -26,9 +26,9 @@ class Agent extends Model {
             $arr[$key]['time'] = detail_time($value['time']);
            
             if ($value['status'] == 1) {
-                $value['status'] = "已启用";
+                $value['status'] = "正常";
             } else {
-                $value['status'] = "已禁用";
+                $value['status'] = "禁用";
             }
 
         }

@@ -5,7 +5,7 @@ use think\Model;
 
 class Depot extends Model {
 
-	protected $table = 'sn_capital';
+	protected $table = 'sn_depot';
 
     public function user() 
     {
@@ -15,9 +15,10 @@ class Depot extends Model {
    public function query_log($map, $page, $size) {
         $list = $this->where($map)->relation(array('user'))->order('time desc')->page($page, $size)->select()->toArray();
         foreach ($list as $key =>&$value) {
-            $value['time'] = detail_time($value['time']);
-            $value['buy_total']=$value['num']*$value['buy_price'];
-            $value['sell_total']=$value['num']*$value['selling_price'];
+//            outpause($list);
+//            $value['time'] = detail_time($value['time']);
+//            $value['buy_total']=$value['num']*$value['buy_price'];
+//            $value['sell_total']=$value['num']*$value['selling_price'];
             if (!$value['sell_total']){
                 $value['sell_total']='/';
             }

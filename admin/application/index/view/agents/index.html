@@ -64,23 +64,24 @@
                                 <td>{$vo.defer_ratio}</td>
                                 <td>{$vo.wit_ratio}</td>
                                 <td>{$vo.grade}</td>
-                                {if condition ="$vo.status eq 2"}
-                                <td>锁定</td>
-                                {else/}
-                                <td>正常</td>
-                                {/if}
+                                <td>{$vo.status}</td>
+                                <!--{if condition ="$vo.status eq 0"}-->
+                                <!--<td>锁定</td>-->
+                                <!--{else/}-->
+                                <!--<td>正常</td>-->
+                                <!--{/if}-->
                                 <td>{$vo.remake}</td>
                                 <td>
                                     <a href="javascript:" onClick="del(this, {$vo.id})" class="am-btn am-btn-warning am-btn-xs">删除</a>
-                                    {if condition ="$vo.status eq 0"}
+                                    {if condition ="$vo.status eq '禁用'"}
                                     <a href="javascript:" onClick="pass(this, {$vo.id})"  class="am-btn am-btn-success am-btn-xs">开启</a>
                                     {else/}
-                                    <a href="javascript:" onClick="push(this, {$vo.id})" class="am-btn am-btn-warning am-btn-xs">锁定</a>
+                                    <a href="javascript:" onClick="push(this, {$vo.id})" class="am-btn am-btn-warning am-btn-xs">禁用</a>
                                     {/if}
                                     {if condition ="$vo.grade eq 3"}
                                     <a href="#" class="am-btn am-btn-warning am-btn-xs">第三等级</a>
                                     {else/}
-                                    <a href="add.html?id={$vo.id}" class="am-btn am-btn-success am-btn-xs">添加下级</a>
+                                    <a href="add_child.html?id={$vo.id}" class="am-btn am-btn-success am-btn-xs">添加下级</a>
                                     {/if}
                                     <a href="staff.html?id={$vo.id}" class="am-btn am-btn-success am-btn-xs">员工</a>
                                     <a href="edit.html?id={$vo.id}" class="am-btn am-btn-success am-btn-xs">修改</a>
@@ -134,7 +135,7 @@
         }
 
         function push(obj, id) {
-        layer.confirm('确认要锁定代理吗？', function (index) {
+        layer.confirm('确认要禁用代理吗？', function (index) {
         $.ajax({
         type: 'POST',
                 url: "{:url('index/Agents/modify_recharge')}",

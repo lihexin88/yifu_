@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:91:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\public/../application/index\view\apply\withdraw.html";i:1539689167;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:80:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:85:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:91:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\public/../application/index\view\apply\withdraw.html";i:1539995976;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:80:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\header.html";i:1540279177;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:85:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +44,7 @@
                 </li>
                 <!-- 退出 -->
                 <li class="am-text-sm">
-                    <a href="../index/index.html">
+                    <a href="../system/logout">
                         <span class="am-icon-sign-out"></span> 退出
                     </a>
                 </li>
@@ -123,7 +123,6 @@
                         
                         <th>开户名</th>
                         <th>开户银行</th>
-                        <th>开户支行</th>
                         <th>银行卡号</th>
 
                         <th>申请时间</th>
@@ -147,7 +146,6 @@
 
                         <td><?php echo $vo['bank']['name']; ?></td>
                         <td><?php echo $vo['name']; ?></td>
-                        <td>*</td>
                         <td><?php echo $vo['card']; ?></td>
 
                         <td><?php echo $vo['time']; ?></td>
@@ -163,14 +161,14 @@
                         <td>已拒绝</td>
                         <?php endif; ?>
 
-                        <td><?php echo $vo['remark']; ?></td>
+                        <td><input type="text" name="remark" id="remark<?php echo $vo['id']; ?>" value="<?php echo !empty($vo['remark'])?($vo['remark']):null; ?>" /></td>
                         <td>
                             <?php if($vo['status'] != 0): ?>
                             <a href="#" class="am-btn am-btn-warning am-btn-xs">已处理</a>
                             <?php else: ?>
-                            <a href="javascript:" onClick="pass(this, <?php echo $vo['id']; ?>)"
+                            <a href="javascript:" onClick="pass(this, <?php echo $vo['id']; ?>,$('#remark<?php echo $vo['id']; ?>').val())"
                                class="am-btn am-btn-success am-btn-xs">通过</a>
-                            <a href="javascript:" onClick="del(this, <?php echo $vo['id']; ?>)" class="am-btn am-btn-warning am-btn-xs">驳回</a>
+                            <a href="javascript:" onClick="del(this, <?php echo $vo['id']; ?>,$('#remark<?php echo $vo['id']; ?>').val())" class="am-btn am-btn-warning am-btn-xs">驳回</a>
                             <?php endif; ?>
                         </td>
                     </tr>
@@ -204,12 +202,13 @@
     <input type="hidden" name="phone">
 </form>
 <script type="text/javascript">
-    function pass(obj, id) {
+    function pass(obj, id,remark) {
+    	console.log(obj,id,remark);
         layer.confirm('确认要通过审核吗？', function (index) {
             $.ajax({
                 type: 'POST',
                 url: "<?php echo url('index/Apply/modify_withdrawals'); ?>",
-                data: {id: id, edit_type: 1},
+                data: {id: id, edit_type: 1,remark:remark},
                 dataType: 'json',
                 success: function (r) {
                     layer.msg(r.msg);
@@ -224,18 +223,19 @@
         });
     }
 
-    function del(obj, id) {
+    function del(obj, id,remark) {
         layer.confirm('确认要驳回吗？', function (index) {
             $.ajax({
                 type: 'POST',
                 url: "<?php echo url('index/Apply/modify_withdrawals'); ?>",
-                data: {id: id, edit_type: 0},
+                data: {id: id, edit_type: 0,remark:remark},
                 dataType: 'json',
                 success: function (data) {
                     layer.msg('已驳回!', {icon: 1, time: 1000});
                     window.location.href = "<?php echo url('index/Apply/withdraw'); ?>";
                 },
                 error: function (data) {
+                	console.log(data);
                     layer.msg('驳回失败!', {icon: 0, time: 1000});
                 },
             });

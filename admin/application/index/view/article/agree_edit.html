@@ -5,10 +5,11 @@
     {include file="public/link" /}
     {include file="public/form" /}
     <style>
-        input.check_box{
-            width:100px;
+        input.check_box {
+            width: 100px;
         }
-        .p_checkbox{
+
+        .p_checkbox {
             width: 25%;
             float: left;
         }
@@ -31,23 +32,24 @@
                 <div class="am-form-group">
                     <span class="s1">协议名称：</span>
                     <label class="am-form-label">
-                        <input type="text" id="" class="am-form-field am-input-sm" name="name" value="{$list['name']}" />
+                        <input type="text" id="" class="am-form-field am-input-sm" name="title"
+                               value="{$list['title']}"/>
                     </label>
                 </div>
                 <div class="am-form-group">
-                    <span class="s1">协议标题：</span>
+                    <span class="s1">协议描述：</span>
                     <label class="am-form-label">
-                        <input type="text" id="" class="am-form-field am-input-sm" name="title" value="{$list['title']}" />
+                        <input type="text" class="am-form-field am-input-sm" name="desc" value="{$list['desc']}"/>
                     </label>
                 </div>
-                <input type="hidden" id="" class="am-form-field am-input-sm" name="id" value="{$list['id']}" />
+                <input type="hidden" class="am-form-field am-input-sm" name="id" value="{$list['id']}"/>
                 <div class="am-form-group">
                     <span class="s1" style="vertical-align: top">内容：</span>
                     <label class="am-form-label" style="max-width: 60%">
                         <textarea id="content" name="content" style="height:500px;">{$list['content']}</textarea>
                     </label>
                 </div>
-                
+
                 <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
                     <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() ">确定</button>
                     <a href="agree.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
@@ -67,6 +69,7 @@
         nav.eq(1).find('ul').show();
         nav.eq(1).find('ul li').eq(6).find('a').addClass('active');
     });
+
     function sub() {
         var arr = parseFormJson("#form");
         $.ajax({

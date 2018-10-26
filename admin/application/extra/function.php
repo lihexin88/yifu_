@@ -94,7 +94,11 @@ function outpause($data,$position='',$type = '1')
     if($position){
         echo "now position:_____".$position."   ______<br>";
     }
-    dump($data);
+    try{
+        dump($data);
+    }catch (\Exception $e){
+        echo $e->getMessage();
+    }
     if($type == 1){
         echo "___________________program stoped";
         echo "<br>_____________________________";

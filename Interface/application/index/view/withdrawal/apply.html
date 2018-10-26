@@ -65,7 +65,8 @@
 <script type="text/javascript">
 			$("#btn_sub").click(
 				function(){
-					if($("input[name='amount']").val()>{$user_account.balance}){
+					console.log({$user_account.account});
+					if($("input[name='amount']").val()>{$user_account.account}){
 						layer.alert("可用余额不足！");
 						return false;
 					}else if($("input[name='amount']").val()<0){

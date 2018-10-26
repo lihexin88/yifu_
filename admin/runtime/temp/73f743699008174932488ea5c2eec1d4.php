@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:94:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\public/../application/index\view\transaction\index.html";i:1535106514;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:80:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:85:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:86:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:94:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\public/../application/index\view\transaction\index.html";i:1540461971;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:80:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\header.html";i:1540460820;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:85:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:86:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:78:"D:\phpStudy\PHPTutorial\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +44,7 @@
                 </li>
                 <!-- 退出 -->
                 <li class="am-text-sm">
-                    <a href="../index/index.html">
+                    <a href="../system/logout">
                         <span class="am-icon-sign-out"></span> 退出
                     </a>
                 </li>
@@ -135,28 +135,26 @@
                     <thead>
                     <tr>
                         <th>交易所名称</th>
+                        <th>交易所类型</th>
                         <th>品种名称</th>
+                        <th>短码</th>
                         <th>代码</th>
-                        <th>最小变动单位</th>
-                        <th>合约乘数</th>
-                        <th>开仓手续费</th>
-                        <th>平仓手续费</th>
+                        <th>类型</th>
                         <th>添加时间</th>
-
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "$empty" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                     <tr>
-                        <td><?php echo $vo['exchange']['name']; ?></td>
-                        <td><?php echo $vo['variety_name']; ?></td>
+                        <td><?php echo $vo['bourse_name']; ?></td>
+                        <td><?php echo $vo['type']; ?></td>
+                        <td><?php echo $vo['name']; ?></td>
+                        <td><?php echo $vo['short']; ?></td>
                         <th><?php echo $vo['code']; ?></th>
-                        <td><?php echo $vo['min_unit']; ?></td>
-                        <td><?php echo $vo['contract_multipler']; ?></td>
-                        <td><?php echo $vo['open_position_fee']; ?></td>
-                        <td><?php echo $vo['close_position_fee']; ?></td>
+                        <td><?php echo $vo['industry']; ?></td>
                         <td><?php echo $vo['time']; ?></td>
+
                         <td>
                             <a href="var_edit?id=<?php echo $vo['id']; ?>&a=<?php echo $a; ?>&b=<?php echo $b; ?>" class="am-btn am-btn-success am-btn-xs">信息修改</a>
                         </td>

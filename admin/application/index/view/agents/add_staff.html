@@ -23,13 +23,13 @@
                                 <label class="am-form-label">
                                     <select name="aid" title="" class="am-form-field am-input-sm">
                                         {foreach $agent as $val}
-                                        <option selected value="{$val['id']}">{$val.name}</option>
+                                        <option value="{$val['id']}">{$val.name}</option>
                                         {/foreach}
                                     </select>
                                 </label>
                             </div>
                             <div class="am-form-group">
-                                <span class="s1">代理编号：</span>
+                                <span class="s1">员工编号：</span>
                                 <label class="am-form-label">
                                     <input type="text" id="num_name" class="am-form-field am-input-sm" name="num_name" value="" placeholder="请输入员工编号"/>
                                 </label>
@@ -47,12 +47,12 @@
                                 </label>
                             </div>
                             <div class="am-form-group">
-                                <span class="s1">禁用状态：</span>
+                                <span class="s1">员工状态：</span>
                                 <label class="am-form-label">
                                     <select name="status" title="" class="am-form-field am-input-sm">
                                         <option value="">请选择</option>
-                                        <option value="1">否</option>
-                                        <option value="2">是</option>   
+                                        <option value="1">正常</option>
+                                        <option value="0">锁定</option>
                                     </select>
                                 </label>
                             </div>
@@ -67,8 +67,8 @@
                                 <label class="am-form-label">
                                     <select name="bank_status" title="" class="am-form-field am-input-sm">
                                         <option value="">请选择</option>
-                                        <option value="1">否</option>
-                                        <option value="2">是</option>   
+                                        <option value="1">允许</option>
+                                        <option value="0">禁止</option>
                                     </select>
                                 </label>
                                 <span class="s2">*是否禁止该员工提现</span>

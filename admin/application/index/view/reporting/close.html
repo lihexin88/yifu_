@@ -59,26 +59,23 @@
                 <table class="{$table}">
                     <thead>
                     <tr>
-                        <th>交易编号</th>
-                        <th>合约编号 </th>
-                        <th>手机号</th>
-                        <th>账户名</th>
-                        <th>合约名</th>
-                        <th>方向</th>
+                    	<th>手机号</th>
+                    	<th>账户名</th>
+                        <th>证券简码</th>
+                        <th>证券代码 </th>
+                        <th>证券名称</th>
+                        <th>持仓数量</th>
 
-                        <th>开仓价格</th>
-                        <th>履约保证金</th>
-                        <th>开仓综合费</th>
-                        <th>开仓时间</th>
-                        <th>平仓价格</th>
-                        <th>成交手数</th>
+                        <th>剩余可用</th>
+                        <th>冻结数量</th>
+                        <th>完成数量</th>
+                        <th>持仓均价</th>
+                        <th>开仓均价</th>
+                        <th>持仓成本均价</th>
 
-                        <th>平仓综合费</th>
-                        <th>平仓时间</th>
-                        <th>清算盈亏</th>
-                        <th>资金账号</th>
-                        <th>代理商</th>
-                        <th>结算状态</th>
+                        <th>委托方向</th>
+                        <th>止损价格</th>
+                        <th>止盈价格</th>
 
                         <th>操作</th>
                     </tr>
@@ -86,26 +83,21 @@
                     <tbody id="list">
                     {volist name="list" id="vo" empty="$empty"}
                     <tr>
-                        <td>{$vo['order_sn']}</td>
-                        <td>{$vo['contract_id']}</td>
-                        <td>{$vo['user']['phone']}</td>
-                        <td>{$vo['user']['name']}</td>
+                    	<td>{$vo['user']['phone']}</td>
+                    	<td>{$vo['user']['name']}</td>
+                        <td>{$vo['short']}</td>
                         <td>{$vo['code']}</td>
+                        <td>{$vo['name']}</td>
+                        <td>{$vo['number']}</td>
+                        <td>{$vo['surplus']}</td>
+                        <td>{$vo['frozen']}</td>
+                        <td>{$vo['finish']}</td>
+                        <td>{$vo['price']}</td>
+                        <td>{$vo['average']}</td>
+                        <td>{$vo['cost']}</td>
                         <td style="color: {$vo['direction'] > 1?'green':'red'}">{$vo['direction'] > 1?'卖':'买'}</td>
-    
-                        <td>{$vo['buy_price']}</td>
-                        <td>{$vo['guarantee']}</td>
-                        <td>{$vo['open_synthesize_money']}</td>
-                        <td>{$vo['buy_time']}</td>
-                        <td>{$vo['sell_price']}</td>
-                        <td>{$vo.order_lot}</td>
-
-                        <td>{$vo.close_synthesize_money}</td>
-                        <td>{$vo.sell_time}</td>
-                        <td style="color:{$vo['sell_price']-$vo['buy_price'] > 0 ? 'red' : 'green'}" >{$vo['sell_price']-$vo['buy_price']}</td>
-                        <td>{$vo.cap_name}</td>
-                        <td>{$vo['agent']['name']}</td>
-                        <td>{$vo['status']}</td>
+                        <td>{$vo['loss']}</td>
+                        <td>{$vo['profit']}</td>
 
                         <td>
                             <a href="#"  onclick="del(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">删除</a>

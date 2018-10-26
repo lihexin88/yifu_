@@ -39,10 +39,9 @@ class Index extends Controller
 
     public function login()
     {
-
-        /*elseif (!$this->check_verify($data['code'])) {
-                $r = msg_handle('验证码错误', 0);
-            }*/
+//        elseif (!$this->check_verify($data['code'])) {
+//        $r = msg_handle('验证码错误', 0);
+//        }
         if (request()->isAjax()) {
             $data = $_POST;
             if (empty($data['name'])) {
@@ -51,12 +50,14 @@ class Index extends Controller
                 $r = msg_handle('请输入登录密码', 0);
             } elseif (empty($data['code'])) {
                 $r = msg_handle('请输入验证码', 0);
-            }else {
+            } else {
                 $user = $this->Admin->where(array('name' => $data['name'], 'password' => md5($data['password'])))->find();
                 if (empty($user)) {
                     $r = msg_handle('用户名或密码错误', 0);
-                } else {
-                    $r = msg_handle('登陆成功', 1);
+                } else if($user['status'] == 0){
+                    $r = msg_handle('该账号已被禁用',0);
+                }else {
+                    $r = msg_handle('登录成功', 1);
                     $map['roid']=$user['ro_id'];
                     $left=$this->Relation->query_all($map);
                     session('left',$left);

@@ -2,7 +2,7 @@
 return [
     'type' => 'mysql',    // 数据库类型
     'hostname' => '192.168.1.232',    // 服务器地址 47.75.170.151 192.168.1.110
-    'database' => 'yifu1',// 数据库名 wolfpay
+    'database' => 'yifu',// 数据库名 wolfpay
     'username' => 'test',    // 用户名 longlong
     'password' => '123456',    // 密码 longlong
     'hostport' => '3306',    // 端口

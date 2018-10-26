@@ -6,7 +6,7 @@ use think\Model;
 
 class Variety extends Model
 {
-    protected $table = 'sn_variety';
+    protected $table = 'sn_futures';
 
    
    
@@ -19,6 +19,12 @@ class Variety extends Model
                 $value['time']  = '/';
             }else{
                 $value['time'] = detail_time($value['time']);
+            }
+
+            if($value["type"] == 1){
+                $value["type"] = "国外";
+            }else{
+                $value["type"] = "国内";
             }
             //$value['pic'] =config('HOSTADMIN').$value['pic'] ;
             // switch ($value['status']) {

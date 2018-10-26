@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:77:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\agents\index.html";i:1530608044;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:77:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\agents\index.html";i:1540461600;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1540460820;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -44,7 +44,7 @@
                 </li>
                 <!-- 退出 -->
                 <li class="am-text-sm">
-                    <a href="../index/index.html">
+                    <a href="../system/logout">
                         <span class="am-icon-sign-out"></span> 退出
                     </a>
                 </li>
@@ -137,22 +137,23 @@
                                 <td><?php echo $vo['defer_ratio']; ?></td>
                                 <td><?php echo $vo['wit_ratio']; ?></td>
                                 <td><?php echo $vo['grade']; ?></td>
-                                <?php if($vo['status'] == 2): ?>
-                                <td>锁定</td>
-                                <?php else: ?>
-                                <td>正常</td>
-                                <?php endif; ?>
+                                <td><?php echo $vo['status']; ?></td>
+                                <!--<?php if($vo['status'] == 0): ?>-->
+                                <!--<td>锁定</td>-->
+                                <!--<?php else: ?>-->
+                                <!--<td>正常</td>-->
+                                <!--<?php endif; ?>-->
                                 <td><?php echo $vo['remake']; ?></td>
                                 <td>
                                     <a href="javascript:" onClick="del(this, <?php echo $vo['id']; ?>)" class="am-btn am-btn-warning am-btn-xs">删除</a>
-                                    <?php if($vo['status'] == 0): ?>
+                                    <?php if($vo['status'] == '禁用'): ?>
                                     <a href="javascript:" onClick="pass(this, <?php echo $vo['id']; ?>)"  class="am-btn am-btn-success am-btn-xs">开启</a>
                                     <?php else: ?>
-                                    <a href="javascript:" onClick="push(this, <?php echo $vo['id']; ?>)" class="am-btn am-btn-warning am-btn-xs">锁定</a>
+                                    <a href="javascript:" onClick="push(this, <?php echo $vo['id']; ?>)" class="am-btn am-btn-warning am-btn-xs">禁用</a>
                                     <?php endif; if($vo['grade'] == 3): ?>
                                     <a href="#" class="am-btn am-btn-warning am-btn-xs">第三等级</a>
                                     <?php else: ?>
-                                    <a href="add.html?id=<?php echo $vo['id']; ?>" class="am-btn am-btn-success am-btn-xs">添加下级</a>
+                                    <a href="add_child.html?id=<?php echo $vo['id']; ?>" class="am-btn am-btn-success am-btn-xs">添加下级</a>
                                     <?php endif; ?>
                                     <a href="staff.html?id=<?php echo $vo['id']; ?>" class="am-btn am-btn-success am-btn-xs">员工</a>
                                     <a href="edit.html?id=<?php echo $vo['id']; ?>" class="am-btn am-btn-success am-btn-xs">修改</a>
@@ -220,7 +221,7 @@
         }
 
         function push(obj, id) {
-        layer.confirm('确认要锁定代理吗？', function (index) {
+        layer.confirm('确认要禁用代理吗？', function (index) {
         $.ajax({
         type: 'POST',
                 url: "<?php echo url('index/Agents/modify_recharge'); ?>",
