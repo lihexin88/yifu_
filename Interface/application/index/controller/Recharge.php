@@ -94,8 +94,15 @@ class Recharge extends IndexController
             $exchange_fee = $data['amount']*$this->recharge_ratio;
         }else if($data['pay_type'] == 3){
         }
-
+//        print_r($data);
+//        exit();
 //        验证用户充值金额规范性
+       try{
+            $data['amount'] = (int) $data['amount'];
+       }catch (\Exception $e){
+            $r = msg_handle($e->getMessage(),-1);
+            return $r;
+       }
        if(!(is_int($data['amount']) && $data['amount'] > 0)){
             $r = msg_handle('入金数据错误！',-1);
             return $r;

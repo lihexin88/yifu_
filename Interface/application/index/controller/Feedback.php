@@ -37,17 +37,17 @@ class Feedback extends IndexController
 //        判断用户Id是否存在，根据用户Id进行筛选
         $where = null;
         if(empty($user_id)){
-            $where['user_id'] = null;
+            $where['uid'] = null;
         }
         $all_feedback_log = new FeedbackModel;
-        if(empty($all_feedback_log['question_id'])){
+        if(empty($all_feedback_log['id'])){
             $r = msg_handle("最近没有反馈记录",0);
             $this->assign("noRecord",$r);
         }
 
         //每页显示10条数据
         $pagesize = 10;
-        $order_by_time['question_create_time'] = "desc";
+        $order_by_time['time'] = "desc";
         $feedback = $all_feedback_log->where($where)->order($order_by_time)->paginate($pagesize);
         $page = $feedback->render();
         $this->assign("feedback_log",$feedback);
@@ -86,11 +86,11 @@ class Feedback extends IndexController
     private function input_question($data)
     {
         $question = new FeedbackModel();
-        $question->user_id = $data['user_id'];
-        $question->question_type = $data['question_type'];
-        $question->question_describe = $data['content'];
-        $question->question_create_time = time();
-        $question->question_tel = $data['yourNum'];
+        $question->uid = $data['user_id'];
+        $question->type = $data['question_type'];
+        $question->describe = $data['content'];
+        $question->time = time();
+        $question->phone = $data['yourNum'];
         if($question->save()){
            $r = msg_handle('成功',1);
         }else{

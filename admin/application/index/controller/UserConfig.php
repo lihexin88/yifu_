@@ -71,12 +71,17 @@ class UserConfig extends Controller
         $new_user_config['switch'] = $_POST['switch'];
         $new_user_config['type'] = $_POST['type'];
         $new_user_config['status'] = $_POST['status'];
-        if($new_user_config->save()) {
-           $r = msg_handle('更新成功！',1);
-        }else{
-            $r = msg_handle('数据未更新！',-1);
+        try{
+            if($new_user_config->save()) {
+               $r = msg_handle('更新成功！',1);
+            }else{
+                $r = msg_handle('数据未更新！',-1);
+            }
+            return $r;
+        }catch (\Exception $e){
+            $r = msg_handle($e->getMessage(),-1);
+            return $r;
         }
-        return $r;
 
     }
 }

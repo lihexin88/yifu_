@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:79:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\feedback.html";i:1539849000;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:8:{s:79:"D:\phpStudy\WWW\yifu\admin\public/../application/index\view\users\feedback.html";i:1540517098;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\meta.html";i:1529999324;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\link.html";i:1529999332;s:68:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\header.html";i:1529999348;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\left.html";i:1529999338;s:73:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_top.html";i:1529999370;s:74:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\content_foot.html";i:1529999376;s:66:"D:\phpStudy\WWW\yifu\admin\application\index\view\public\foot.html";i:1529999360;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,13 +153,13 @@
 					<?php else: ?>
 						<tr>
 					<?php endif; ?>
-							<td><?php echo $feedback_log['user_id']; ?></td>
-							<td><?php echo $feedback_log['question_id']; ?></td>
-							<td><?php if(($feedback_log['question_type']) == 1): ?>交易<?php elseif(($feedback_log['question_type']) == 2): ?>出入金<?php else: ?>其他<?php endif; ?></td>
-							<td title="<?php echo $feedback_log['question_describe']; ?>"><?php if((strlen($feedback_log['question_describe']) < 24 )): ?> <?php echo $feedback_log['question_describe']; else: ?> <?php echo substr($feedback_log['question_describe'],0,24); ?>... <?php endif; ?></td>
-							<td><?php echo date('Y-m-d H:i:s',$feedback_log['question_create_time']); ?></td>
-							<td><?php if(($feedback_log['question_headle']) == 1): ?>已处理<?php else: ?>待处理<?php endif; ?></td>
-							<td onclick="ondetail(this.id)" id = "<?php echo $feedback_log['question_id']; ?>">查看</td>
+							<td><?php echo $feedback_log['uid']; ?></td>
+							<td><?php echo $feedback_log['id']; ?></td>
+							<td><?php if(($feedback_log['type']) == 1): ?>交易<?php elseif(($feedback_log['type']) == 2): ?>出入金<?php else: ?>其他<?php endif; ?></td>
+							<td title="<?php echo $feedback_log['describe']; ?>"><?php if((strlen($feedback_log['describe']) < 24 )): ?> <?php echo $feedback_log['describe']; else: ?> <?php echo substr($feedback_log['describe'],0,24); ?>... <?php endif; ?></td>
+							<td><?php echo date('Y-m-d H:i:s',$feedback_log['time']); ?></td>
+							<td><?php if(($feedback_log['headle']) == 1): ?>已处理<?php else: ?>待处理<?php endif; ?></td>
+							<td onclick="ondetail(this.id)" id = "<?php echo $feedback_log['id']; ?>">查看</td>
 						</tr>
 					<?php endforeach; endif; else: echo "" ;endif; ?>
                     </tbody>

@@ -77,7 +77,6 @@
                     </thead>
                     <tbody>
                     {volist name="list" id="vo" empty="$empty"}
-                    
                     <tr>
                         <td>{$vo.id}</td>
                         <td>{$vo.phone}</td>
@@ -96,9 +95,6 @@
                         	{elseif condition="($vo.re_status) eq '已拒绝'" /}
                         		<a href="#" onclick="subs(id={$vo['id']},type='agree')" class="am-btn am-btn-success am-btn-xs">通过</a>
                         	{else /}
-	                        	<a href="rechange?id={$vo.id}&a={$a}&b={$b}" class="am-btn am-btn-success am-btn-xs">充值</a>
-	                        	<a href="#" onclick="sub(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">修改状态</a>
-	                        	<a href="user_edit?id={$vo.id}&a={$a}&b={$b}" class="am-btn am-btn-success am-btn-xs">信息修改</a>
                         	{/if}
                             <!-- <a href="http://hengrui.jinjifuweng.com/index/aotu_login?id={$vo.id}&token={$vo.token}" target="_blank" class="am-btn am-btn-success am-btn-xs">登录前台</a> -->
                         </td>

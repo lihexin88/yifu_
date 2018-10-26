@@ -46,10 +46,10 @@ class Users extends Common
         if($_POST){
 //            print_r($_POST);return;
             if($_POST['uid']){
-              $where['user_id'] = $_POST['uid'];
+              $where['uid'] = $_POST['uid'];
             }
             if($_POST['question_id']){
-                $where['question_id'] = $_POST['question_id'];
+                $where['id'] = $_POST['question_id'];
             }
             if(strtotime($_POST['start_query'])){
 //                开始时间为空，则按照时间为0查询记录
@@ -63,7 +63,7 @@ class Users extends Common
             }else{
                 $end_time = time();
             }
-            $where['question_create_time'] = ['between time',[$start_time,$end_time]];
+            $where['time'] = ['between time',[$start_time,$end_time]];
 //            print_r($where);
 //            return;
         }
@@ -124,19 +124,19 @@ class Users extends Common
 //        print_r($_POST);
 //        echo "get";return;
 //        接收post传递过来的数据
-        $data['question_id'] = $_POST['question_id'];
+        $data['id'] = $_POST['question_id'];
 //        print_r($data);
 //        按数据读取
         $get_this_question = FeedbackModel::get($data);
 //        echo Db::name('sn_feedback')->getLastSql();
 //        获取到信息
         if($get_this_question){
-            $data['question_headle_suggestion'] = $_POST['question_suggest'];
+            $data['headle_msg'] = $_POST['question_suggest'];
 //            echo "已赋值";
 
 //            抛出异常
             try{
-                $data['question_headle'] = 1;
+                $data['headle'] = 1;
                 $get_this_question->save($data);
 //                echo Db::name('sn_feedback')->getLastSql();
                 $r = msg_handle('问题已处理',1);
@@ -174,9 +174,11 @@ class Users extends Common
      */
     private function get_one_question($data)
     {
+//        outpause($data);
         $get_one_question = FeedbackModel::get($data['question_id']);
+//        outpause($get_one_question);
         if($get_one_question){
-            $get_one_question->question_create_time = date('Y-m-d H:i:s',$get_one_question->question_create_time);
+            $get_one_question->time = date('Y-m-d H:i:s',$get_one_question->time);
 //            print_r($get_one_question);
 //            exit();
             $r = msg_handle("成功",1,$get_one_question);
@@ -196,6 +198,7 @@ class Users extends Common
             $map['name|phone'] = ['like', $name];
         }
         $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
+        $map['re_status'] = 1;
         $current_page = page_judge(input('get.page/d'));
         $list = $this->User->query_log($map, $current_page, $this->num);
 
@@ -564,14 +567,14 @@ class Users extends Common
                 $r = msg_handle('账号已存在请重新输入', 0);
                 return $r;
             }
-
+//            outpause($_POST);
 
             $res["name"] = $data["real_name"];
             $res["phone"] = $data["phone"];
             $res["password"] = md5($data["password"]);
             $res["trade_password"] = md5($data["trade_password"]);
             $res["time"] = time();
-            $res["type"] = $data['type'];
+//            $res["type"] = $data['type'];
             $res["card"] = $data["card"];
             $res["login_ip"] = $_SERVER["REMOTE_ADDR"];
             $res["token"] = md5($data["phone"] . time());
@@ -674,6 +677,37 @@ class Users extends Common
         return $shuzu;
     }
 
+
+    public function apply()
+    {
+        $map = "";
+        $name = input('get.name/s');
+        if ($name) {
+            $map['name|phone'] = ['like', $name];
+        }
+        $map = $this->query_time($map, input('get.start_query'), input('get.end_query'));
+        $current_page = page_judge(input('get.page/d'));
+        $list = $this->User->query_log($map, $current_page, $this->num);
+
+        $page = page_handling($list['num'], $current_page, $this->show, $list['total']);
+
+        if (isset($_GET["excel"])) {
+            if ($_GET["excel"]) {
+                //$list = $this->User->query($_post["excel"]);
+                $this->export_users($list['data']);
+            }
+        }
+        $sum = $this->Account->sum('account');
+        $this->assign('arr', $this->arr_info(input('get.')));
+        $this->assign('empty', $this->null_html(12));
+        $this->assign('page', $page);
+        $this->assign('name', $name);
+        $this->assign('start_query', input('get.start_query'));
+        $this->assign('end_query', input('get.end_query'));
+        $this->assign('list', $list['data']);
+        $this->assign('sum', $sum);
+        return $this->fetch();
+    }
     public function banks()
     {
         $p_user = Db::name('bank')->where('id', 1)->find();;

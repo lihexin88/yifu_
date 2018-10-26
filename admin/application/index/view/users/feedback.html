@@ -81,13 +81,13 @@
 					{else /}
 						<tr>
 					{/eq}
-							<td>{$feedback_log.user_id}</td>
-							<td>{$feedback_log.question_id}</td>
-							<td>{if condition="($feedback_log.question_type) eq 1"}交易{elseif condition="($feedback_log.question_type) eq 2"}出入金{else /}其他{/if}</td>
-							<td title="{$feedback_log.question_describe}">{if condition="(strlen($feedback_log.question_describe) lt 24 )"} {$feedback_log.question_describe} {else /} {:substr($feedback_log.question_describe,0,24)}... {/if}</td>
-							<td>{:date('Y-m-d H:i:s',$feedback_log.question_create_time)}</td>
-							<td>{if condition="($feedback_log.question_headle) eq 1"}已处理{else}待处理{/if}</td>
-							<td onclick="ondetail(this.id)" id = "{$feedback_log.question_id}">查看</td>
+							<td>{$feedback_log.uid}</td>
+							<td>{$feedback_log.id}</td>
+							<td>{if condition="($feedback_log.type) eq 1"}交易{elseif condition="($feedback_log.type) eq 2"}出入金{else /}其他{/if}</td>
+							<td title="{$feedback_log.describe}">{if condition="(strlen($feedback_log.describe) lt 24 )"} {$feedback_log.describe} {else /} {:substr($feedback_log.describe,0,24)}... {/if}</td>
+							<td>{:date('Y-m-d H:i:s',$feedback_log.time)}</td>
+							<td>{if condition="($feedback_log.headle) eq 1"}已处理{else}待处理{/if}</td>
+							<td onclick="ondetail(this.id)" id = "{$feedback_log.id}">查看</td>
 						</tr>
 					{/volist}
                     </tbody>

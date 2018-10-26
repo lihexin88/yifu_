@@ -33,7 +33,7 @@ $('#submitBtn').click(function () {
 			$.ajax({
 			type:"post",
 			data:questionData,
-			url:"post_question",
+			url:"/feedback/post_question",
 			success:function(result){
 				if(result['code'] == 1){					
 					alert("问题已经提交，我们会尽快与您联系");
@@ -64,6 +64,8 @@ function ondetail(question_id) {
 				alert(result['msg']);
 				return false;
 			}
+//			console.log(result);
+//			return false;
 			//问题编号
 			$("#question_display_id").html(result['data']['question_id']);
 			//问题类别
