@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {include file="public/meta" /}
+
+    {include file="public/link" /}
+
+</head>
+
+<body data-type="index" class="theme-white">
+
+<div class="am-g tpl-g">
+
+    {include file="public/header" /}
+
+    {include file="public/left" /}
+
+    {include file="public/content_top" /}
+
+    <ol class="am-breadcrumb">
+
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+
+        <li><a href="#">代理管理</a></li>
+
+        <li class="am-active">代理佣金统计</li>
+    </ol>
+    <div class="widget am-cf">
+
+
+    <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+
+    <div class="widget-body widget-body-lg am-fr">
+
+        <div class="am-scrollable-horizontal">
+
+            <table class="{$table}">
+
+                <thead>
+
+                                <tr>
+                                    <th>代理ID</th>
+                                    <th>名称</th>
+                                    <th>等级</th>
+                                    <th>上级</th>
+                                    <th>收益金额</th>
+                                    <th>保证金</th>
+                                    <th>账户余额</th>
+                                    <th>已提现余额</th>
+                                </tr>
+
+                </thead>
+
+                <tbody id="list">
+                   {foreach $list as $val}
+                                <tr class="text-c">
+                                    <td>{$val.id}</td>
+                                    <td>{$val.real_name}</td>
+                                    <td>{$val.grade}</td>
+                                    <td>{$val.agent}</td>
+                                    <td>{$val.user.trade_total}</td>
+                                    <td>{$val.user.total}</td>
+                                    <td>{$val.user.account}</td>
+                                    <td>{$val.user.wit_total}</td>
+                                </tr>
+                                {/foreach}
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+{include file="public/foot" /}
+
+<script type="text/javascript">
+    
+    $(function () {
+
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+
+        nav.removeClass("active");
+
+        nav.eq(3).find('ul').show();
+
+        nav.eq(3).find('ul li').eq(3).find('a').addClass('active');
+
+    });
+    
+
+</script>
+
+</body>
+
+</html>

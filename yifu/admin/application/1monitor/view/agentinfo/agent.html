@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {include file="public/meta" /}
+        {include file="public/link" /}
+        {include file="public/form" /}
+        <style>
+            input.check_box{
+                width:100px;
+            }
+            .p_checkbox{
+                width: 25%;
+                float: left;
+            }
+        </style>
+    </head>
+    <body data-type="index" class="theme-white">
+        <div class="am-g tpl-g">
+            {include file="public/header" /}
+            {include file="public/left" /}
+            {include file="public/content_top" /}
+            <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+                <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+                <li><a href="#">代理管理</a></li>
+                <li class="am-active">提现银行卡</li>
+            </ol>
+            <div class="widget am-cf">
+                <form class="am-cf" id="form" onsubmit="return false">
+                    <div class="am-panel am-panel-primary">
+                        <div class="am-panel-hd">基础信息</div>
+                        <span class="s1">备注：</span>
+
+
+                        <p><font color="red">1、银行卡必须与合作商所签署合同上填写的一致，否则提现申请将不予审核通过。</font></p>
+                        <font color="red">2、绑定后不支持修改。</font>
+                        <div class="am-form-group">
+                            <span class="s1">银行名称:</span>
+                            <label class="am-form-label">
+                                <select name="bank">
+                                    {volist name="info" id="vo" empty="$empty"}
+                                    {if condition ="($list['bank'])==($vo['id'])"}
+                                    <option selected value="{$vo.id}">{$vo.name}</option>
+                                    {else/}
+                                    <option value="{$vo.id}">{$vo.name}</option>
+                                    {/if}
+                                    {/volist}
+                                </select>
+                            </label>
+                        </div>
+                        <div class="am-form-group">
+                            <span class="s1">银行卡号:</span>
+                            <label class="am-form-label">
+                                <input type="text" id="" class="am-form-field am-input-sm" name="card" value="{$list['card']}" />
+                            </label>
+                        </div>
+                        <div class="am-form-group">
+                            <span class="s1">开户姓名：</span>
+                            <label class="am-form-label">
+                                <input type="text" id="" class="am-form-field am-input-sm" name="account" value="{$list['account']}"  />
+                            </label>
+                        </div>
+                        <input type="hidden"  name="id" value="{$list['id']}" />
+                        <div class="am-form-group">
+                            <div display:flex>
+                                <span class="s1">开户地区：</span>
+                                <select style="flex:1" name="province" id="province" class="region" param='city'>
+                                    <option value="">请选择</option>
+                                    {foreach name='province_lixt' item='vo'}
+                                    {if condition ="($province['id'])==($vo['id'])"}
+                                    <option selected value="{$vo.id}">{$vo.name}</option>
+                                    {else/}
+                                    <option value="{$vo.id}">{$vo.name}</option>
+                                    {/if}
+                                    {/foreach}
+                                </select>
+                                <select name="city" style="flex:1" id="city" class="region" param='country'>
+                                    {foreach name='city_lixt' item='value'}
+                                    {if condition ="$city['id']==$value['id']"}
+                                    <option selected value="{$value.id}">{$value.name}</option>
+                                    {else/}
+                                    <span id="city">
+                                    </span>
+                                    {/if}
+                                    {/foreach}
+                                </select>
+                                <select name="country" id="country" style="flex:1" param='country'>
+                                    {foreach name='country_lixt' item='vo'}
+                                    {if condition ="$country['id']==$vo['id']"}
+                                    <option selected value="{$vo.id}">{$vo.name}</option>
+                                    {else/}
+                                    <span id="country">
+                                    </span>
+                                    {/if}
+                                    {/foreach}
+                                </select>
+                            </div>
+                            </label>
+                        </div>
+                        <div class="am-form-group">
+                            <span class="s1">开户支行：</span>
+                            <label class="am-form-label">
+                                <input type="text" id="" class="am-form-field am-input-sm"  name="address" value="{$list['address']}"  paceholder="格式:XX省XX市XX支行 "/>
+                            </label>
+                        </div>
+                        <div class="am-form-group">
+                            <span class="s1">开户身份证号码：</span>
+                            <label class="am-form-label">
+                                <input type="text" id="" class="am-form-field am-input-sm"  name="number" value="{$list['number']}"  paceholder=""/>
+                            </label>
+                        </div>
+                        <div class="am-form-group">
+                            <span class="s1">开户手机号：</span>
+                            <label class="am-form-label">
+                                <input type="text" id="" class="am-form-field am-input-sm"  name="phone" value="{$list['phone']}"  paceholder=""/>
+                            </label>
+                        </div>
+                        <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                            {if condition="strtoupper($list['status']) neq '1'"}
+                            <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub()">确定</button>
+                            {else /} 
+                            <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="su()" disabled="true" >无法修改</button>
+                            {/if}
+
+                        </div>
+                    </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/editor" /}
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script type="text/javascript">
+                                var a = $("#province option:selected").val();
+                                if (a) {
+                                    $("#province").css("width", "97");
+                                    $("#city").css("width", "97");
+                                    $("#country").css("width", "97");
+                                } else {
+                                    $("#city").hide();
+                                    $("#country").hide();
+                                }
+
+                                function ifshow() {
+                                    if ($("#province").val()) {
+                                        $("#province").css("width", "148");
+                                        $("#city").css("width", "148");
+                                        $("#city").show();
+                                        if ($("#city").val()) {
+                                            $("#province").css("width", "97");
+                                            $("#city").css("width", "97");
+                                            $("#country").css("width", "97");
+                                            $("#country").show();
+                                            return false;
+                                        } else {
+                                            $("#country").hide();
+                                            return false;
+                                        }
+                                    } else {
+                                        $("#city").hide();
+                                    }
+                                }
+
+                                $(function () {
+                                    $("body").on('change', ".region", function () {
+                                        parent_id = $(this).val();
+                                        param = $(this).attr('param');
+                                        $("#" + param).html("");
+                                        $.post("{:url('index/UserBank/getregion')}", {'parent_id': parent_id}, function (data) {
+                                            if (param == 'city') {
+                                                $("#country").html("");
+                                                html = "<select name=" + param + " class='region' param='country'>";
+                                                html += "<option value=''>请选择</option>";
+                                            } else {
+                                                $("#country").html("");
+                                                html = "<select name=" + param + " class='region' param='country'>";
+                                                html += "<option value=''>请选择</option>";
+                                            }
+                                            if (data.status == 1) {
+                                                $.each(data.list, function (k, v) {
+                                                    $("#country").html("");
+                                                    html += "<option value='" + v.id + "'>" + v.name + "</option>";
+                                                    a = ifshow();
+                                                    a;
+                                                })
+                                            }
+                                            html += "</select>";
+                                            $("#" + param).html(html);
+                                        }, 'json')
+                                    })
+                                })
+
+                                function sub() {
+                                    var arr = parseFormJson("#form");
+                                    $.ajax({
+                                        url: "{:url('Agentinfo/agent')}",
+                                        data: {arr: arr},
+                                        type: "post",
+                                        success: function (r) {
+                                            if (r['code'] == 1) {
+                                                alert_open(r['msg'])
+                                            } else {
+                                                alert_msg(r['msg']);
+                                            }
+                                        }
+                                    });
+                                }
+                                            $(function () {
+
+                var nav = $('.left-sidebar li.sidebar-nav-link');
+
+                nav.removeClass("active");
+
+                nav.eq(3).find('ul').show();
+
+                nav.eq(3).find('ul li').eq(0).find('a').addClass('active');
+
+            });
+</script>
+
+</body>
+</html>

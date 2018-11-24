@@ -18,5 +18,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="web-msg-sender" />
+    <orderEntry type="module" module-name="GatewayWorker" />
+    <orderEntry type="module" module-name="thinkphp" />
+    <orderEntry type="module" module-name="tp" />
+    <orderEntry type="module" module-name="thinkphp" />
+    <orderEntry type="module" module-name="zcgj" />
+    <orderEntry type="module" module-name="zcgj" />
+    <orderEntry type="module" module-name="thinkphp" />
+    <orderEntry type="module" module-name="zcgj" />
   </component>
 </module>

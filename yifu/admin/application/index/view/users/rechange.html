@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    {include file="public/form" /}
+    <style>
+        input.check_box{
+            width:100px;
+        }
+        .p_checkbox{
+            width: 25%;
+            float: left;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">用户管理</a></li>
+        <li class="am-active">充值</li>
+    </ol>
+    <div class="widget am-cf">
+        <form class="am-cf" id="form" onsubmit="return false">
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">基础信息</div>
+               
+                <div class="am-form-group">
+                    <span class="s1">充值会员</span>
+                    <label class="am-form-label">
+                        <input type="text" id="" class="am-form-field am-input-sm" name="" value="{$list.name}" disabled="" />
+                    </label>
+                </div>
+                <input type="hidden" id="tireal_nametle" class="am-form-field am-input-sm" name="id" value="{$id}" />
+                <div class="am-form-group">
+                        <span class="s1">充值来源：</span>
+                        <label class="am-form-label">
+                            <select name="pay_type" title="" class="am-form-field am-input-sm">
+                                <option value="1" selected>网银支付</option>
+                                <option value="2">认证支付</option>
+                            </select>
+                        </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">充值金额：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="number" class="am-form-field am-input-sm" name="number" value="" placeholder="最多两位小数" />
+                        
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">充值手续费：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="fee" class="am-form-field am-input-sm" name="fee" value="" placeholder="最多两位小数"/>
+                        
+                    </label>
+                </div>
+                 <div class="am-form-group">
+                    <span class="s1">到账金额：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="account" class="am-form-field am-input-sm" name="account" value="" placeholder="最多两位小数" />
+                        
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">备注：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="remark" class="am-form-field am-input-sm" name="remark" value=""  />
+                        
+                    </label>
+                </div>
+                <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() ">确定</button>
+                    <a href="index.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                </div>
+            </div>
+    </div>
+    </form>
+</div>
+</div>
+{include file="public/editor" /}
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq(2).find('ul').show();
+        nav.eq(2).find('ul li').eq(0).find('a').addClass('active');
+    });
+    function sub() {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('Users/rechange_info')}",
+            data: {arr: arr},
+            type: "post",
+            success: function (r) {
+                // console.log(r);
+                // return false;
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

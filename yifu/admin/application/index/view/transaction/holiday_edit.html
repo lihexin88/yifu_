@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+</head>
+<link rel="stylesheet" href="/static/css/amazeui.min.css"/>
+<link rel="stylesheet" href="/static/css/amazeui.datetimepicker.css"/>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">参数管理</a></li>
+        <li class="am-active">添加假期</li>
+    </ol>
+     <form class="am-cf" id="form" onsubmit="return false">
+    <div class="widget am-cf">
+        
+        <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+
+        <div class="am-panel am-panel-primary">
+
+                <div class="am-panel-hd">添加假期信息</div>
+
+                <br>
+
+                
+               
+                <div class="am-form-group">
+                    <span class="s1">假期名称：　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="explain" class="am-form-field am-input-sm" name="explain" value="" />
+                    </label>
+                </div>
+
+                <div class="am-form-group">
+                    <span class="s1">开始时间：　</span>
+                    <label class="am-form-label">
+                        <!-- <input type="text" class="am-form-field am-input-sm" name="time" placeholder="请选择日期"
+
+                       data-am-datepicker onfocus="this.blur()" value=""/> -->
+                       <input type="text" value="" id="datetimepickers" name="time" class="am-form-field">
+                    </label>
+                </div>
+
+                <div class="am-form-group">
+                    <span class="s1">结束时间：　</span>
+                    <label class="am-form-label">
+                        <!-- <input type="text" id="datetimepicker" class="am-form-field am-input-sm" name="closed_time" placeholder="请选择日期"
+
+                       data-am-datepicker onfocus="this.blur()" value=""/> -->
+                        <input type="text" value="" id="datetimepicker" name="closed_time" class="am-form-field">
+                       <!-- <input type="text" value="2015-02-15 21:05" id="datetimepicker" class="am-form-field"> -->
+                    </label>
+                </div>
+
+                
+
+                <div class="am-form-group">
+                    <span class="s1">备　　注：　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="desc" class="am-form-field am-input-sm" name="desc" value="" />
+                    </label>
+                </div>
+
+
+                
+
+                <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() " >确定</button>
+                    <a href="index.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                </div>
+        </div>
+    {include file="public/content_foot" /}
+</div>
+</form>
+{include file="public/foot" /}
+<script src="/static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/static/js/amazeui.datetimepicker.min.js"></script>
+<script type="text/javascript">
+   $('#datetimepicker').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii'
+     });
+   $('#datetimepickers').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii'
+     });
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+//        nav.eq(1).find('a').addClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+    function sub() {
+        var arr = parseFormJson("#form");
+        if(arr.p_names == ""){
+            alert("请输入推荐人信息,或填无");
+        }else{
+            $.ajax({
+                url: "{:url('Transaction/holiday_edit')}",
+                data: {arr: arr},
+                type: "post",
+                success: function (r) {
+                    // console.log(r);
+                    // return false;
+                    if (r['code'] == 1) {
+                        alert_open(r['msg']);
+
+                    } else {
+                        alert_msg(r['msg']);
+                    }
+                }
+            });
+        }    
+    }
+
+     function sub_fied() {
+        var arr = parseFormJson("#form");
+        if(arr.reid == ""){
+            alert_open("请输入推荐人信息,或填无");
+        }else if(arr.reid != "无"){
+            $.ajax({
+                url: "{:url('Users/p_name')}",
+                data: {arr: arr.reid},
+                type: "post",
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        //alert_open(r['msg']);
+                        document.getElementById("p_names").value=r['msg'];
+                        document.getElementById("p_name").style.display="inline";
+                    } else {
+                        alert_msg(r['msg']);
+                        document.getElementById("reid").value="";
+                        document.getElementById("p_name").style.display="none";
+                    }
+                    
+                }
+            });
+        }else if(arr.reid == "无"){
+            document.getElementById("p_name").style.display="none";
+        }    
+    }
+
+
+var onSelect = function(date) {
+  console.log(date);
+};
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {include file="public/meta" /}
+
+    {include file="public/link" /}
+
+</head>
+
+<body data-type="index" class="theme-white">
+
+<div class="am-g tpl-g">
+
+    {include file="public/header" /}
+
+    {include file="public/left" /}
+
+    {include file="public/content_top" /}
+
+    <ol class="am-breadcrumb">
+
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+
+        <li><a href="#">内容管理</a></li>
+
+        <li class="am-active">出入金记录</li>
+    </ol>
+    <div class="widget am-cf">
+
+            <div class="am-form-inline" role="form">
+
+            <span>日期范围：</span>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+
+                       data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+
+                       onfocus="this.blur()" value="{$arr.end_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" id="name" class="am-form-field am-input-sm" placeholder="请输入会员信息"
+
+                       value="{$arr.name}"/>
+
+            </div>
+
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+
+        </div>
+
+    <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+
+    <div class="widget-body widget-body-lg am-fr">
+
+        <div class="am-scrollable-horizontal">
+
+            <table class="{$table}">
+
+                <thead>
+
+                <tr>
+                                    <th>用户ID</th>
+                                    <th>用户手机</th>
+                                    <th>用户姓名</th>
+                                    <th>业务名称</th>
+                                    <th>收入</th>
+                                    <th>支出</th>
+                                    <th>当时余额</th>
+                                    <th>时间</th>
+                                    <th>备注</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="list">
+
+                                {foreach $list as $val}
+                                <tr class="text-c">
+                                    <td>{$val.id}</td>
+                                    <td>{$val.phone}</td>
+                                    <td>{$val.real_name}</td>
+                                    <td>{$val.type}</td>
+                                    {if condition="$val.mold eq 0"}
+                                    <td style="color: red">{$val.number}</td>
+                                    {else/}
+                                    <td>0.00</td>
+                                    {/if}
+                                    {if condition="$val.mold eq 1"}
+                                    <td style="color: blue">{$val.number}</td>
+                                    {else/}
+                                    <td>0.00</td>
+                                    {/if}
+                                    <td>{$val.balance}</td>
+                                    <td>{$val.time}</td>
+                                    <td>{$val.desc}</td>
+                                </tr>
+                                {/foreach}
+                                <tr>
+                                    <th colspan="4"></th>
+                                    <th>{$number}</th>
+                                    <th>{$money}</th>
+                                    <th colspan="3"></th>
+                                </tr>  
+
+
+                </tbody>
+
+            </table>
+
+            <div class="am-pagination-left">{$page}</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+{include file="public/foot" /}
+
+<script type="text/javascript">
+    
+    $(function () {
+
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+
+        nav.removeClass("active");
+
+        nav.eq(1).find('ul').show();
+
+        nav.eq(1).find('ul li').eq(3).find('a').addClass('active');
+
+    });
+    
+
+</script>
+
+</body>
+
+</html>

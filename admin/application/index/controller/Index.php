@@ -13,7 +13,6 @@ class Index extends Controller
     private $Admin;
     private $Captcha;
     private $Relation;
-
     public function __construct(Request $request = null)
     {
         parent::__construct($request);

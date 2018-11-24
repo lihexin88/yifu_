@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    {include file="public/form" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">商品分类管理</a></li>
+        <li class="am-active">商品分类添加</li>
+    </ol>
+    <div class="widget am-cf">
+        <form class="am-cf" id="form" onsubmit="return false">
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">基础信息</div>
+                <div class="am-panel-bd">
+                    <div class="am-form-group">
+                        <span class="s1">商品父类名称：</span>
+                        <label class="am-form-label">
+                            <select name="pid" title="" class="am-form-field am-input-sm">
+                                <option>--顶级分类--</option>
+                                {foreach $data as $val}
+                                {if condition ="($list['pid'])==($val['id'])"}
+                                <option selected value="{$val['id']}">{$val.name}</option>
+                                {else/}
+                                <option value="{$val['id']}">{$val.name}</option>
+                                {/if}
+                                {/foreach}
+                            </select>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">商品分类名称：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="title" class="am-form-field am-input-sm" name="name"
+                                   value="{$list['name']}"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group" id="no">
+                        <span class="s1">商品分类图片：</span>
+                        <label class="am-form-label">
+                            <img id="newPhoto" style="max-height:200px;" src="{$list.image}"/>
+                        </label>
+                        <span class="s2" id="uploadPhotoConfirm"></span>
+                    </div>
+                    <input type="hidden" name="id" value="{$list['id']}"/>
+                    <div class="am-form-group">
+                        <span class="s1">上传图片：</span>
+                        <label class="am-form-label">
+                            <input type="button" class="am-btn am-btn-primary" id="upload_button" value="上传图片"/><br/>
+                            <input type="hidden" id="newPhotoName" name="image" value="{$list['image']}"/>
+                            <input type="file" style="display:none" name="file">
+                        </label>
+                        <span class="s2">*请上传格式为.png .jpg .jpeg 的图片必须为200*200</span>
+                    </div>
+
+                    <div class="am-form-group">
+                        <span class="s1">排序:</span>
+                        <label class="am-form-label">
+                            <input type="text" id="title" class="am-form-field am-input-sm" name="sort"
+                                   value="{$list['sort']}"/>
+                        </label>
+                    </div>
+
+                    <div class="am-form-group">
+                        <span class="s1">是否展示：</span>
+                        <label class="am-form-label">
+                            <select name="is_show" title="" class="am-form-field am-input-sm">
+                                {if condition ="$list.is_show eq 0"}
+                                <option value="0" selected>隐藏</option>
+                                {else/}
+                                <option value="0">隐藏</option>
+                                {/if}
+                                {if condition ="$list.is_show eq 1"}
+                                <option value="1" selected>显示</option>
+                                {else/}
+                                <option value="1">显示</option>
+                                {/if}
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="am-form-group">
+                        <span class="s1">是否热门：</span>
+                        <label class="am-form-label">
+                            <select name="is_hot" title="" class="am-form-field am-input-sm">
+                                {if condition ="$list.is_hot eq 0"}
+                                <option value="0" selected>否</option>
+                                {else/}
+                                <option value="0">否</option>
+                                {/if}
+                                {if condition ="$list.is_hot eq 1"}
+                                <option value="1" selected>是</option>
+                                {else/}
+                                <option value="1">是</option>
+                                {/if}
+                            </select>
+                        </label>
+                    </div>
+                    <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                        <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() ">确定</button>
+                        <a href="index.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+
+    function sub() {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('Type/do_edit')}",
+            data: {arr: arr},
+            type: "post",
+            success: function (r) {
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        var button = $('#upload_button'), interval;
+        var confirmDiv = $('#uploadPhotoConfirm');
+        var fileType = 'pic', fileNum = 'one';
+        new AjaxUpload(button, {
+            action: "{:url('Upload/upload')}",
+            name: 'file',
+            onSubmit: function (file, ext) {
+                if (fileType == 'pic') {
+                    if (ext && /^(jpg|png|jpeg|gif|JPG)$/.test(ext)) {
+                        this.setData({'info': '文件类型为图片'});
+                    } else {
+                        confirmDiv.text('文件格式错误，请上传格式为.png .jpg .jpeg 的图片');
+                        return false;
+                    }
+                }
+                confirmDiv.text('文件上传中');
+                if (fileNum == 'one') this.disable();
+                interval = window.setInterval(function () {
+                    var text = confirmDiv.text();
+                    if (text.length < 14) {
+                        confirmDiv.text(text + '.');
+                    } else {
+                        confirmDiv.text('文件上传中');
+                    }
+                }, 200);
+            },
+            onComplete: function (file, response) {
+                if (response != 'success') {
+                    if (response == '2') {
+                        confirmDiv.text("文件格式错误，请上传格式为.png .jpg .jpeg 的图片");
+                    } else {
+                        confirmDiv.text('上传完成');
+                        $("#newPhotoName").val("/uploads/" + response);
+                        $("#newPhoto").attr("src", "/uploads/" + response);
+                        $('#no').show();
+                    }
+                }
+                window.clearInterval(interval);
+                this.enable();
+                if (response == 'success') alert('上传成功');
+            }
+        });
+    });
+</script>
+</body>
+</html>

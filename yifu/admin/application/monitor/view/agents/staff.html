@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {include file="public/meta" /}
+        {include file="public/link" /}
+    </head>
+    <body data-type="index" class="theme-white">
+        <div class="am-g tpl-g">
+            {include file="public/header" /}
+            {include file="public/left" /}
+            {include file="public/content_top" /}
+            <ol class="am-breadcrumb">
+                <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+                <li><a href="../agents/index.html">代理管理</a></li>
+                <li class="am-active"><a href="../agents/edit.html">添加员工</a></li>
+            </ol>
+            <div class="widget am-cf">
+                <div class="am-form-inline" role="form">
+                    <span>日期范围：</span>
+                    <div class="am-form-group ">
+                        <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+                               data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+                    </div>
+                    <div class="am-form-group ">
+                        <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker onfocus="this.blur()" value="{$arr.end_query}"/>
+                    </div>
+                    <div class="am-form-group ">
+                        <input type="text" id="phone" name="phone" class="am-form-field am-input-sm" placeholder="请输入手机号" value=""/>
+                    </div>
+                    <div class="am-form-group ">
+                        <input type="text" id="number" name="number" class="am-form-field am-input-sm" placeholder="请输入代理商编码" value=""/>
+                    </div>
+                    <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+                    <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+                </div>
+                <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+                <div class="widget-body widget-body-lg am-fr">
+                    <div class="am-scrollable-horizontal">
+                        <table class="{$table}">
+                            <thead>
+                                <tr>
+                                    <th>选择</th>
+                                    <th>ID</th>
+                                    <th>员工编号</th>
+                                    <th>名称</th>
+                                    <th>联系人电话</th>
+                                    <th>联系人姓名</th>
+                                    <th>手续费提成</th>
+                                    <th>递延费提成</th>
+                                    <th>状态</th>
+                                    <th>备注</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list">
+                                {volist name="list" id="vo" empty="$empty"}
+                                <tr>
+                                    <td><input id="rptList_chkId_3" type="checkbox" name="rptList$ctl04$chkId"></td>
+                                    <td>{$vo.id}</td>
+                                    <td>{$vo.num_name}</td>
+                                    <td>{$vo.name}</td>
+                                    <td>{$vo.cont_name}</td>
+                                    <td>{$vo.cont_phone}</td>
+                                    <td>{$vo.com_fee}</td>
+                                    <td>{$vo.defer_ratio}</td>
+                                    {if condition ="$vo.status eq 0"}
+                                    <td>锁定</td>
+                                    {else/}
+                                    <td>正常</td>
+                                    {/if}
+                                    <td>{$vo.desc}</td>
+                                    <td>
+                                        {if condition ="$vo.status eq 0"}
+                                        <a href="javascript:" onClick="pass(this, {$vo.id})"  class="am-btn am-btn-success am-btn-xs">开启</a>
+                                        {else/}
+                                        <a href="javascript:" onClick="push(this, {$vo.id})" class="am-btn am-btn-warning am-btn-xs">锁定</a>
+                                        {/if}
+                                        <a href="edit_staff.html?id={$vo.id}" class="am-btn am-btn-success am-btn-xs">修改</a>
+                                        <a href="login_agent.html?id={$vo.id}" target="black" class="am-btn am-btn-success am-btn-xs">登录员工后台</a>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        <div class="am-pagination-left">{$page}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/foot" /}
+        <script type="text/javascript">
+            function del() {
+            if (confirm("确定要删除吗？")) {
+            return true;
+            } else {
+            return false;
+            }
+            }
+
+            function pass(obj, id) {
+            layer.confirm('确认要开启代理吗？', function (index) {
+            $.ajax({
+            type: 'POST',
+                    url: "{:url('index/Agents/staff_recharge')}",
+                    data: {id: id, edit_type: 1},
+                    dataType: 'json',
+                    success: function (data) {
+                    layer.msg('开启成功!', {icon: 1, time: 1000});
+                    window.location.href = window.location.href;
+                    },
+                    error: function (data) {
+                    layer.msg('开启失败!', {icon: 0, time: 1000});
+                    },
+            });
+            });
+            }
+
+            function push(obj, id) {
+            layer.confirm('确认要锁定代理吗？', function (index) {
+            $.ajax({
+            type: 'POST',
+                    url: "{:url('index/Agents/staff_recharge')}",
+                    data: {id: id, edit_type: 0},
+                    dataType: 'json',
+                    success: function (data) {
+                    layer.msg('锁定成功!', {icon: 1, time: 1000});
+                    window.location.href = window.location.href;
+                    },
+                    error: function (data) {
+                    layer.msg('锁定失败!', {icon: 0, time: 1000});
+                    },
+            });
+            });
+            }
+
+
+            $(function () {
+            var nav = $('.left-sidebar li.sidebar-nav-link');
+            nav.removeClass("active");
+            nav.eq(6).find('ul').show();
+            // nav.eq(3).find('ul li').eq(0).find('a').addClass('active');
+            });
+            function info_query() {
+            info();
+            $("#form").submit();
+            }
+            function info() {
+            $("input[name='start_query']").val($("input[name='start']").val());
+            $("input[name='end_query']").val($("input[name='end']").val());
+            $("input[name='phone']").val($("#phone").val());
+            $("input[name='number']").val($("#number").val());
+            $("input[name='status']").val($("select[name='status']").val());
+            }
+            function clear_query() {
+            $("input[name='start_query']").val();
+            $("input[name='end_query']").val();
+            $("select[name='status']").val( - 1);
+            $("input[name='phone']").val();
+            $("input[name='number']").val();
+            $("#form").submit();
+            }
+        </script>
+    </body>
+</html>

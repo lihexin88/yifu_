@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/admin/vendor/phpqrcode/cache" />
+      <path value="$PROJECT_DIR$/admin/vendor/phpqrcode/temp" />
+      <path value="$PROJECT_DIR$/admin/vendor/phpqrcode/bindings" />
+      <path value="$PROJECT_DIR$/admin/vendor/topthink/think-installer" />
+      <path value="$PROJECT_DIR$/admin/vendor/topthink/think-migration" />
+      <path value="$PROJECT_DIR$/admin/vendor/topthink/think-queue" />
+      <path value="$PROJECT_DIR$/admin/vendor/llpay/key" />
+      <path value="$PROJECT_DIR$/admin/vendor/topthink/think-oracle" />
+      <path value="$PROJECT_DIR$/admin/vendor/topthink/think-mongo" />
+      <path value="$PROJECT_DIR$/admin/vendor/topthink/think-captcha" />
+      <path value="$PROJECT_DIR$/admin/vendor/phpqrcode/tools" />
+      <path value="$PROJECT_DIR$/admin/vendor/llpay/lib" />
+      <path value="$PROJECT_DIR$/admin/vendor/topthink/think-image" />
+      <path value="$PROJECT_DIR$/admin/vendor/topthink/think-helper" />
+      <path value="$PROJECT_DIR$/admin/vendor/composer" />
+      <path value="$PROJECT_DIR$/admin/vendor/alidayu/aliyun" />
+      <path value="$PROJECT_DIR$/admin/vendor/alidayu/top" />
+      <path value="$PROJECT_DIR$/admin/vendor/PHPExcel/Documentation" />
+      <path value="$PROJECT_DIR$/admin/vendor/PHPExcel/Examples" />
+      <path value="$PROJECT_DIR$/admin/vendor/PHPExcel/Classes" />
+      <path value="$PROJECT_DIR$/admin/vendor/PhpSpreadsheet-develop/src" />
+      <path value="$PROJECT_DIR$/admin/vendor/PhpSpreadsheet-develop/bin" />
+      <path value="$PROJECT_DIR$/admin/vendor/PhpSpreadsheet-develop/.github" />
+      <path value="$PROJECT_DIR$/admin/vendor/PhpSpreadsheet-develop/samples" />
+      <path value="$PROJECT_DIR$/admin/vendor/PhpSpreadsheet-develop/docs" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />
+</project>

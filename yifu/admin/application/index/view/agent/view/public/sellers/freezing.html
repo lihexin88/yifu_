@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">店铺管理</a></li>
+        <li class="am-active">停用店铺</li>
+    </ol>
+    <div class="widget am-cf">
+        <div class="am-form-inline" role="form">
+            <span>日期范围：</span>
+            <div class="am-form-group ">
+                <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+                       data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+            </div>
+            <div class="am-form-group ">
+                <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+                       onfocus="this.blur()" value="{$arr.end_query}"/>
+            </div>
+            <div class="am-form-group ">
+                <input type="text" id="name" class="am-form-field am-input-sm" placeholder="请输入商家信息" value="{$arr.name}"/>
+            </div>
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+        </div>
+        <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+        <div class="widget-body widget-body-lg am-fr">
+            <div class="am-scrollable-horizontal">
+                <table class="{$table}">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>商家编号</th>
+                        <th>商家名称</th>
+                        <th>店主名称</th>
+                        <th>联系电话</th>
+                        <th>公司名称</th>
+                        <th>可用营业额</th>
+                        <th>冻结营业额</th>
+                        <th>可用积分</th>
+                        <th>营业状态</th>
+                        <th>商品图片</th>
+                        <th>加入时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="list" id="vo" empty="$empty"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.shop_sn}</td>
+                        <td>{$vo.shop_name}</td>
+                        <td>{$vo.shopkeeper}</td>
+                        <td>{$vo.phone}</td>
+                        <td>{$vo.company}</td>
+                        <td>{$vo.shop_money}</td>
+                        <td>{$vo.lock_money}</td>
+                        <td>{$vo.integral}</td>
+                        <td>{$vo.activate}</td>
+                        <td>
+                            <img src="{$vo.shop_img}" alt="" style="width: 20px;height: 20px"/>
+                        </td>
+                        <td>{$vo.time}</td>
+                        <td>
+                            <a href="modify_log.html?id={$vo.id}">【修改】</a>
+                            <a href="modify_log.html?id={$vo.id}">【冻结】</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <div class="am-pagination-left">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/foot" /}
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq(2).find('ul').show();
+        nav.eq(2).find('ul li').eq(2).find('a').addClass('active');
+    });
+</script>
+</body>
+</html>

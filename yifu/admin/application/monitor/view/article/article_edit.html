@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    {include file="public/form" /}
+    <style>
+        input.check_box{
+            width:100px;
+        }
+        .p_checkbox{
+            width: 25%;
+            float: left;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">内容管理</a></li>
+        <li class="am-active">文章分类</li>
+    </ol>
+    <div class="widget am-cf">
+        <form class="am-cf" id="form" onsubmit="return false">
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">基础信息</div>
+                <div class="am-form-group">
+                    <span class="s1">所属父类别：</span>
+                    <label class="am-form-label">
+                        <select name="type_id" title="" class="am-form-field am-input-sm">
+                            {foreach $art as $val}
+                            {if condition ="($list['type_id'])==($val['id'])"}
+                            <option selected value="{$val['id']}">{$val.name}</option>
+                            {else/}
+                            <option value="{$val['id']}">{$val.name}</option>
+                            {/if}
+                            {/foreach}
+                        </select>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">文章标题：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="title" class="am-form-field am-input-sm" name="title" value="{$list['title']}" required="required"/>
+                    </label>
+                </div>
+                <div class="am-form-group" id="no">
+                        <span class="s1">文章图片：</span>
+                        <label class="am-form-label">
+                            <img id="newPhoto" style="max-height:200px;" src="{$list.img}"/>
+                        </label>
+                        <span class="s2" id="uploadPhotoConfirm"></span>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">上传图片：</span>
+                        <label class="am-form-label">
+                            <input type="button" class="am-btn am-btn-primary" id="upload_button" value="上传图片"/><br/>
+                            <input type="hidden" id="newPhotoName" name="img" value="{$list['img']}"/>
+                            <input type="file" style="display:none" name="file">
+                        </label>
+                        <span class="s2">*请上传格式为.png .jpg .jpeg 的图片必须为200*200</span>
+                    </div>
+
+                <input type="hidden" id="id" class="am-form-field am-input-sm" name="id" value="{$list['id']}" />
+                <div class="am-form-group">
+                    <span class="s1">来源：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="source" class="am-form-field am-input-sm" name="source" value="{$list['source']}"  placeholder="例如: 本站"/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                        <span class="s1">显示状态：</span>
+                        <label class="am-form-label">
+                            <select name="status" title="" class="am-form-field am-input-sm">
+                                {if condition ="$list.status eq 1"}
+                                <option value="1" selected>正常</option>
+                                {else/}
+                                <option value="1">正常</option>
+                                {/if}
+                                {if condition ="$list.status eq 0"}
+                                <option value="0" selected>禁用</option>
+                                {else/}
+                                <option value="0">禁用</option>
+                                {/if}
+                            </select>
+                        </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">排序：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="sort" class="am-form-field am-input-sm" name="sort" value="{$list['sort']}"  placeholder=""/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">描述：</span>
+                    <label class="am-form-label">
+                        <textarea name="abs" cols="50" rows="5" placeholder="内容简介">{$list['abs']}</textarea>
+                    </label>
+                </div>
+                <div class="am-panel-bd">
+                    <div class="am-form-group">
+                        <span class="s1" style="vertical-align: top">内容：</span>
+                        <label class="am-form-label" style="max-width: 60%">
+                            <textarea id="content" name="content" style="height:500px;">{$list['content']}</textarea>
+                        </label>
+                    </div>
+                </div>
+                <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() ">确定</button>
+                    <a href="index.html?a={$a}&b={$b}" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                </div>
+            </div>
+    </div>
+    </form>
+</div>
+</div>
+{include file="public/editor" /}
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+    function sub() {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('Article/article_add_edit')}",
+            data: {arr: arr},
+            type: "post",
+            success: function (r) {
+                // console.log(r);
+                // return false;
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        var button = $('#upload_button'), interval;
+        var confirmDiv = $('#uploadPhotoConfirm');
+        var fileType = 'pic', fileNum = 'one';
+        new AjaxUpload(button, {
+            action: "{:url('Upload/upload')}",
+            name: 'file',
+            onSubmit: function (file, ext) {
+                if (fileType == 'pic') {
+                    if (ext && /^(jpg|png|jpeg|gif|JPG)$/.test(ext)) {
+                        this.setData({'info': '文件类型为图片'});
+                    } else {
+                        confirmDiv.text('文件格式错误，请上传格式为.png .jpg .jpeg 的图片');
+                        return false;
+                    }
+                }
+                confirmDiv.text('文件上传中');
+                if (fileNum == 'one') this.disable();
+                interval = window.setInterval(function () {
+                    var text = confirmDiv.text();
+                    if (text.length < 14) {
+                        confirmDiv.text(text + '.');
+                    } else {
+                        confirmDiv.text('文件上传中');
+                    }
+                }, 200);
+            },
+            onComplete: function (file, response) {
+                if (response != 'success') {
+                    if (response == '2') {
+                        confirmDiv.text("文件格式错误，请上传格式为.png .jpg .jpeg 的图片");
+                    } else {
+                        confirmDiv.text('上传完成');
+                        $("#newPhotoName").val("/uploads/" + response);
+                        $("#newPhoto").attr("src", "/uploads/" + response);
+                        $('#no').show();
+                    }
+                }
+                window.clearInterval(interval);
+                this.enable();
+                if (response == 'success') alert('上传成功');
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../GatewayWorker/.idea/GatewayWorker.iml" filepath="$PROJECT_DIR$/../GatewayWorker/.idea/GatewayWorker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../socket/.idea/thinkphp.iml" filepath="$PROJECT_DIR$/../socket/.idea/thinkphp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../thinkphp/.idea/thinkphp.iml" filepath="$PROJECT_DIR$/../thinkphp/.idea/thinkphp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tp/.idea/tp.iml" filepath="$PROJECT_DIR$/../tp/.idea/tp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../web-msg-sender/.idea/web-msg-sender.iml" filepath="$PROJECT_DIR$/../web-msg-sender/.idea/web-msg-sender.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/yifu.iml" filepath="$PROJECT_DIR$/.idea/yifu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../zcgj/.idea/zcgj.iml" filepath="$PROJECT_DIR$/../zcgj/.idea/zcgj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../zcgj/.idea/zcgj.iml" filepath="$PROJECT_DIR$/../zcgj/.idea/zcgj.iml" />
     </modules>
   </component>
 </project>

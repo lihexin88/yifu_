@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left"/}
+    {include file="public/content_top" /}
+                    <div class="widget am-cf">
+                <ol class="am-breadcrumb">
+                    <li><a href="../homes/home.html" class="am-icon-home">首页</a></li>
+                    <li><a href="javascript:void(0)">股票管理</a></li>
+                    <li class="am-active">新增股票</li>
+                </ol>
+                <form id="form" class="am-form tpl-form-border-form" onsubmit="return false">
+                    <div class="am-panel am-panel-primary">
+                        <div class="am-panel-hd">增加新股票</div>
+                        <div class="am-panel-bd">
+                            <div class="am-form-group">
+                                <span class="tpl-form-line-small-title">股票代码：</span>
+                                <input type="text" class="tpl-form-input" style="display:inline;max-width: 300px" name="name" placeholder="请输入股票代码">
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">选择证券：</span>
+                                <select data-am-selected="{searchBox: 0}" name="type" title="">
+                                    <option value="1" class="am-form-field am-input-sm check">上海证券交易所</option>
+                                    <option value="2" class="am-form-field am-input-sm check">深圳证券交易所</option>
+                                </select>
+                            </div>
+                            <div class="am-form-group" style="margin-left: 160px">
+                                <button class="am-btn am-btn-primary am-btn-sm" onclick="sub()">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/foot" /}
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+
+    function sub() {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('ShockManage/add_handle')}",
+            type: "POST",
+            data: {arr: arr},
+            success: function (r) {
+                if (r.status == 1) {
+                    alert_open(r.info)
+                } else {
+                    alert_msg(r.info);
+                }
+            }
+        });
+    }
+</script>
+</body>
+
+</html>

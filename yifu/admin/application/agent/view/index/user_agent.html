@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {include file="public/meta" /}
+
+    {include file="public/link" /}
+
+</head>
+
+<body data-type="index" class="theme-white">
+
+<div class="am-g tpl-g">
+
+    {include file="public/header" /}
+
+    {include file="public/left" /}
+
+    {include file="public/content_top" /}
+
+    <ol class="am-breadcrumb">
+
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+                <li><a href="#">内容管理</a></li>
+        <li class="am-active">用户信息</li>
+    </ol>
+    <div class="widget am-cf">
+
+            <div class="am-form-inline" role="form">
+
+            <span>日期范围：</span>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+
+                       data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+
+                       onfocus="this.blur()" value="{$arr.end_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" id="name" class="am-form-field am-input-sm" placeholder="请输入会员信息"
+
+                       value="{$arr.name}"/>
+
+            </div>
+
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+
+        </div>
+
+    <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+
+    <div class="widget-body widget-body-lg am-fr">
+
+        <div class="am-scrollable-horizontal">
+
+            <table class="{$table}">
+
+                <thead>
+
+                <tr>
+                                    <th>会员账户</th>
+                                    <th>手机号码</th>
+                                    <th>姓名</th>
+                                    <th>昵称</th>
+                                    <th>余额</th>
+                                    <th>总入金</th>
+                                    <th>用户状态</th>
+                                    <th>身份证</th>
+                                    <th>注册时间</th>
+                                    <th>注册IP</th>
+                                    <th>代理ID</th>
+                                    <th>员工ID</th>
+                                    <th>推荐人ID</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="list">
+
+                {foreach $list as $val}
+
+                                <tr class="text-c">
+                                    <td>{$val.id}</td>
+                                    <td>{$val.phone}</td>
+                                    <td>{$val.real_name}</td>
+                                    <td>{$val.name}</td>
+                                    <td>{$val.account.account}</td>
+                                    <td>{$val.account.total}</td>
+                                    {if condition="$val.status eq 0"}
+                                    <td>已锁定</td>
+                                    {else/}
+                                    <td>正常</td>
+                                    {/if}
+                                    <td>{$val.card}</td>
+                                    <td>{$val.time|date="Y-m-d H:i:s",###}</td>
+                                    <td>{$val.login_ip}</td>
+                                    <td>{$val.agent}</td>
+                                    <td>{$val.staff}</td>
+                                    <td>{$val.reid}</td>
+                                </tr>
+
+                {/foreach}
+                            <tr>
+                                <th colspan="4"></th>
+                                <th>{$account}</th>
+                                <th>{$total}</th>
+                                <th colspan="7"></th>
+                            </tr>  
+
+                </tbody>
+
+            </table>
+
+            <div class="am-pagination-left">{$page}</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+{include file="public/foot" /}
+
+<script type="text/javascript">
+    
+    $(function () {
+
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+
+        nav.removeClass("active");
+
+        nav.eq(1).find('ul').show();
+
+        nav.eq(1).find('ul li').eq(2).find('a').addClass('active');
+
+    });
+    
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {include file="public/meta" /}
+        {include file="public/link" /}
+        {include file="public/form" /}
+    </head>
+    <body data-type="index" class="theme-white">
+        <div class="am-g tpl-g">
+            {include file="public/header" /}
+            {include file="public/left" /}
+            {include file="public/content_top" /}
+            <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+                <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+                <li><a href="#">代理管理</a></li>
+            </ol>
+            <div class="widget am-cf">
+                <form class="am-cf" id="form" onsubmit="return false">
+                    <div class="am-panel am-panel-primary">
+                        <div class="am-panel-hd">基础信息</div>
+                        <div class="am-panel-bd">
+                            <input type="hidden" name="id" value="{$list.id}"/>
+                            <div class="am-form-group">
+                                <span class="s1">所属代理：</span>
+                                <label class="am-form-label">
+                                    <select name="pid" title="" class="am-form-field am-input-sm">
+                                        <option value="0">--无父级分类--</option>
+                                        {foreach $agent as $val}
+                                        {if condition ="($list['agent'])==($val['id'])"}
+                                        <option selected value="{$val['id']}">{$val.name}</option>
+                                        {else/}
+                                        <option value="{$val['id']}">{$val.name}</option>
+                                        {/if}
+                                        {/foreach}
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">代理编号：</span>
+                                <label class="am-form-label">
+                                    <input type="text" id="number" class="am-form-field am-input-sm" name="number"
+                                           value="{$list.number}" placeholder="请填写4到16位数字！"/>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">代理名称：</span>
+                                <label class="am-form-label">
+                                    <input type="text" id="name" class="am-form-field am-input-sm" name="name"
+                                           value="{$list.name}" placeholder="请输入代理名称"/>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">登录密码：</span>
+                                <label class="am-form-label">
+                                    <input type="password" id="password" class="am-form-field am-input-sm" name="password"
+                                           value="{$list.password}" placeholder="请输入登录密码"/>
+                                </label>
+                                <span class="s2">*请填写4到16位数字字母混合密码！</span>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">是否展示：</span>
+                                <label class="am-form-label">
+                                    <select name="status" title="" class="am-form-field am-input-sm">
+                                        {if condition ="$list.status eq 0"}
+                                        <option value="0" selected>隐藏</option>
+                                        {else/}
+                                        <option value="0">隐藏</option>
+                                        {/if}
+                                        {if condition ="$list.status eq 1"}
+                                        <option value="1" selected>显示</option>
+                                        {else/}
+                                        <option value="1">显示</option>
+                                        {/if}
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">银行开户行：</span>
+                                <label class="am-form-label">
+                                    <input type="text" id="bank_name" class="am-form-field am-input-sm" name="bank_name"
+                                           value="{$list.bank_name}" placeholder="请输入银行开户行"/>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">开户分行：</span>
+                                <label class="am-form-label">
+                                    <input type="text" id="bank_address" class="am-form-field am-input-sm" name="bank_address"
+                                           value="{$list.bank_address}" placeholder="请输入开户分行"/>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">开户姓名：</span>
+                                <label class="am-form-label">
+                                    <input type="text" id="bank_account" class="am-form-field am-input-sm" name="bank_account"
+                                           value="{$list.bank_account}" placeholder="请输入开户姓名"/>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">提现银行卡号：</span>
+                                <label class="am-form-label">
+                                    <input type="text" id="bank_card" class="am-form-field am-input-sm" name="bank_card"
+                                           value="{$list.bank_card}" placeholder="请输入银行卡号"/>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">允许提现：</span>
+                                <label class="am-form-label">
+                                    <select name="withdrawals_status" title="" class="am-form-field am-input-sm">
+                                        {if condition ="$list.withdrawals_status eq 0"}
+                                        <option value="0" selected>否</option>
+                                        {else/}
+                                        <option value="0">否</option>
+                                        {/if}
+                                        {if condition ="$list.withdrawals_status eq 1"}
+                                        <option value="1" selected>是</option>
+                                        {else/}
+                                        <option value="1">是</option>
+                                        {/if}
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">代理域名：</span>
+                                <label class="am-form-label">
+                                    <input type="text" id="agent_url" class="am-form-field am-input-sm" name="agent_url"
+                                           value="{$list.agent_url}" placeholder="请输入代理域名"/>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">联系人姓名：</span>
+                                <label class="am-form-label">
+                                    <input type="text" id="real_name" class="am-form-field am-input-sm" name="real_name"
+                                           value="{$list.real_name}" placeholder="请输入联系人姓名"/>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">联系人电话：</span>
+                                <label class="am-form-label">
+                                    <input type="text" id="phone" class="am-form-field am-input-sm" name="phone"
+                                           value="{$list.phone}" placeholder="请输入联系电话"/>
+                                </label>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">保证金：</span>
+                                <label class="am-form-label">
+                                    <input type="text" id="bond" class="am-form-field am-input-sm" name="bond"
+                                           value="{$list.bond}" placeholder="请输入保证金"/>
+                                </label>
+                                <span class="s2">*不允许提现！</span>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">盈利分配提成比例：</span>
+                                <label class="am-form-label">
+                                    <input type="text"  class="am-form-field am-input-sm" name="wit_ratio"
+                                           value="{$list.wit_ratio}" placeholder="请输入盈利分配提成比例"/>
+                                </label>
+                            <span class="s2">1=100%</span>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">手续费提成比例：</span>
+                                <label class="am-form-label">
+                                    <input type="text"  class="am-form-field am-input-sm" name="fee_ratio"
+                                           value="{$list.fee_ratio}" placeholder="请输入手续费提成比例"/>
+                                </label>
+                                <span class="s2">1=100%</span>
+                            </div>
+                            <div class="am-form-group">
+                                <span class="s1">递延费提成比例：</span>
+                                <label class="am-form-label">
+                                    <input type="text"  class="am-form-field am-input-sm" name="defer_ratio"
+                                           value="{$list.defer_ratio}" placeholder="请输入递延费提成比例"/>
+                                </label>
+                                <span class="s2">1=100%  上级的百分数</span>
+                            </div>
+                            <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                                <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub()">确定</button>
+                                <a href="index.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {include file="public/foot" /}
+        <script type="text/javascript" src="/static/ajaxupload.js"></script>
+        <script type="text/javascript">
+                                    $(function () {
+                                        var nav = $('.left-sidebar li.sidebar-nav-link');
+                                        nav.removeClass("active");
+                                        nav.eq(6).find('ul').show();
+                                        // nav.eq(3).find('ul li').eq(0).find('a').addClass('active');
+                                    });
+
+                                    function sub() {
+                                        var arr = parseFormJson("#form");
+                                        $.ajax({
+                                            url: "{:url('Agents/modify_play')}",
+                                            data: {arr: arr},
+                                            type: "post",
+                                            success: function (r) {
+                                                if (r['code'] == 1) {
+                                                    alert_open(r['msg'])
+                                                } else {
+                                                    alert_msg(r['msg']);
+                                                }
+                                            }
+                                        });
+                                    }
+        </script>
+    </body>
+
+</html>

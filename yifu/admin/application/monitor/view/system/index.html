@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {include file="public/meta" /}
+
+    {include file="public/link" /}
+
+</head>
+
+<body data-type="index" class="theme-white">
+
+<div class="am-g tpl-g">
+
+    {include file="public/header" /}
+
+    {include file="public/left" /}
+
+    {include file="public/content_top" /}
+
+    <ol class="am-breadcrumb">
+
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+
+        <li><a href="#">系统管理</a></li>
+
+        <li class="am-active">系统设置</li>
+    </ol>
+    
+
+    <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+
+    <div class="widget-body widget-body-lg am-fr">
+
+        <div class="am-scrollable-horizontal">
+
+            <table class="{$table}">
+
+                <thead>
+
+                <tr>
+                    <th>网站logo</th>
+                    <th>网站名称</th>
+                    <th>网站地址</th>
+                    <th>网站电话</th>
+                    <th>客服QQ</th>
+                    <th>网站版权信息</th>
+                    <th>APP下载二维码</th>
+                    <th>微信二维码</th>
+                    <th>操作</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody id="list">
+
+                {foreach $list as $val}
+
+                <tr class="text-c">
+                    <td>
+                        <img id="newPhoto" src="{$val['img']}" style="max-height:80px;max-width:80px;"/>
+                    </td>
+                    <td>{$val['title']}</td>
+                    <td>{$val['web']}</td>
+                    <td>{$val['tell']}</td>
+                    <td>{$val['qq']}</td>
+                    <td>{$val['copyright']}</td>
+                    <td>
+                        <img id="newPhoto" src="{$val['app_img']}" style="max-height:80px;max-width:80px;"/>
+                    </td>
+                    <td>
+                        <img id="newPhoto" src="{$val['wechat_img']}" style="max-height:80px;max-width:80px;"/>
+                    </td>
+
+                    <td>
+                        <a href="edit.html?id={$val['id']}"  class="am-btn am-btn-success am-btn-xs">修改</a>
+                    </td>
+
+                </tr>
+
+                {/foreach}
+
+
+                </tbody>
+
+            </table>
+
+            <div class="am-pagination-left">{$page}</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+<!-- user_edit.html?id={$val['id']} -->
+{include file="public/foot" /}
+
+<script type="text/javascript">
+    
+    $(function () {
+
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+
+        nav.removeClass("active");
+
+        nav.eq(5).find('ul').show();
+
+        nav.eq(5).find('ul li').eq(5).find('a').addClass('active');
+
+    });
+    
+
+</script>
+
+</body>
+
+</html>

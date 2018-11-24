@@ -1,0 +1,117 @@
+{include file="public/header" /}
+<title>平台管理</title>
+</head>
+<body>
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 平台管理 <span class="c-gray en">&gt;</span> 银行卡信息 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <div class="page-container">
+        <div class="searchall">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--账户信息-->
+                    <div class="cl pd-10" style=" background-color:#006dcc">
+                        <dl style="margin-left:40px; color:#fff">
+                            <dt>
+                                <span class="f-l">银行卡信息</span>
+                            </dt>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div style="margin-left:320px;">
+                        <p>备注:</p>
+                        <p style="color: red">1、银行卡必须与合作商所签署合同上填写的一致，否则提现申请将不予审核通过。</p>
+                        <p style="color: red">2、绑定后不支持修改。</p>
+                    </div>
+                    <div>
+                        <form method="post" class="form form-horizontal" id="form-admin-add" action="">
+                            <div class="row cl">
+                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>银行卡号：</label>
+                                <div class="formControls col-xs-8 col-sm-9">
+                                    <input type="text" class="input-text" value="{$list.num??''}" id="num" name="num" required="">
+                                </div>
+                            </div>
+                            <div class="row cl">
+                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>开户姓名：</label>
+                                <div class="formControls col-xs-8 col-sm-9">
+                                    <input type="text" class="input-text" autocomplete="off" value="{$list.name??''}" id="name" name="name" required="">
+                                </div>
+                            </div>
+                            <div class="row cl">
+                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>开户行：</label>
+                                <div class="formControls col-xs-8 col-sm-9">
+                                    <input type="text" class="input-text" autocomplete="off" value="{$list.bank_name??''}" id="bank_name" name="bank_name" required="">
+                                </div>
+                            </div>
+                            <div class="row cl">
+                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>开户分行：</label>
+                                <div class="formControls col-xs-8 col-sm-9">
+                                    <input type="text" class="input-text" autocomplete="off" value="{$list.address??''}" id="address" name="address" required="">
+                                </div>
+                            </div>
+                            {if condition="$list eq ''"}
+                            <div class="row cl">
+                                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                                    <div id="submit" class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">提交</div>
+                                </div>
+                            </div>
+                            {/if}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--_footer 作为公共模版分离出去-->
+        {include file="public/footer" /}
+
+        <!--请在下方写此页面业务相关的脚本-->
+        <script type="text/javascript" src="__ROOT__/static/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+        <script type="text/javascript" src="__ROOT__/static/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+        <script type="text/javascript" src="__ROOT__/static/admin/lib/laypage/1.2/laypage.js"></script>
+        <script type="text/javascript">
+            $('.table-sort').dataTable({
+                "aaSorting": [[1, "desc"]], //默认第几个排序
+                "bStateSave": true, //状态保存
+                "aoColumnDefs": [
+                    //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                    {"orderable": false, "aTargets": [0]}// 制定列不参与排序
+                ]
+            });
+        </script>
+        <script>
+            $(function () {
+                $("#submit").click(function () {
+                    var name = $("#name").val();
+                    var bank_name = $("#bank_name").val();
+                    var num = $("#num").val();
+                    var address = $("#address").val();
+                    if ($.trim(num) == '') {
+                        layer.msg("请输入银行卡号！！！", {icon: 5, time: 2000});
+                        return false;
+                    }
+                    var reg = /([\d]{4})([\d]{4})([\d]{4})([\d]{4})([\d]{0,})?/; //身份证规则
+                    var flag = reg.test(num); //true
+                    if (flag == false) {
+                        layer.msg("银行卡格式错误！！！", {icon: 5, time: 2000});
+                        return false;
+                    }
+                    if ($.trim(name) == '') {
+                        layer.msg("请输入开户姓名！！！", {icon: 5, time: 2000});
+                        return false;
+                    }
+                    if ($.trim(bank_name) == '') {
+                        layer.msg("请输入开户行！！！", {icon: 5, time: 2000});
+                        return false;
+                    }
+                    $.post("{:url('agent/Terrace/bank')}", {name: name, bank_name: bank_name, num: num, address: address}, function (res) {
+                        if (res.status == 1) {
+                            layer.msg(res.msg, {icon: 6, time: 2000});
+                            window.location.href = "{:url('agent/Terrace/bank')}";
+                        } else {
+                            layer.msg(res.msg, {icon: 5, time: 2000});
+                        }
+                    }, 'json');
+                })
+            })
+        </script>
+</body>
+</html>

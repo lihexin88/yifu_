@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {include file="public/meta" /}
+
+    {include file="public/link" /}
+
+</head>
+
+<body data-type="index" class="theme-white">
+
+<div class="am-g tpl-g">
+
+    {include file="public/header" /}
+
+    {include file="public/left" /}
+
+    {include file="public/content_top" /}
+
+    <ol class="am-breadcrumb">
+
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+
+        <li><a href="#">操盘管理</a></li>
+
+        <li class="am-active">操盘账户</li>
+
+    </ol>
+    <div class="am-form-inline" role="form">
+
+            <span>日期范围：</span>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+
+                       data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+
+                       onfocus="this.blur()" value="{$arr.end_query}"/>
+
+            </div>
+
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+
+        </div>
+
+    <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+
+    <div class="widget-body widget-body-lg am-fr">
+
+        <div class="am-scrollable-horizontal">
+
+            <table class="{$table}">
+
+                <thead>
+
+                <tr>
+                    <th>姓名</th>
+                    <th>账号</th>
+                    <th>总额</th>
+                    <th>提现金额</th>
+                    <th>累计充值</th>
+                    <th>配资金额</th>
+                    <th>交易金额</th>
+                    <th>状态</th>
+                    <th>用户递延费</th>
+                    <th>用户推广费</th>
+                    <th>用户服务费</th>
+                    <th>时间</th>
+                    <th>直推荐人数总和</th>
+                    <!-- <th>操作</th> -->
+
+                </tr>
+
+                </thead>
+
+                <tbody id="list">
+
+                 {volist name="list" id="vo" empty="$empty"}
+
+                <tr class="text-c">
+                    <td>{$vo.user.name}</td>
+                    <td>{$vo.account}</td>
+                    <td>{$vo.total}</td>
+                    <td>{$vo.wit_total}</td>
+                    <td>{$vo.rec_total}</td>
+                    <td>{$vo.capital_total}</td>
+                    <td>{$vo.trade_total}</td>
+                    <td>{$vo.user.status}</td>
+                    <td>{$vo.fee_total}</td>
+                    <td>{$vo.push_total}</td>
+                    <td>{$vo.server_total}</td>
+                    <td>{$vo.time}</td>
+                    <td>{$vo.push_team}</td>
+                    <!-- <td>
+                        <a href="edit.html?id={$vo.uid}" class="am-btn am-btn-success am-btn-xs">修改</a>
+                    </td> -->
+                </tr>
+                {/volist}        
+      
+                    <tr>
+                        <th colspan="1"></th>
+                        <th>{$account}</th>
+                        <th>{$total}</th>
+                        <th>{$wit_total}</th>
+                        <th>{$rec_total}</th>
+                        <th>{$capital_total}</th>
+                        <th>{$trade_total}</th>
+                        <th colspan="1"></th>
+                        <th>{$fee_total}</th>
+                        <th>{$push_total}</th>
+                        <th>{$server_total}</th>
+                        <th colspan="1"></th>
+                    </tr>   
+                </tbody>
+
+            </table>
+
+            <div class="am-pagination-left">{$page}</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+{include file="public/foot" /}
+
+<script type="text/javascript">
+
+    function del(id) {
+        if (confirm("确定要删除吗？")) {
+            $.ajax({
+            url: "{:url('Point/del')}",
+            data: {id:id},
+            type: "post",
+            success: function (r) {
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    $(function () {
+
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+
+        nav.removeClass("active");
+
+        nav.eq(3).find('ul').show();
+
+        nav.eq(3).find('ul li').eq(0).find('a').addClass('active');
+
+    });
+    
+
+</script>
+
+</body>
+
+</html>

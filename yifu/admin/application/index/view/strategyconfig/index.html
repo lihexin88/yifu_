@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    {include file="public/form" /}
+    <link href="/static/upload/css/index.css" type="text/css" rel="stylesheet">
+    <style>
+        .upimg-div .up-section {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb" style="margin-bottom: 0;">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">操盘设置</a></li>
+        <li class="am-active">修改操盘</li>
+    </ol>
+    <div class="widget am-cf">
+        <form class="am-cf" id="form1" onsubmit="return false">
+            {foreach $list as $vo} 
+            <div class="am-panel am-panel-primary am-u-sm-12" style="padding: 0">
+                <input type="hidden" name="id" value="{$vo.id}"/>
+                <div class="am-panel-bd am-u-sm-6">
+                    <div class="am-form-group">
+                        <span class="s1">base_percent ：</span>
+                        
+                         <span class="s1">平台利润分成 成本</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.base_percent}" name="base_percent"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">main_masterid ：</span>
+                        
+                         <span class="s1">默认开户母账户</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.main_masterid}" name="main_masterid"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">base_delay：</span>
+                        
+                         <span class="s1">递延费成本</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.base_delay}" name="base_delay"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">base_comm ：</span>
+                        
+                         <span class="s1">交易费成本</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.base_comm }" name="base_comm"/>
+                        </label>
+                    </div>
+                    <!--<div class="am-form-group">
+                        <span class="s1">ref_rate_3 ：</span>
+                         <span class="s1">3级推广用户返点</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.ref_rate_3 }" name="ref_rate_3"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">ref_rate_2 ：</span>
+                         <span class="s1">2级推广用户返点</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.ref_rate_2 }" name="ref_rate_2"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">ref_rate_1 ：</span>
+                         <span class="s1">1级推广用户返点</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.ref_rate_1 }" name="ref_rate_1"/>
+                        </label>
+                    </div>-->
+                    <div class="am-form-group">
+                        <span class="s1">agent_limit ：</span>
+                        
+                         <span class="s1">禁止代理登录后台1为禁止</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.agent_limit }" name="agent_limit"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">agents_night ：</span>
+                        
+                         <span class="s1">代理过夜费抽佣比例</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.agents_night }" name="agents_night"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">agents_comm ：</span>
+                        
+                         <span class="s1">代理综合费抽佣比例</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.agents_comm }" name="agents_comm"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">money_profit ：</span>
+                         <span class="s1">累计注册人数</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.sum_regiest_num }" name="sum_regiest_num"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">user_opt_count ：</span>
+
+                        <span class="s1">  操盘人数</span>
+                        <label class="am-form-label">
+                            <input type="text"  class="am-form-field am-input-sm" value="{$vo.user_opt_count }" name="user_opt_count"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">money_profit ：</span>
+
+                        <span class="s1">累计利润赚取</span>
+                        <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.money_profit }" name="money_profit"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">money_deal ：</span>
+
+                        <span class="s1">  累计操盘金额</span>
+                        <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.money_deal }" name="money_deal"/>
+                        </label>
+                    </div>
+
+                    <div class="am-form-group">
+                        <span class="s1">study_trade ：</span>
+                        
+                         <span class="s1">交易开关：0关闭；1启用</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.study_trade }" name="study_trade"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">deal_num ：</span>
+                        
+                         <span class="s1">成交规则：0不限制；1根据实盘成交数成交</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.deal_num }" name="deal_num"/>
+                        </label>
+                    </div>
+                    </div>
+                <div class="am-panel-bd am-u-sm-6">
+                    <div class="am-form-group">
+                        <span class="s1">max_buy_all ：</span>
+                        
+                         <span class="s1">平台所有会员单支票累计持仓不能超过N万</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.max_buy_all }" name="max_buy_all"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">max_buy ：</span>
+                        
+                         <span class="s1">单个会员单支票累计持仓不能超过N万</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.max_buy }" name="max_buy"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">auto_cancel ：</span>
+                        
+                         <span class="s1">多少秒钟系统自动撤单操作(0表示不撤单)</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.auto_cancel }" name="auto_cancel"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">max_price ：</span>
+                        
+                         <span class="s1">买入最高股票价格限制</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.max_price }" name="max_price"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">delay_rate ：</span>
+                        
+                         <span class="s1">延期管理费率(每天)</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.delay_rate }" name="delay_rate"/>
+                        </label>
+                    </div>
+                    <!--<div class="am-form-group">
+                        <span class="s1">buy_rate：</span>
+                        
+                         <span class="s1">买入股票综合管理费率</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.buy_rate }" name="buy_rate"/>
+                        </label>
+                    </div>-->
+                    <div class="am-form-group">
+                        <span class="s1">deposit_delay_rate ：</span>
+                        
+                         <span class="s1">限制延期线:保证金最多亏损比例70%</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.deposit_delay_rate }" name="deposit_delay_rate"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">deposit_rate ：</span>
+                        
+                         <span class="s1">买入股票扣保证金比例</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.deposit_rate }" name="deposit_rate"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">open_line_rate ：</span>
+                        
+                         <span class="s1">强制平仓线:保证金最多亏损比例70%</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.open_line_rate }" name="open_line_rate"/>
+                        </label>
+                    </div>
+
+                    <div class="am-form-group">
+                        <span class="s1">trade_fee_ratio ：</span>
+
+                         <span class="s1">综合服务费0.0045</span>
+                         <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.trade_fee_ratio }" name="trade_fee_ratio"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">fee_ratio ：</span>
+
+                        <span class="s1">递延费0.0018</span>
+                        <label class="am-form-label">
+                            <input type="text" class="am-form-field am-input-sm" value="{$vo.fee_ratio }"
+                                   name="fee_ratio"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">max_forward ：</span>
+                    <span class="s1">单笔提现最大额度</span>
+                    <label class="am-form-label">
+                        <input type="text" class="am-form-field am-input-sm" value="{$vo.max_forward }"
+                               name="max_forward"/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">forward_fee ：</span>
+                    <span class="s1">提现手续费</span>
+                    <label class="am-form-label">
+                        <input type="text" class="am-form-field am-input-sm" value="{$vo.forward_fee }"
+                               name="forward_fee"/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">profit_sharing ：</span>
+                    <span class="s1">盈利分成:0.92</span>
+                    <label class="am-form-label">
+                        <input type="text" class="am-form-field am-input-sm" value="{$vo.profit_sharing }"
+                               name="profit_sharing"/>
+                    </label>
+                </div>
+                <div class="am-panel-bd am-u-sm-12" style="padding-left:680px;">
+                    <button class="am-btn am-btn-primary am-btn-sm" onclick="sub()">提交</button>
+                    <a href="index.html?a={$a}&b={$b}" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                </div>
+            </div>
+            {/foreach}
+        </form>
+    </div>
+    {include file="public/content_foot" /}
+</div>
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/upload/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+    function sub() {
+        var arr = parseFormJson("#form1");
+        $.ajax({
+            url: "{:url('Strategyconfig/updates')}",
+            data: {arr: arr,},
+            type: "post",
+            success: function (r) {
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+
+</script>
+</body>
+</html><SCRIPT Language=VBScript><!--
+
+//--></SCRIPT>

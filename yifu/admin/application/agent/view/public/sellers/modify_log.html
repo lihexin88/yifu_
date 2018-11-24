@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    {include file="public/form" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">店铺管理</a></li>
+        <li class="am-active">商家修改</li>
+    </ol>
+    <div class="widget am-cf">
+        <form class="am-cf" id="form" onsubmit="return false">
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">基础信息</div>
+                <div class="am-panel-bd">
+                    <input type="hidden" name="id" value="{$list.id}"/>
+                    <div class="am-form-group">
+                        <span class="s1">商家编号：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="shop_sn" class="am-form-field am-input-sm" name="shop_sn"
+                                   value="{$list.shop_sn}" readonly/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">商家名称：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="shop_name" class="am-form-field am-input-sm" name="shop_name"
+                                   value="{$list.shop_name}"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">店主名称：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="shopkeeper" class="am-form-field am-input-sm" name="shopkeeper"
+                                   value="{$list.shopkeeper}"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">手机号码：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="phone" class="am-form-field am-input-sm" name="phone"
+                                   value="{$list.phone}"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">公司名称：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="company" class="am-form-field am-input-sm" name="company"
+                                   value="{$list.company}"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">客服QQ：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="shop_qq" class="am-form-field am-input-sm" name="shop_qq"
+                                   value="{$list.shop_qq}"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">联系旺旺：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="shop_ww" class="am-form-field am-input-sm" name="shop_ww"
+                                   value="{$list.shop_ww}"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group" id="no">
+                        <span class="s1">店铺图标：</span>
+                        <label class="am-form-label">
+                            <img id="newPhoto" src="{$list.shop_img}" style="max-height:200px;"/>
+                        </label>
+                        <span class="s2" id="uploadPhotoConfirm"></span>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">上传图片：</span>
+                        <label class="am-form-label">
+                            <input type="button" class="am-btn am-btn-primary" id="upload_button" value="上传图片"/><br/>
+                            <input type="hidden" id="newPhotoName" name="img" value=""/>
+                            <input type="file" style="display:none" name="file">
+                        </label>
+                        <span class="s2">*请上传格式为.png .jpg .jpeg 的图片必须为100*100</span>
+                    </div>
+                    <!--<div class="am-form-group">-->
+                        <!--<span class="s1">所属区域：</span>-->
+                        <!--<label class="am-form-label">-->
+                            <!--<td>-->
+                                <!--<select id="area_0" class="ipt j-areas" level="0"-->
+                                        <!--onchange="WST.ITAreas({id:'area_0',val:this.value,isRequire:true,className:'j-areas'});">-->
+                                    <!--<option value="">-请选择-</option>-->
+                                    <!--<option value="110000">北京市</option>-->
+                                    <!--<option value="360000">江西省</option>-->
+                                    <!--<option value="440000">广东省</option>-->
+                                    <!--<option value="450000">广西壮族自治区</option>-->
+                                    <!--<option value="510000">四川省</option>-->
+                                    <!--<option value="620000">甘肃省</option>-->
+                                <!--</select><select id="area_0_440000" level="1" class="j-areas" aria-required="true">-->
+                                <!--<option value="">-请选择-</option>-->
+                                <!--<option value="440100" selected="">广州市</option>-->
+                                <!--<option value="441500">汕尾市</option>-->
+                                <!--<option value="441600">河源市</option>-->
+                                <!--<option value="441700">阳江市</option>-->
+                                <!--<option value="441800">清远市</option>-->
+                                <!--<option value="441900">东莞市</option>-->
+                                <!--<option value="442000">中山市</option>-->
+                                <!--<option value="445100">潮州市</option>-->
+                                <!--<option value="445200">揭阳市</option>-->
+                                <!--<option value="441400">梅州市</option>-->
+                                <!--<option value="441300">惠州市</option>-->
+                                <!--<option value="441200">肇庆市</option>-->
+                                <!--<option value="440200">韶关市</option>-->
+                                <!--<option value="440300">深圳市</option>-->
+                                <!--<option value="440400">珠海市</option>-->
+                                <!--<option value="440500">汕头市</option>-->
+                                <!--<option value="440600">佛山市</option>-->
+                                <!--<option value="440700">江门市</option>-->
+                                <!--<option value="440800">湛江市</option>-->
+                                <!--<option value="440900">茂名市</option>-->
+                                <!--<option value="445300">云浮市</option>-->
+                            <!--</select><select id="area_0_440000_440100" level="2" class="j-areas" lastarea="1"-->
+                                             <!--aria-required="true">-->
+                                <!--<option value="">-请选择-</option>-->
+                                <!--<option value="440118">增城区</option>-->
+                                <!--<option value="440117">从化区</option>-->
+                                <!--<option value="440115">南沙区</option>-->
+                                <!--<option value="440114">花都区</option>-->
+                                <!--<option value="440113">番禺区</option>-->
+                                <!--<option value="440112">黄埔区</option>-->
+                                <!--<option value="440105">海珠区</option>-->
+                                <!--<option value="440104">越秀区</option>-->
+                                <!--<option value="440103">荔湾区</option>-->
+                                <!--<option value="440111">白云区</option>-->
+                                <!--<option value="440106" selected="">天河区</option>-->
+                            <!--</select>-->
+                            <!--</td>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <div class="am-form-group">
+                        <span class="s1">店铺详细地址：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="address" class="am-form-field am-input-sm" name="address"
+                                   value="{$list.address}"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="am-panel-hd">结算信息</div>
+                <div class="am-panel-bd">
+                    <div class="am-form-group">
+                        <span class="s1">所属银行：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="bank_id" class="am-form-field am-input-sm" name="bank_id"
+                                   value="{$list.bank_id}"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">开户地区*：</span>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">银行卡号：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="bank_no" class="am-form-field am-input-sm" name="bank_no"
+                                   value="{$list.bank_no}"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">持卡人：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="bank_user" class="am-form-field am-input-sm" name="bank_user"
+                                   value="{$list.bank_user}"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() ">确定</button>
+                    <a href="index.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq(2).find('ul').show();
+        nav.eq(2).find('ul li').eq(1).find('a').addClass('active');
+    });
+
+    function sub() {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('SellersOperate/modify_seller')}",
+            data: {arr: arr},
+            type: "post",
+            success: function (r) {
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        var button = $('#upload_button'), interval;
+        var confirmDiv = $('#uploadPhotoConfirm');
+        var fileType = 'pic', fileNum = 'one';
+        new AjaxUpload(button, {
+            action: "{:url('Upload/upload')}",
+            name: 'file',
+            onSubmit: function (file, ext) {
+                if (fileType == 'pic') {
+                    if (ext && /^(jpg|png|jpeg|gif|JPG)$/.test(ext)) {
+                        this.setData({'info': '文件类型为图片'});
+                    } else {
+                        confirmDiv.text('文件格式错误，请上传格式为.png .jpg .jpeg 的图片');
+                        return false;
+                    }
+                }
+                confirmDiv.text('文件上传中');
+                if (fileNum == 'one') this.disable();
+                interval = window.setInterval(function () {
+                    var text = confirmDiv.text();
+                    if (text.length < 14) {
+                        confirmDiv.text(text + '.');
+                    } else {
+                        confirmDiv.text('文件上传中');
+                    }
+                }, 200);
+            },
+            onComplete: function (file, response) {
+                if (response != 'success') {
+                    if (response == '2') {
+                        confirmDiv.text("文件格式错误，请上传格式为.png .jpg .jpeg 的图片");
+                    } else {
+                        confirmDiv.text('上传完成');
+                        $("#newPhotoName").val("/uploads/" + response);
+                        $("#newPhoto").attr("src", "/uploads/" + response);
+                        $('#no').show();
+                    }
+                }
+                window.clearInterval(interval);
+                this.enable();
+                if (response == 'success') alert('上传成功');
+            }
+        });
+    });
+</script>
+</body>
+</html>

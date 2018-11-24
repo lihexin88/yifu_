@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>Goods.php</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832; font-weight: bold;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #629755; font-style: italic;}
+.s3 { color: #a9b7c6;}
+.s4 { color: #cc7832;}
+.s5 { color: #629755; font-weight: bold; font-style: italic;}
+.s6 { color: #9876aa;}
+.s7 { color: #6a8759;}
+.s8 { color: #6897bb;}
+.ls0 { height: 1px; border-width: 0; color: #4d4d4d; background-color:#4d4d4d}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Goods.php</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;?php</span>
+<span class="s2">/**</span>
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2018/11/1
+ * Time: 14:36
+ */
+
+<span class="s0">namespace </span><span class="s3">app</span><span class="s1">\</span><span class="s3">index</span><span class="s1">\</span><span class="s3">controller</span><span class="s4">;</span>
+
+
+<span class="s0">use </span><span class="s3">app</span><span class="s1">\</span><span class="s3">common</span><span class="s1">\</span><span class="s3">controller</span><span class="s1">\</span><span class="s3">Base</span><span class="s4">;</span>
+<span class="s0">use </span><span class="s3">app</span><span class="s1">\</span><span class="s3">index</span><span class="s1">\</span><span class="s3">model</span><span class="s1">\</span><span class="s3">GoodsClassify</span><span class="s4">;</span>
+<span class="s0">use </span><span class="s3">think</span><span class="s1">\</span><span class="s3">Db</span><span class="s4">;</span>
+<span class="s0">use </span><span class="s3">app</span><span class="s1">\</span><span class="s3">index</span><span class="s1">\</span><span class="s3">model</span><span class="s1">\</span><span class="s3">GoodsDetail</span><span class="s4">;</span>
+<span class="s0">use </span><span class="s3">PHPMailer</span><span class="s1">\</span><span class="s3">PHPMailer</span><span class="s1">\</span><span class="s3">Exception</span><span class="s4">;</span>
+
+<span class="s0">class </span><span class="s3">Goods </span><span class="s0">extends </span><span class="s3">Base</span>
+<span class="s1">{</span>
+    <span class="s2">/**</span>
+     *
+     * 返回商品类别信息
+     * <span class="s5">@return </span><span class="s2">false|string</span>
+     * <span class="s5">@throws </span><span class="s2">\think\db\exception\DataNotFoundException</span>
+     * <span class="s5">@throws </span><span class="s2">\think\db\exception\ModelNotFoundException</span>
+     * <span class="s5">@throws </span><span class="s2">\think\exception\DbException</span>
+     */
+    <span class="s0">public function </span><span class="s3">get_goods_type</span><span class="s1">()</span>
+    {
+        <span class="s0">try</span><span class="s1">{</span>
+            <span class="s6">$goods_classify </span><span class="s1">= </span><span class="s3">Db</span><span class="s1">::</span><span class="s3">name</span><span class="s1">(</span><span class="s7">'goods_classify'</span><span class="s1">)-&gt;</span><span class="s3">select</span><span class="s1">()</span><span class="s4">;</span>
+            <span class="s6">$r </span><span class="s1">= </span><span class="s3">msg_handle</span><span class="s1">(</span><span class="s7">'商品信息表'</span><span class="s4">,</span><span class="s8">1</span><span class="s4">,</span><span class="s6">$goods_classify</span><span class="s1">)</span><span class="s4">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(\</span><span class="s3">Exception </span><span class="s6">$e</span><span class="s1">){</span>
+            <span class="s6">$r </span><span class="s1">= </span><span class="s3">msg_handle</span><span class="s1">(</span><span class="s7">&quot;获取商品类型失败&quot;</span><span class="s4">,</span><span class="s1">-</span><span class="s8">1</span><span class="s1">)</span><span class="s4">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s3">json_encode</span><span class="s1">(</span><span class="s6">$r</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">}</span>
+    <span class="s2">/**</span>
+     *
+     * 根据商品类别，分页显示商品信息
+     * <span class="s5">@param </span><span class="s2">int $cid</span>
+     * <span class="s5">@param </span><span class="s2">int $page_size</span>
+     * <span class="s5">@throws </span><span class="s2">\think\exception\DbException</span>
+     */
+    <span class="s0">public function </span><span class="s3">get_goods_by_type</span><span class="s1">(</span><span class="s6">$cid </span><span class="s1">= </span><span class="s8">1</span><span class="s4">,</span><span class="s6">$page_size </span><span class="s1">= </span><span class="s8">10</span><span class="s1">)</span>
+    {
+        <span class="s0">try</span><span class="s1">{</span>
+            <span class="s6">$goods </span><span class="s1">= </span><span class="s3">Db</span><span class="s1">::</span><span class="s3">name</span><span class="s1">(</span><span class="s7">'goods_detail'</span><span class="s1">)-&gt;</span><span class="s3">where</span><span class="s1">([</span><span class="s7">'cid'</span><span class="s1">=&gt; </span><span class="s6">$cid</span><span class="s4">,</span><span class="s1">])-&gt;</span><span class="s3">paginate</span><span class="s1">(</span><span class="s6">$page_size</span><span class="s1">)</span><span class="s4">;</span>
+            <span class="s6">$pages </span><span class="s1">= </span><span class="s6">$goods</span><span class="s1">-&gt;</span><span class="s3">render</span><span class="s1">()</span><span class="s4">;</span>
+            <span class="s6">$goods_array </span><span class="s1">= [</span>
+                <span class="s7">'goods'</span><span class="s1">=&gt;</span><span class="s6">$goods</span><span class="s4">,</span>
+                <span class="s7">'page'</span><span class="s1">=&gt;</span><span class="s6">$pages</span><span class="s4">,</span>
+            <span class="s1">]</span><span class="s4">;</span>
+            <span class="s6">$r </span><span class="s1">= </span><span class="s3">msg_handle</span><span class="s1">(</span><span class="s7">'商品信息'</span><span class="s4">,</span><span class="s8">1</span><span class="s4">,</span><span class="s6">$goods_array</span><span class="s1">)</span><span class="s4">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(\</span><span class="s3">Exception </span><span class="s6">$e</span><span class="s1">){</span>
+            <span class="s6">$r </span><span class="s1">= </span><span class="s3">msg_handle</span><span class="s1">(</span><span class="s7">&quot;获取商品信息失败&quot;</span><span class="s4">,</span><span class="s1">-</span><span class="s8">1</span><span class="s1">)</span><span class="s4">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s3">json_encode</span><span class="s1">(</span><span class="s6">$r</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">/**</span>
+     *
+     * 按照商品id查询商品详细信息，返回json
+     * <span class="s5">@param </span><span class="s2">int $gid</span>
+     * <span class="s5">@return </span><span class="s2">false|string</span>
+     * <span class="s5">@throws </span><span class="s2">\think\db\exception\DataNotFoundException</span>
+     * <span class="s5">@throws </span><span class="s2">\think\db\exception\ModelNotFoundException</span>
+     * <span class="s5">@throws </span><span class="s2">\think\exception\DbException</span>
+     */
+    <span class="s0">public function </span><span class="s3">goods_detail</span><span class="s1">(</span><span class="s6">$gid</span><span class="s1">=</span><span class="s8">1</span><span class="s1">)</span>
+    {
+        <span class="s0">try</span><span class="s1">{</span>
+            <span class="s6">$good_detail </span><span class="s1">= </span><span class="s3">Db</span><span class="s1">::</span><span class="s3">name</span><span class="s1">(</span><span class="s7">'goods_detail'</span><span class="s1">)-&gt;</span><span class="s3">where</span><span class="s1">([</span><span class="s7">'gid'</span><span class="s1">=&gt;</span><span class="s6">$gid</span><span class="s1">])-&gt;</span><span class="s3">find</span><span class="s1">()</span><span class="s4">;</span>
+            <span class="s6">$r </span><span class="s1">= </span><span class="s3">msg_handle</span><span class="s1">(</span><span class="s7">'商品信息'</span><span class="s4">,</span><span class="s8">1</span><span class="s4">,</span><span class="s6">$good_detail</span><span class="s1">)</span><span class="s4">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(\</span><span class="s3">Exception </span><span class="s6">$e</span><span class="s1">){</span>
+            <span class="s6">$r </span><span class="s1">= </span><span class="s3">msg_handle</span><span class="s1">(</span><span class="s7">&quot;获取商品信息失败&quot;</span><span class="s4">,</span><span class="s1">-</span><span class="s8">1</span><span class="s1">)</span><span class="s4">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s3">json_encode</span><span class="s1">(</span><span class="s6">$r</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">/**</span>
+     * 返回优惠专区信息
+     * <span class="s5">@return </span><span class="s2">false|string</span>
+     */
+    <span class="s0">public function </span><span class="s3">preferential</span><span class="s1">(</span><span class="s6">$area_type </span><span class="s1">= </span><span class="s8">1</span><span class="s1">)</span>
+    {
+        <span class="s0">try</span><span class="s1">{</span>
+            <span class="s6">$preferential_goods </span><span class="s1">= </span><span class="s3">Db</span><span class="s1">::</span><span class="s3">name</span><span class="s1">(</span><span class="s7">'goods'</span><span class="s1">)-&gt;</span><span class="s3">where</span><span class="s1">([</span><span class="s7">'area_type'</span><span class="s1">=&gt;</span><span class="s6">$area_type</span><span class="s1">])-&gt;</span><span class="s3">select</span><span class="s1">()</span><span class="s4">;</span>
+            <span class="s6">$r </span><span class="s1">= </span><span class="s3">msg_handle</span><span class="s1">(</span><span class="s7">'优惠专区'</span><span class="s4">,</span><span class="s8">1</span><span class="s4">,</span><span class="s6">$preferential_goods</span><span class="s1">)</span><span class="s4">;</span>
+        <span class="s1">}</span><span class="s0">catch </span><span class="s1">(\</span><span class="s3">Exception </span><span class="s6">$e</span><span class="s1">){</span>
+            <span class="s6">$r </span><span class="s1">= </span><span class="s3">msg_handle</span><span class="s1">(</span><span class="s7">&quot;获取优惠专区失败！&quot;</span><span class="s4">,</span><span class="s1">-</span><span class="s8">1</span><span class="s1">)</span><span class="s4">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s3">json_encode</span><span class="s1">(</span><span class="s6">$r</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">}</span>
+}</pre>
+</body>
+</html>
