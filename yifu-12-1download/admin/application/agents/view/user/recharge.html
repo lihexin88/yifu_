@@ -1,0 +1,75 @@
+{include file="public/header" /}
+<title>管理员列表</title>
+</head>
+<body>
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 客户管理 <span class="c-gray en">&gt;</span> 客户列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <div class="page-container">
+        <table class="table table-border table-bordered table-bg table-hover table-sort">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="9">人员列表</th>
+                </tr>
+                <tr class="text-c">
+                    <!--<th width="25"><input type="checkbox" name="" value=""></th>-->
+                    <th width="40">充值用户</th>
+                   
+                    <th width="150">充值金额</th>
+                    <th width="150">充值方式</th>
+                    <th width="100">充值时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach name='list' item='vo'}
+                <tr class="text-c">
+                    <!--<td><input type="checkbox" value="1" name=""></td>-->
+                    <td>{$vo.real_name}</td> 
+                    <td>{$vo.number}</td> 
+                    {if condition="$vo.pay_type eq 0"}
+                    <td>微信</td> 
+                    {elseif/ condition="$vo.pay_type eq 1"}
+                    <td>支付宝</td> 
+                    {/if}
+                    <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+                </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    </div>
+    <!--_footer 作为公共模版分离出去-->
+    {include file="public/footer" /}
+
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="__ROOT__/static/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+    <script type="text/javascript" src="__ROOT__/static/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+    <script type="text/javascript" src="__ROOT__/static/admin/lib/laypage/1.2/laypage.js"></script>
+    <script type="text/javascript">
+        $('.table-sort').dataTable({
+            "aaSorting": [[1, "desc"]], //默认第几个排序
+            "bStateSave": true, //状态保存
+            "aoColumnDefs": [
+                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+                {"orderable": false, "aTargets": [0]}// 制定列不参与排序
+            ]
+        });
+        function image_del(obj, id) {
+            layer.confirm('确认要提升为代理吗？', function (index) {
+                $.ajax({
+                    type: 'POST',
+                    url: "{:url('admin/client/promote')}",
+                    data: {id: id},
+                    dataType: 'json',
+                    success: function (data) {
+                        $(obj).parents("tr").remove();
+                        layer.msg('已提升!', {icon: 1, time: 1000});
+                    },
+                    error: function (data) {
+                        layer.msg('提升失败!', {icon: 1, time: 1000});
+                    },
+                });
+            });
+        }
+
+
+    </script>
+</body>
+</html>

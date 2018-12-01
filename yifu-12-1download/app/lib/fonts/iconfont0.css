@@ -1,0 +1,39 @@
+
+@font-face {font-family: "Ionicons";
+  src: url('iconfont.eot'); /* IE9*/
+  src: url('iconfont.eot#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff') format('woff'),
+  url('iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+ .icon {
+  font-family:"Ionicons" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} 
+
+
+.ion-md-heyue:before { content: "\e602"; }
+.ion-ios-heyue:before { content: "\e602"; }
+.ion-ios-heyue-outline:before { content: "\e602"; }
+.ion-md-jiaoyi:before { content: "\e603"; }
+.ion-ios-jiaoyi:before { content: "\e603"; }
+.ion-ios-jiaoyi-outline:before { content: "\e603"; }
+.ion-md-zijin:before { content: "\e606"; }
+.ion-ios-zijin:before { content: "\e606"; }
+.ion-ios-zijin-outline:before { content: "\e606"; }
+.ion-md-fenshitu:before { content: "\e607"; }
+.ion-ios-fenshitu:before { content: "\e607"; }
+.ion-ios-fenshitu-outline:before { content: "\e607"; }
+.ion-md-tiaojiandan:before { content: "\e608"; }
+.ion-ios-tiaojiandan:before { content: "\e608"; }
+.ion-ios-tiaojiandan-outline:before { content: "\e608"; }
+.ion-md-pankou:before { content: "\e609"; }
+.ion-ios-pankou:before { content: "\e609"; }
+.ion-ios-pankou-outline:before { content: "\e609"; }
+.ion-md-Kxian:before { content: "\e60a"; }
+.ion-ios-Kxian:before { content: "\e60a"; }
+.ion-ios-Kxian-outline:before { content: "\e60a"; }

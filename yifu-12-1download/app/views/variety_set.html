@@ -1,0 +1,39 @@
+<ion-view view-title="添加自选合约" class="back_ec">
+	<header class="header">
+		<img src="img/zuo.png" class="left_img" ng-click="back()" />
+		<b>品种默认参数设置</b>
+	</header>
+	<ion-content class="top add_contract_box" overflow-scroll="true">
+		<div class="add_contract_top no_shadow">
+			<ul>
+				<li ng-class="{true:'li_select',false:''}[l_id==1]" ng-click="navTap(1)">能源中心</li>
+				<li ng-class="{true:'li_select',false:''}[l_id==2]" ng-click="navTap(2)">能源中心</li>
+				<li ng-class="{true:'li_select',false:''}[l_id==3]" ng-click="navTap(3)">能源中心</li>
+				<li ng-class="{true:'li_select',false:''}[l_id==4]" ng-click="navTap(4)">能源中心</li>
+				<li ng-class="{true:'li_select',false:''}[l_id==5]" ng-click="navTap(5)">能源中心</li>
+				<li ng-class="{true:'li_select',false:''}[l_id==6]" ng-click="navTap(6)">能源中心</li>
+				<li ng-class="{true:'li_select',false:''}[l_id==7]" ng-click="navTap(7)">能源中心</li>
+				<li ng-class="{true:'li_select',false:''}[l_id==8]" ng-click="navTap(8)">能源中心</li>
+				<li ng-class="{true:'li_select',false:''}[l_id==9]" ng-click="navTap(9)">能源中心</li>
+			</ul>
+		</div>
+		<div class="variety_set_box">
+			<ul>
+				<li>
+					<span>品种</span>
+					<span>手数</span>
+					<span>价格类型</span>
+					<span>超价点</span>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<span>原油</span>
+					<span>1</span>
+					<span>对手价</span>
+					<span>1</span>
+				</li>
+			</ul>
+		</div>
+	</ion-content>
+</ion-view>

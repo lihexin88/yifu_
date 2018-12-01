@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="referrer" content="never">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+		<title>恒瑞国际</title>
+		<link rel="stylesheet" type="text/css" href="lib/css/ionic.css">
+		<!--日期插件-->
+		<link rel="stylesheet" type="text/css" href="css/lCalendar.css" />
+		<link rel="stylesheet" type="text/css" href="css/layer.css">
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="lib/css/my-picker.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mobileSelect.css"/>
+		<link rel="stylesheet" type="text/css" href="lib/fonts/iconfont0.css"/>
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/js/ionic.bundle.min.js"></script>
+
+		<!--城市选择-->
+		<script type="text/javascript" src="js/ionic-citypicker.min.js"></script>
+		<!--弹出层-->
+		<script src="layui/layui.all.js" type="text/javascript" charset="utf-8"></script>
+		<!--折线图-->
+		<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--日期控件-->
+		<script src="js/ionic-datepicker.bundle.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/lCalendar.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--分时图-->
+		<script src="js/controller/time_line.js" type="text/javascript" charset="utf-8"></script>
+		<!--mypicker-->
+		<!--<script src="lib/js/my-picker.js" type="text/javascript" charset="utf-8"></script>-->
+		
+		<!--Mobile-Picker-->
+		<script src="js/mobileSelect.js" type="text/javascript" charset="utf-8"></script>
+		
+		<!--Picker-->
+		<script src="lib/js/picker.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+
+	<body ng-app="myApp">
+		<ion-nav-view></ion-nav-view>
+		<!--底部键盘追加位置  start-->
+		<div class="bot_modal"></div>
+		<!--底部键盘追加位置  end-->
+		<!--主菜单 start-->
+		<div class="right_modal_mask"></div>
+		<div class="right_modal">
+			<div class="d_shadow"></div>
+			<div class="d_shadow d_shadow0"></div>
+			<div class="d_menu">
+				<div class="d_title">主菜单</div>
+				<ul>
+					<li onclick="toLink(1)">
+						<img src="img/z1.png"/>
+						<span>系统设置</span>
+					</li>
+					<li onclick="show()">
+						<img src="img/z2.png"/>
+						<span>常用指标</span>
+					</li>
+					<li onclick="toLink(2)">
+						<img src="img/z3.png"/>
+						<span>云端条件单</span>
+					</li>
+					<li onclick="toLink(3)">
+						<img src="img/z4.png"/>
+						<span>云端止损单</span>
+					</li>
+					<li onclick="toLink(4)">
+						<img src="img/z5.png"/>
+						<span>历史账单查询</span>
+					</li>
+					<li onclick="toLink(5)">
+						<img src="img/z6.png"/>
+						<span>银期转账</span>
+					</li>
+				</ul>
+				<ul>
+					<li onclick="toLink(6)">
+						<img src="img/z7.png"/>
+						<span>修改交易密码</span>
+					</li>
+					<li onclick="toLink(7)">
+						<img src="img/z8.png"/>
+						<span>关于</span>
+					</li>
+					<li onclick="toLink(8)">
+						<img src="img/z9.png"/>
+						<span>问题反馈</span>
+					</li>
+					<li onclick="exit()">
+						<img src="img/z10.png"/>
+						<span>退出登录</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function toLink(i){
+				$(".right_modal_mask").css("display","none");
+				$(".right_modal").css("display","none");
+				$(".right_modal").css("right","-8.5rem");
+				if(i==1){
+					window.location.href="#/setting";					
+				}else if(i==2){
+					window.location.href="#/cloud_condition";
+				}else if(i==3){
+					window.location.href="#/cloud_stop_loss";
+				}else if(i==4){
+					window.location.href="#/order_history";
+				}else if(i==5){
+					
+				}else if(i==6){
+					window.location.href="#/forget_pass";
+				}else if(i==7){
+					window.location.href="#/about";
+				}else if(i==8){
+					
+				}
+			}
+			function exit(){
+				layer.confirm('是否退出登录？', {
+					title: "",
+					closeBtn: 0,
+					btn: ['确定', '取消'],
+				}, function(index) {
+					//按钮【按钮一】的回调
+					layer.close(index);
+					$(".right_modal_mask").css("display","none");
+					$(".right_modal").css("display","none");
+					$(".right_modal").css("right","-8.5rem");
+					sessionStorage.removeItem("token");
+					window.location.href="#/login";
+				}, function(index) {
+					//按钮【按钮二】的回调
+					layer.close(index);
+				});
+			}
+		</script>
+		<!--主菜单  end-->
+		<!--主菜单--常用指标    start-->
+		<div class="target_modal_mask"></div>
+		<div class="target_modal">
+			<div>
+				<div class="ov_a d_title">
+					<span class="f_l">
+						<img src="img/z2.png"/>
+						<span>请选择指标</span>
+					</span>
+					<span class="f_r iconfont icon-cuohao" onclick="hide()"></span>
+				</div>
+				<div class="d_con">
+					<div class="f_l d_left">
+						<span class="s_select">趋势指标</span>
+						<span>量仓指标</span>
+						<span>摆动指标</span>
+					</div>
+					<div class="f_r d_right">
+						<div>
+							<span>MA</span>
+							<span>EMA</span>
+						</div>
+						<div>
+							<span>MV</span>
+						</div>
+						<div>
+							<span>MACD</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--主菜单--常用指标    end-->
+		<script type="text/javascript">
+			$(".right_modal_mask").on("click",function(){
+				$(".right_modal_mask").fadeOut();
+				$(".right_modal").animate({
+					right:"-8.8rem"
+				},300,function(){
+					$(".right_modal").hide();
+				})
+			})
+			$(".target_modal .d_left span").on("click",function(){
+				$(this).addClass("s_select").siblings("span").removeClass("s_select");
+				$(".target_modal .d_right>div").eq($(this).index()).show().siblings("div").hide();
+			})
+			$(".target_modal .d_right>div>span").on("click",function(){
+				$(this).toggleClass("s_select");
+			})
+			function show(){
+				$(".target_modal_mask").show();
+				$(".target_modal").show();
+			}
+			function hide(){
+				$(".target_modal_mask").hide();
+				$(".target_modal").hide();
+			}
+			var arr1=[];
+			var arr2=[];
+			var arr3=[];
+			
+			for(let i=0;i<24;i++){
+				if(i<10){
+					i="0"+i;
+				}
+				arr1.push(i+"时")
+			}
+			for(let i=0;i<60;i++){
+				if(i<10){
+					i="0"+i;
+				}
+				arr2.push(i+"分")
+			}
+			for(let i=0;i<60;i++){
+				if(i<10){
+					i="0"+i;
+				}
+				arr3.push(i+"秒")
+			}
+			
+			//myPicker插件
+//			window._picker = new myPicker({
+//				isPerspective:false,
+//				title:"时间选择",
+//			    cols:[{
+//			        options:arr1
+//			    },{
+//			        options:arr2
+//			    },{
+//			        options:arr3
+//			    }],
+//			    onOkClick:function(o){
+//			    	console.log(o)
+//			    }
+//			})
+//			window._picker.show();
+
+
+
+
+
+		</script>
+		<!--路由-->
+		<script type="text/javascript" src="js/controller/app.js"></script>
+		<!--控制器-->
+		<script type="text/javascript" src="js/controller/indexCtr.js"></script>
+		
+		<div class="d_toast">
+			<div class="toast_mask"></div>
+			<div class="toast_con">
+				<div>
+					<div>
+						<span class="iconfont icon-jinggao1"></span>
+					</div>
+					<div class="toast_msg"></div>
+				</div>
+			</div>
+		</div>
+		<div class="d_tip"></div>
+	</body>
+
+</html>

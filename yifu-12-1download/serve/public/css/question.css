@@ -1,0 +1,204 @@
+.navTab {
+    width: 320px;
+    height: 60px;
+    margin: 70px auto -40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navTab button {
+    width: 130px;
+    height: 40px;
+    color: #666;
+    border-radius: 24px;
+    border: 2px solid #f60;
+    text-align: center;
+    padding: 0;
+    font-size: 15px;
+    background-color: #eee;
+}
+.pitchTab {
+    color: #fff!important;
+    background-color: #f60!important;
+}
+.questionTitle {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.questionType {
+    margin-bottom: 30px;
+}
+.questionType select {
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #444;
+    padding: 8px 10px;
+    outline: none;
+}
+.content {
+    width: 99%;
+    height: 150px;
+    font-size: 13px;
+    line-height: 24px;
+    color: #333;
+    text-indent: 1rem;
+    padding-top: 10px;
+    resize: none;
+    border: 1px solid #bbb;
+    margin-bottom: 30px;
+}
+.yourNum {
+    margin-bottom: 10px;
+}
+.yourNum input {
+    width: 100%;
+    height: 35px;
+    color: #333;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    line-height: 34px;
+    text-indent: 20px;
+    font-size: 14px;
+}
+.numHint {
+    padding-left: 5px;
+    color: #999;
+    font-size: 14px;
+}
+.questionBtn {
+    width: 280px;
+    height: 50px;
+    margin: 50px auto 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.questionBtn button {
+    height: 40px;
+    padding: 0 30px;
+    font-size: 16px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 6px;
+    border: 2px solid #f60;
+}
+.resetBtn {
+    color: #f60;
+    background: #fff;
+}
+.resetBtn:hover {
+    color: #fff;
+    background-color: #f60;
+}
+.submitBtn {
+    color: #fff;
+    background-color: #f60;
+}
+.submitBtn:hover {
+    background-color: #E35D03;
+}
+.feedback_box {
+    width: 1200px;
+    min-height: 800px;
+    padding: 20px 50px 0;
+    margin: 90px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    position: relative;
+}
+.feedback form {
+    overflow-x: auto;
+}
+.table {
+    min-width: 750px;
+}
+.table thead tr th {
+    text-align: center;
+    background-color: #eee;
+    border-bottom: none;
+    font-weight: normal;
+}
+.table tbody tr {
+    text-align: center;
+}
+.table>tbody>tr>td:nth-child(6) {
+    width: 10%;
+    color: #175FBC;
+    cursor: pointer;
+}
+.noRecord {
+    text-align: center;
+}
+.modal-content {
+    width: 700px;
+    top: 110px;
+    margin: 0 auto;
+}
+.modal-title {
+    text-align: center;
+}
+.modal-body, .modal-body ul {
+    overflow: hidden;
+}
+.modal-body ul li {
+    width: 28%;
+    margin-bottom: 20px;
+    float: left;
+    border-bottom: 1px solid #ddd;
+    margin-right: 5%;
+    padding-bottom: 1px;
+    line-height: 30px;
+}
+.detailBox {
+    margin-top: 40px;
+}
+.detailBox p {
+    margin: 0 0 10px;
+}
+.detailBox textarea {
+    width: 100%;
+    min-height: 120px;
+    line-height: 26px;
+    color: #333;
+    padding: 15px 30px;
+    font-size: 14px;
+    background: #f3f3f3;
+    border-radius: 6px;
+    border: none;
+    resize: none;
+}
+.btnqure {
+    background: transparent!important;
+    border: 1px solid #ccc;
+    padding: 5px 25px;
+    color: #0099FF;
+    font-size: 13px;
+}
+
+@media screen and (max-width: 1200px){
+    .feedback_box {
+        width: 90%;
+    }
+}
+@media screen and (max-width: 768px){
+    .modal-content {
+        width: 400px;
+    }
+    .modal-body ul li {
+        width: 45%;
+    }
+}
+@media screen and (max-width: 470px){
+    .modal-content {
+        width: 300px;
+    }
+    .modal-body ul li {
+        width: 100%;
+        margin: 0;
+    }
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {include file="public/meta" /}
+
+    {include file="public/link" /}
+
+</head>
+
+<body data-type="index" class="theme-white">
+
+<div class="am-g tpl-g">
+
+    {include file="public/header" /}
+
+    {include file="public/left" /}
+
+    {include file="public/content_top" /}
+
+    <ol class="am-breadcrumb">
+
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+
+        <li><a href="#">内容管理</a></li>
+
+        <li class="am-active">防骗公告</li>
+
+    </ol>
+
+    <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+
+    <div class="widget-body widget-body-lg am-fr">
+
+        <div class="am-scrollable-horizontal">
+
+            <table class="{$table}">
+
+                <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>标题</th>
+                    <th>所属类别</th>
+                    <th>发布时间</th>
+                    <th>操作</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody id="list">
+
+                 {volist name="list" id="vo" empty="$empty"}
+
+                <tr class="text-c">
+                    <td>{$vo.id}</td>
+                    <td><a href="notice_edit.html?id={$vo.id}">{$vo.title}</a></td>
+                    {if condition="$vo['type'] == 1"}
+                    <td>防骗声明</td>
+                    {elseif  condition="$vo['type'] == 2"}
+                    <td>关于我们</td>
+                    {elseif  condition="$vo['type'] == 3"}
+                    <td>条款</td>
+                    {/if}
+                    <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+                    <td>
+                        <a href="notice_edit.html?id={$vo.id}&a={$a}&b={$b}" class="am-btn am-btn-success am-btn-xs">修改</a>
+                    </td>
+                </tr>
+
+                {/volist}              
+
+                </tbody>
+
+            </table>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+{include file="public/foot" /}
+
+<script type="text/javascript">
+
+    function del(id) {
+        if (confirm("确定要删除吗？")) {
+            $.ajax({
+            url: "{:url('Article/del')}",
+            data: {id:id},
+            type: "post",
+            success: function (r) {
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    $(function () {
+
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+    
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+---------------------------------------------------------------
+[ 2018-10-24T20:09:03+08:00 ] 123.160.173.85 GET /
+[ info ] yfserve.bjfable.com/ [运行时间：0.064073s][吞吐率：15.61req/s] [内存消耗：1,130.96kb] [文件加载：73]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://47.75.93.6:8888/site/subdomain',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,sq;q=0.8',
+  'cookie' => 'yunsuo_session_verify=313405737c17616f7b0e758af1ed1740',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-24T20:18:24+08:00 ] 123.160.173.85 GET /
+[ info ] yfserve.bjfable.com/ [运行时间：0.005778s][吞吐率：173.08req/s] [内存消耗：1,107.71kb] [文件加载：73]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-24T20:18:24+08:00 ] 123.160.173.85 GET /favicon.ico
+[ info ] yfserve.bjfable.com/favicon.ico [运行时间：0.007162s][吞吐率：139.62req/s] [内存消耗：293.84kb] [文件加载：42]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://yfserve.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'yunsuo_session_verify=313405737c17616f7b0e758af1ed1740',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File

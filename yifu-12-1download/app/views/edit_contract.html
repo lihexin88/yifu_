@@ -1,0 +1,75 @@
+<ion-view view-title="恒瑞国际" class="back_ec contract_wrap">
+	<header class="header">
+		<img src="img/zuo.png" class="left_img" ng-click="back()" />
+		<b ng-click="showChoice()">管理自选合约</b>
+	</header>
+	<ion-content ng-click="hideModal()" class="top bg_black" overflow-scroll="true">
+		<div class="contract_box">
+			<div class="contract_title contract_title_w">
+				<table class="layui-table" lay-skin="nob">
+					<thead>
+						<tr>
+							<td>选择</td>
+							<td>合约名称</td>
+						</tr>
+					</thead>
+					<tbody class="f_c_yellow">
+						<tr ng-repeat="item in my_contracts track by $index" ng-class="{true:'select_tr',false:''}[t_id==item[item.length-1][0]]" on-hold="addSelf($event,item[item.length-1][0],$index)" ng-click="operate($event,$index)">
+							<td>
+								<span class="iconfont" ng-class="{true:'icon-iconfontxuanzhong1',false:'icon-selected'}[item[item.length-1][11]=='true']"></span>
+							</td>
+							<td>{{item[item.length-1][0]}}
+							<div class="d_select" ng-if="t_id==item[item.length-1][0]">
+								<button class="btn" ng-click="cancel($event)">取消收藏</button>
+							</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="contract_list contract_list_w">
+				<table class="layui-table" lay-skin="nob">
+					<thead>
+						<tr>
+							<td>最新价</td>
+							<td>涨跌</td>
+							<td>涨幅(%)</td>
+							<td>买一价</td>
+							<td>买一量</td>
+							<td>卖一价</td>
+							<td>卖一量</td>
+							<td>持仓量</td>
+							<td>成交量</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in my_contracts track by $index"  ng-class="{true:'select_tr',false:''}[t_id==item[item.length-1][0]]" on-hold="addSelf($event,item[item.length-1][0],$index)" ng-click="operate($event,$index)">
+							<td ng-class="item[item.length-1][10]">{{item[item.length-1][1]}}</td>
+							<td ng-class="item[item.length-1][10]">{{item[item.length-1][2]}}</td>
+							<td ng-class="item[item.length-1][10]">{{item[item.length-1][3]}}</td>
+							<td ng-class="item[item.length-1][10]">{{item[item.length-1][4]}}</td>
+							<td>{{item[item.length-1][5]}}</td>
+							<td ng-class="item[item.length-1][10]">{{item[item.length-1][6]}}</td>
+							<td>{{item[item.length-1][7]}}</td>
+							<td>{{item[item.length-1][8]}}</td>
+							<td>{{item[item.length-1][9]}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div style="height: 5rem;">
+
+		</div>
+		<div class="bot_edit">
+			<div class="ov_a">
+				<span class="f_l" ng-class="{true:'f_c_spe',false:''}[spe_id==1]" ng-click="doAll()">全选</span>
+				<span class="f_l" ng-class="{true:'f_c_spe',false:''}[spe_id==2]" ng-click="doCancel()">取消</span>
+				<span class="f_r" ng-click="deleteAll()">
+					<i class="iconfont icon-shanchu"></i>
+				</span>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

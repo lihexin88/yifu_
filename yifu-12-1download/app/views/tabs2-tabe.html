@@ -1,0 +1,311 @@
+<ion-view view-title="恒瑞国际" class="bg_black deal_wrap">
+	<header class="header">
+		<img src="img/zuo.png" class="left_img" ng-click="back()" />
+		<div class="order_top">
+			<span>下单板</span>
+			<span class="f_c_yellow">{{top_name}}</span>
+		</div>
+		<img class="right_img" src="img/set.png" ng-click="showMenu()"/>
+	</header>
+	<ion-content class="top" overflow-scroll="true" ng-click="reset($event)">
+		<div class="top_info ov_a">
+			<span class="f_l">动态权益：0.00</span>
+			<span class="f_l">可用：0.00</span>
+			<span class="f_r">风险：0%</span>
+		</div>
+		<div class="market_info ov_a">
+			<div class="f_l">
+				<div class="d_border" ng-class="{true:'d_border1',false:''}[active_id==1]" ng-click="select(1,$event)">
+					<span class="f_l">{{active_name}}</span>
+					<span class="f_r iconfont icon-iconfonticonfontsousuo1"></span>
+				</div>
+				<div class="ov_a">
+					<div class="f_l d_border" ng-class="{true:'d_border1',false:''}[active_id==2]" ng-click="select(2,$event)">
+						<span class="f_l">手数</span>
+						<span class="f_r">{{left_hand}}</span>
+					</div>
+					<div  class="f_r d_border pos_r" ng-class="{true:'d_border1',false:''}[active_id==3]" ng-click="select(3,$event)">
+						<span class="f_l">价格</span>
+						<span class="f_r">{{leftc_price}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="f_r d_border">
+				<div>
+					<span class="f_l">新&nbsp;&nbsp;</span>
+					<span class="f_l">--</span>
+					<span class="f_r">0</span>
+				</div>
+				<div>
+					<span class="f_l">卖&nbsp;&nbsp;</span>
+					<span class="f_l">--</span>
+					<span class="f_r">0</span>
+				</div>
+				<div>
+					<span class="f_l">买&nbsp;&nbsp;</span>
+					<span class="f_l">--</span>
+					<span class="f_r">0</span>
+				</div>
+			</div>
+		</div>
+		<div class="d_btn ov_a">
+			<div class="f_l" ng-click="makeDeal(1)">
+				<span>526.7</span>
+				<span>买多</span>
+			</div>
+			<div ng-click="makeDeal(2)">
+				<span>526.7</span>
+				<span>卖空</span>
+			</div>
+			<div class="f_r" ng-click="makeDeal(3)">
+				<span>526.7</span>
+				<span>平仓</span>
+			</div>
+		</div>
+		<div class="deal_nav ov_a">
+			<span ng-class="{true:'s_select',false:''}[c_id==1]" ng-click="navTap(1)">持仓</span>
+			<span ng-class="{true:'s_select',false:''}[c_id==2]" ng-click="navTap(2)">挂单</span>
+			<span ng-class="{true:'s_select',false:''}[c_id==3]" ng-click="navTap(3)">委托</span>
+			<span ng-class="{true:'s_select',false:''}[c_id==4]" ng-click="navTap(4)">成交</span>
+		</div>
+		<div class="deal_list">
+			<div ng-if="c_id==1">
+				<ul class="ul_left">
+					<li>合约名称</li>
+					<li ng-repeat="item in u_deals">{{item.contract}}</li>
+				</ul>
+				<div class="ul_right">
+					<ul>
+						<li>
+							<span class="s_w0">买卖</span>
+							<span class="s_w1">总仓</span>
+							<span class="s_w1">浮盈</span>
+							<span class="s_w1">可平</span>
+							<span class="s_w1">今仓</span>
+							<span class="s_w2">最新价</span>
+							<span class="s_w2">开仓均价</span>
+							<span class="s_w2">持仓均价</span>
+						</li>
+						<li ng-repeat="item in u_deals">
+							<span class="s_w0">{{item.total}}</span>
+							<span class="s_w1">{{item.total}}</span>
+							<span class="s_w1">{{item.total}}</span>
+							<span class="s_w1">{{item.total}}</span>
+							<span class="s_w1">{{item.today}}</span>
+							<span class="s_w2">{{item.total}}</span>
+							<span class="s_w2">{{item.total}}</span>
+							<span class="s_w2">{{item.total}}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div ng-if="c_id==2">
+				<ul class="ul_left">
+					<li>合约名称</li>
+					<li ng-repeat="item in u_deals">{{item.contract}}</li>
+				</ul>
+				<div class="ul_right">
+					<ul>
+						<li>
+							<span class="s_w0">买卖</span>
+							<span class="s_w0">开平</span>
+							<span class="s_w1">委托量</span>
+							<span class="s_w2">委托价</span>
+							<span class="s_w1">成交量</span>
+							<span class="s_w1">剩余量</span>
+							<span class="s_w2">状态</span>
+							<span class="s_w2">委托时间</span>
+							<span class="s_w2">报单编号</span>
+						</li>
+						<li ng-repeat="item in u_deals">
+							<span class="s_w0">{{item.direction}}</span>
+							<span class="s_w0">{{item.mold}}</span>
+							<span class="s_w1">{{item.number}}</span>
+							<span class="s_w2">{{item.number}}</span>
+							<span class="s_w1">{{item.finish}}</span>
+							<span class="s_w1">{{item.surplus}}</span>
+							<span class="s_w2">{{item.status}}</span>
+							<span class="s_w2">{{item.time}}</span>
+							<span class="s_w2">{{item.order}}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div ng-if="c_id==3">
+				<ul class="ul_left">
+					<li>合约名称</li>
+					<li ng-repeat="item in u_deals">{{item.contract}}</li>
+				</ul>
+				<div class="ul_right">
+					<ul>
+						<li>
+							<span class="s_w0">买卖</span>
+							<span class="s_w0">开平</span>
+							<span class="s_w1">委托量</span>
+							<span class="s_w2">委托价</span>
+							<span class="s_w1">成交量</span>
+							<span class="s_w2">状态</span>
+							<span class="s_w2">委托时间</span>
+							<span class="s_w2">报单编号</span>
+							<span class="s_w3">状态信息</span>
+						</li>
+						<li ng-repeat="item in u_deals">
+							<span class="s_w0">{{item.direction}}</span>
+							<span class="s_w0">{{item.mold}}</span>
+							<span class="s_w1">{{item.number}}</span>
+							<span class="s_w2">{{item.number}}</span>
+							<span class="s_w1">{{item.finish}}</span>
+							<span class="s_w2">{{item.status}}</span>
+							<span class="s_w2">{{item.time}}</span>
+							<span class="s_w2">{{item.order}}</span>
+							<span class="s_w3">{{item.status}}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div ng-if="c_id==4">
+				<ul class="ul_left">
+					<li>合约名称</li>
+					<li ng-repeat="item in u_deals">{{item.contract}}</li>
+				</ul>
+				<div class="ul_right">
+					<ul>
+						<li>
+							<span class="s_w0">买卖</span>
+							<span class="s_w0">开平</span>
+							<span class="s_w2">成交价</span>
+							<span class="s_w1">成交量</span>
+							<span class="s_w2">成交时间</span>
+							<span class="s_w2">报单编号</span>
+							<span class="s_w2">成交编号</span>
+						</li>
+						<li ng-repeat="item in u_deals">
+							<span class="s_w0">{{item.direction}}</span>
+							<span class="s_w0">{{item.mold}}</span>
+							<span class="s_w2">{{item.price}}</span>
+							<span class="s_w1">{{item.number}}</span>
+							<span class="s_w2">{{item.time}}</span>
+							<span class="s_w2">{{item.id}}</span>
+							<span class="s_w2">{{item.id}}</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	<!--底部虚拟键盘-->
+	<!--种类选择-->
+	<!--<div class="user_keyboard user_keyboard1">
+		<div>
+			<div class="top_head1">
+				<span class="f_l">从当天列表中选择合约</span>
+				<img class="f_r" src="img/jianpan.png"/>
+			</div>
+			<div class="kb_con1">
+				<span>鸡蛋1901</span>
+				<span>鸡蛋1901</span>
+				<span>鸡蛋1901</span>
+				<span>鸡蛋1901</span>
+				<span>鸡蛋1901</span>
+				<span>鸡蛋1901</span>
+				<span>鸡蛋1901</span>
+			</div>
+		</div>
+	</div>-->
+	
+	<!--手数-->
+	<!--<div class="user_keyboard user_keyboard2">
+		<div>
+			<div class="top_head2">
+				<div class="ov_a">					
+					<span class="f_l">手数输入</span>
+					<img class="f_r" src="img/jianpan.png"/>
+				</div>
+				<div>最大开仓手数：买0，卖0</div>
+			</div>
+			<div class="kb_con2">
+				<table class="layui-table">
+					<tbody>
+						<tr>
+							<td class="kb_num">1</td>
+							<td class="kb_num">2</td>
+							<td class="kb_num">3</td>
+							<td class="td kb_add" rowspan="2">+</td>
+						</tr>
+						<tr>
+							<td class="kb_num">4</td>
+							<td class="kb_num">5</td>
+							<td class="kb_num">6</td>
+						</tr>
+						<tr>
+							<td class="kb_num">7</td>
+							<td class="kb_num">8</td>
+							<td class="kb_num">9</td>
+							<td class="td kb_decrease" rowspan="2">-</td>
+						</tr>
+						<tr>
+							<td class="kb_num" colspan="2">0</td>
+							<td class="td kb_delete">
+								<span class="iconfont icon-jianpanshanchu"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>-->
+	<!--对手价-->
+	<!--<div class="user_keyboard user_keyboard3">
+		<div>
+			<div class="top_head3">
+				<div class="ov_a">					
+					<span class="f_l">价格输入</span>
+					<img class="f_r" src="img/jianpan.png"/>
+				</div>
+				<div class="ov_a">
+					<span class="f_l">涨停：4090&nbsp;&nbsp;&nbsp;跌停：4090</span>
+					<span class="f_r">最小变动：1</span>
+				</div>
+			</div>
+			<div class="kb_con3 ov_a">
+				<div class="kb_left f_l">
+					<span>对手</span>
+					<span>买一</span>
+					<span>卖一</span>
+					<span>超价</span>
+					<span>市价</span>
+				</div>
+				<div class="kb_mid f_l">
+					<div>
+						<span>1</span>
+						<span>2</span>
+						<span>3</span>
+					</div>
+					<div>
+						<span>4</span>
+						<span>5</span>
+						<span>6</span>
+					</div>
+					<div>
+						<span>7</span>
+						<span>8</span>
+						<span>9</span>
+					</div>
+					<div>
+						<span>.</span>
+						<span>0</span>
+						<span class="d_icon">
+							<span class="iconfont icon-jianpanshanchu"></span>
+						</span>
+					</div>
+				</div>
+				<div class="kb_right f_l">
+					<span>最新</span>
+					<span class="calc">+</span>
+					<span class="calc">-</span>
+				</div>
+			</div>
+		</div>
+	</div>-->
+	</ion-content>
+	<div id="com_picker">点我选择</div>
+</ion-view>

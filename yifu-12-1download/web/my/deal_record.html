@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>逸富 - 行情列表</title>
+		<link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" title="main" href="../css/main.css" />
+		<link rel="stylesheet alternate" type="text/css" title="main_light" href="../css/main_light.css" />
+		<script type="text/javascript">
+			function set_style(title) {
+				var i, a, main;
+				if(title) {
+					for(i = 0; a = document.getElementsByTagName('link')[i]; i++) {
+						if(a.getAttribute('rel').indexOf('style') != -1 && a.getAttribute('title')) {
+							a.disabled = true;
+							if(a.getAttribute('title') == title) {
+								window.localStorage.setItem("color", a.getAttribute('title'));
+								a.disabled = false;
+							}
+						}
+					}
+				}
+			};
+			var color = localStorage.getItem("color");
+			if(color == "main") {
+				set_style('main');
+			} else if(color == "main_light") {
+				set_style('main_light');
+			}
+		</script>
+	</head>
+
+	<body style="background: transparent;">
+		<div class="deal_record" data="">
+			<div class="deal_record_tab common_table">
+				<table border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th>合约代码</th>
+						<th>方向</th>
+						<th>开平</th>
+						<th>成交手数</th>
+						<th>手续费</th>
+						<th>成交价</th>
+						<th>成交编号</th>
+						<th>报单编号</th>
+						<th>成交日期</th>
+						<th>成交时间</th>
+						<th>成交类型</th>
+						<th>投保</th>
+						<th>操作员</th>
+					</tr>
+					<tbody id="deal_record_tab">
+						<!--<tr>
+							<td class="yellow">b1905</td>
+							<td class="red">买</td>
+							<td class="red">开仓</td>
+							<td class="red">错单</td>
+							<td class="green">300</td>
+							<td class="green">39</td>
+							<td class="green">0</td>
+							<td class="green">0.00</td>
+							<td class="green">0.00</td>
+							<td class="red">[逸富] 下单错误</td>
+							<td class="red">投机</td>
+							<td class="yellow">16:27:36</td>
+							<td class="white">qq123456</td>
+						</tr>-->
+					</tbody>
+					<!--<tr>
+						<td class="yellow">b1905</td>
+						<td class="red">买</td>
+						<td class="red">开仓</td>
+						<td class="red">错单</td>
+						<td class="green">300</td>
+						<td class="green">39</td>
+						<td class="green">0</td>
+						<td class="green">0.00</td>
+						<td class="green">0.00</td>
+						<td class="red">[逸富] 下单错误</td>
+						<td class="red">投机</td>
+						<td class="yellow">16:27:36</td>
+						<td class="white">qq123456</td>
+					</tr>-->
+					<!--<tr class="special_tr">
+						<td>
+							<span>
+									<small>N</small>
+									<small>0</small>
+								</span>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<span>
+									<small>∑</small>
+									<small>0</small>
+								</span>
+						</td>
+						<td>
+							<span>
+									<small>∑</small>
+									<small>0</small>
+								</span>
+						</td>
+						<td></td>
+						<td>
+							<span>
+									<small>∑</small>
+									<small>0.00</small>
+								</span>
+						</td>
+						<td>
+							<span>
+									<small>∑</small>
+									<small>0.00</small>
+								</span>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>-->
+				</table>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function deal_list() {
+			$.post(globalUrl, {
+				nozzle: "deal_info",
+				token: localStorage.getItem("token")
+			}, function(res) {
+				add_entrust(res.data);
+			});
+		};
+		deal_list();
+		function add_entrust(data_arr) {
+			var color_class = "white";
+			$(".updata_entrust").remove();
+			for(var i = 0; i < data_arr.length; i++) {
+				var html = '<tr class="updata_entrust">' +
+					'<td class="yellow">' + data_arr[i].contract + '</td>' + //合约代码
+					'<td class="red">' + data_arr[i].direction + '</td>' + //方向
+					'<td class="red">' + data_arr[i].mold + '</td>' + //开平
+					'<td class="red">' + data_arr[i].number + '</td>' + //成交手数
+					'<td class="green">' + data_arr[i].fee + '</td>' + //手续费
+					'<td class="green">' + data_arr[i].price + '</td>' + //成交价
+					'<td class="green">ABCDEFG</td>' + //成交编号
+					'<td class="green">--</td>' + //报单编号
+					'<td class="green">' + data_arr[i].date + '</td>' + //成交日期
+					'<td class="red">' + data_arr[i].time + '</td>' + //成交时间
+					'<td class="red">--</td>' + //成交类型
+					'<td class="yellow">' + data_arr[i].pattern + '</td>' + //投保
+					'<td class="white">' + data_arr[i].name + '</td>' + //操作员
+					'</tr>';
+				$("#deal_record_tab").append(html);
+			}
+		};
+	</script>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>逸富 - 登录</title>
+		<link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<img src="img/login_back.png" class="position0" />
+			<div class="login_box position0">
+				<i class="back iconfont icon-icon-arrow-left2"></i>
+				<div class="login_wayBox login_input">
+					<div class="login_way">
+						<p class="login_wayact" type="1">行情登录</p>
+						<p type="2">交易登录</p>
+					</div>
+					<!--行情登录-->
+					<div class="login_mar login_cont">
+						<select class="service_type1" name="service_type1">
+							<!--<option value="电信07">电信07</option>
+							<option value="电信36">电信36</option>
+							<option value="电信31">电信31</option>
+							<option value="电信12">电信12</option>
+							<option value="电信26">电信26</option>-->
+						</select>
+						<input type="text" class="login_name1" />
+						<input class="mabom15 login_pass1" type="password" />
+						<p class="login_remember">
+							<input class="remember_type1" type="checkbox" />
+							<span>记住账户</span>
+							<!--<a class="forget">忘记密码</a>-->
+						</p>
+						<button class="matop25px transition login_btn1">登录</button>
+						<p class="login_nocont">
+							<!--没有帐号?-->
+							<!--<a class="register_btn">立即注册</a>-->
+						</p>
+					</div>
+					<!--行情登录 end-->
+					<!--交易登录-->
+					<div class="login_deal login_cont">
+						<select class="service_type2" name="">
+							<!--<option value="">电信</option>-->
+						</select>
+						<input class="login_name2" type="text" />
+						<input class="mabom15 login_pass2" type="password" />
+						<p class="login_remember">
+							<input class="remember_type2" type="checkbox" />
+							<span>记住账户</span>
+							<!--<a class="forget">忘记密码</a>-->
+						</p>
+						<button class="matop25px transition login_btn2">登录</button>
+						<p class="login_nocont">
+							<!--没有帐号?-->
+							<!--<a class="register_btn">立即注册</a>-->
+						</p>
+					</div>
+					<!--交易登录 end-->
+				</div>
+				<!--忘记密码-->
+				<div class="login_wayBox login_repass">
+					<div class="login_cont register_repass">
+						<p class="mabom25">忘记密码</p>
+						<input class="forget_phone" type="tel" maxlength="11" placeholder="请输入手机号" />
+						<input class="forget_pass" type="password" placeholder="输入新密码" />
+						<input class="forget_confirm" type="password" placeholder="再次输入新密码" />
+						<div class="get_code">
+							<input class="forget_code" type="text" placeholder="输入验证码" />
+							<button class="get_forgetcode">获取验证码</button>
+						</div>
+						<button class="matop25px transition forgot_btn">确定</button>
+					</div>
+				</div>
+				<!--忘记密码 end-->
+				<!--注册-->
+				<div class="login_wayBox register">
+					<div class="login_cont register_repass">
+						<p class="mabom25">注册</p>
+						<input class="register_phone" type="text" placeholder="输入手机号" />
+						<input class="register_pass" type="password" placeholder="输入登录密码" />
+						<input class="register_confirm" type="password" placeholder="再次输入登录密码" />
+						<div class="get_code">
+							<input class="register_code" type="text" placeholder="输入验证码" />
+							<button class="register_getcode">获取验证码</button>
+						</div>
+						<button class="matop25px transition register_click">确定</button>
+					</div>
+				</div>
+				<!--注册 end-->
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		localStorage.removeItem("book_show");
+	</script>
+	<!--<script type="text/javascript">
+		setInterval(function() {
+			$.post("http://yf.net/auto", function(res) {
+				console.log(res);
+			});
+		},500);
+	</script>-->
+
+</html>

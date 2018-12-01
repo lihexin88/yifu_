@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {include file="public/meta" /}
+        {include file="public/link" /}
+    </head>
+    <body data-type="index" class="theme-white">
+        <div class="am-g tpl-g">
+            {include file="public/header" /}
+            {include file="public/left" /}
+            {include file="public/content_top" /}
+            <ol class="am-breadcrumb">
+                <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+                <li><a href="../agents/index.html">代理管理</a></li>
+                <li><a href="#">佣金统计</a></li>
+            </ol>
+            <div class="widget am-cf">
+                <div class="am-form-inline" role="form">
+                                        <span>日期范围：</span>
+                    <div class="am-form-group ">
+                        <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+                               data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+                    </div>
+                    <div class="am-form-group ">
+                        <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker onfocus="this.blur()" value="{$arr.end_query}"/>
+                    </div>
+                    <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+                    <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+                </div>
+                <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+                <div class="widget-body widget-body-lg am-fr">
+                    <div class="am-scrollable-horizontal">
+                        <table class="{$table}">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>代理编号</th>
+                                    <th>业务名称</th>
+                                    <th>用户信息</th>
+                                    <th>股票代码</th>
+                                    <th>股票名称</th>
+                                    <th>点买金额</th>
+                                    <th>交易时间</th>
+                                    <th>平台收入</th>
+                                    <!-- <th>平台成本</th> -->
+                                    <!-- <th>平台毛利润</th> -->
+                                    <th>返佣金额</th>
+                                    <!-- <th>一级返佣</th> -->
+                                    <!-- <th>二级返佣</th> -->
+                                    <!-- <th>三级返佣</th> -->
+                                    <!-- <th>员工返佣</th> -->
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list">
+                                {volist name="list" id="vo" empty="$empty"}
+                                <tr>
+                                    <td>{$vo.id}</td>
+                                    <td>{$vo.number}</td>
+                                    {if condition="$vo.type eq 1"}
+                                    <td>递延费</td>
+                                    {/if}
+                                    <td>{$vo.real_name}({$vo.phone})</td>
+                                    <td>{$vo.code}</td>
+                                    <td>{$vo.name}</td>
+                                    <td>{$vo.buy_price * $vo.num}</td>
+                                    <td>{$vo.time}</td>
+                                    <td>{$vo.money}</td>
+                                    <!-- <td>0</td> -->
+                                    <!-- <td>0</td> -->
+                                    <td>{$vo.surplus}</td>
+                                    <!-- <td>0</td> -->
+                                    <!-- <td>0</td> -->
+                                    <!-- <td>0</td> -->
+                                    <!-- <td>0</td> -->
+                                    <td>{$vo.remark}</td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        <div class="am-pagination-left">{$page}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {include file="public/foot" /}
+        <script type="text/javascript">
+            function del() {
+                if (confirm("确定要删除吗？")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            function edit(obj, id) {
+                layer.confirm('确认要通过审核吗？', function (index) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{:url('index/Agents/pass')}",
+                        data: {id: id, edit_type: 1},
+                        dataType: 'json',
+                        success: function (data) {
+                            layer.msg('审核成功!', {icon: 1, time: 1000});
+                            window.location.href = "{:url('index/Agents/withdraw')}";
+                        },
+                        error: function (data) {
+                            layer.msg('审核失败!', {icon: 0, time: 1000});
+                        },
+                    });
+                });
+            }
+            function put(obj, id) {
+                layer.confirm('确认要驳回吗？', function (index) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{:url('index/Agents/pass')}",
+                        data: {id: id, edit_type: 0},
+                        dataType: 'json',
+                        success: function (data) {
+                            layer.msg('已驳回!', {icon: 1, time: 1000});
+                            window.location.href = "{:url('index/Agents/withdraw')}";
+                        },
+                        error: function (data) {
+                            layer.msg('驳回失败!', {icon: 0, time: 1000});
+                        },
+                    });
+                });
+            }
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+            function info_query() {
+                info();
+                $("#form").submit();
+            }
+            function info() {
+                $("input[name='start_query']").val($("input[name='start']").val());
+                $("input[name='end_query']").val($("input[name='end']").val());
+                $("input[name='phone']").val($("#phone").val());
+                        $("input[name='number']").val($("#number").val());
+                $("input[name='status']").val($("select[name='status']").val());
+            }
+            function clear_query() {
+                $("input[name='start_query']").val();
+                $("input[name='end_query']").val();
+                $("select[name='status']").val(-1);
+                $("input[name='phone']").val();
+                $("input[name='number']").val();
+                $("#form").submit();
+            }
+        </script>
+    </body>
+</html>

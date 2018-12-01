@@ -1,0 +1,3426 @@
+---------------------------------------------------------------
+[ 2018-11-13T08:38:20+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.425217s][吞吐率：2.35req/s] [内存消耗：1,483.18kb] [文件加载：82]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-13T08:38:39+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.038027s][吞吐率：26.30req/s] [内存消耗：1,570.09kb] [文件加载：86]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '53',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'login',
+  'phone' => '13300000001',
+  'password' => '123456',
+  'type' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000537s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001842s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  ( `phone` = '13300000001' OR `name` = '13300000001' OR `number` = '13300000001' )  AND `password` = 'e10adc3949ba59abbe56e057f20f883e' LIMIT 1 [ RunTime:0.000792s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] UPDATE `sn_user`  SET `last_time`=0,`login_time`=1542069519,`login_ip`='1.193.59.197',`token`='183826a66fd34b87cb6dbd2fea321b98'  WHERE  `id` = 1 [ RunTime:0.003652s ]
+---------------------------------------------------------------
+[ 2018-11-13T08:38:42+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014932s][吞吐率：66.97req/s] [内存消耗：1,590.63kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '62',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'find_user_config',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000462s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001885s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000614s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_config` [ RunTime:0.001421s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_config` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000486s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_config',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_config` WHERE  `uid` = 0 LIMIT 1 [ RunTime:0.000449s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_config',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T08:38:42+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.042986s][吞吐率：23.26req/s] [内存消耗：1,593.36kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '52',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market_lable.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'bourse',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000351s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_exchange` [ RunTime:0.001385s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_exchange` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.006188s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_exchange',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 13,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001416s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.020143s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001536s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000935s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_exchange` WHERE  `status` = :where_AND_status ORDER BY `sort` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:18+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014660s][吞吐率：68.21req/s] [内存消耗：1,590.63kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '62',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'find_user_config',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000471s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001612s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000366s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_config` [ RunTime:0.001633s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_config` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000544s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_config',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_config` WHERE  `uid` = 0 LIMIT 1 [ RunTime:0.000458s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_config',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:18+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014395s][吞吐率：69.47req/s] [内存消耗：1,593.36kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '52',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market_lable.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'bourse',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000381s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_exchange` [ RunTime:0.001427s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_exchange` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000266s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_exchange',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 13,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001312s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000216s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001238s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000215s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_exchange` WHERE  `status` = :where_AND_status ORDER BY `sort` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:19+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014980s][吞吐率：66.76req/s] [内存消耗：1,590.63kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '62',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'find_user_config',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000425s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001743s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000604s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_config` [ RunTime:0.001654s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_config` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000399s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_config',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_config` WHERE  `uid` = 0 LIMIT 1 [ RunTime:0.000289s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_config',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:19+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.015875s][吞吐率：62.99req/s] [内存消耗：1,593.36kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '52',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market_lable.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'bourse',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000581s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_exchange` [ RunTime:0.002707s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_exchange` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000357s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_exchange',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 13,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001363s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000224s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001210s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000207s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_exchange` WHERE  `status` = :where_AND_status ORDER BY `sort` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:21+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.012040s][吞吐率：83.06req/s] [内存消耗：1,590.63kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '62',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'find_user_config',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000383s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001580s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000484s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_config` [ RunTime:0.001419s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_config` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000242s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_config',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_config` WHERE  `uid` = 0 LIMIT 1 [ RunTime:0.000212s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_config',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:21+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.013999s][吞吐率：71.43req/s] [内存消耗：1,593.36kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '52',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market_lable.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'bourse',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000389s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_exchange` [ RunTime:0.001357s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_exchange` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000236s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_exchange',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 13,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001252s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000240s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001212s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000226s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_exchange` WHERE  `status` = :where_AND_status ORDER BY `sort` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:27+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014248s][吞吐率：70.19req/s] [内存消耗：1,590.63kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '62',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'find_user_config',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000373s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001723s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000327s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_config` [ RunTime:0.001490s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_config` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000279s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_config',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_config` WHERE  `uid` = 0 LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_config',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:27+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.016408s][吞吐率：60.95req/s] [内存消耗：1,593.36kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '52',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market_lable.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'bourse',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000429s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_exchange` [ RunTime:0.001417s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_exchange` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000312s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_exchange',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 13,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001569s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000529s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001458s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000262s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_exchange` WHERE  `status` = :where_AND_status ORDER BY `sort` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:35+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.020266s][吞吐率：49.34req/s] [内存消耗：1,738.37kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '58',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'variety',
+  'id' => '1',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000432s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001491s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1  AND `bourse` = 1 [ RunTime:0.000419s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001293s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND `bourse` = 1 [ RunTime:0.000943s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:36+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.012739s][吞吐率：78.50req/s] [内存消耗：1,585.74kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '58',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'variety',
+  'id' => '4',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000576s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001462s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000400s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001541s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000781s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:53+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.013291s][吞吐率：75.24req/s] [内存消耗：1,584.37kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '55',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/my/deal_record.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'deal_info',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000417s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001770s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000618s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_deal` [ RunTime:0.001670s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_deal` WHERE  `uid` = 1 ORDER BY `time` DESC [ RunTime:0.000439s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_deal',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 10,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_deal` WHERE  `uid` = :where_AND_uid ORDER BY `time` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:55+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.012149s][吞吐率：82.31req/s] [内存消耗：1,601.42kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/my/my_hold.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000495s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001646s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000391s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.001384s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.000308s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:55+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014666s][吞吐率：68.18req/s] [内存消耗：1,607.91kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '63',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/my/my_hold.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'find_repeal_order',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000506s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001616s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000459s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_entrust` [ RunTime:0.001446s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_entrust` WHERE  `uid` = 1  AND `status` = 0 [ RunTime:0.000420s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_entrust',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:55+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.012683s][吞吐率：78.85req/s] [内存消耗：1,584.37kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '55',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/my/deal_record.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'deal_info',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000620s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001693s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000396s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_deal` [ RunTime:0.001397s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_deal` WHERE  `uid` = 1 ORDER BY `time` DESC [ RunTime:0.000412s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_deal',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 10,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_deal` WHERE  `uid` = :where_AND_uid ORDER BY `time` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:56+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.013565s][吞吐率：73.72req/s] [内存消耗：1,610.55kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '58',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/my/entrustment.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'entrust_info',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000445s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001705s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000655s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_entrust` [ RunTime:0.001612s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_entrust` WHERE  `uid` = 1 ORDER BY `time` DESC [ RunTime:0.000459s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_entrust',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_entrust` WHERE  `uid` = :where_AND_uid ORDER BY `time` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:58+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.012480s][吞吐率：80.13req/s] [内存消耗：1,601.42kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/my/my_hold.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000370s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001617s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000469s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.001684s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.000315s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T09:12:58+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014784s][吞吐率：67.64req/s] [内存消耗：1,607.91kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '63',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/my/my_hold.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'find_repeal_order',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000437s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001669s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '183826a66fd34b87cb6dbd2fea321b98'  AND `status` = 1 LIMIT 1 [ RunTime:0.000388s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_entrust` [ RunTime:0.001484s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_entrust` WHERE  `uid` = 1  AND `status` = 0 [ RunTime:0.000471s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_entrust',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 11,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T09:13:15+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.015173s][吞吐率：65.91req/s] [内存消耗：1,593.36kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '52',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/market_lable.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'bourse',
+  'token' => '183826a66fd34b87cb6dbd2fea321b98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000375s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_exchange` [ RunTime:0.001411s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_exchange` WHERE  `status` = 1 ORDER BY `sort` DESC [ RunTime:0.000239s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_exchange',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 13,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001349s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000241s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001398s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND `bourse` = 4 [ RunTime:0.000276s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_exchange` WHERE  `status` = :where_AND_status ORDER BY `sort` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:06+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014754s][吞吐率：67.78req/s] [内存消耗：1,569.84kb] [文件加载：86]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '53',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'login',
+  'phone' => '13300000001',
+  'password' => '123456',
+  'type' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000643s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001675s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  ( `phone` = '13300000001' OR `name` = '13300000001' OR `number` = '13300000001' )  AND `password` = 'e10adc3949ba59abbe56e057f20f883e' LIMIT 1 [ RunTime:0.000493s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] UPDATE `sn_user`  SET `last_time`=0,`login_time`=1542076326,`login_ip`='1.193.59.197',`token`='a891e4998af53981caf555f4306cf6b1'  WHERE  `id` = 1 [ RunTime:0.003022s ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:07+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.007681s][吞吐率：130.19req/s] [内存消耗：1,530.59kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '22',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'protocol',
+  'type' => '2',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000390s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_protocol` [ RunTime:0.001424s ]
+[ sql ] [ SQL ] SELECT `content` FROM `sn_protocol` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000223s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_protocol',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:07+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.012188s][吞吐率：82.05req/s] [内存消耗：1,567.88kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '53',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'account',
+  'token' => 'a891e4998af53981caf555f4306cf6b1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000383s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001479s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'a891e4998af53981caf555f4306cf6b1'  AND `status` = 1 LIMIT 1 [ RunTime:0.000456s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001435s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:09+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.015396s][吞吐率：64.95req/s] [内存消耗：1,611.74kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '53',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'concern',
+  'token' => 'a891e4998af53981caf555f4306cf6b1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000441s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001533s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'a891e4998af53981caf555f4306cf6b1'  AND `status` = 1 LIMIT 1 [ RunTime:0.000365s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001497s ]
+[ sql ] [ SQL ] SELECT `concern` FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001428s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  ( `code` IN ('IC1810','IH0','T1812','IH1810','IC1903','IH1811','T1903','nf_HC1812','IF0','IC1812') OR `short` IN ('IC1810','IH0','T1812','IH1810','IC1903','IH1811','T1903','nf_HC1812','IF0','IC1812') ) [ RunTime:0.000432s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:09+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.011642s][吞吐率：85.89req/s] [内存消耗：1,637.01kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '19',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'futures_type',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000669s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001615s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1 [ RunTime:0.000367s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:12+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.012742s][吞吐率：78.48req/s] [内存消耗：1,601.58kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '56',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => 'a891e4998af53981caf555f4306cf6b1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000477s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001705s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'a891e4998af53981caf555f4306cf6b1'  AND `status` = 1 LIMIT 1 [ RunTime:0.000384s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.001411s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.000308s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:14+08:00 ] 61.148.244.45 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.016776s][吞吐率：59.61req/s] [内存消耗：1,570.66kb] [文件加载：86]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '53',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'yunsuo_session_verify=e8e9a384cb463803a00727ab17674144; PHPSESSID=mkoumqffng1mfp5kcaar4cjep1',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'login',
+  'phone' => '13300000001',
+  'password' => '123456',
+  'type' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000376s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.002759s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  ( `phone` = '13300000001' OR `name` = '13300000001' OR `number` = '13300000001' )  AND `password` = 'e10adc3949ba59abbe56e057f20f883e' LIMIT 1 [ RunTime:0.000458s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] UPDATE `sn_user`  SET `last_time`=0,`login_time`=1542076334,`login_ip`='61.148.244.45',`token`='f6849ada2010515ab11c39185599504e'  WHERE  `id` = 1 [ RunTime:0.005713s ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:14+08:00 ] 61.148.244.45 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014251s][吞吐率：70.17req/s] [内存消耗：1,568.34kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '53',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=7e4af07774674b47922b24dff53035c5',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'account',
+  'token' => 'f6849ada2010515ab11c39185599504e',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000244s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001567s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'f6849ada2010515ab11c39185599504e'  AND `status` = 1 LIMIT 1 [ RunTime:0.000491s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001372s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000190s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000288s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:14+08:00 ] 61.148.244.45 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.007630s][吞吐率：131.06req/s] [内存消耗：1,531.16kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '22',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=7e4af07774674b47922b24dff53035c5',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'protocol',
+  'type' => '2',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000271s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_protocol` [ RunTime:0.001386s ]
+[ sql ] [ SQL ] SELECT `content` FROM `sn_protocol` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000186s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_protocol',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:15+08:00 ] 61.148.244.45 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014203s][吞吐率：70.41req/s] [内存消耗：1,612.21kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '53',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=7e4af07774674b47922b24dff53035c5',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'concern',
+  'token' => 'f6849ada2010515ab11c39185599504e',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000357s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001737s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'f6849ada2010515ab11c39185599504e'  AND `status` = 1 LIMIT 1 [ RunTime:0.000458s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001366s ]
+[ sql ] [ SQL ] SELECT `concern` FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000196s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001301s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  ( `code` IN ('IC1810','IH0','T1812','IH1810','IC1903','IH1811','T1903','nf_HC1812','IF0','IC1812') OR `short` IN ('IC1810','IH0','T1812','IH1810','IC1903','IH1811','T1903','nf_HC1812','IF0','IC1812') ) [ RunTime:0.000326s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:15+08:00 ] 61.148.244.45 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.011397s][吞吐率：87.74req/s] [内存消耗：1,637.60kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '19',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=7e4af07774674b47922b24dff53035c5',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'futures_type',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000635s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001518s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1 [ RunTime:0.000429s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:19+08:00 ] 61.148.244.45 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.011515s][吞吐率：86.84req/s] [内存消耗：1,602.11kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=7e4af07774674b47922b24dff53035c5',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => 'f6849ada2010515ab11c39185599504e',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000387s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001472s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'f6849ada2010515ab11c39185599504e'  AND `status` = 1 LIMIT 1 [ RunTime:0.000384s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.001401s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.000262s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:30+08:00 ] 61.148.244.45 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.013111s][吞吐率：76.27req/s] [内存消耗：1,602.11kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=7e4af07774674b47922b24dff53035c5',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => 'f6849ada2010515ab11c39185599504e',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000334s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001616s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'f6849ada2010515ab11c39185599504e'  AND `status` = 1 LIMIT 1 [ RunTime:0.000380s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.001834s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.000447s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:37+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.009134s][吞吐率：109.48req/s] [内存消耗：1,551.24kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '53',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'concern',
+  'token' => 'a891e4998af53981caf555f4306cf6b1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000726s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001542s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'a891e4998af53981caf555f4306cf6b1'  AND `status` = 1 LIMIT 1 [ RunTime:0.000506s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:37+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.011306s][吞吐率：88.45req/s] [内存消耗：1,551.24kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '56',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => 'a891e4998af53981caf555f4306cf6b1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000568s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001827s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'a891e4998af53981caf555f4306cf6b1'  AND `status` = 1 LIMIT 1 [ RunTime:0.000446s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:47+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.013271s][吞吐率：75.35req/s] [内存消耗：1,570.14kb] [文件加载：86]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '53',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'login',
+  'phone' => '13300000002',
+  'password' => '123456',
+  'type' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000365s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001541s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  ( `phone` = '13300000002' OR `name` = '13300000002' OR `number` = '13300000002' )  AND `password` = 'e10adc3949ba59abbe56e057f20f883e' LIMIT 1 [ RunTime:0.000449s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] UPDATE `sn_user`  SET `last_time`=0,`login_time`=1542076367,`login_ip`='1.193.59.197',`token`='198ed1fe2454c920f9674986f08bf986'  WHERE  `id` = 2 [ RunTime:0.002854s ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:48+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.013290s][吞吐率：75.24req/s] [内存消耗：1,567.85kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '53',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'account',
+  'token' => '198ed1fe2454c920f9674986f08bf986',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000449s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001542s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '198ed1fe2454c920f9674986f08bf986'  AND `status` = 1 LIMIT 1 [ RunTime:0.000746s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001493s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_account` WHERE  `uid` = 2 LIMIT 1 [ RunTime:0.000375s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:48+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.008453s][吞吐率：118.30req/s] [内存消耗：1,530.59kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '22',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'protocol',
+  'type' => '2',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000495s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_protocol` [ RunTime:0.001419s ]
+[ sql ] [ SQL ] SELECT `content` FROM `sn_protocol` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000242s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_protocol',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:49+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.013767s][吞吐率：72.64req/s] [内存消耗：1,595.90kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '53',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'concern',
+  'token' => '198ed1fe2454c920f9674986f08bf986',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000423s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001555s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '198ed1fe2454c920f9674986f08bf986'  AND `status` = 1 LIMIT 1 [ RunTime:0.000731s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001306s ]
+[ sql ] [ SQL ] SELECT `concern` FROM `sn_user_account` WHERE  `uid` = 2 LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001265s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  ( `code` IN ('nf_IC0','nf_IH0','nf_IF0','nf_T1812','nf_TF0') OR `short` IN ('nf_IC0','nf_IH0','nf_IF0','nf_T1812','nf_TF0') ) [ RunTime:0.000828s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 921,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:49+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.013981s][吞吐率：71.53req/s] [内存消耗：1,637.01kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '19',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'futures_type',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000661s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001543s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1 [ RunTime:0.000693s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:52+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.012552s][吞吐率：79.67req/s] [内存消耗：1,586.84kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'origin' => 'http://yfapp.bjfable.com',
+  'cookie' => 'PHPSESSID=u7h42c00divk6af9ncku7cjtv0; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'connection' => 'keep-alive',
+  'accept' => 'application/json, text/plain, */*',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 12_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16B92',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'content-length' => '56',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => '198ed1fe2454c920f9674986f08bf986',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000782s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001850s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '198ed1fe2454c920f9674986f08bf986'  AND `status` = 1 LIMIT 1 [ RunTime:0.000499s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.001504s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 2 ORDER BY `time` ASC [ RunTime:0.000397s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:54+08:00 ] 61.148.244.45 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014093s][吞吐率：70.96req/s] [内存消耗：1,602.11kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=7e4af07774674b47922b24dff53035c5',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => 'f6849ada2010515ab11c39185599504e',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000409s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001532s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'f6849ada2010515ab11c39185599504e'  AND `status` = 1 LIMIT 1 [ RunTime:0.000441s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.001416s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.000248s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:56+08:00 ] 61.148.244.45 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.011817s][吞吐率：84.62req/s] [内存消耗：1,602.11kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=7e4af07774674b47922b24dff53035c5',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => 'f6849ada2010515ab11c39185599504e',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000437s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001546s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'f6849ada2010515ab11c39185599504e'  AND `status` = 1 LIMIT 1 [ RunTime:0.000393s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.001416s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.000254s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T10:32:59+08:00 ] 61.148.244.45 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.012545s][吞吐率：79.71req/s] [内存消耗：1,602.11kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=7e4af07774674b47922b24dff53035c5',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => 'f6849ada2010515ab11c39185599504e',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000435s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001583s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'f6849ada2010515ab11c39185599504e'  AND `status` = 1 LIMIT 1 [ RunTime:0.000468s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.001559s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.000272s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T18:33:47+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.013842s][吞吐率：72.24req/s] [内存消耗：1,570.66kb] [文件加载：86]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '53',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=7e4af07774674b47922b24dff53035c5',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'login',
+  'phone' => '13300000001',
+  'password' => '123456',
+  'type' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000511s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001678s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  ( `phone` = '13300000001' OR `name` = '13300000001' OR `number` = '13300000001' )  AND `password` = 'e10adc3949ba59abbe56e057f20f883e' LIMIT 1 [ RunTime:0.000515s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] UPDATE `sn_user`  SET `last_time`=0,`login_time`=1542105227,`login_ip`='1.193.59.197',`token`='1ec642d10555b7946bcbd1433c9438b0'  WHERE  `id` = 1 [ RunTime:0.003360s ]
+---------------------------------------------------------------
+[ 2018-11-13T18:33:47+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.013131s][吞吐率：76.16req/s] [内存消耗：1,568.31kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '53',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'account',
+  'token' => '1ec642d10555b7946bcbd1433c9438b0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000448s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001592s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '1ec642d10555b7946bcbd1433c9438b0'  AND `status` = 1 LIMIT 1 [ RunTime:0.000658s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001616s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000486s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000285s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T18:33:48+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.008079s][吞吐率：123.78req/s] [内存消耗：1,531.16kb] [文件加载：83]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '22',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'protocol',
+  'type' => '2',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000414s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_protocol` [ RunTime:0.001384s ]
+[ sql ] [ SQL ] SELECT `content` FROM `sn_protocol` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.000337s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_protocol',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T18:33:49+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.015622s][吞吐率：64.01req/s] [内存消耗：1,612.23kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '53',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'concern',
+  'token' => '1ec642d10555b7946bcbd1433c9438b0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000634s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001737s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '1ec642d10555b7946bcbd1433c9438b0'  AND `status` = 1 LIMIT 1 [ RunTime:0.000411s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001387s ]
+[ sql ] [ SQL ] SELECT `concern` FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000277s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.001310s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  ( `code` IN ('IC1810','IH0','T1812','IH1810','IC1903','IH1811','T1903','nf_HC1812','IF0','IC1812') OR `short` IN ('IC1810','IH0','T1812','IH1810','IC1903','IH1811','T1903','nf_HC1812','IF0','IC1812') ) [ RunTime:0.000905s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 846,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T18:33:49+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.011326s][吞吐率：88.29req/s] [内存消耗：1,637.60kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '19',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'futures_type',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000406s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.001595s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `status` = 1 [ RunTime:0.000488s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 83,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-13T18:33:51+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.014674s][吞吐率：68.15req/s] [内存消耗：1,602.10kb] [文件加载：84]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => 'application/json, text/plain, */*',
+  'origin' => 'http://yfapp.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 8.1.0; ONEPLUS A5000 Build/OPM1.171019.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/62.0.3202.84 Mobile Safari/537.36 Html5Plus/1.0',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,en-US;q=0.9',
+  'cookie' => 'PHPSESSID=mkoumqffng1mfp5kcaar4cjep1; yunsuo_session_verify=e8e9a384cb463803a00727ab17674144',
+  'x-requested-with' => 'io.dcloud.H5C757C2E',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => '1ec642d10555b7946bcbd1433c9438b0',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000425s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.002434s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '1ec642d10555b7946bcbd1433c9438b0'  AND `status` = 1 LIMIT 1 [ RunTime:0.000352s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 7,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.001860s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.000439s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-13T18:45:44+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.006588s][吞吐率：151.79req/s] [内存消耗：1,483.19kb] [文件加载：82]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-13T20:57:18+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.004707s][吞吐率：212.45req/s] [内存消耗：1,463.12kb] [文件加载：81]
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'en-US,en;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-13T20:58:02+08:00 ] 1.193.59.197 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.004911s][吞吐率：203.63req/s] [内存消耗：1,463.12kb] [文件加载：81]
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'en-US,en;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ /www/web/test/yifu/serve/application/index/controller/Index.php ]
+[ info ] [ LOG ] INIT File

@@ -1,0 +1,25 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header">
+		<b>交易登录</b>
+	</header>
+	<ion-content class="top">
+		<div class="tab4_box">
+			<div class="tab4_inputBox ma_bom15">
+				<span>交易账号</span>
+				<input type="text" ng-model="inputData.name"/>
+			</div>
+			<div class="tab4_inputBox ma_bom15">
+				<span>交易密码</span>
+				<input type="password" ng-model="inputData.pass"/>
+			</div>
+			<div class="tab4_inputBox tab4_inputBoxSpe">
+				<span>验证码</span>
+				<input type="number" ng-model="inputData.code"/>
+				<button class="random_code" ng-click="random_code()">0841</button>
+			</div>
+		</div>
+		<button class="tab4_btn" ng-click="deal_login()">登录</button>
+		<div style="height: 7.5rem;">
+		</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {include file="public/link" /}
+    {include file="public/meta" /}
+    <title>推广管理--直推关系</title>
+    <style type="text/css">
+        .box {
+            width: auto;
+            height: auto;
+            font-size: 16px;
+        }
+
+        .titlke {
+            padding-top: 10px;
+        }
+
+        .connect {
+            color: #000;
+            vertical-align: middle;
+        }
+
+        .img {
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+        }
+
+        .b {
+            float: left;
+            height: 15px;
+            width: 50px;
+            border-bottom: 1px dotted #000;
+        }
+
+        .add {
+            margin-left: 60px;
+            border-left: 1px solid #000;
+        }
+
+        .aa-input {
+            width: 120px;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #1f71cd;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">用户管理</a></li>
+        <li class="am-active">团队管理</li>
+    </ol>
+<div class="container-fluid">
+    <div class="well">
+        <div class="am-form-inline" role="form">
+            <label>会员信息： </label>
+            <div class="am-form-group am-form-icon">
+                <i class="am-icon-user"></i>
+                <input type="text" name="name" class="am-form-field am-input-sm" placeholder="请输入会员信息" value=""/>
+            </div>
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="abs()">查询</button>
+            <span>点击名称查看信息</span>
+        </div>
+    </div>
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+    <div class="am-scrollable-horizontal">
+        <div id="list" style="margin: 10px"></div>
+    </div>
+</div>
+</div>
+{include file="public/foot" /}
+<script type="text/javascript">
+    function loadData() {
+        $.ajax({
+            url: "{:url('team/directPush')}",
+            type: "POST",
+            data: {id: 1},
+            success: function (r) {
+                show(r);
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    function sub(id) {
+        var ss = ".title" + id;
+        $(ss).attr("onclick", "");
+        $.ajax({
+            url: "{:url('team/memberAjax')}",
+            type: "post",
+            data: {id: id},
+            success: function (r) {
+                var html = '';
+                for (var i = 0; i < r.length; i++) {
+                    if (r[i]['son'] != 0) {
+                        html += '' +
+                            '<div class="box"><div class="titleK title' + r[i]['id'] + '" onclick="sub(' + r[i]['id'] + ')">' +
+                            '<div class="hind' + r[i]['id'] + '"><div class="b"></div><span class="connect">' +
+                            '<i class="am-icon-users"></i><i class="icon-plus"></i>' + r[i]['name'] +
+                            '&nbsp;&nbsp;&nbsp;电话：' + r[i]['phone'] +
+                            '&nbsp;&nbsp;&nbsp;注册时间：' + r[i]['time'] +
+                            '&nbsp;&nbsp;&nbsp;</span>' +
+                            '</div></div>' +
+                            '<div class="ch' + r[i]['id'] + ' add"></div></div>';
+                    } else {
+                        html += '' +
+                            '<div class="box"><div class="titleK title' + r[i]['id'] + '">' +
+                            '<div class="hind ' + r[i]['id'] + '"><div class="b"></div>' +
+                            '<span class="connect"><i class="am-icon-user"></i> ' + r[i]['name'] +
+                            '&nbsp;&nbsp;&nbsp;电话：' + r[i]['phone'] +
+                            '&nbsp;&nbsp;&nbsp;注册时间：' + r[i]['time'] +
+                            '&nbsp;&nbsp;&nbsp;</span>' +
+                            '</div></div><div class="ch' + r[i]['id'] + ' add"></div></div>';
+                    }
+                }
+                var x = ".ch" + id;
+                var y = "chage(" + id + ")";
+                $(x).html(html);
+                var z = ".hind" + id;
+                $(z).attr("onclick", y);
+            }
+        });
+    }
+    function chage(id) {
+        var x = ".ch" + id;
+        $(x).hide();
+        var y = "hindetow(" + id + ")";
+        var z = ".hind" + id;
+        $(z).attr("onclick", y);
+    }
+    function hindetow(id) {
+        var x = ".ch" + id;
+        $(x).show();
+        var y = "chage(" + id + ")";
+        var z = ".hind" + id;
+        $(z).attr("onclick", y);
+    }
+</script>
+<script type="text/javascript">
+    function show(data) {
+        var sex = "";
+        if (data['son'] == 0) {
+            sex = '<i class="am-icon-user"></i>'
+        } else {
+            sex = '<i class="am-icon-users"></i><i class="icon-plus"></i>'
+        }
+        var html = '' +
+            '<div class="box top-t" style="border-left:none;margin-left: 0;">' +
+            '<div class="titleK title' + data['id'] + '" onclick="sub(' + data['id'] + ')">' +
+            '<div class="hind' + data['id'] + '>"' +
+            '<div class="connect">' + sex + '' +
+            '<span>' + data['name'] + '' +
+            '&nbsp;&nbsp;&nbsp;电话：' + data['phone'] +
+            '&nbsp;&nbsp;&nbsp;注册时间：' + data['time'] +
+            '&nbsp;&nbsp;&nbsp;</span>' +
+            '</div></div></div>' +
+            '<div class="ch' + data['id'] + ' add" style="margin-left: 10px;"></div>' +
+            '</div>';
+        $('#list').html(html);
+    }
+    function abs() {
+        var name = $("input[name='name']").val();
+        if (name == "") {
+            alert_msg("请输入会员信息，查询直推图");
+        } else {
+            $.ajax({
+                url: "{:url('team/teamQuery')}",
+                type: "POST",
+                data: {name: name},
+                success: function (r) {
+                    if (r.status == 1) {
+                        show(r.info);
+                    } else {
+                        alert_msg(r.info);
+                    }
+                }
+            });
+        }
+    }
+</script>
+</body>
+</html>

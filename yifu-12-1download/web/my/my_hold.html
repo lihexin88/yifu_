@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>逸富 - 行情列表</title>
+		<link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" title="main" href="../css/main.css" />
+		<link rel="stylesheet alternate" type="text/css" title="main_light" href="../css/main_light.css" />
+		<script type="text/javascript">
+			function set_style(title) {
+				var i, a, main;
+				if(title) {
+					for(i = 0; a = document.getElementsByTagName('link')[i]; i++) {
+						if(a.getAttribute('rel').indexOf('style') != -1 && a.getAttribute('title')) {
+							a.disabled = true;
+							if(a.getAttribute('title') == title) {
+								window.localStorage.setItem("color", a.getAttribute('title'));
+								a.disabled = false;
+							}
+						}
+					}
+				}
+			};
+			var color = localStorage.getItem("color");
+			if(color == "main") {
+				set_style('main');
+			} else if(color == "main_light") {
+				set_style('main_light');
+			}
+		</script>
+	</head>
+
+	<body style="background: transparent;">
+		<div class="my_box">
+			<div class="my_list table_style" id="hold_list" code="">
+				<table class="my_list_tab" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th>合约代码</th>
+						<th>买卖</th>
+						<th>总持仓</th>
+						<th>今持仓</th>
+						<th>可平量</th>
+						<th>逐日盈亏</th>
+						<th>逐笔盈亏</th>
+						<th>保证金</th>
+						<th>持仓均价</th>
+						<th>开仓均价</th>
+						<th>最新价</th>
+						<th>止损</th>
+						<th>止盈</th>
+						<th>投保</th>
+					</tr>
+					<tbody id="my_list_tab">
+
+					</tbody>
+				</table>
+			</div>
+			<div class="cancel_list">
+				<div class="table_box table_style" id="cancel_list" code="">
+					<table class="cancel_list_tab" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<th>合约代码</th>
+							<th>买卖</th>
+							<th>开平</th>
+							<th>委托状态</th>
+							<th>委托价</th>
+							<th>委托手数</th>
+							<th>成交手数</th>
+							<th>剩余手数</th>
+							<th>冻结手续费</th>
+							<th>冻结保证金</th>
+							<th>状态信息</th>
+							<th>投保</th>
+							<th>委托时间</th>
+							<th>报单编号</th>
+						</tr>
+						<tbody id="cancel_list_tab">
+
+						</tbody>
+					</table>
+				</div>
+				<div class="cancel_btn">
+					<button>全<br />撤</button>
+					<button>撤<br />单</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//我的持仓
+		$("#my_list_tab").on("mousedown", "tr", function() {
+			var index = $(this).index();
+			$(this).addClass("my_listAct");
+			$("#hold_list").attr("code", index);
+			$("#my_list_tab tr").not(this).removeClass("my_listAct");
+		});
+
+		function add_market(data_arr) {
+			var color_class = "white";
+			$(".updata_element").remove();
+			for(var i = 0; i < data_arr.length; i++) {
+				var html = '<tr class="updata_element" short="' + data_arr[i].contract + '">' +
+					'<td class="yellow">' + data_arr[i].contract + '</td>' + //合约代码
+					'<td class="red">' + data_arr[i].direction + '</td>' + //买卖
+					'<td class="red">' + data_arr[i].total + '</td>' + //总持仓
+					'<td class="red">' + data_arr[i].today + '</td>' + //今持仓
+					'<td class="red">' + data_arr[i].available + '</td>' + //可平量
+					'<td class="green">--</td>' + //逐日盈亏
+					'<td class="yellow">--</td>' + //逐笔盈亏
+					'<td>' + data_arr[i].bond + '</td>' + //保证金
+					'<td>' + data_arr[i].position_price + '</td>' + //持仓均价
+					'<td class="green">' + data_arr[i].open_price + '</td>' + //开仓均价
+					'<td class="green">' + data_arr[i].position_price + '</td>' + //最新价
+					'<td class="red">' + data_arr[i].loss + '</td>' + //止损
+					'<td class="yellow">' + data_arr[i].profit + '</td>' + //止盈
+					'<td>' + data_arr[i].pattern + '</td>' + //投保
+					'</tr>';
+				$("#my_list_tab").append(html);
+			}
+		};
+
+		function get_hold() {
+			$.post(globalUrl, {
+				nozzle: "depot_info",
+				token: localStorage.getItem("token")
+			}, function(res) {
+				add_market(res.data);
+
+			});
+		};
+		get_hold();
+		//撤单列表
+		$("#cancel_list_tab").on("mousedown", "tr", function() {
+			var order = $(this).attr("order");
+			$(this).addClass("cancel_listAct");
+			$("#cancel_list").attr("code", order);
+			$("#cancel_list_tab tr").not(this).removeClass("cancel_listAct");
+		});
+
+		function get_entrust() {
+			$.post(globalUrl, {
+				nozzle: "find_repeal_order",
+				token: localStorage.getItem("token")
+			}, function(res) {
+				add_entrust(res.data);
+			});
+		};
+		get_entrust();
+
+		function add_entrust(data_arr) {
+//			console.log(data_arr);
+			var color_class = "white";
+			$(".updata_entrust").remove();
+			for(var i = 0; i < data_arr.length; i++) {
+				var html = '<tr class="updata_entrust" order="' + data_arr[i].order + '">' +
+					'<td class="yellow">' + data_arr[i].code + '</td>' + //合约代码
+					'<td class="red">' + data_arr[i].direction + '</td>' + //买卖
+					'<td class="red">' + data_arr[i].mold + '</td>' + //开平
+					'<td class="red">' + data_arr[i].status + '</td>' + //委托状态
+					'<td class="green">' + data_arr[i].price + '</td>' + //委托价格
+					'<td class="green">' + data_arr[i].number + '</td>' + //委托手数
+					'<td class="green">' + data_arr[i].finish + '</td>' + //成交手数
+					'<td class="green">' + data_arr[i].surplus + '</td>' + //剩余手数
+					'<td class="green">' + data_arr[i].frozen_fee + '</td>' + //冻结手续费
+					'<td class="red">' + data_arr[i].frozen_bond + '</td>' + //冻结保证金
+					'<td class="red">' + data_arr[i].info + '</td>' + //状态信息
+					'<td class="yellow">' + data_arr[i].pattern + '</td>' + //投保
+					'<td class="yellow">' + data_arr[i].time + '</td>' + //委托时间
+					'<td class="white">' + data_arr[i].order + '</td>' + //报单编号
+					'</tr>'
+				$("#cancel_list_tab").append(html);
+			}
+		};
+		//全撤
+		$(".cancel_btn > button:eq(0)").click(function() {
+			$(".module8_box", window.parent.document).fadeIn(50);
+		});
+		$(".confirm_cancel > span,.module8_cont2 > button:eq(1)", window.parent.document).click(function() {
+			$(".module8_box", window.parent.document).fadeOut(50);
+		});
+		$(".module8_cont2 > button:eq(0)", window.parent.document).click(function() {
+			$(".module8_box", window.parent.document).fadeOut(50);
+			cancel_all();
+		});
+		//单独撤
+		$(".cancel_btn > button:eq(1)").click(function() {
+			var code = $("#cancel_list").attr("code");
+			if(code == "") {
+				$(".module7_box", window.parent.document).fadeIn(50);
+			} else {
+				cancel_order(code);
+			}
+		});
+		$(".sys_tips > span,.module7_btn", window.parent.document).click(function() {
+			$(".module7_box", window.parent.document).fadeOut(50);
+		});
+		//单独撤单
+		function cancel_order(code) {
+			$.post(globalUrl, {
+				nozzle: "cancel_order",
+				order_id: code,
+				token: localStorage.getItem("token")
+			}, function(res) {
+				var data = handle_data(res);
+				if(data.citify == true) {
+					//撤单成功
+					get_entrust();
+				}
+			});
+		};
+		//撤全部
+		function cancel_all() {
+			$.post(globalUrl, {
+				nozzle: "all_entrust",
+				token: localStorage.getItem("token")
+			}, function(res) {
+				console.log(res);
+				var data = handle_data(res);
+				if(data.citify == true) {
+					//撤单成功
+					get_entrust();
+				}
+			});
+		};
+	</script>
+
+</html>

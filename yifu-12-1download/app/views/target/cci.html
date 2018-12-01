@@ -1,0 +1,24 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header">
+		<i class="header_i1 icon ion-chevron-left" ng-click="back()"></i>
+		<b>{{item.name}}</b>
+	</header>
+	<ion-content class="top">
+		<div class="set_box">
+			<div class="target_box">
+				<span>参数short</span>
+				<input type="text" value="" ng-model="inputData.value1"/>
+			</div>
+			<div class="target_box">
+				<span>参数long</span>
+				<input type="text" value="" ng-model="inputData.value2"/>
+			</div>
+			<div class="target_box border_none">
+				<span>参数M</span>
+				<input type="text" value="" ng-model="inputData.value3"/>
+			</div>
+		</div>
+		<button class="target_btn" ng-click="preservation()">保存</button>
+		<div style="height: 5rem;"></div>
+	</ion-content>
+</ion-view>

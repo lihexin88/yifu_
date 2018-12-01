@@ -1,0 +1,1563 @@
+---------------------------------------------------------------
+[ 2018-11-19T20:12:34+08:00 ] 127.0.0.1 GET /
+[ info ] inter.yifu.com/ [运行时间：0.191011s][吞吐率：5.24req/s] [内存消耗：3,841.50kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-19T20:12:35+08:00 ] 127.0.0.1 GET /
+[ info ] inter.yifu.com/ [运行时间：0.126008s][吞吐率：7.94req/s] [内存消耗：3,841.52kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-19T20:12:36+08:00 ] 127.0.0.1 GET /
+[ info ] inter.yifu.com/ [运行时间：0.119007s][吞吐率：8.40req/s] [内存消耗：3,841.52kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-19T20:12:45+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.145009s][吞吐率：6.90req/s] [内存消耗：3,878.83kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '132',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'trade',
+  'token' => 'f0db7fb90fe244897c06ffde60c602b4',
+  'code' => 'CL00Y',
+  'pattern' => '0',
+  'direction' => '0',
+  'mode' => '0',
+  'price' => '4092',
+  'classify' => '1',
+  'number' => '1',
+  'order_id' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)[D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\library\think\db\Connection.php:295]
+---------------------------------------------------------------
+[ 2018-11-19T20:13:42+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.164009s][吞吐率：6.10req/s] [内存消耗：3,918.94kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '132',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'trade',
+  'token' => 'f0db7fb90fe244897c06ffde60c602b4',
+  'code' => 'CL00Y',
+  'pattern' => '0',
+  'direction' => '0',
+  'mode' => '0',
+  'price' => '4092',
+  'classify' => '1',
+  'number' => '1',
+  'order_id' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002001s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.038002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = 'f0db7fb90fe244897c06ffde60c602b4'  AND `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T20:14:01+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.192011s][吞吐率：5.21req/s] [内存消耗：3,922.48kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '132',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'trade',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'code' => 'CL00Y',
+  'pattern' => '0',
+  'direction' => '0',
+  'mode' => '0',
+  'price' => '4092',
+  'classify' => '1',
+  'number' => '1',
+  'order_id' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.031002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.033002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND ( `name` = 'CL00Y' OR `short` = 'CL00Y' OR `code` = 'CL00Y' ) LIMIT 1 [ RunTime:0.003000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 991,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T20:15:41+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.202012s][吞吐率：4.95req/s] [内存消耗：3,949.41kb] [文件加载：84]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '132',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'trade',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'code' => 'CL00Y',
+  'pattern' => '0',
+  'direction' => '0',
+  'mode' => '0',
+  'price' => '4092',
+  'classify' => '1',
+  'number' => '1',
+  'order_id' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.033002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.029002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND ( `name` = 'CL00Y' OR `short` = 'CL00Y' OR `code` = 'CL00Y' ) LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 991,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T20:16:10+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.243014s][吞吐率：4.11req/s] [内存消耗：3,955.62kb] [文件加载：84]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '132',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'trade',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'code' => 'CL00Y',
+  'pattern' => '0',
+  'direction' => '0',
+  'mode' => '0',
+  'price' => '4092',
+  'classify' => '1',
+  'number' => '1',
+  'order_id' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.037002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001001s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.033002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND ( `name` = 'CL00Y' OR `short` = 'CL00Y' OR `code` = 'CL00Y' ) LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 991,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.038002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `id` = 70 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T20:16:20+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.293017s][吞吐率：3.41req/s] [内存消耗：3,960.95kb] [文件加载：84]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '132',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'trade',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'code' => 'CL00Y',
+  'pattern' => '0',
+  'direction' => '0',
+  'mode' => '0',
+  'price' => '4092',
+  'classify' => '1',
+  'number' => '1',
+  'order_id' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012001s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.035002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_contract` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_contract` WHERE  `status` = 1  AND ( `name` = 'CL00Y' OR `short` = 'CL00Y' OR `code` = 'CL00Y' ) LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_contract',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 991,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_futures` [ RunTime:0.032002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_futures` WHERE  `id` = 70 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_futures',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_stock` [ RunTime:0.040002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_stock` WHERE  `code` = 'CL' LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_stock',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 17,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T20:51:46+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.168010s][吞吐率：5.95req/s] [内存消耗：3,920.52kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => '9aa70c88d56722b70cc866fdcc6584e6',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.034002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '9aa70c88d56722b70cc866fdcc6584e6'  AND `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T20:51:53+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.196011s][吞吐率：5.10req/s] [内存消耗：3,992.42kb] [文件加载：84]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.036002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-19T20:52:18+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.224013s][吞吐率：4.46req/s] [内存消耗：3,992.80kb] [文件加载：84]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.031001s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.004001s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.038002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-19T20:52:41+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.197011s][吞吐率：5.08req/s] [内存消耗：3,992.42kb] [文件加载：84]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.031002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` ASC [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` ASC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-19T20:52:51+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.228013s][吞吐率：4.39req/s] [内存消耗：3,992.36kb] [文件加载：84]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.032002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.036002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` DESC [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-19T20:56:57+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.210012s][吞吐率：4.76req/s] [内存消耗：3,993.92kb] [文件加载：84]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'depot_info',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.035002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001001s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.030001s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1 ORDER BY `time` DESC [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 12,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_depot` WHERE  `uid` = :where_AND_uid ORDER BY `time` DESC[Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-11-19T21:10:21+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.138008s][吞吐率：7.25req/s] [内存消耗：3,846.56kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-19T21:10:30+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.117007s][吞吐率：8.55req/s] [内存消耗：3,847.03kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '20',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-11-19T21:10:43+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.160009s][吞吐率：6.25req/s] [内存消耗：3,924.09kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '59',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.032002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T21:11:34+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.153009s][吞吐率：6.54req/s] [内存消耗：3,924.23kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '64',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T21:12:13+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.156009s][吞吐率：6.41req/s] [内存消耗：3,924.23kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '70',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'depot_id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002001s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.029001s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T21:12:30+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.172010s][吞吐率：5.81req/s] [内存消耗：3,961.94kb] [文件加载：86]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '70',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'depot_id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.031002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ error ] [8]未定义数组索引: order[D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Trade.php:144]
+---------------------------------------------------------------
+[ 2018-11-19T21:12:42+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.179010s][吞吐率：5.59req/s] [内存消耗：3,939.19kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '70',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'depot_id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.028002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.029002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1  AND `id` = 4 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T21:18:16+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.160009s][吞吐率：6.25req/s] [内存消耗：3,926.44kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '70',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'depot_id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T21:18:27+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.159009s][吞吐率：6.29req/s] [内存消耗：3,926.44kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '70',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'depot_id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T21:19:02+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.164009s][吞吐率：6.10req/s] [内存消耗：3,926.48kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '70',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'depot_id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.030001s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T21:19:14+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.190011s][吞吐率：5.26req/s] [内存消耗：3,943.13kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '79',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'depot_id' => '4',
+  'price' => '12',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012001s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.029002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1  AND `id` = 4  AND `is_lock` = 0 LIMIT 1 [ RunTime:0.000000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-11-19T21:20:26+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.223013s][吞吐率：4.48req/s] [内存消耗：4,015.77kb] [文件加载：86]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '79',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'depot_id' => '4',
+  'price' => '12',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.034002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.033002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1  AND `id` = 4  AND `is_lock` = 0 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] UPDATE `sn_depot`  SET `is_lock`=1,`lock_price`=12  WHERE  `id` = 4 [ RunTime:0.002000s ]
+---------------------------------------------------------------
+[ 2018-11-19T21:22:32+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.208012s][吞吐率：4.81req/s] [内存消耗：4,016.16kb] [文件加载：86]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '79',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'depot_id' => '4',
+  'price' => '12',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001000s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.030002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.032002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1  AND `id` = 4  AND `is_lock` = 0 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_depot',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] UPDATE `sn_depot`  SET `is_lock`=1,`lock_price`=12  WHERE  `id` = 4 [ RunTime:0.003000s ]

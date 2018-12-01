@@ -1,0 +1,65 @@
+---------------------------------------------------------------
+[ 2018-11-20T11:59:41+08:00 ] 127.0.0.1 POST /
+[ info ] inter.yifu.com/ [运行时间：0.214012s][吞吐率：4.67req/s] [内存消耗：3,941.68kb] [文件加载：83]
+[ info ] [ LANG ] D:\phpStudy\PHPTutorial\WWW\yifu\serve\thinkphp\lang\zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'inter.yifu.com',
+  'connection' => 'keep-alive',
+  'content-length' => '79',
+  'accept' => '*/*',
+  'origin' => 'chrome-extension://mdbgchaihbacjfjeikflfbelidihhmfn',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'UM_distinctid=1671500d75e711-006d54484bd6eb-43480420-1fa400-1671500d760831',
+  'cache-control' => 'no-cache',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'lock_position',
+  'token' => '2179c5fbe18dbc92b5850688fce55e98',
+  'depot_id' => '4',
+  'price' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Index->index[ D:\phpStudy\PHPTutorial\WWW\yifu\serve\application\index\controller\Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004001s ] mysql:host=127.0.0.1;port=3306;dbname=yifu;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.029002s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `token` = '2179c5fbe18dbc92b5850688fce55e98'  AND `status` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 6,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_depot` [ RunTime:0.028001s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_depot` WHERE  `uid` = 1  AND `id` = 4  AND `is_lock` = 0 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => NULL,
+  'type' => NULL,
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => NULL,
+  'extra' => 'Impossible WHERE noticed after reading const tables',
+) ]

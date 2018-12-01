@@ -1,0 +1,36 @@
+<ion-view view-title="添加自选合约" class="back_ec">
+	<header class="header">
+		<img src="img/zuo.png" class="left_img" ng-click="back()" />
+		<b>添加自选合约</b>
+	</header>
+	<ion-content class="top add_contract_box" overflow-scroll="true">
+		<div class="add_contract_top">
+			<ul>
+				<li ng-repeat="item in list" ng-class="{true:'li_select',false:''}[l_id==item.id]" ng-click="navTap(item.id,$index)">{{item.name}}</li>
+			</ul>
+		</div>
+		<div class="add_contract_con">
+			<div class="d_con">
+				<div ng-repeat="item in s_list">
+					<span ng-class="{true:'s_select',false:''}[c_id==item.id]" ng-click="select(item.id,$index)">{{item.name}}</span>
+				</div>
+			</div>
+		</div>
+		<div style="height: 5rem;">
+
+		</div>
+		<div class="ac_modal">
+			<div class="add_contract_con">
+				<div class="ov_a">
+					<span class="f_l iconfont icon-cuohao" ng-click="hide()"></span>
+					<span class="f_r iconfont icon-duihao" ng-click="sub()"></span>
+				</div>
+				<div class="d_con">
+					<div ng-repeat = "item in ss_list">
+						<span ng-click="select1($event,item.code)">{{item.name}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

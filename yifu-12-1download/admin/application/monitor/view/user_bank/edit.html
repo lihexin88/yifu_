@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    {include file="public/form" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">银行卡管理</a></li>
+    </ol>
+    <div class="widget am-cf">
+        <form class="am-cf" id="form" onsubmit="return false">
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">基础信息</div>
+                <div class="am-panel-bd">
+                    <input type="hidden" name="id" value="{$list.uid??''}"/>
+                    <div class="am-form-group">
+                        <span class="s1">开户行：</span>
+                        <label class="am-form-label">
+                            <select name="bank">
+                                {volist name="info" id="vo" empty="$empty"}
+                                {if condition ="($list['bank'])==($vo['id'])"}
+                                <option selected value="{$vo.id}">{$vo.name}</option>
+                                {else/}
+                                <option value="{$vo.id}">{$vo.name}</option>
+                                {/if}
+                                {/volist}
+                            </select>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <div display:flex>
+                            <span class="s1">开户地区：</span>
+                            <select style="flex:1" name="province" id="province" class="region" param='city'>
+                                <option value="">请选择</option>
+                                {foreach name='province_lixt' item='vo'}
+                                {if condition ="($province['id'])==($vo['id'])"}
+                                <option selected value="{$vo.id}">{$vo.name}</option>
+                                {else/}
+                                <option value="{$vo.id}">{$vo.name}</option>
+                                {/if}
+                                {/foreach}
+                            </select>
+                            <select name="city" style="flex:1" id="city" class="region" param='country'>
+                                {foreach name='city_lixt' item='value'}
+                                {if condition ="$city['id']==$value['id']"}
+                                <option selected value="{$value.id}">{$value.name}</option>
+                                {else/}
+                                <span id="city">
+                                        </span>
+                                {/if}
+                                {/foreach}
+                            </select>
+                            <select name="country" id="country" style="flex:1" param='country'>
+                                {foreach name='country_lixt' item='vo'}
+                                {if condition ="$country['id']==$vo['id']"}
+                                <option selected value="{$vo.id}">{$vo.name}</option>
+                                {else/}
+                                <span id="country">
+                                        </span>
+                                {/if}
+                                {/foreach}
+                            </select>
+                        </div>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">开户支行：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="address" class="am-form-field am-input-sm" name="address"
+                                   value="{$list.address??''}" placeholder="请输入开户支行"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">开户姓名：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="name" class="am-form-field am-input-sm" name="account"
+                                   value="{$list.account??''}" placeholder="请输入开户姓名"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">开户手机号码：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="phone" class="am-form-field am-input-sm" name="phone"
+                                   value="{$list.phone??''}" placeholder="请输入开户手机号码"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">开户身份证：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="number" class="am-form-field am-input-sm" name="number"
+                                   value="{$list.number??''}" placeholder="请输入开户身份证"/>
+                        </label>
+                    </div>
+                    <div class="am-form-group">
+                        <span class="s1">银行卡号：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="card" class="am-form-field am-input-sm" name="card"
+                                   value="{$list.card??''}" placeholder="请输入银行卡号"/>
+                        </label>
+                    </div>
+                    <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                        <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub()">确定</button>
+                        <a href="index.html?a={$a}&b={$b}" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script>
+    var a = $("#province option:selected").val();
+    if (a) {
+        $("#province").css("width", "97");
+        $("#city").css("width", "97");
+        $("#country").css("width", "97");
+    } else {
+        $("#city").hide();
+        $("#country").hide();
+    }
+
+    function ifshow() {
+        if ($("#province").val()) {
+            $("#province").css("width", "148");
+            $("#city").css("width", "148");
+            $("#city").show();
+            if ($("#city").val()) {
+                $("#province").css("width", "97");
+                $("#city").css("width", "97");
+                $("#country").css("width", "97");
+                $("#country").show();
+                return false;
+            } else {
+                $("#country").hide();
+                return false;
+            }
+        } else {
+            $("#city").hide();
+        }
+    }
+
+    $(function () {
+        $("body").on('change', ".region", function () {
+            parent_id = $(this).val();
+            param = $(this).attr('param');
+            $("#" + param).html("");
+            $.post("{:url('index/UserBank/getregion')}", {'parent_id': parent_id}, function (data) {
+                if (param == 'city') {
+                    $("#country").html("");
+                    html = "<select name=" + param + " class='region' param='country'>";
+                    html += "<option value=''>请选择</option>";
+                } else {
+                    $("#country").html("");
+                    html = "<select name=" + param + " class='region' param='country'>";
+                    html += "<option value=''>请选择</option>";
+                }
+                if (data.status == 1) {
+                    $.each(data.list, function (k, v) {
+                        $("#country").html("");
+                        html += "<option value='" + v.id + "'>" + v.name + "</option>";
+                        a = ifshow();
+                        a;
+                    })
+                }
+                html += "</select>";
+                $("#" + param).html(html);
+            }, 'json')
+        })
+    })
+
+</script>
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+
+    })
+    ;
+
+    function sub() {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('UserBank/edit')}",
+            data: {arr: arr},
+            type: "post",
+            success: function (r) {
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+
+</script>
+
+</body>
+
+</html>

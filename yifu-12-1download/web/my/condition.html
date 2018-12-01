@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>逸富 - 行情列表</title>
+		<link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" title="main" href="../css/main.css" />
+		<link rel="stylesheet alternate" type="text/css" title="main_light" href="../css/main_light.css" />
+		<script type="text/javascript">
+			function set_style(title) {
+				var i, a, main;
+				if(title) {
+					for(i = 0; a = document.getElementsByTagName('link')[i]; i++) {
+						if(a.getAttribute('rel').indexOf('style') != -1 && a.getAttribute('title')) {
+							a.disabled = true;
+							if(a.getAttribute('title') == title) {
+								window.localStorage.setItem("color", a.getAttribute('title'));
+								a.disabled = false;
+							}
+						}
+					}
+				}
+			};
+			var color = localStorage.getItem("color");
+			if(color == "main") {
+				set_style('main');
+			} else if(color == "main_light") {
+				set_style('main_light');
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="deal_record">
+			<div class="condition common_table" id="condition" code="">
+				<table border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th>合约代码</th>
+						<th>买卖</th>
+						<th>开平</th>
+						<th>状态</th>
+						<th>超价</th>
+						<th>手数</th>
+						<th>价格</th>
+						<th>触发条件</th>
+						<th>自动撤单</th>
+						<th>重新下单</th>
+						<th>价格类型</th>
+						<th>预埋时间</th>
+						<th>触发时间</th>
+						<th>投保</th>
+						<th>编号</th>
+					</tr>
+					<tr>
+						<td class="yellow">b1905</td>
+						<td class="red">买</td>
+						<td class="red">开仓</td>
+						<td class="red">已删除</td>
+						<td class="gray">300.00</td>
+						<td class="gray">39</td>
+						<td class="gray">100.00</td>
+						<td class="gray">时间到达2018/10/11 08:52:02</td>
+						<td class="gray"></td>
+						<td class="gray"></td>
+						<td class="gray">当前价</td>
+						<td class="gray">08:52:10</td>
+						<td class="gray">08:52:10</td>
+						<td class="red">投机</td>
+						<td class="gray">qq123456</td>
+					</tr>
+					<tr>
+						<td class="yellow">b1905</td>
+						<td class="red">买</td>
+						<td class="red">开仓</td>
+						<td class="gray">已失败</td>
+						<td class="gray">300.00</td>
+						<td class="gray">39</td>
+						<td class="gray">100.00</td>
+						<td class="gray">最新价连续6次大于等于3292</td>
+						<td class="gray"></td>
+						<td class="gray"></td>
+						<td class="gray">当前价</td>
+						<td class="gray">08:52:10</td>
+						<td class="gray">08:52:10</td>
+						<td class="red">投机</td>
+						<td class="gray">qq123456</td>
+					</tr>
+					<tr>
+						<td class="yellow">b1905</td>
+						<td class="red">买</td>
+						<td class="red">开仓</td>
+						<td class="blue">未触发</td>
+						<td class="gray">300.00</td>
+						<td class="gray">39</td>
+						<td class="gray">100.00</td>
+						<td class="gray">预埋，手动发出</td>
+						<td class="gray">√</td>
+						<td class="gray">√</td>
+						<td class="gray">当前价</td>
+						<td class="gray">08:52:10</td>
+						<td class="gray">08:52:10</td>
+						<td class="red">投机</td>
+						<td class="gray">qq123456</td>
+					</tr>
+					<tr>
+						<td class="yellow">b1905</td>
+						<td class="red">买</td>
+						<td class="red">开仓</td>
+						<td class="yellow">已成功</td>
+						<td class="gray">300.00</td>
+						<td class="gray">39</td>
+						<td class="gray">100.00</td>
+						<td class="gray">时间到达2018/10/11 08:52:02</td>
+						<td class="gray">√</td>
+						<td class="gray"></td>
+						<td class="gray">当前价</td>
+						<td class="gray">08:52:10</td>
+						<td class="gray">08:52:10</td>
+						<td class="red">投机</td>
+						<td class="gray">qq123456</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//条件单点击样式
+		$(".condition tr").click(function() {
+			var min = 0;
+			var index = $(this).index();
+			if(index != min) {
+				$(this).addClass("market_border");
+				$(".condition tr").not(this).removeClass("market_border");
+				$("#condition").attr("code", $(this).children("td").eq(3).html());
+			}
+		});
+	</script>
+
+</html>

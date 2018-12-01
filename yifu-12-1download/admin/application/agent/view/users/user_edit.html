@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    {include file="public/form" /}
+    <style>
+        input.check_box{
+            width:100px;
+        }
+        .p_checkbox{
+            width: 25%;
+            float: left;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">用户管理</a></li>
+        <li class="am-active">用户</li>
+    </ol>
+    <div class="widget am-cf">
+        <form class="am-cf" id="form" onsubmit="return false">
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">基础信息</div>
+                <input type="hidden" id="tireal_nametle" class="am-form-field am-input-sm" name="id" value="{$list['id']}" />
+                <div class="am-form-group">
+                    <span class="s1">手机号：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="phone" class="am-form-field am-input-sm" name="phone" value="{$list['phone']}" disabled placeholder=""/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">姓名：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="real_name" class="am-form-field am-input-sm" name="real_name" value="{$list['real_name']}"  placeholder=""/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">银行名称：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="bank_name" class="am-form-field am-input-sm" name="bank_name" value="{$bank['bank_name']}"  placeholder=""/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">银行卡号：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="bank_card" class="am-form-field am-input-sm" name="bank_card" value="{$bank['bank_card']}"  placeholder=""/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">开户支行：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="branch" class="am-form-field am-input-sm" name="branch" value="{$bank['branch']}"  placeholder=""/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">密码：</span> 
+                    <label class="am-form-label">
+                        <input type="password" id="password" class="am-form-field am-input-sm" name="password" value="" placeholder="为空不修改密码"/>
+                    </label>
+                </div>
+                 <div class="am-form-group">
+                    <span class="s1">微信号：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="we_chat" class="am-form-field am-input-sm" name="we_chat" value="{$list['we_chat']}"  placeholder=""/>
+                    </label>
+                </div>
+                
+                 <div class="am-form-group" id="no">
+                    <span class="s1">微信二维码：</span>
+                    <label class="am-form-label">
+                        <img id="newPhoto" style="max-height:200px;" src="{$list.we_chat_pay}"/>
+                    </label>
+                    <span class="s2" id="uploadPhotoConfirm"></span>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">上传二维码：</span>
+                    <label class="am-form-label">
+                        <input type="button" class="am-btn am-btn-primary" id="upload_button" value="上传图片"/><br/>
+                        <input type="hidden" id="newPhotoName" name="we_chat_pay" value="{$list['we_chat_pay']}"/>
+                        <input type="file" style="display:none" name="file">
+                    </label>
+                    <span class="s2">*请上传格式为.png .jpg .jpeg 的图片*</span>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">支付宝：</span>
+                    <label class="am-form-label">
+                        <input type="text" id="we_chat" class="am-form-field am-input-sm" name="alipay" value="{$list['alipay']}"  placeholder=""/>
+                    </label>
+                </div>
+                <div class="am-form-group" id="no1">
+                    <span class="s1">支付宝二维码：</span>
+                    <label class="am-form-label">
+                        <img id="newPhoto1" style="max-height:200px;" src="{$list.alipay_pay}"/>
+                    </label>
+                    <span class="s2" id="uploadPhotoConfirm1"></span>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">上传二维码：</span>
+                    <label class="am-form-label">
+                        <input type="button" class="am-btn am-btn-primary" id="upload_button1" value="上传图片"/><br/>
+                        <input type="hidden" id="newPhotoName1" name="alipay_pay" value="{$list['alipay_pay']}"/>
+                        <input type="file" style="display:none" name="file">
+                    </label>
+                    <span class="s2">*请上传格式为.png .jpg .jpeg 的图片*</span>
+                </div>
+                <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() ">确定</button>
+                    <!-- <a href="agent.html" class="am-btn am-btn-secondary am-btn-sm">返回</a> -->
+                </div>
+            </div>
+    </div>
+    </form>
+</div>
+</div>
+{include file="public/editor" /}
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq(1).find('ul').show();
+        nav.eq(1).find('ul li').eq(1).find('a').addClass('active');
+    });
+    function sub() {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('Users/user_edits')}",
+            data: {arr: arr},
+            type: "post",
+            success: function (r) {
+                // console.log(r);
+                // return false;
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        var button = $('#upload_button'), interval;
+        var confirmDiv = $('#uploadPhotoConfirm');
+        var fileType = 'pic', fileNum = 'one';
+        new AjaxUpload(button, {
+            action: "{:url('Upload/upload')}",
+            name: 'file',
+            onSubmit: function (file, ext) {
+                if (fileType == 'pic') {
+                    if (ext && /^(jpg|png|jpeg|gif|JPG)$/.test(ext)) {
+                        this.setData({'info': '文件类型为图片'});
+                    } else {
+                        confirmDiv.text('文件格式错误，请上传格式为.png .jpg .jpeg 的图片');
+                        return false;
+                    }
+                }
+                confirmDiv.text('文件上传中');
+                if (fileNum == 'one') this.disable();
+                interval = window.setInterval(function () {
+                    var text = confirmDiv.text();
+                    if (text.length < 14) {
+                        confirmDiv.text(text + '.');
+                    } else {
+                        confirmDiv.text('文件上传中');
+                    }
+                }, 200);
+            },
+            onComplete: function (file, response) {
+                if (response != 'success') {
+                    if (response == '2') {
+                        confirmDiv.text("文件格式错误，请上传格式为.png .jpg .jpeg 的图片");
+                    } else {
+                        confirmDiv.text('上传完成');
+                        $("#newPhotoName").val("/uploads/" + response);
+                        $("#newPhoto").attr("src", "/uploads/" + response);
+                        $('#no').show();
+                    }
+                }
+                window.clearInterval(interval);
+                this.enable();
+                if (response == 'success') alert('上传成功');
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        var button = $('#upload_button1'), interval;
+        var confirmDiv = $('#uploadPhotoConfirm1');
+        var fileType = 'pic', fileNum = 'one';
+        new AjaxUpload(button, {
+            action: "{:url('Upload/upload')}",
+            name: 'file',
+            onSubmit: function (file, ext) {
+                if (fileType == 'pic') {
+                    if (ext && /^(jpg|png|jpeg|gif|JPG)$/.test(ext)) {
+                        this.setData({'info': '文件类型为图片'});
+                    } else {
+                        confirmDiv.text('文件格式错误，请上传格式为.png .jpg .jpeg 的图片');
+                        return false;
+                    }
+                }
+                confirmDiv.text('文件上传中');
+                if (fileNum == 'one') this.disable();
+                interval = window.setInterval(function () {
+                    var text = confirmDiv.text();
+                    if (text.length < 14) {
+                        confirmDiv.text(text + '.');
+                    } else {
+                        confirmDiv.text('文件上传中');
+                    }
+                }, 200);
+            },
+            onComplete: function (file, response) {
+                if (response != 'success') {
+                    if (response == '2') {
+                        confirmDiv.text("文件格式错误，请上传格式为.png .jpg .jpeg 的图片");
+                    } else {
+                        confirmDiv.text('上传完成');
+                        $("#newPhotoName1").val("/uploads/" + response);
+                        $("#newPhoto1").attr("src", "/uploads/" + response);
+                        $('#no1').show();
+                    }
+                }
+                window.clearInterval(interval);
+                this.enable();
+                if (response == 'success') alert('上传成功');
+            }
+        });
+    });
+</script>
+</body>
+</html>

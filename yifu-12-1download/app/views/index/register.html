@@ -1,0 +1,54 @@
+<ion-view view-title="恒瑞国际">
+	<header class="header">
+		<i class="header_i1 icon ion-chevron-left" ng-click="back()"></i>
+		<b>注册</b>
+	</header>
+	<ion-content style="background:#ECECEC;" class="top">
+		<div class="_for_box">
+			<div class="for_dataBox ma_bom20">
+				<span>手机号</span>
+				<div>
+					<input type="tel" maxlength="11" placeholder="请输入手机号" ng-model="inputData.phone" />
+				</div>
+			</div>
+			<div class="for_dataBox ma_bom20">
+				<span>登录密码</span>
+				<div>
+					<input type="password" placeholder="请输入登录密码" ng-model="inputData.loginPass" />
+				</div>
+			</div>
+			<div class="for_dataBox ma_bom20">
+				<span>确认登录密码</span>
+				<div>
+					<input type="password" placeholder="请再次输入登录密码" ng-model="inputData.confirmLoginPass" />
+				</div>
+			</div>
+			<div class="for_dataBox ma_bom20">
+				<span>交易密码</span>
+				<div>
+					<input type="password" placeholder="请输入交易密码" ng-model="inputData.dealPass" />
+				</div>
+			</div>
+			<div class="for_dataBox ma_bom20">
+				<span>确认交易密码</span>
+				<div>
+					<input type="password" placeholder="请再次输入交易密码" ng-model="inputData.confirmDealPass" />
+				</div>
+			</div>
+			<div class="for_dataBox ma_bom20">
+				<span>机构编号</span>
+				<div>
+					<input type="text" placeholder="请输入机构编号" ng-model="inputData.mechanismCode" />
+				</div>
+			</div>
+			<div class="for_dataBox for_specialBox">
+				<span>验证码</span>
+				<div>
+					<input type="text" placeholder="请输入验证码" ng-model="inputData.code" />
+					<button class="register_code" ng-click="getCode()">获取验证码</button>
+				</div>
+			</div>
+		</div>
+		<button class="for_sure" ng-click="sure()">提交</button>
+	</ion-content>
+</ion-view>

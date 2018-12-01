@@ -1,0 +1,37 @@
+<ion-view view-title="果子园" class="back_black">
+	<header class="header">
+		<i class="header_i1 icon ion-chevron-left" ng-click="back()"></i>
+		<b>持仓信息</b>
+	</header>
+	<ion-content class="top">
+		<div class="hisde_cont">
+			<p><span class="details_title">名称代码：</span><span class="details_text">{{data.name}}/{{data.short}}</span></p>
+			<p><span class="details_title">委托时间：</span><span class="details_text">{{data.time}}</span></p>
+			<p><span class="details_title">委托：</span><span class="details_text">{{data.classify}}</span></p>
+			<p><span class="details_title">成交价：</span><span class="details_text">{{data.cost}}</span></p>
+			<p><span class="details_title">成交量：</span><span class="details_text">{{data.hand}}手</span></p>
+			<p><span class="details_title">成交总额：</span><span class="details_text">{{data.total}}</span></p>
+			<p><span class="details_title">保证金：</span><span class="details_text">{{data.bond}}</span></p>
+			<p><span class="details_title">手续费：</span><span class="details_text">{{data.fee}}</span></p>
+			<p><span class="details_title">过夜费：</span><span class="details_text">{{data.server}}</span></p>
+			<!--<p><span class="details_title">止盈线：</span><span class="details_text">{{data.profit}}</span></p>-->
+			<p>
+				<span class="details_title">止盈线：</span>
+				<small class="hisde_inputBox">
+					<input class="profit" type="text" ng-model="inputData.profit" disabled/>
+					<i class="icon ion-ios-compose-outline white" ng-click="change(0)" ng-hide="isShow0"></i>
+					<button ng-show="isShow0" ng-click="sure(0)">确认</button>
+				</small>
+			</p>
+			<p>
+				<span class="details_title">止损线：</span>
+				<small class="hisde_inputBox">
+					<input class="lose" type="text" ng-model="inputData.lose" disabled/>
+					<i class="icon ion-ios-compose-outline white" ng-click="change(1)" ng-hide="isShow1"></i>
+					<button ng-show="isShow1" ng-click="sure(1)">确认</button>
+				</small>
+			</p>
+		</div>
+	</ion-content>
+	<button class="cancel_order" ng-click="close_position()">平仓</button>
+</ion-view>

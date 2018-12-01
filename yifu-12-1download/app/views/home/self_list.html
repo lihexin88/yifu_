@@ -1,0 +1,46 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header">
+		<i class="header_i1 icon ion-chevron-left" ng-click="back()"></i>
+		<a ng-click="edit_self = !edit_self">编辑</a>
+		<b>自选列表</b>
+		<i class="header_i2 iconfont icon-fangdajing orange" ui-sref="search"></i>
+	</header>
+	<ion-content class="top" overflow-scroll="true">
+		<div class="self_box">
+			<div class="self_tittle">
+				<ul ng-class="{true:'edit_selfStyle',false:'self_listStyle'}[edit_self == true]">
+					<li><i></i>合约名称</li>
+					<li class="ellipsis" ng-repeat="item in list_data"><i class="iconfont icon-chahao" ng-click="cancel_self()"></i>{{item.name}}</li>
+				</ul>
+			</div>
+			<div class="self_list">
+				<ul>
+					<li>
+						<span>最新价</span>
+						<span>涨跌</span>
+						<span>买价</span>
+						<span>卖价</span>
+						<span>涨跌幅</span>
+						<span>成交量</span>
+						<span>最高价</span>
+						<span>最低价</span>
+					</li>
+					<li ng-repeat="item in list_data" ng-click="go_market()">
+						<span>55.65</span>
+						<span>12</span>
+						<span>55.70</span>
+						<span>55.70</span>
+						<span>-0.09</span>
+						<span>1000</span>
+						<span>55.65</span>
+						<span>55.65</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div style="height: 5rem;">
+
+		</div>
+	</ion-content>
+</ion-view>

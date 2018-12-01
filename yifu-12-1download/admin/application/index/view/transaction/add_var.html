@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">参数管理</a></li>
+        <li class="am-active">添加品种</li>
+    </ol>
+     <form class="am-cf" id="form" onsubmit="return false">
+    <div class="widget am-cf">
+        
+        <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+
+        <div class="am-panel am-panel-primary">
+
+                <div class="am-panel-hd">添加品种信息</div>
+
+                <br>
+
+                <div class="am-form-group">
+                    <span class="s1">交易所名称：</span>
+                    <input type="hidden" name="id" value="{$list.id??''}"/>
+                    <label class="am-form-label">
+                        <select name="bourse" id="bourse" title="" class="am-form-field am-input-sm">
+                        {volist name="exchange" id="vo" empty="$empty"}
+                            <option value="{$vo.id}" class="am-form-field am-input-sm">{$vo.name}</option>
+                        {/volist}
+
+                        </select>
+
+                    </label>
+                    <span style="color: red">(<--点击选择交易所)</span>
+                </div>
+               
+                <div class="am-form-group">
+                    <span class="s1">品种名称：　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="name" class="am-form-field am-input-sm" name="name" value="" />
+                    </label>
+                </div>
+
+                <div class="am-form-group">
+                    <span class="s1">代　码：　　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="code" class="am-form-field am-input-sm" name="code" value="" />
+                    </label>
+                </div>
+
+                <div class="am-form-group">
+                    <span class="s1">短　码：　　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="short" class="am-form-field am-input-sm" name="short" value="" />
+                    </label>
+                </div>
+
+                <div class="am-form-group">
+                    <span class="s1">类  型：　　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="industry" class="am-form-field am-input-sm" name="industry" value="" />
+                    </label>
+                </div>               
+
+                <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() " >确定</button>
+                    <a href="index.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                </div>
+        </div>
+    {include file="public/content_foot" /}
+</div>
+</form>
+{include file="public/foot" /}
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+//        nav.eq(1).find('a').addClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+    function sub() {
+        var arr = parseFormJson("#form");
+        if(arr.p_names == ""){
+            alert("请输入推荐人信息,或填无");
+        }else{
+            $.ajax({
+                url: "{:url('Transaction/update_edit')}",
+                data: {arr: arr},
+                type: "post",
+                success: function (r) {
+                    // console.log(r);
+                    // return false;
+                    if (r['code'] == 1) {
+                        alert_open(r['msg']);
+                        
+                    } else {
+                        alert_msg(r['msg']);
+                    }
+                }
+            });
+        }    
+    }
+
+     function sub_fied() {
+        var arr = parseFormJson("#form");
+        if(arr.reid == ""){
+            alert_open("请输入推荐人信息,或填无");
+        }else if(arr.reid != "无"){
+            $.ajax({
+                url: "{:url('Users/p_name')}",
+                data: {arr: arr.reid},
+                type: "post",
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        //alert_open(r['msg']);
+                        document.getElementById("p_names").value=r['msg'];
+                        document.getElementById("p_name").style.display="inline";
+                    } else {
+                        alert_msg(r['msg']);
+                        document.getElementById("reid").value="";
+                        document.getElementById("p_name").style.display="none";
+                    }
+                    
+                }
+            });
+        }else if(arr.reid == "无"){
+            document.getElementById("p_name").style.display="none";
+        }    
+    }
+</script>
+</body>
+</html>

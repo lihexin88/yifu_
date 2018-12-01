@@ -1,0 +1,68 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header back_black">
+		<i class="header_i1 icon ion-chevron-left" ng-click="back()"></i>
+		<b class="white">恒指1901</b>
+		<i class="header_i2 iconfont icon-jiahao orange" ng-click="self()"></i>
+	</header>
+	<ion-content class="top">
+		<div class="mar_top">
+			<div class="mar_cont1">
+				<div class="mar_left">
+					<p>15623</p>
+					<p>
+						<span>316</span>
+						<span>+0.15%</span>
+					</p>
+				</div>
+				<div class="mar_center" ng-click="handicap()">
+					<p>盘</p>
+					<p>口</p>
+					<i class="iconfont icon-plus-select-down"></i>
+				</div>
+				<div class="mar_right">
+					<p>
+						<span class="colorC2">卖价</span>
+						<span>15400</span>
+						<span>1</span>
+					</p>
+					<p>
+						<span class="colorC2">买价</span>
+						<span>15388</span>
+						<span>3</span>
+					</p>
+				</div>
+			</div>
+			<div class="mar_cont2">
+				<p><span class="colorC2">最高</span><span>15680</span></p>
+				<p><span class="colorC2">最低</span><span>15680</span></p>
+				<p><span class="colorC2">成交量</span><span>1</span></p>
+			</div>
+		</div>
+		<!--K线 列表-->
+		<div class="line_list" ng-show="cut == 1">
+			<div class="hour_list">
+				<span ng-click="setList(0)" ng-class="{'line_listAct':list == 0}">日线</span>
+				<span ng-click="setList(1)" ng-class="{'line_listAct':list == 1}">1小时</span>
+				<span ng-click="setList(2)" ng-class="{'line_listAct':list == 2}">2小时</span>
+				<!--<span ng-click="setList(3)" ng-class="{'line_listAct':list == 3}">1小时</span>-->
+				<span ng-click="setList(4)" ng-class="{'line_listAct':list >= 4}"><small class="min_more">分钟</small> <i class="iconfont icon-plus-select-down" ng-class="{'rotate':list == 4}"></i></span>
+			</div>
+			<div class="min_list">
+				<ul>
+					<li ng-click="setmin_list(1)" ng-class="{'line_listAct2':min_list == 1}">1分钟</li>
+					<li ng-click="setmin_list(5)" ng-class="{'line_listAct2':min_list == 5}">5分钟</li>
+					<li ng-click="setmin_list(15)" ng-class="{'line_listAct2':min_list == 15}">15分钟</li>
+					<li ng-click="setmin_list(30)" ng-class="{'line_listAct2':min_list == 30}">30分钟</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 分时 K线图-->
+		<div id="main"></div>
+		<div style="height: 5rem;background: #181B2A;"></div>
+	</ion-content>
+	<div class="market_cut">
+		<p ng-click="setCut(0)" ng-class="{'market_cutAct':cut == 0}">分时</p>
+		<p ng-click="setCut(1)" ng-class="{'market_cutAct':cut == 1}">K线</p>
+		<p ng-click="setCut(2)" ng-class="{'market_cutAct':cut == 2}">交易</p>
+	</div>
+</ion-view>

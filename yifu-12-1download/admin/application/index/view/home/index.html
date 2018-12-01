@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    <div class="tpl-content-wrapper">
+        <div class="row-content am-cf">
+            <!--  <div class="row am-cf">
+                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                     <div class="widget widget-primary am-cf"
+                          style=" background: #6ccac9;border: 1px solid #6ccac9; border-top: 2px solid #6ccac9;">
+                         <div class="widget-statistic-header">平台收益</div>
+                         <div class="widget-statistic-body">
+                             <div class="widget-statistic-value">
+                                {$list.money}
+                             </div>
+                             <span class="widget-statistic-icon am-icon-users" style="color: #87d9e0;"></span>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                     <div class="widget widget-primary am-cf"
+                          style=" background: #6ccac9;border: 1px solid #6ccac9; border-top: 2px solid #6ccac9;">
+                         <div class="widget-statistic-header">累计成交金额</div>
+                         <div class="widget-statistic-body">
+                             <div class="widget-statistic-value">
+                                 {$list.sum_deal}
+                             </div>
+                             <span class="widget-statistic-icon am-icon-users" style="color: #87d9e0;"></span>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                     <div class="widget widget-primary am-cf"
+                          style="background: #6ccac9;border: 1px solid #6ccac9;border-top: 2px solid #6ccac9;">
+                         <div class="widget-statistic-header">普通会员</div>
+                         <div class="widget-statistic-body">
+                             <div class="widget-statistic-value"><i class="am-icon-user" style="font-size: 35px"></i>
+                                 50
+                             </div>
+                             <span class="widget-statistic-icon am-icon-users" style="color: #87d9e0"></span>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                     <div class="widget widget-purple am-cf"
+                          style=" background: #6ccac9;border: 1px solid #6ccac9;border-top: 2px solid #6ccac9;">
+                         <div class="widget-statistic-header">已冻结会员</div>
+                         <div class="widget-statistic-body">
+                             <div class="widget-statistic-value"><i class="am-icon-user" style="font-size: 35px"></i>
+                                 0
+                             </div>
+                             <span class="widget-statistic-icon am-icon-users" style="color: #87d9e0"></span>
+                         </div>
+                     </div>
+                 </div>
+             </div> -->
+            <div class="row am-cf">
+                <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                    <div class="widget widget-purple am-cf"
+                         style=" background: #57c8f2;border: 1px solid #57c8f2;border-top: 2px solid #57c8f2;">
+                        <div class="widget-statistic-header">总会员人数:</div>
+                        <div class="widget-statistic-body">
+                            <div class="widget-statistic-value">{$list.sum_people}</div>
+                            <span class="widget-statistic-icon am-icon-credit-card-alt"
+                                  style="color: #5fbfe2"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                    <div class="widget widget-purple am-cf"
+                         style=" background: #57c8f2;border: 1px solid #57c8f2;border-top: 2px solid #57c8f2;">
+                        <div class="widget-statistic-header">禁用人数:</div>
+                        <div class="widget-statistic-body">
+                            <div class="widget-statistic-value">{$list.disable_people}</div>
+                            <span class="widget-statistic-icon am-icon-credit-card-alt"
+                                  style="color: #5fbfe2"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row am-cf">
+                    <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                        <div class="widget widget-purple am-cf"
+                             style=" background: #57c8f2;border: 1px solid #57c8f2;border-top: 2px solid #57c8f2;">
+                            <div class="widget-statistic-header">总交易量</div>
+                            <div class="widget-statistic-body">
+                                <div class="widget-statistic-value">¥{$list.sum_deal}</div>
+                                <span class="widget-statistic-icon am-icon-credit-card-alt"
+                                      style="color: #5fbfe2"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                        <div class="widget widget-purple am-cf"
+                             style=" background: #57c8f2;border: 1px solid #57c8f2;border-top: 2px solid #57c8f2;">
+                            <div class="widget-statistic-header">今日成交量</div>
+                            <div class="widget-statistic-body">
+                                <div class="widget-statistic-value">¥{$list.sum_day_deal}</div>
+                                <span class="widget-statistic-icon am-icon-credit-card-alt"
+                                      style="color: #5fbfe2"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                        <div class="widget widget-primary am-cf"
+                             style="background: #ff6c60;border: 1px solid #ff6c60;border-top: 2px solid #ff6c60;">
+                            <div class="widget-statistic-header">商品总数</div>
+                            <div class="widget-statistic-body">
+                                <div class="widget-statistic-value">15件</div>
+                                <span class="widget-statistic-icon am-icon-credit-card-alt"
+                                      style="color: #f9a6a5"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                        <div class="widget widget-primary am-cf"
+                             style="background: #ff6c60;border: 1px solid #ff6c60;border-top: 2px solid #ff6c60;">
+                            <div class="widget-statistic-header">上架商品</div>
+                            <div class="widget-statistic-body">
+                                <div class="widget-statistic-value">154件</div>
+                                <span class="widget-statistic-icon am-icon-credit-card-alt" style="color: #f9a6a5"></span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-4">
+                    </div>
+                </div>
+                <div class="row am-cf">
+                    <table class="am-table am-table-border am-table-bordered am-table-bg">
+                        <thead>
+                        <tr>
+                            <th colspan="2" scope="col">服务器信息</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th width="30%">服务器计算机名</th>
+                            <td><span id="lbServerName">http://127.0.0.1/</span></td>
+                        </tr>
+                        <tr>
+                            <td>服务器IP地址</td>
+                            <td>192.168.1.1</td>
+                        </tr>
+                        <tr>
+                            <td>服务器域名</td>
+                            <td>www.h-ui.net</td>
+                        </tr>
+                        <tr>
+                            <td>服务器端口</td>
+                            <td>80</td>
+                        </tr>
+                        <tr>
+                            <td>服务器IIS版本</td>
+                            <td>Microsoft-IIS/6.0</td>
+                        </tr>
+                        <tr>
+                            <td>服务器操作系统</td>
+                            <td>Microsoft Windows NT 5.2.3790 Service Pack 2</td>
+                        </tr>
+                        <tr>
+                            <td>服务器的语言种类</td>
+                            <td>Chinese (People's Republic of China)</td>
+                        </tr>
+                        <tr>
+                            <td>.NET Framework 版本</td>
+                            <td>2.050727.3655</td>
+                        </tr>
+                        <tr>
+                            <td>服务器当前时间</td>
+                            <td>2014-6-14 12:06:23</td>
+                        </tr>
+                        <tr>
+                            <td>服务器IE版本</td>
+                            <td>6.0000</td>
+                        </tr>
+                        <tr>
+                            <td>服务器上次启动到现在已运行</td>
+                            <td>7210分钟</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {include file="public/foot" /}
+
+    <script type="text/javascript" src="/static/js/echarts.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            var nav = $('.left-sidebar li.sidebar-nav-link');
+
+            nav.removeClass("active");
+
+            nav.eq(0).find('a').addClass("active");
+
+        });
+
+        function frozen() {
+
+            $.ajax({
+
+                url: "{:url('Auto/index')}",
+
+                success: function (data) {
+
+                    alert_open('操作成功');
+
+                }
+
+            });
+
+        }
+
+    </script>
+</body>
+</html>

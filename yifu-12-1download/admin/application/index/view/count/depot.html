@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">交易统计</a></li>
+        <li class="am-active">持仓股份</li>
+    </ol>
+    <div class="widget am-cf">
+        <div class="am-form-inline" role="form">
+            <span>日期范围：</span>
+            <div class="am-form-group ">
+                <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+                       data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+            </div>
+            <div class="am-form-group ">
+                <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+                       onfocus="this.blur()" value="{$arr.end_query}"/>
+            </div>
+            <div class="am-form-group ">
+                <input type="text" id="name" class="am-form-field am-input-sm" placeholder="请输入会员信息"
+                       value="{$arr.name}"/>
+            </div>
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+        </div>
+        <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+        <div class="widget-body widget-body-lg am-fr">
+            <div class="am-scrollable-horizontal">
+                <table class="{$table}">
+                    <thead>
+                    <tr>
+                        <th>会员名称</th>
+                        <th>订单编号</th>
+                        <th>配资id</th>
+                        <th>证券简码</th>
+                        <th>证券名称</th>
+                        <th>保证金总额</th>
+                        <th>股票数量</th>
+                        <th>追加保证金</th>
+                        <th>购买价位</th>
+                        <th>股票状态</th>
+                        <th>开仓时间</th>
+                        <th>停牌天数</th>
+                        <!-- <th>当前盈亏</th> -->
+                        <th>买入总价值</th>
+                        <!-- <th>卖出总价值</th> -->
+                        <th>代理id</th>
+                        <th>员工id</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="list">
+                    {foreach $list as $val}
+                    <tr class="text-c" id="re{$val.id}">
+                        <td>{$val.user.name}</td>
+                        <td>{$val.order}</td>
+                        <td>{$val.id}</td>
+                        <td>{$val.code}</td>
+                        <td>{$val.name}</td>
+                        <td>{$val.number}</td>
+                        <td>{$val.num}</td>
+                        <td>{$val.increase_bond}</td>
+                        <td>{$val.buy_price}</td>
+                        <td>{$val.status}</td>
+                        <td>{$val.time}</td>
+                        <td>{$val.day}</td>
+                        <!-- <td>{$val.profit_loss}</td> -->
+                        <td>{$val.buy_total}</td>
+                        <!-- <td>{$val.sell_total}</td> -->
+                        <td>{$val.agent}</td>
+                        <td>{$val.staff}</td>
+                        {if condition="$val.status neq 1"}
+                        <td><a href="javascript:" onclick="sub(id={$val['id']})" class="am-btn am-btn-success am-btn-xs">平仓</a></td>
+                        {else /}
+                        <td>停止</td>
+                        {/if}
+                    </tr>
+                    {/foreach}
+                    <tr>
+                        <th colspan="5"></th>
+                        <th>{$number}</th>
+                        <th>{$num}</th>
+                        <th>{$increase_bond}</th>
+                        <th colspan="8"></th>
+                    </tr>  
+                    </tbody>
+                </table>
+                <div class="am-pagination-left">{$page}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/foot" /}
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+    function sub(id) {
+        if (confirm("确定要平仓吗,操作后无法撤销？")) {
+            $.ajax({
+                url: "{:url('Capitals/sell_handle')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    // console.log(r);return false;
+                    if (r['code'] == 1) {
+                        alert_msg(r['msg'])
+                        $('#re' + id).remove();
+                    } else {
+                        alert_msg(r['msg']);
+                    }
+                }
+            });
+        } else {
+            return false;
+        }
+        
+    }
+
+</script>
+
+</body>
+</html>

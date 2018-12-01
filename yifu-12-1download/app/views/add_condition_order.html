@@ -1,0 +1,207 @@
+<ion-view view-title="恒瑞国际" class="aco_wrap">
+	<div id="top_info">
+		<div>
+			<div class="info_title">委托回报通知 15:15:15</div>
+			<div class="info_con">[jd1230]报单68已撤单：合约信息不存在</div>			
+		</div>
+	</div>
+	<header class="header">
+		<img src="img/zuo.png" class="left_img" ng-click="back()" />
+		<b>添加条件单</b>
+	</header>
+	<ion-content class="top" overflow-scroll="true" ng-click="reset($event)">
+		<div class="condition_order">
+			<div class="top_tab">
+				<div class="d_tab">
+					<span ng-class="{true:'s_select',false:''}[o_id==1]" ng-click="navTap(1)">价格条件单</span>
+					<span ng-class="{true:'s_select',false:''}[o_id==2]" ng-click="navTap(2)">时间条件单</span>
+				</div>
+				<div class="d_con" ng-if="o_id==1">
+					<div class="ov_a" ng-class="{true:'s_focus',false:''}[active_id==1]" ng-click="select(1,$event)">
+						<span class="f_l">未设置</span>
+						<span class="f_r iconfont icon-iconfonticonfontsousuo1"></span>
+					</div>
+					<div class="ov_a">
+						<div class="t_left f_l">
+							<div class="ov_a">
+								<span ng-if="p_type==1" ng-click="pType(2)">价格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&le;
+									<div class="corner"></div>
+								</span>
+								<span ng-if="p_type==2" ng-click="pType(1)">价格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&ge;
+									<div class="corner"></div>
+								</span>
+							</div>
+							<div class="ov_a">
+								<span class="f_l" ng-class="{true:'bg_red',false:'bg_blue'}[bs_btn=='买']" style="width: 2.4rem;text-align: center;" ng-click="bsType()">{{bs_btn}}
+									<div class="corner"></div>
+								</span>
+								<span class="f_r" style="width: 2.4rem;text-align: center;" ng-click="orderType()">{{order_type}}
+									<div class="corner"></div>
+								</span>
+							</div>
+						</div>
+						<div class="t_right f_r">
+							<div class="ov_a">
+								<span class="f_l" ng-class="{true:'s_focus',false:''}[focus_index==1]" ng-click="setPrice($event)">{{left_price}}</span>
+							</div>
+							<div class="ov_a">
+								<span class="f_l" style="width: calc(50% - 0.1rem);text-align: center;" ng-class="{true:'s_focus',false:''}[focus_index==2]" ng-click="setcPrice($event)">{{leftc_price}}</span>
+								<span class="f_r" style="width: calc(50% - 0.1rem);" ng-class="{true:'s_focus',false:''}[focus_index==3]" ng-click="setHand($event)">手数&nbsp;&nbsp;&nbsp;&nbsp;{{left_hand}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="ov_a">
+						<div class="f_l">
+							<span class="f_l" style="width: 50%;text-align: center;" ng-class="{true:'s_select',false:''}[bool==0]" ng-click="navTime(0)">当前交易日</span>
+							<span class="f_l" style="width: 50%;text-align: center;" ng-class="{true:'s_select',false:''}[bool==1]" ng-click="navTime(1)">永久有效</span>
+						</div>
+						<div class="f_r">
+							<button class="btn" ng-click="addFun(0)">添加</button>
+						</div>
+					</div>
+				</div>
+				<div class="d_con" ng-show="o_id==2">
+					<div class="ov_a" ng-class="{true:'s_focus',false:''}[active_id==2]" ng-click="select(2,$event)">
+						<span class="f_l">未设置</span>
+						<span class="f_r iconfont icon-iconfonticonfontsousuo1"></span>
+					</div>
+					<div class="ov_a">
+						<div class="t_left f_l">
+							<div class="ov_a">
+								<span class="ta_c" id="trigger">{{time}}</span>
+							</div>
+							<div class="ov_a">
+								<span class="f_l" style="width: 2.4rem;text-align: center;" ng-class="{true:'bg_red',false:'bg_blue'}[bs_btn1=='买']" ng-click="bsType1()">{{bs_btn1}}
+									<div class="corner"></div>
+								</span>
+								<span class="f_r" style="width: 2.4rem;text-align: center;" ng-click="orderType1()">{{order_type1}}
+									<div class="corner"></div>
+								</span>
+							</div>
+						</div>
+						<div class="t_right f_r">
+							<div class="ov_a">
+								<span style="width: calc(50% - 0.1rem);float: left;text-align: center;" ng-if="p_type1==0" ng-click="open(1)">价格附加</span>
+								<span style="width: calc(50% - 0.1rem);float: left;text-align: center;" ng-if="p_type1==1" ng-click="open(2)">&le;
+									<div class="corner"></div>
+								</span>
+								<span style="width: calc(50% - 0.1rem);float: left;text-align: center;" ng-if="p_type1==2" ng-click="open(1)">&ge;
+									<div class="corner"></div>
+								</span>
+								<span style="width: calc(50% - 0.1rem);" class="f_r" ng-if="p_type1!=0" ng-class="{true:'s_focus',false:''}[focus_index==1]" ng-click="setPrice1($event)">{{right_price}}</span>
+							</div>
+							<div class="ov_a">
+								<span class="f_l" style="width: calc(50% - 0.1rem);text-align: center;" ng-class="{true:'s_focus',false:''}[focus_index==2]" ng-click="setcPrice1($event)">{{rightc_price}}</span>
+								<span class="f_r" style="width: calc(50% - 0.1rem);" ng-class="{true:'s_focus',false:''}[focus_index==3]" ng-click="setHand1($event)">手数&nbsp;&nbsp;&nbsp;&nbsp;{{right_hand}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="ov_a">
+						<div class="f_l">
+							<span class="f_l" style="width: 50%;text-align: center;" ng-class="{true:'s_select',false:''}[bool1==0]" ng-click="navTime1(0)">当前交易日</span>
+							<span class="f_l" style="width: 50%;text-align: center;" ng-class="{true:'s_select',false:''}[bool1==1]" ng-click="navTime1(1)">永久有效</span>
+						</div>
+						<div class="f_r">
+							<button class="btn" ng-click="addFun(1)">添加</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--手数-->
+	<!--<div class="user_keyboard user_keyboard2">
+		<div>
+			<div class="top_head2">
+				<div class="ov_a">
+					<span class="f_l">手数输入</span>
+					<img class="f_r" src="img/jianpan.png"/>
+				</div>
+				<div>最大开仓手数：买0，卖0</div>
+			</div>
+			<div class="kb_con2">
+				<table class="layui-table">
+					<tbody>
+						<tr>
+							<td class="kb_num">1</td>
+							<td class="kb_num">2</td>
+							<td class="kb_num">3</td>
+							<td class="td kb_add" rowspan="2">+</td>
+						</tr>
+						<tr>
+							<td class="kb_num">4</td>
+							<td class="kb_num">5</td>
+							<td class="kb_num">6</td>
+						</tr>
+						<tr>
+							<td class="kb_num">7</td>
+							<td class="kb_num">8</td>
+							<td class="kb_num">9</td>
+							<td class="td kb_decrease" rowspan="2">-</td>
+						</tr>
+						<tr>
+							<td class="kb_num" colspan="2">0</td>
+							<td class="td kb_delete">
+								<span class="iconfont icon-jianpanshanchu"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>-->
+	<!--对手价-->
+	<!--<div class="user_keyboard user_keyboard3">
+		<div>
+			<div class="top_head3">
+				<div class="ov_a">					
+					<span class="f_l">价格输入</span>
+					<img class="f_r" src="img/jianpan.png"/>
+				</div>
+				<div class="ov_a">
+					<span class="f_l">涨停：4090&nbsp;&nbsp;&nbsp;跌停：4090</span>
+					<span class="f_r">最小变动：1</span>
+				</div>
+			</div>
+			<div class="kb_con3 ov_a">
+				<div class="kb_left f_l">
+					<span>对手</span>
+					<span>买一</span>
+					<span>卖一</span>
+					<span>超价</span>
+					<span>市价</span>
+				</div>
+				<div class="kb_mid f_l">
+					<div>
+						<span>1</span>
+						<span>2</span>
+						<span>3</span>
+					</div>
+					<div>
+						<span>4</span>
+						<span>5</span>
+						<span>6</span>
+					</div>
+					<div>
+						<span>7</span>
+						<span>8</span>
+						<span>9</span>
+					</div>
+					<div>
+						<span>.</span>
+						<span>0</span>
+						<span class="d_icon">
+							<span class="iconfont icon-jianpanshanchu"></span>
+						</span>
+					</div>
+				</div>
+				<div class="kb_right f_l">
+					<span>最新</span>
+					<span class="calc">+</span>
+					<span class="calc">-</span>
+				</div>
+			</div>
+		</div>
+	</div>-->
+	<div class="d_read" ng-click="toTip()">阅读《条件单风险提示》</div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>逸富 - 行情页</title>
+		<link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="layui/css/layui.css" />
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" title="main" href="css/main.css" />
+		<link rel="stylesheet alternate" type="text/css" title="main_light" href="css/main_light.css" />
+		<script type="text/javascript">
+			function setActiveStyleSheet(title, type) {
+				if(type == 1) {
+					window.frames["my_views"].set_style(title);
+					window.frames["list_table"].set_style(title);
+				}
+				var i, a, main;
+				if(title) {
+					for(i = 0; a = document.getElementsByTagName('link')[i]; i++) {
+						if(a.getAttribute('rel').indexOf('style') != -1 && a.getAttribute('title')) {
+							a.disabled = true;
+							if(a.getAttribute('title') == title) {
+								window.localStorage.setItem("color", a.getAttribute('title'));
+								a.disabled = false;
+							}
+						}
+					}
+				};
+			};
+			var color = localStorage.getItem("color");
+			if(color == "main") {
+				setActiveStyleSheet('main', 0);
+			} else if(color == "main_light") {
+				setActiveStyleSheet('main_light', 0);
+			}
+		</script>
+	</head>
+
+	<body style="background: #000;">
+		<div class="wrapper">
+			<div class="title_list">
+				<span class="left_img"></span>
+				<ul class="title_text1">
+					<li onclick="back()"></li>
+					<li onclick="get_selfdata()"></li>
+					<li class="title_text1Act3" onclick="get_marketdata()"></li>
+					<li onclick="get_timedata()"></li>
+					<li onclick="get_kdata()"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li onclick="make_tgree('5m')"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<!--15-->
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<!--25-->
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<ul class="title_text2">
+					<li onclick="toggle_updown()">
+						<p>交易(F11)</p>
+					</li>
+					<li>
+						<p class="system_click">系统</p>
+						<div class="system_list system" style="display: none;">
+							<div></div>
+							<div class="system_cont system_table">
+								<div class="transition">修改子账户密码</div>
+								<div class="transition">历史结算单查询</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<p>银期转账</p>
+					</li>
+					<li>
+						<p class="set_up">设置</p>
+						<div class="system_list set_up_cont">
+							<div></div>
+							<div class="system_cont set_table">
+								<div class="transition">系统参数设置</div>
+								<div class="transition">止盈止损参数设置</div>
+								<div class="transition">止盈止损点数设置</div>
+								<div class="set_style">界面风格切换</div>
+							</div>
+						</div>
+						<div class="system_list system_list2">
+							<div></div>
+							<div class="system_cont style_list">
+								<div class="transition" onclick="setActiveStyleSheet('main_light',1)">亮色系风格</div>
+								<div class="transition" onclick="setActiveStyleSheet('main',1)">黑色系风格</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<p>问题反馈</p>
+					</li>
+					<li onclick="about_module()">
+						<p>关于</p>
+					</li>
+				</ul>
+			</div>
+			<div class="wrapper_cont transition">
+				<div class="slider_list">
+					<span></span>
+					<ul class="slider_text">
+						<li>自<br />定<br />义</li>
+						<li class="slider_textAct">行<br />情</li>
+						<li>分<br />时<br />图</li>
+						<li>K<br />线</li>
+					</ul>
+					<button class="down_deal"></button>
+				</div>
+				<div class="iframe_box">
+					<!--<iframe id="list_table" data="" src="market_lable.html" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>-->
+					<iframe id="list_table" name="list_table" data="" src="market_lable.html" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>
+					<!--<iframe id="list_table" name="list_table" data="" src="k_line.html" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>-->
+					<div class="iframe_footer">
+						<div class="contract_listbox over_y">
+							<span type="left"></span>
+							<div class="contract_box">
+								<ul class="contract_list transition">
+									<!--<li class="contract_listAct">IC</li>-->
+									<!--合约分类列表-->
+								</ul>
+							</div>
+							<span type="right"></span>
+						</div>
+						<div class="exchange_listbox">
+							<span type="left"></span>
+							<div class="list_box over_y">
+								<ul class="exchange_list transition" type="1">
+									<!--交易所列表-->
+								</ul>
+							</div>
+							<span type="right"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="wrapper_foot transition">
+				<!--个人信息-->
+				<div class="account_views">
+					<span></span>
+					<p class="border_left_none">账户(USD)：<span class="zhanghu">cszh</span></p>
+					<p>权益：<span class="quanyi">0.00</span></p>
+					<p>平仓盈亏：<span class="close_profit">0.00</span></p>
+					<p>持仓盈亏：<span class="hold_profit">0.00</span></p>
+					<p>保证金：<span class="bond">0.00</span></p>
+					<p>可用：<span class="can_use">0.00</span></p>
+					<p>风险度：<span class="fengxian">0.00</span>%</p>
+					<p class="border_right_none">风控线：<span class="fengkong">0.00</span></p>
+					<div class="right_pic">
+						<small></small>
+						<small></small>
+					</div>
+				</div>
+				<!--下单  撤单  成交记录模块-->
+				<div class="foot_cont">
+					<div class="foot_cont_left left5">
+						<div class="make_order_way mabom8" type="1">
+							<p class="make_order_wayAct" type="1">两键下单</p>
+							<p type="2">三键下单</p>
+							<p type="3">普通下单</p>
+							<div class="quick_make_order">
+								<input type="checkbox" /> 快速
+							</div>
+						</div>
+						<!--选择合约-->
+						<div class="contact_input mabom10">
+							<span class="title_span">合&nbsp;约</span>
+							<div class="contact_select">
+								<input id="symbol" class="no_click" type="text" />
+								<!--合约分类列表-->
+								<div class="contact_type over_y">
+									<ul class="contact_type_list">
+										<li>IC</li>
+										<li>IF</li>
+										<li>IH</li>
+										<li>十债</li>
+										<li>IC</li>
+										<li>IF</li>
+										<li>IH</li>
+										<li>十债</li>
+										<li>IC</li>
+										<li>IF</li>
+										<li>IH</li>
+										<li>十债</li>
+										<li>IC</li>
+										<li>IF</li>
+										<li>IH</li>
+										<li>十债</li>
+										<li>IC</li>
+										<li>IF</li>
+										<li>IH</li>
+										<li>十债</li>
+										<li>IC</li>
+										<li>IF</li>
+										<li>IH</li>
+										<li>十债</li>
+									</ul>
+								</div>
+								<div class="contact_val_box over_y">
+									<ul class="contact_val">
+										<li>IH1812</li>
+										<li>IH1903</li>
+										<li>IH1906</li>
+										<li>IF1809</li>
+										<li>IF1810</li>
+										<li>IF1812</li>
+									</ul>
+								</div>
+								<!--合约分类列表 end-->
+							</div>
+							<!--class名: clock_on:上锁状态  clock_off:解锁状态-->
+							<button class="clock_off no_click clock_click"></button>
+							<div class="speculating" type="0">
+								<button class="no_click">投机</button>
+								<div class="sleeve_box">
+									<div></div>
+									<ul class="sleeve">
+										<li type="0">投机</li>
+										<li type="1">套利</li>
+										<li type="2">套保</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--选择合约-->
+						<!--两键下单 单选框-->
+						<div class="ping_way mabom12">
+							<input class="no_click" type="radio" checked name="way" value="0" id="kaicang" />
+							<label for="kaicang">开仓</label>
+							<input class="no_click" type="radio" name="way" value="1" id="pingcangcang" />
+							<label for="pingcangcang">平仓</label>
+							<input class="no_click" type="radio" name="way" value="2" id="pingjin" />
+							<label for="pingjin">平今</label>
+							<!--卖出 买入-->
+							<span class="radio_buy_sell">
+								<input checked class="input_special no_click" type="radio" name="buy_way" value="0" id="buy"/>
+								<label class="red" for="buy">买入</label>
+								<input class="no_click" type="radio" name="buy_way" value="1" id="sell"/>
+								<label class="green" for="sell">卖出</label>
+							</span>
+						</div>
+						<!--两键下单 单选框-->
+						<div class="deal_box">
+							<div class="deal_left">
+								<!--手数 价格 输入框-->
+								<div class="number_price">
+									<div class="number mabom10">
+										<span class="title_span">手&nbsp;数</span>
+										<div class="number_input number_input1">
+											<input class="buy_num no_click" type="number" value="1" />
+											<div class="top_bottom top_bottom1">
+												<button class="num_add no_click" onclick="num_add_sum(0)"></button>
+												<button class="num_sum no_click" onclick="num_add_sum(1)"></button>
+											</div>
+										</div>
+									</div>
+									<div class="number price">
+										<span class="title_span">价&nbsp;格</span>
+										<div class="number_input price_input">
+											<input class="buy_price no_click" type="text" value="限价" readonly/>
+											<div class="top_bottom top_bottom2">
+												<button class="no_click" onclick="price_add_sum(0)"></button>
+												<button class="no_click" onclick="price_add_sum(1)"></button>
+											</div>
+											<ul class="price_type" type="0">
+												<li type="0">限价</li>
+												<li type="1">最新价</li>
+												<li type="2">对手价</li>
+												<li type="3">挂单价</li>
+												<li type="4">快速价</li>
+											</ul>
+										</div>
+										<small class="notes_box">
+											<div class="notes">注："两键下单"和"三键下单"价格类型中除"限价"外其他价格类型显示的价格仅为参考价,实际成交价须以服务器端成交价为准！</div>
+										</small>
+									</div>
+									<p class="line"></p>
+								</div>
+								<!--买入卖出两个按钮-->
+								<div class="sell_buy_box">
+									<div class="open_ping mabom12">
+										<span>买可开 ≤ 0</span>
+										<span>卖可开 ≤ 0</span>
+									</div>
+									<div class="sell_buy">
+										<button class="no_click" onclick="trade_data(0)">
+											<p class="new_price_val">0</p>
+											<p>买入</p>
+										</button>
+										<button class="no_click" onclick="trade_data(1)">
+											<p class="new_price_val">0</p>
+											<p>卖出</p>
+										</button>
+									</div>
+									<button class="ordinary_buy transition no_click">买&nbsp;&nbsp;入</button>
+									<p class="line line_bottom"></p>
+								</div>
+								<!--买入卖出两个按钮-->
+							</div>
+							<div class="deal_right">
+								<div class="buy_sell_list">
+									<div>
+										<span class="back_buy">买</span>
+										<div class="buy_sell_listcont">
+											<p>可&nbsp;&nbsp;&nbsp;&nbsp;开&nbsp;≦ &nbsp;&nbsp;&nbsp;&nbsp;0</p>
+											<p>可&nbsp;&nbsp;&nbsp;&nbsp;平&nbsp;≦ &nbsp;&nbsp;&nbsp;&nbsp;0</p>
+										</div>
+									</div>
+									<div class="mabom10">
+										<span class="back_sell">卖</span>
+										<div class="buy_sell_listcont">
+											<p>可&nbsp;&nbsp;&nbsp;&nbsp;开&nbsp;≦ &nbsp;&nbsp;&nbsp;&nbsp;0</p>
+											<p>可&nbsp;&nbsp;&nbsp;&nbsp;平&nbsp;≦ &nbsp;&nbsp;&nbsp;&nbsp;0</p>
+										</div>
+									</div>
+								</div>
+								<div class="reset_condition mabom18">
+									<button class="mabom10 reset no_click">复&nbsp;&nbsp;位</button>
+									<button class="no_click">条件单</button>
+								</div>
+								<div class="can_ping mabom10">可平 ≤ 0</div>
+								<button class="sell_btn no_click">
+									<p class="new_price_val">--</p>
+									<p>无仓</p>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="foot_cont_right right5">
+						<div class="my_title">
+							<button class="my_titleAct1" type="1">我的持仓</button>
+							<button type="2">成交记录</button>
+							<button type="3">交易委托</button>
+							<button type="4">我的条件单</button>
+							<div class="right_btn my_btn">
+								<button>全部清仓</button>
+								<button>快速平仓</button>
+								<button>快速反手</button>
+								<button>快速锁仓</button>
+							</div>
+							<div class="right_btn entrust_btn">
+								<button>撤单</button>
+								<button>全撤</button>
+							</div>
+							<div class="right_btn condition_btn">
+								<button>发送</button>
+								<button>删除</button>
+								<button>全删</button>
+							</div>
+						</div>
+						<iframe id="my_views" name="my_views" data="1" src="" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+					</div>
+				</div>
+				<!--下单  撤单  成交记录模块-->
+				<!--最底部消息通知-->
+				<div class="foot_bottom">
+					<span class="left_img" style="height: 25px;"></span>
+					<small class="horn"></small>
+					<p class="foot_news" onclick="ff()">T1903 买 开仓 投机 1手 [逸富] 请求下单错误</p>
+					<div class="computer">
+						<div></div>
+						<span>交易主机</span>
+						<div></div>
+						<span>行情主机</span>
+					</div>
+				</div>
+				<!--最底部消息通知-->
+			</div>
+		</div>
+		<!--风险揭示书-->
+		<div class="module_box1 position0">
+			<div class="module1 position0">
+				<div class="module1_tittle book_tittle transition">风险提示书 <span></span></div>
+				<div class="module1_count over_y">
+					<p class="module1_tittle_color">风险揭示书</p>
+					<div class="module1_color">
+
+					</div>
+				</div>
+				<div class="module1_button">
+					<button class="transition" type="1">同意</button>
+					<button class="transition" type="2">退出</button>
+				</div>
+			</div>
+		</div>
+		<!--?风险揭示书 end-->
+		<!--关于-->
+		<div class="module_box2 position0">
+			<div class="module2 position0">
+				<div class="module1_tittle about_tittle transition" style="padding-left: 10px;">关于我们 <span></span></div>
+				<img class="module_img" src="img/about.png" alt="" />
+				<div class="module_code">版本号：2.4.1.1</div>
+				<div class="module2_cont">
+					<p>香港览逸信息科技有限公司</p>
+					<p>Hong Kong Lanyee Information Technology CO,Ltd</p>
+				</div>
+				<div class="module2_bottom">
+					欢迎访问：
+					<button>退出</button>
+				</div>
+			</div>
+		</div>
+		<!--关于 end-->
+		<!--修改子账户密码-->
+		<div class="module_box3 position0">
+			<div class="module3 position0">
+				<div class="module1_tittle change_pass_tittle transition">修改子账户密码 <span></span></div>
+				<div class="module3_cont paddtop25">
+					<div class="module3_input mabom20">
+						<span>子账户</span>
+						<input type="text" value="qq980866078" />
+					</div>
+					<div class="module3_input mabom20">
+						<span>旧密码</span>
+						<input type="password" />
+					</div>
+					<div class="module3_input mabom20">
+						<span>新密码</span>
+						<input type="password" />
+					</div>
+					<div class="module3_input mabom20">
+						<span>确认新密码</span>
+						<input type="password" />
+					</div>
+					<div class="module3_btn">
+						<button>修改</button>
+						<button>取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--修改子账户密码 end-->
+		<!--历史结算单查询-->
+		<div class="module_box4 position0">
+			<div class="module4 position0">
+				<div class="module1_tittle module_search_title transition">历史结算单查询 <span></span></div>
+				<div class="module4_cont1">
+					<span>日期</span>
+					<input type="text" class="layui-input" id="test1" placeholder="yyyy-MM-dd">
+					<div class="module4_button module4_search">
+						<button>查询</button>
+					</div>
+					<div class="module4_button module4_exit">
+						<button>退出</button>
+					</div>
+				</div>
+				<div class="module4_cont2">
+					<p class="module4_nodata">没有结算单信息</p>
+					<table class="module4_table" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<th>合约代码</th>
+							<th>买卖</th>
+							<th>开平</th>
+							<th>委托状态</th>
+							<th>委托手数</th>
+							<th>成交手数</th>
+							<th>剩余手数</th>
+							<th>冻结手续费</th>
+							<th>冻结保证金</th>
+							<th>状态信息</th>
+							<th>投保</th>
+							<th>委托时间</th>
+							<th>编号</th>
+							<th>操作员</th>
+						</tr>
+						<tr>
+							<td class="yellow">b1905</td>
+							<td class="red">买</td>
+							<td class="red">开仓</td>
+							<td class="red">错单</td>
+							<td class="green">300</td>
+							<td class="green">39</td>
+							<td class="green">0</td>
+							<td class="green">0.00</td>
+							<td class="green">0.00</td>
+							<td class="red">下单错误</td>
+							<td class="red">投机</td>
+							<td class="yellow">16:27:36</td>
+							<td class="yellow">0</td>
+							<td class="white">qq123456</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--历史结算单查询 end-->
+		<!--下单确认-->
+		<div class="module5_box position0">
+			<div class="module5 position0">
+				<div class="module1_tittle confirm_order transition">下单确认 <span></span></div>
+				<div class="module5_cont">
+					<div class="module5_cont1">
+						<!--合约：IC1812，方向：买，开平：开仓，投保：投机，手数：15，价格：挂单价-->
+					</div>
+					<div class="module5_cont2">
+						<button class="transition">确认</button>
+						<button class="transition">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--下单确认 end-->
+		<!--条件预埋单设置-->
+		<div class="module6_box position0">
+			<div class="module6 position0">
+				<div class="module1_tittle condition_set transition">条件预埋单设置 <span></span></div>
+				<div class="module6_cont">
+					<div class="module6_cont1">
+						<p class="line_title">信息</p>
+						<div class="module6_cont1_top">
+							账户：
+							<span>qq123456</span> 合约：
+							<span>T1812</span>
+							<div class="condition_box">
+								方向：
+								<div class="condition_input_box">
+									<input class="condition_buy_val" type="text" value="卖出" readonly/>
+									<button></button>
+									<ul class="condition_way condition_buy_type">
+										<li class="transition">买入</li>
+										<li class="transition">卖出</li>
+									</ul>
+								</div>
+								开平：
+								<div class="condition_input_box">
+									<input class="condition_sell_val" type="text" value="开仓" readonly/>
+									<button></button>
+									<ul class="condition_way condition_sell">
+										<li class="transition">开仓</li>
+										<li class="transition">平仓</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="module6_cont1_btm">
+							价格：
+							<div type="1" class="condition_input_box condition_input_new1">
+								<input class="price_way_val" type="text" value="限价" />
+								<button></button>
+								<ul class="condition_way price_way">
+									<li type="1" class="transition">限价</li>
+									<li type="2" class="transition">最新价</li>
+									<li type="3" class="transition">挂单价</li>
+									<li type="4" class="transition">快速价</li>
+									<li type="5" class="transition">对手价</li>
+								</ul>
+							</div>
+							超&nbsp;&nbsp;
+							<div class="up_dow_box up_dow_position">
+								<input class="beyond_position" type="text" value="1" />
+								<button disabled onclick="up_dow_position(1)"></button>
+								<button disabled onclick="up_dow_position(2)"></button>
+							</div>
+							&nbsp;&nbsp;个点位
+							<div class="up_dow_box_new">
+								数量：
+								<div class="up_dow_box up_dow_num">
+									<input class="up_dow_num_val" type="text" value="1" />
+									<button onclick="up_dow_num(1)"></button>
+									<button onclick="up_dow_num(2)"></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="module6_cont2">
+						<p class="line_title">系统</p>
+						<div class="module6_cont2_box1">
+							<input type="radio" name="condition" checked/>
+							<div class="condition_input_box condition_newstyle1">
+								<input class="condition_input_val" type="text" value="最新价" readonly/>
+								<button></button>
+								<ul class="condition_way condition_way1">
+									<li class="transition">最新价</li>
+									<li class="transition">买一价</li>
+									<li class="transition">卖一价</li>
+								</ul>
+							</div>
+							连续&nbsp;&nbsp;
+							<div class="up_dow_box up_dow_box1">
+								<input class="up_dow_box1_val" type="text" value="1" />
+								<button onclick="pens_add_sum(0)"></button>
+								<button onclick="pens_add_sum(1)"></button>
+							</div>
+							&nbsp;&nbsp;笔
+							<div class="condition_input_box condition_newstyle2">
+								<input class="condition_val2" type="text" value="≥" readonly/>
+								<button></button>
+								<ul class="condition_way condition_way2">
+									<li class="transition">≥</li>
+									<li class="transition">=</li>
+									<li class="transition">≤</li>
+								</ul>
+							</div>
+							<div class="up_dow_box up_dow_newstyle1">
+								<input class="up_dow_val2" type="text" value="94.785" />
+								<button onclick="price_sum_add(0)"></button>
+								<button onclick="price_sum_add(1)"></button>
+							</div>
+						</div>
+						<div class="module6_cont2_box1 matop10">
+							<input type="radio" name="condition" />
+							<div class="condition_time">
+								时间到达
+								<p class="time_arrival">
+									<button>15</button> :
+									<button class="condition_timeAct">00</button> :
+									<button>36</button>
+								</p>
+								<button onclick="time_add_sum(0)"></button>
+								<button onclick="time_add_sum(1)"></button>
+							</div>
+						</div>
+						<div class="module6_cont2_box1 matop10">
+							<input type="radio" name="condition" /> 预埋，手动发出
+						</div>
+						<div class="module6_cont2_box1 matop10">
+							<input class="second_checked" disabled="" style="margin-right:5px;" type="checkbox" /> 如果
+							<div class="up_dow_box up_dow_style2 up_dow_style3">
+								<input class="seconds_val" type="text" value="1" />
+								<button disabled onclick="seconds_sum_add(0)"></button>
+								<button disabled onclick="seconds_sum_add(1)"></button>
+							</div>
+							<span class="is_cancel is_cancel1">秒内未成交则撤单</span>
+							<input class="order_again" type="checkbox" style="margin: 0;" disabled/> 并重新下单
+						</div>
+						<div class="module6_cont2_box1 matop10">
+							<input class="again_price" style="margin-right:5px;" type="checkbox" disabled/> 重新下单价格与首次下单价格不得超过
+							<div class="up_dow_box up_dow_style2 up_dow_style4">
+								<input class="up_dow_style4_val" type="text" value="1" />
+								<button disabled onclick="beyond_price_sumadd(0)"></button>
+								<button disabled onclick="beyond_price_sumadd(1)"></button>
+							</div>
+							<span class="is_cancel is_cancel2">个点位</span>
+						</div>
+					</div>
+					<div class="module6_cont3">
+						<div class="module6_cont3_text">
+							<p class="risk_hints">止损止盈风险提示</p>
+							<p>重启和断连后，本地未触发的条件预埋单会失效</p>
+						</div>
+						<div class="module6_cont3_button">
+							<button class="transition">取消</button>
+							<button class="transition">确定</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--止损止盈风险提示书-->
+			<div class="module1 position0 module_lose">
+				<div class="module1_tittle lose_title transition">止盈止损提示书 <span></span></div>
+				<div class="module1_count over_y">
+					<p style="text-align: center;color: #fff;">止损止盈单/条件单风险揭示</p>
+					<div style="color: #abafb2;">
+						尊敬的客户：<br /> 没有只涨不跌的市场，也没有包赚不赔的投资。在您进入证券市场之前，为了使您更好地了解相关风险，根据证券市场有关法律法规、行政规章、规范性文件以及证券监管机关、证券行业自律组织、证券登记结算机构和证券交易所业务规则、规定及指引，特提供本风险揭示书，请您认真详细阅读。投资者从事证券投资可能面临包括但不限于如下风险：
+						<br /> 1、宏观经济风险：由于我国宏观经济形势的变化以及其他国家、地区宏观经济环境和证券市场的变化，可能会引起国内证券市场的波动，使您存在亏损的可能，您将不得不承担由此造成的损失。
+						<br /> 2、政策风险：有关证券市场的法律、法规及相关政策、规则发生变化，可能引起证券市场价格波动，使您存在亏损的可能，您将不得不承担由此造成的损失。
+						<br /> 3、上市公司经营风险：由于上市公司所处行业整体经营形势的变化；由于上市公司经营管理等方面的因素，如经营决策重大失误、高级管理人员变更、重大诉讼等都可能引起该公司证券价格的波动；由于上市公司经营不善甚至于会导致该公司被停牌、摘牌，这些都使您存在亏损的可能。
+						<br /> 4、技术风险：由于交易撮合、清算交收、行情揭示及银证转账是通过电子通讯技术和电脑技术来实现的，这些技术存在着被网络黑客和计算机病毒攻击的可能，同时通讯技术、电脑技术和相关软件具有存在缺陷的可能，这些风险可能给您带来损失或银证转账资金不能即时到账。
+						<br /> 由于证券交易所主机和证券公司主机客观上存在时间差，若您的委托时间早于或晚于证券交易所服务器时间，将会产生不利于您的委托成交或不成交的风险。
+						<br /> 5、不可抗力因素导致的风险：因不可抗力、意外时间、技术故障或交易所认定的其他异常情况，导致部分或全部交易不能进行的，交易所可以决定单独或同时采取暂缓进入交收、技术性停牌或临时停市等措施；诸如地震、台风、火灾、水灾、战争、瘟疫、社会动乱等不可抗力因素可能导致证券交易系统的瘫痪；证券公司无法控制和不可预测的系统故障、设备故障、通讯故障、电力故障等也可能导致证券交易系统非正常运行甚至瘫痪；证券公司和银行无法控制和不可预测的系统故障、设备故障、通讯故障、电力故障等也可能导致银证转账系统非正常运行甚至瘫痪，这些都会使您的交易委托无法成交或者无法全部成交，或者银证转账资金不能即时到账，您将不得不承担由此导致的损失和不便。
+						<br /> 6、特殊证券品种的风险
+						<br /> 本公司敬告投资者，应当根据自身的经济条件、承受能力和对投资品种的了解程度，认真决定证券投资品种及策略，尤其是当您决定投资ST、*ST、退市整理类股票或者其他有较大潜在风险的证券产品（比如权证等衍生品、创业板股票交易、融资融券交易）时，更应当清醒地认识到该类证券可能蕴含着更大的投资风险。
+						<br /> 7、委托方式的风险
+						<br /> 网上委托或其他自助委托方式除具有证券交易的共有风险（包括但不限于《风险揭示书》、《客户须知》所列）外，还存在包括但不限于以下风险：
+						<br />
+					</div>
+				</div>
+				<div class="module_close_button">
+					<button class="transition">退出</button>
+				</div>
+			</div>
+			<!--止损止盈风险提示书 end-->
+		</div>
+		<!--条件预埋单设置 end-->
+		<!--请选择一笔委托进行撤单-->
+		<div class="module7_box position0">
+			<div class="module7 position0">
+				<div class="module1_tittle sys_tips transition">系统提示 <span></span></div>
+				<div class="module7_cont">
+					<div class="module7_cont1">
+						<small></small>
+						<span>请选择一笔委托进行撤单！</span>
+					</div>
+					<button class="module7_btn transition">确定</button>
+				</div>
+			</div>
+		</div>
+		<!--请选择一笔委托进行撤单 end-->
+		<!--撤单确认-->
+		<div class="module8_box position0">
+			<div class="module8 position0">
+				<div class="module1_tittle confirm_cancel transition">撤单确认 <span></span></div>
+				<div class="module8_cont">
+					<div class="module8_cont1">
+						撤用户所有挂单
+					</div>
+					<div class="module8_cont2">
+						<button class="transition">确认</button>
+						<button class="transition">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--撤单确认 end-->
+		<!--全部清仓-->
+		<div class="module9_box position0">
+			<div class="module9 position0">
+				<div class="module1_tittle clear_all_hold transition">系统提示 <span></span></div>
+				<div class="module9_cont">
+					<div class="module9_cont1">
+						<small></small>
+						<span>是否要清全部仓位！</span>
+					</div>
+					<button class="module9_btn transition">确定</button>
+					<button class="module9_btn transition">取消</button>
+				</div>
+			</div>
+		</div>
+		<!--全部清仓 end-->
+		<!--快速平仓-->
+		<div class="module10_box position0">
+			<div class="module10 position0">
+				<div class="module1_tittle quick_ping transition">系统提示 <span></span></div>
+				<div class="module10_cont">
+					<div class="module10_cont1">
+						<small></small>
+						<span>请选择一笔持仓进行平仓！</span>
+					</div>
+					<button class="module10_btn transition">确定</button>
+				</div>
+			</div>
+		</div>
+		<!--快速平仓 end-->
+		<!--快速反手-->
+		<div class="module11_box position0">
+			<div class="module11 position0">
+				<div class="module1_tittle quick_back transition">系统提示 <span></span></div>
+				<div class="module11_cont">
+					<div class="module11_cont1">
+						<small></small>
+						<span>请选择一笔持仓进行反手！</span>
+					</div>
+					<button class="module11_btn transition">确定</button>
+				</div>
+			</div>
+		</div>
+		<!--快速反手 end-->
+		<!--快速锁仓-->
+		<div class="module12_box position0">
+			<div class="module12 position0">
+				<div class="module1_tittle quick_clock transition">系统提示 <span></span></div>
+				<div class="module12_cont">
+					<div class="module12_cont1">
+						<small></small>
+						<span>请选择一笔持仓进行锁仓！</span>
+					</div>
+					<button class="module12_btn transition">确定</button>
+				</div>
+			</div>
+		</div>
+		<!--快速锁仓 end-->
+		<!--交易委托 撤单-->
+		<div class="module13_box position0">
+			<div class="module13 position0">
+				<div class="module1_tittle cancel_entrust transition">系统提示 <span></span></div>
+				<div class="module13_cont">
+					<div class="module13_cont1">
+						<small></small>
+						<span>请选择一笔委托进行撤单！</span>
+					</div>
+					<button class="module13_btn transition">确定</button>
+				</div>
+			</div>
+		</div>
+		<!--交易委托 撤单 end-->
+		<!--交易委托 撤单确认-->
+		<div class="module88_box position0">
+			<div class="module88 position0">
+				<div class="module1_tittle cancel_entrust_all transition">撤单确认 <span></span></div>
+				<div class="module88_cont">
+					<div class="module88_cont1">
+						撤用户委托中所有挂单
+					</div>
+					<div class="module88_cont2">
+						<button class="transition">确认</button>
+						<button class="transition">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--交易委托 撤单确认 end-->
+		<!--我的条件单 删除-->
+		<div class="module14_box position0">
+			<div class="module14 position0">
+				<div class="module1_tittle dele_condition transition">系统提示 <span></span></div>
+				<div class="module14_cont">
+					<div class="module14_cont1">
+						<small></small>
+						<span>请选择一笔条件单进行删除！</span>
+					</div>
+					<button class="module14_btn transition">确定</button>
+				</div>
+			</div>
+		</div>
+		<!--我的条件单 删除 end-->
+		<!--全删 确认-->
+		<div class="module15_box position0">
+			<div class="module15 position0">
+				<div class="module1_tittle dele_condition_all transition">删除确认 <span></span></div>
+				<div class="module15_cont">
+					<div class="module15_cont1">
+						删除用户所有条件单
+					</div>
+					<div class="module15_cont2">
+						<button class="transition">确认</button>
+						<button class="transition">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--全删 确认 end-->
+		<!--账户资金信息-->
+		<div class="module16_box position0">
+			<div class="module16 position0">
+				<div class="module1_tittle account_capital transition">账户资金信息 <span></span></div>
+				<div class="module16_cont">
+					<div class="module16_cont1">
+						<div class="module16_cont3">
+							<div class="module16_type1">+昨日准备金 <span>0.00</span></div>
+							<div class="module16_type1">-今日出金 <span>0.00</span></div>
+							<div class="module16_type1">+今日入金 <span>0.00</span></div>
+							<div class="module16_type2">=静态权益<span>0.00</span></div>
+							<div class="module16_type1">+平仓盈亏 <span class="white">0.00</span></div>
+							<div class="module16_type1">+持仓盈亏 <span class="white">0.00</span></div>
+							<div class="module16_type1">-手续费 <span>0.00</span></div>
+							<div class="module16_type2">=动态权益<span>0.00</span></div>
+							<div class="module16_type1">-冻结手续费 <span>0.00</span></div>
+							<div class="module16_type1">-占用保证金 <span>0.00</span></div>
+							<div class="module16_type1">-冻结保证金 <span>0.00</span></div>
+							<div class="module16_type2">=可用资金<span>0.00</span></div>
+							<div class="module16_type2">=可取资金<span>0.00</span></div>
+						</div>
+					</div>
+					<div class="module16_cont2">
+						<button class="transition">确认</button>
+						<button class="transition">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--账户资金信息 end-->
+		<!--交易所汇率-->
+		<div class="module17_box position0">
+			<div class="module17 position0">
+				<div class="module1_tittle exchange_rate transition">交易所汇率 <span></span></div>
+				<div class="module17_cont">
+					<div class="module17_cont1">
+						<div class="module16_cont3">
+							<ul>
+								<li>
+									<span>CNY</span>
+									<span>=</span>
+									<span>0.146205</span>
+									<span>USD</span>
+								</li>
+								<li>
+									<span>EUR</span>
+									<span>=</span>
+									<span>1.711</span>
+									<span>USD</span>
+								</li>
+								<li>
+									<span>GBP</span>
+									<span>=</span>
+									<span>1.711</span>
+									<span>USD</span>
+								</li>
+								<li>
+									<span>HKD</span>
+									<span>=</span>
+									<span>1.711</span>
+									<span>USD</span>
+								</li>
+								<li>
+									<span>JPY</span>
+									<span>=</span>
+									<span>1.711</span>
+									<span>USD</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="module17_cont2">
+						<button class="transition">确认</button>
+						<button class="transition">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--交易所汇率  end-->
+		<!--系统参数设置-->
+		<div class="module18_box position0">
+			<div class="module18 position0">
+				<div class="module1_tittle module18_exit transition">系统参数设置 <span></span></div>
+				<div class="module18_top">
+					<ul class="module18_toptitle">
+						<li class="module18_toptitleActive">下单板设置</li>
+						<li>列表操作</li>
+						<li>消息提示</li>
+						<li>系统设置</li>
+					</ul>
+					<!--下单板设置-->
+					<div class="module18_cont">
+						<div class="module18_border1">
+							<div class="module18_list1 mabom15">
+								<input class="order_confirm" type="checkbox" id="order_confirm" />
+								<label for="order_confirm">下单前确认</label>
+							</div>
+							<div class="module18_list2 mabom15">
+								<span class="module18_listTitle">开仓手数：</span>
+								<p>开仓默认手数：</p>
+								<div class="up_dow_box up_dow_style2 open_default_num">
+									<input id="open_transaction_number" type="text" value="" />
+									<button onclick="open_num_addsum(1)"></button>
+									<button onclick="open_num_addsum(2)"></button>
+								</div>
+								<p class="maleft15">报单最大手数：</p>
+								<div class="up_dow_box up_dow_style2 max_num">
+									<input id="customs_max_number" type="text" value="1" />
+									<button onclick="max_num_addsum(1)"></button>
+									<button onclick="max_num_addsum(2)"></button>
+								</div>
+							</div>
+							<div class="module18_list2 ratio_open_num">
+								<span class="module18_listTitle" id="open_default_num" data="1">平仓默认数量：</span>
+								<input class="maleft15" type="radio" name="can_p" value="1" checked id="kpccl" />
+								<label for="kpccl">可平持仓量</label>
+								<input class="maleft15" type="radio" name="can_p" value="2" id="kcmrl" />
+								<label for="kcmrl">开仓默认量</label>
+							</div>
+						</div>
+						<div class="module18_border2">
+							<div class="module18_list2 mabom15 focus1_address">
+								<span class="module18_listTitle" id="focus1_address" data="1">选择合约焦点位置：</span>
+								<input class="maleft15" type="radio" name="choice_focus" value="1" id="focus1_contract">
+								<label for="focus1_contract">合约</label>
+								<input class="maleft57" type="radio" name="choice_focus" value="2" id="focus1_price" />
+								<label for="focus1_price">价格</label>
+								<input class="maleft57" type="radio" name="choice_focus" value="3" id="focus1_num" />
+								<label for="focus1_num">手数</label>
+								<input class="maleft57" type="radio" name="choice_focus" value="4" id="focus1_dont" />
+								<label for="focus1_dont">不处理</label>
+							</div>
+							<div class="module18_list2 mabom15 focus2_address">
+								<span class="module18_listTitle" id="focus2_address" data="1">下单后焦点位置：</span>
+								<input class="maleft15" type="radio" name="order_focus" value="1" id="focus2_contract" />
+								<label for="focus2_contract">合约</label>
+								<input class="maleft57" type="radio" name="order_focus" value="2" id="focus2_price" />
+								<label for="focus2_price">价格</label>
+								<input class="maleft57" type="radio" name="order_focus" value="3" id="focus2_num" />
+								<label for="focus2_num">手数</label>
+								<input class="maleft57" type="radio" name="order_focus" value="4" id="focus2_dont" />
+								<label for="focus2_dont">不处理</label>
+							</div>
+							<div class="module18_list2 clear_data">
+								<span class="module18_listTitle" id="clear" data="1">下单后清空：</span>
+								<input class="maleft15" type="radio" name="clear" value="1" id="clear_all" />
+								<label for="clear_all">清空所有</label>
+								<input class="maleft30" type="radio" name="clear" value="2" id="clear_price" />
+								<label for="clear_price">清空价格</label>
+								<input class="maleft30" type="radio" name="clear" value="3" id="clear_num" />
+								<label for="clear_num">清空手数</label>
+								<input class="maleft30" type="radio" name="clear" value="4" id="clear_no" />
+								<label for="clear_no">不清空</label>
+							</div>
+						</div>
+						<div class="module18_border3" id="buy_sell_direction" direction="1" ctrl="false">
+							<div class="module18_list2 mabom15 buy_sell_direction">
+								<span class="module18_listTitle">点击行情买卖方向：</span>
+								<input class="maleft15" type="radio" name="reverse" value="1" checked id="buy_sell_reverse" />
+								<label for="buy_sell_reverse">反向：点买价/买量下卖单&nbsp;&nbsp;点卖价/卖量下买单</label>
+							</div>
+							<div class="module18_list2 mabom15 buy_sell_direction">
+								<span class="module18_listTitle"></span>
+								<input class="maleft15" type="radio" name="reverse" value="2" id="buy_sell_same" />
+								<label for="buy_sell_same">同向：点买价/买量下买单&nbsp;&nbsp;点卖价/卖量下卖单</label>
+							</div>
+							<div class="module18_list2 mabom15 ctrl_reverse">
+								<span class="module18_listTitle"></span>
+								<input class="maleft15" type="checkbox" id="ctrl_reverse" />
+								<label for="ctrl_reverse">按Ctrl临时取反</label>
+							</div>
+							<div class="module18_list2 mabom15 direction_open_p" direction="1">
+								<span class="module18_listTitle">合约切换开平方向：</span>
+								<input class="maleft15" type="radio" name="korp" value="1" id="direction_open" checked/>
+								<label for="direction_open">总是开仓</label>
+								<input class="maleft30" type="radio" name="korp" value="2" id="direction_p" />
+								<label for="direction_p">自动开平</label>
+							</div>
+							<div class="module18_list2">
+								<span class="module18_listTitle">合约切换下单价格类型：</span>
+								<div class="condition_input_box maleft57">
+									<input class="module18_newstyle1" id="order_cut_market_type" type="text" value="" readonly/>
+									<button></button>
+									<ul class="condition_way module18_newstyle" type="">
+										<li type="1" class="transition">限价</li>
+										<li type="2" class="transition">最新价</li>
+										<li type="3" class="transition">对手价</li>
+										<li type="4" class="transition">挂单价</li>
+										<li type="5" class="transition">快速价</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--下单板设置 end-->
+					<!--列表操作-->
+					<div class="module18_cont2">
+						<div class="module18_border1">
+							<div class="module18_list1">
+								<input type="checkbox" class="maright5" id="list_operation_confirm" />
+								<label for="list_operation_confirm">列表操作前确认</label>
+							</div>
+						</div>
+						<div class="module18_border2">
+							<div class="module18_list1">
+								<input type="checkbox" class="maright5" id="doble_cancel" />
+								<label for="doble_cancel">双击挂单撤单</label>
+							</div>
+						</div>
+						<div class="module18_border2">
+							<div class="module18_list1 mabom15">
+								<input type="checkbox" class="maright5" id="doble_p" />
+								<label for="doble_p">双击持仓平仓</label>
+							</div>
+							<div class="module18_paddleft mabom15 make_order_price" data="1">
+								<span class="module18_paddlefttile">下单价格：</span>
+								<input class="maright5" type="radio" name="order_price_type" value="1" checked id="make_order_opponent" />
+								<label for="make_order_opponent">对手价</label>
+								<input class="maright5 maleft57" name="order_price_type" type="radio" value="2" id="make_order_quick" />
+								<label for="make_order_quick">快速成交价</label>
+							</div>
+							<div class="module18_paddleft make_order_num" data="1">
+								<span class="module18_paddlefttile">下单手数：</span>
+								<input class="maright5" type="radio" name="order_num" value="1" checked id="make_order_p" />
+								<label for="make_order_p">可平持仓量</label>
+								<input class="maright5 maleft30" type="radio" name="order_num" value="2" id="make_order_open" />
+								<label for="make_order_open">开仓默认量</label>
+							</div>
+						</div>
+						<div class="module18_border2">
+							<div class="module18_list1 mabom15 quick_back_hand">
+								<input type="checkbox" class="maright5" id="quick_back_hand" />
+								<label for="quick_back_hand">快速反手</label>
+							</div>
+							<div class="module18_paddleft quick_hand" data="1">
+								<span class="module18_paddlefttile">下单价格：</span>
+								<input class="maright5" type="radio" name="back_price_type" value="1" id="opponent_price" checked/>
+								<label for="opponent_price">对手价</label>
+								<input class="maright5 maleft57" name="back_price_type" type="radio" value="2" id="quick_price" />
+								<label for="quick_price">快速成交价</label>
+							</div>
+						</div>
+						<div class="module18_border3">
+							<div class="module18_list1 mabom15">
+								<input type="checkbox" class="maright5" id="lock_position" />
+								<label for="lock_position">快速锁仓</label>
+							</div>
+							<div class="module18_paddleft lock_position_type" data="1">
+								<span class="module18_paddlefttile">下单价格：</span>
+								<input class="maright5" type="radio" name="clock_price_type" value="1" id="lock_position_opponent" checked/>
+								<label for="lock_position_opponent">对手价</label>
+								<input class="maright5 maleft57" name="clock_price_type" value="2" type="radio" id="lock_position_quick" />
+								<label for="lock_position_quick">快速成交价</label>
+							</div>
+						</div>
+					</div>
+					<!--列表操作 end-->
+					<!--消息提示-->
+					<div class="module18_cont3">
+						<div class="module18_news mabom25">
+							<span>成交提示</span>
+							<div class="condition_input_box condition_newstyle3 deal_tips" data="1">
+								<input type="text" value="不提示" readonly/>
+								<button></button>
+								<ul class="condition_way">
+									<li type="1" class="transition">不提示</li>
+									<li type="2" class="transition">窗口提示</li>
+									<li type="3" class="transition">声音提示</li>
+								</ul>
+							</div>
+						</div>
+						<div class="module18_news mabom25">
+							<span>下单提示</span>
+							<div class="condition_input_box condition_newstyle3 order_tips" data="1">
+								<input type="text" value="不提示" readonly/>
+								<button></button>
+								<ul class="condition_way">
+									<li type="1" class="transition">不提示</li>
+									<li type="2" class="transition">窗口提示</li>
+									<li type="3" class="transition">声音提示</li>
+								</ul>
+							</div>
+						</div>
+						<div class="module18_news mabom25">
+							<span>撤单提示</span>
+							<div class="condition_input_box condition_newstyle3 cancel_tips" data="1">
+								<input type="text" value="不提示" readonly/>
+								<button></button>
+								<ul class="condition_way">
+									<li type="1" class="transition">不提示</li>
+									<li type="2" class="transition">窗口提示</li>
+									<li type="3" class="transition">声音提示</li>
+								</ul>
+							</div>
+						</div>
+						<div class="module18_news mabom25">
+							<span>条件单提示</span>
+							<div class="condition_input_box condition_newstyle3 condition_tips" data="1">
+								<input type="text" value="不提示" readonly/>
+								<button></button>
+								<ul class="condition_way">
+									<li type="1" class="transition">不提示</li>
+									<li type="2" class="transition">窗口提示</li>
+									<li type="3" class="transition">声音提示</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--消息提示 end-->
+					<!--系统设置-->
+					<div class="module18_cont4">
+						<div class="module18_list2 mabom15 order_address" data="1">
+							<span class="module18_listTitle">下单板停靠位置：</span>
+							<input class="maleft15" type="radio" name="left_right" value="1" id="order_left" checked/>
+							<label for="order_left">靠左</label>
+							<input class="maleft30" type="radio" name="left_right" value="2" id="order_right" />
+							<label for="order_right">靠右</label>
+						</div>
+						<div class="module18_list2 mabom15 hold_line" data="false">
+							<input class="" type="checkbox" id="hold_line" />
+							<label for="hold_line">是否展示持仓线</label>
+						</div>
+					</div>
+					<!--系统设置 end-->
+				</div>
+				<div class="module18_btm">
+					<button class="transition">取消</button>
+					<button class="transition">确认</button>
+				</div>
+			</div>
+		</div>
+		<!--系统参数设置 end-->
+		<!--交易登录-->
+		<div class="module19_box position0">
+			<div class="module19 position0">
+				<div class="module1_tittle deal_login_exit transition">交易登录 <span></span></div>
+				<div class="module19_cont">
+					<div class="module19_cont1">
+						<div class="module19_cont1_top">
+							<small></small>
+							<span>交易登录</span>
+						</div>
+						<div class="module19_cont1_btm">
+							<div class="module18_news mabom15 module19_new">
+								<span>成交提示</span>
+								<div class="condition_input_box condition_newstyle6 deal_login_module" type="1">
+									<input type="text" value="电信" readonly/>
+									<button style="top: 0;"></button>
+									<ul class="condition_way condition_way6 condition_way7">
+										<li type="1" class="transition">电信</li>
+										<li type="2" class="transition">联通</li>
+									</ul>
+								</div>
+							</div>
+							<div class="module18_news mabom15 module19_new">
+								<span>交易账号</span>
+								<div class="condition_input_box condition_newstyle6">
+									<input class="deal_account" type="text" value="" />
+								</div>
+							</div>
+							<div class="module18_news mabom15 module19_new">
+								<span>交易密码</span>
+								<div class="condition_input_box condition_newstyle6">
+									<input class="deal_password" type="password" value="" />
+								</div>
+							</div>
+							<div class="module18_news mabom15 module19_new" style="height: 25px;">
+								<span></span>
+								<div class="condition_input_box condition_newstyle6 remember_account" style="width: 170px;">
+									<input type="checkbox" id="remember_account" />
+									<label for="remember_account">记住账号</label>
+								</div>
+							</div>
+							<button class="deal_home_login transition">登录</button>
+						</div>
+					</div>
+					<div class="module19_cont2">
+						<img src="img/deal_login2.png" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--交易登录 end-->
+		<!--止盈止损参数设置-->
+		<div class="module20_box position0">
+			<div class="module20 position0">
+				<div class="module1_tittle set_close_parameter transition">止盈止损参数设置 <span></span></div>
+				<div class="module20_cont">
+					<div class="module20_list mabom10">
+						<span class="module20_text">连续</span>
+						<div class="up_dow_box verticaltop marlefrig">
+							<input class="set_close_num" type="text" value="1" />
+							<button onclick="set_close_addsum(1)"></button>
+							<button onclick="set_close_addsum(2)"></button>
+						</div>
+						<span class="module20_text">笔</span>
+						<div class="condition_input_box verticaltop marlefrig set_close_profit_price" type="1">
+							<input class="set_close" type="text" value="最新价" />
+							<button></button>
+							<ul class="condition_way set_close_price_list">
+								<li type="1" class="transition">最新价</li>
+								<li type="2" class="transition">买卖价</li>
+							</ul>
+						</div>
+						<span class="module20_text">达到或超过指定价位时，触发止损。</span>
+					</div>
+					<div class="module20_list mabom10">
+						<span class="module20_text">连续</span>
+						<div class="up_dow_box verticaltop marlefrig">
+							<input class="set_profit_addsum" type="text" value="1" />
+							<button onclick="set_profit_addsum(1)"></button>
+							<button onclick="set_profit_addsum(2)"></button>
+						</div>
+						<span class="module20_text">笔</span>
+						<div class="condition_input_box verticaltop marlefrig set_profit_price" type="1">
+							<input class="set_close" type="text" value="最新价" />
+							<button></button>
+							<ul class="condition_way set_profit_price_list">
+								<li type="1" class="transition">最新价</li>
+								<li type="2" class="transition">买卖价</li>
+							</ul>
+						</div>
+						<span class="module20_text">达到或超过指定价位时，触发止盈。</span>
+					</div>
+					<div class="module20_list mabom10">
+						<span class="module20_text">止损时按照</span>
+						<div class="condition_input_box verticaltop marlefrig close_according" type="1">
+							<input class="set_close" type="text" value="最新价" readonly/>
+							<button></button>
+							<ul class="condition_way close_according_list">
+								<li type="1" class="transition">最新价</li>
+								<li type="2" class="transition">对手价</li>
+								<li type="3" class="transition">挂单价</li>
+								<li type="4" class="transition">快速价</li>
+								<li type="5" class="transition">止损价</li>
+							</ul>
+						</div>
+						<span class="module20_text">发出委托</span>
+					</div>
+					<div class="module20_list mabom10">
+						<span class="module20_text">止盈时按照</span>
+						<div class="condition_input_box verticaltop marlefrig profit_according" type="1">
+							<input class="set_close" type="text" value="最新价" readonly/>
+							<button></button>
+							<ul class="condition_way profit_according_list">
+								<li type="1" class="transition">最新价</li>
+								<li type="2" class="transition">对手价</li>
+								<li type="3" class="transition">挂单价</li>
+								<li type="4" class="transition">快速价</li>
+								<li type="5" class="transition">止损价</li>
+							</ul>
+						</div>
+						<span class="module20_text">发出委托</span>
+					</div>
+					<div class="module20_list mabom5">
+						<input type="checkbox" class="maright5" id="buy_adjustment" />
+						<label for="buy_adjustment">买入调整</label>
+						<div class="up_dow_box marlefrig buy_adjustment">
+							<input type="text" value="0" disabled/>
+							<button disabled onclick="buy_adjustment_addsum(1)"></button>
+							<button disabled onclick="buy_adjustment_addsum(2)"></button>
+						</div>
+						<label for="buy_adjustment">个价位发出委托。(仅对手价、挂单价有效)</label>
+					</div>
+					<div class="module20_list mabom5">
+						<input type="checkbox" class="maright5" id="sell_adjustment" />
+						<label for="sell_adjustment">卖出调整</label>
+						<div class="up_dow_box marlefrig sell_adjustment">
+							<input type="text" value="0" disabled/>
+							<button disabled onclick="sell_adjustment_addsum(1)"></button>
+							<button disabled onclick="sell_adjustment_addsum(2)"></button>
+						</div>
+						<label for="sell_adjustment">个价位发出委托。(仅对手价、挂单价有效)</label>
+					</div>
+
+					<div class="module20_list mabom5">
+						<input type="radio" name="send_entrust" class="maright5" value="1" id="send_entrust_cancel" checked/>
+						<label for="send_entrust_cancel">如发出委托</label>
+						<div class="up_dow_box marlefrig send_entrust_cancel">
+							<input type="text" value="1" />
+							<button onclick="send_entrust_cancel_addsum(1)"></button>
+							<button onclick="send_entrust_cancel_addsum(2)"></button>
+						</div>
+						<label for="send_entrust_cancel">秒后仍未成交,则撤单</label>
+					</div>
+					<div class="module20_list mabom10">
+						<input type="radio" name="send_entrust" class="maright5" value="2" id="send_entrust_remake" />
+						<label for="send_entrust_remake">如发出委托</label>
+						<div class="up_dow_box marlefrig send_entrust_remake">
+							<input type="text" value="1" disabled/>
+							<button disabled onclick="send_entrust_remake_addsum(1)"></button>
+							<button disabled onclick="send_entrust_remake_addsum(2)"></button>
+						</div>
+						<label for="send_entrust_remake">秒后仍未成交,则撤单,并重新委托</label>
+					</div>
+					<div class="module20_list mabom5">
+						<span class="module20_text">止盈止损默认有效期：</span>
+						<div class="condition_input_box verticaltop marlefrig close_time" type="1">
+							<input class="set_hold_time" type="text" value="触发前永久有效" />
+							<button></button>
+							<ul class="condition_way close_time_list">
+								<li type="1" class="transition">触发前永久有效</li>
+								<li type="2" class="transition">本交易日有效</li>
+							</ul>
+						</div>
+					</div>
+					<div class="module20_list">
+						<span class="module20_text red">条件前面带复选框的必须勾选复选框后该条件才会生效！</span>
+						<button class="set_btn transition">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--止盈止损参数设置 end-->
+		<!--止盈止损点数设置 -->
+		<div class="module21_box position0">
+			<div class="module21 position0">
+				<div class="module1_tittle set_close_point transition">止盈止损点数设置 <span></span></div>
+				<div class="module21_cont">
+					<div class="module21_top">
+						<div class="module21_top1">
+							<div class="module21_top1_tittle">
+								<span>合约</span>
+								<span>方向</span>
+								<span>止损点数</span>
+								<span>止盈点数</span>
+								<span>状态</span>
+							</div>
+							<div class="module21_top1_cont over_y">
+								<ul>
+									<li>
+										<span>IF1812</span>
+										<span>买</span>
+										<span>0</span>
+										<span>0</span>
+										<span>生效</span>
+									</li>
+									<li>
+										<span>IF1812</span>
+										<span>买</span>
+										<span>0</span>
+										<span>0</span>
+										<span>生效</span>
+									</li>
+									<li>
+										<span>IF1812</span>
+										<span>买</span>
+										<span>0</span>
+										<span>0</span>
+										<span>生效</span>
+									</li>
+									<li>
+										<span>IF1812</span>
+										<span>买</span>
+										<span>0</span>
+										<span>0</span>
+										<span>生效</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="module21_top2">
+							<div class="module21_top2_list mabom20">
+								<p>合约代码</p>
+								<div class="condition_input_box condition_special set_contact_point" type="1">
+									<input class="set_contact_val" type="text" value="" />
+									<button></button>
+									<div class="condition_list over_y">
+										<ul class="none_li none_li_special">
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+											<li class="transition">IF1812</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="module21_top2_list mabom20">
+								<p>方向</p>
+								<div class="condition_input_box condition_special point_direction" type="1">
+									<input type="text" value="买" />
+									<button></button>
+									<ul class="none_li">
+										<li type="1" class="transition">买</li>
+										<li type="2" class="transition">卖</li>
+									</ul>
+								</div>
+							</div>
+							<div class="module21_top2_list mabom20">
+								<p>止损点数</p>
+								<div class="up_dow_box close_special">
+									<input class="point_close_num" type="text" value="0" />
+									<button onclick="point_close_addsum(1)"></button>
+									<button onclick="point_close_addsum(2)"></button>
+								</div>
+							</div>
+							<div class="module21_top2_list mabom20">
+								<p>止盈点数</p>
+								<div class="up_dow_box close_special">
+									<input class="point_profit_num" type="text" value="0" />
+									<button onclick="point_profit_addsum(1)"></button>
+									<button onclick="point_profit_addsum(2)"></button>
+								</div>
+							</div>
+							<div class="module21_top2_list mabom30">
+								<p>状态</p>
+								<div class="condition_input_box condition_special point_status" type="1">
+									<input type="text" value="生效" />
+									<button></button>
+									<ul class="none_li">
+										<li type="1" class="transition">生效</li>
+										<li type="2" class="transition">停止</li>
+									</ul>
+								</div>
+							</div>
+							<div class="module21_top2_list module21_top2_list_btn">
+								<button>提交</button>
+								<button>删除</button>
+							</div>
+						</div>
+					</div>
+					<div class="module21_bottom">
+						<button>取消</button>
+						<button>确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--止盈止损点数设置 end-->
+		<!--右键弹窗 加入自选-->
+		<div class="right_module right_module1">
+			<div class="right_module_cont1"></div>
+			<div class="right_module_cont2 right_module_1">
+				<div class="transition">表格样式配置</div>
+				<div class="transition">表格列头配置</div>
+				<div class="transition">加入自选</div>
+				<div class="transition">分时图</div>
+				<div class="transition">k线图</div>
+				<p><span></span></p>
+				<div class="transition">导出表格数据</div>
+			</div>
+		</div>
+		<!--右键弹窗end-->
+		<!--右键弹窗 删除自选-->
+		<div class="right_module right_module2">
+			<div class="right_module_cont1"></div>
+			<div class="right_module_cont2 right_module_cont3">
+				<div class="transition">表格样式配置</div>
+				<div class="transition">表格列头配置</div>
+				<div class="transition">删除自选</div>
+				<div class="transition">分时图</div>
+				<div class="transition">k线图</div>
+				<p><span></span></p>
+				<div class="transition">导出表格数据</div>
+			</div>
+		</div>
+		<!--右键弹窗end-->
+	</body>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/config.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/market.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function ff() {
+			window.frames["list_table"].make_k(1000, 400, "js/mock.json", 0);
+		}
+	</script>
+	<script>
+		//日期
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+			//常规用法
+			laydate.render({
+				elem: '#test1'
+			});
+		});
+	</script>
+
+</html>

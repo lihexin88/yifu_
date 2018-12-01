@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    <style>
+        .theme-white .widget {
+            padding: 13px 15px;
+            background-color: #fff;
+            color: #000000;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">会员管理</a></li>
+        <li class="am-active">注册用户</li>
+    </ol>
+    <form class="am-cf" id="form" onsubmit="return false">
+        <div class="widget am-cf">
+            <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">注册用户</div>
+                <br>
+                <div class="am-form-group">
+                    <span class="s1">用户名称：　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="real_name" class="am-form-field am-input-sm" name="real_name"
+                               value="{$list.name}"/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">手机号：　　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="phone" class="am-form-field am-input-sm" name="phone" value="{$list.tel}"
+                               placeholder=""/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">身份证号：　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="card" class="am-form-field am-input-sm" name="card" value=""/>
+                    </label>
+                </div>
+                <!--<div class="am-form-group">-->
+                <!--<span class="s1">所属机构：　</span>-->
+                <!--<label class="am-form-label">-->
+                <!--<input type="text" id="subsidiary_organ" class="am-form-field am-input-sm"-->
+                <!--name="subsidiary_organ" value="" placeholder=""/>-->
+                <!--</label>-->
+                <!--</div>-->
+                <div class="am-form-group">
+                    <span class="s1">用户密码：　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="password" class="am-form-field am-input-sm" name="password"
+                               value="123456"/>
+                    </label>
+                    <span style="color: red">(当前默认密码为123456)</span>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">支付密码：　</span>
+                    <label class="am-form-label">
+                        <input type="text" id="trade_password" class="am-form-field am-input-sm"
+                               name="trade_password" value="123456" placeholder=""/>
+                    </label>
+                    <span style="color: red">(当前默认密码为123456)</span>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">推荐人手机号:</span>
+                    <label class="am-form-label">
+                        <input type="text" id="reid" class="am-form-field am-input-sm" name="reid" value=""
+                               placeholder="" onblur="sub_fied()"/>
+                    </label>
+                    <span style="color: red">(没有推荐人请填无)</span>
+                </div>
+                <div class="am-form-group" id="p_name" style="display: none">
+                    <!--<span class="s1">推荐人姓名：</span>-->
+                    <span class="s1">推荐人ID：&nbsp&nbsp&nbsp&nbsp</span>
+                    <label class="am-form-label">
+                        <input type="text" id="p_names" class="am-form-field am-input-sm" name="" value=""
+                               readonly="readonly"/>
+                    </label>
+                </div>
+                <div class="am-form-group">
+                    <span class="s1">上级代理商：</span>
+                    <label class="am-form-label">
+                        <select name="agent" title="" class="am-form-field am-input-sm">
+                            {volist name="agent" id="vo" empty="$empty"}
+                            <option value="{$vo.id}" class="am-form-field am-input-sm">{$vo.name}</option>
+                            {/volist}
+                        </select>
+                    </label>
+                </div>
+                <input type="hidden" value="{$list.type}" name="type">
+                <input type="hidden" value="{$list.id}" name="id">
+                <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub()">确定</button>
+                    <a href="index.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                </div>
+            </div>
+            {include file="public/content_foot" /}
+        </div>
+    </form>
+    {include file="public/foot" /}
+    <script type="text/javascript">
+        $(function () {
+            var nav = $('.left-sidebar li.sidebar-nav-link');
+            nav.removeClass("active");
+            nav.eq({$a}).find('ul').show();
+            nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+        });
+
+        function sub() {
+            var arr = parseFormJson("#form");
+            if (arr.p_names == "") {
+                alert("请输入推荐人信息,或填无");
+            } else {
+                $.ajax({
+                    url: "{:url('Users/user_adds')}",
+                    data: {arr: arr},
+                    type: "post",
+                    success: function (r) {
+                        // console.log(r);
+                        // return false;
+
+                        if (r['code'] == 1) {
+                            alert_open(r['msg']);
+                            setTimeout(function () {
+                                window.location.href = "{:url('Users/index')}";
+                            }, 1500);
+                        } else {
+                            alert_msg(r['msg']);
+                        }
+                    }
+                });
+            }
+        }
+
+        function sub_fied() {
+            var arr = parseFormJson("#form");
+            if (arr.reid == "") {
+                alert_open("请输入推荐人信息,或填无");
+            } else if (arr.reid != "无") {
+                $.ajax({
+                    url: "{:url('Users/p_name')}",
+                    data: {arr: arr.reid},
+                    type: "post",
+                    success: function (r) {
+                        if (r['code'] == 1) {
+                            //alert_open(r['msg']);
+                            document.getElementById("p_names").value = r['msg'];
+                            document.getElementById("p_name").style.display = "inline";
+                        } else {
+                            alert_msg(r['msg']);
+                            document.getElementById("reid").value = "";
+                            document.getElementById("p_name").style.display = "none";
+                        }
+                    }
+                });
+            } else if (arr.reid == "无") {
+                document.getElementById("p_name").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

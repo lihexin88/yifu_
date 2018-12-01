@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    {include file="public/form" /}
+    <style>
+        input.check_box {
+            width: 100px;
+        }
+        .p_checkbox {
+            width: 25%;
+            float: left;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">基本信息</a></li>
+        <li class="am-active">银行卡修改</li>
+    </ol>
+    <div class="widget am-cf">
+        <form class="am-cf" id="form" onsubmit="return false">
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">基础信息</div>
+               <div class="am-form-group">
+                    <span class="s1">银行名称：</span>
+                    <label class="am-form-label">
+                        <select name="bank_name" title="" class="am-form-field am-input-sm">
+                            <option value="0">--选择银行--</option>
+                            {foreach $bank as $val}
+                            {if condition ="($list['bank_name'])==($val['name'])"}
+                            <option selected value="{$val['name']}">{$val.name}</option>
+                            {else/}
+                            <option value="{$val['name']}">{$val.name}</option>
+                            {/if}
+                            {/foreach}
+                        </select>
+                    </label>
+                </div>
+                 <div class="am-form-group">
+                     <span class="s1">银行卡号：</span>
+                     <label class="am-form-label">
+                         <input type="text" id="title" class="am-form-field am-input-sm" name="bank_card" value="{$list['bank_card']}"  placeholder=""/>
+                     </label>
+                 </div>
+                 <div class="am-form-group">
+                     <span class="s1">持卡人姓名：</span>
+                     <label class="am-form-label">
+                         <input type="text" id="title" class="am-form-field am-input-sm" name="real_name" value="{$list['real_name']}"  placeholder=""/>
+                     </label>
+                 </div>
+                 <div class="am-form-group" id="no0">
+                     <span class="s1">银行图片：</span>
+                     <label class="am-form-label">
+                         <img id="newPhoto0" style="max-height:300px;max-width:200px;" src="{$list.bank_img}"/>
+                     </label>
+                     <!-- <span class="s2" id="uploadPhotoConfirm0"></span> -->
+                 </div>
+                <input type="hidden" id="" class="am-form-field am-input-sm" name="id" value="{$list['id']}"/>
+
+                <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() ">确定</button>
+                    <!-- <a href="index.html" class="am-btn am-btn-secondary am-btn-sm">返回</a> -->
+                </div>
+            </div>
+    </div>
+    </form>
+</div>
+</div>
+<!-- {include file="public/editor" /} -->
+{include file="public/foot" /}
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq(4).find('ul').show();
+        nav.eq(4).find('ul li').eq(1).find('a').addClass('active');
+    });
+
+    function sub() {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('System/add_edit')}",
+            data: {arr: arr},
+            type: "post",
+            success: function (r) {
+                // console.log(r);
+                // return false;
+                if (r['code'] == 1) {
+                    alert_open(r['msg'])
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var button = $('#upload_button1'), interval;
+        var confirmDiv = $('#uploadPhotoConfirm1');
+        var fileType = 'pic', fileNum = 'one';
+        new AjaxUpload(button, {
+            action: "{:url('Upload/upload')}",
+            name: 'file',
+            onSubmit: function (file, ext) {
+                if (fileType == 'pic') {
+                    if (ext && /^(jpg|png|jpeg|gif|JPG)$/.test(ext)) {
+                        this.setData({'info': '文件类型为图片'});
+                    } else {
+                        confirmDiv.text('文件格式错误，请上传格式为.png .jpg .jpeg 的图片');
+                        return false;
+                    }
+                }
+                confirmDiv.text('文件上传中');
+                if (fileNum == 'one') this.disable();
+                interval = window.setInterval(function () {
+                    var text = confirmDiv.text();
+                    if (text.length < 14) {
+                        confirmDiv.text(text + '.');
+                    } else {
+                        confirmDiv.text('文件上传中');
+                    }
+                }, 200);
+            },
+            onComplete: function (file, response) {
+                if (response != 'success') {
+                    if (response == '2') {
+                        confirmDiv.text("文件格式错误，请上传格式为.png .jpg .jpeg 的图片");
+                    } else {
+                        confirmDiv.text('上传完成');
+                        $("#newPhotoName1").val("/uploads/" + response);
+                        $("#newPhoto1").attr("src", "/uploads/" + response);
+                        $('#no1').show();
+                    }
+                }
+                window.clearInterval(interval);
+                this.enable();
+                if (response == 'success') alert('上传成功');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>逸富 - 行情列表</title>
+		<link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="stylesheet" type="text/css" title="main" href="../css/main.css" />
+		<link rel="stylesheet alternate" type="text/css" title="main_light" href="../css/main_light.css" />
+		<script type="text/javascript">
+			function set_style(title) {
+				var i, a, main;
+				if(title) {
+					for(i = 0; a = document.getElementsByTagName('link')[i]; i++) {
+						if(a.getAttribute('rel').indexOf('style') != -1 && a.getAttribute('title')) {
+							a.disabled = true;
+							if(a.getAttribute('title') == title) {
+								window.localStorage.setItem("color", a.getAttribute('title'));
+								a.disabled = false;
+							}
+						}
+					}
+				}
+			};
+			var color = localStorage.getItem("color");
+			if(color == "main") {
+				set_style('main');
+			} else if(color == "main_light") {
+				set_style('main_light');
+			}
+		</script>
+	</head>
+
+	<body style="background: transparent;">
+		<div class="deal_record">
+			<div class="deal_record_tab common_table" id="entrust" order="">
+				<table border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th>合约代码</th>
+						<th>买卖</th>
+						<th>开平</th>
+						<th>委托状态</th>
+						<th>委托价格</th>
+						<th>委托手数</th>
+						<th>成交手数</th>
+						<th>撤销手数</th>
+						<th>剩余手数</th>
+						<th>冻结手续费</th>
+						<th>冻结保证金</th>
+						<th>状态信息</th>
+						<th>投保</th>
+						<th>委托时间</th>
+						<th>报单编号</th>
+					</tr>
+					<tbody id="deal_record_tab">
+
+					</tbody>
+					<!--<tr>
+						<td class="yellow">b1905</td>
+						<td class="red">买</td>
+						<td class="red">开仓</td>
+						<td class="red">错单</td>
+						<td class="green">300</td>
+						<td class="green">39</td>
+						<td class="green">0</td>
+						<td class="green">0.00</td>
+						<td class="green">0.00</td>
+						<td class="red">[逸富] 下单错误</td>
+						<td class="red">投机</td>
+						<td class="yellow">16:27:36</td>
+						<td class="yellow">0</td>
+						<td class="white">qq123456</td>
+					</tr>-->
+					<!--<tr class="special_tr">
+						<td>
+							<span>
+									<small>N</small>
+									<small>0</small>
+								</span>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<span>
+									<small>∑</small>
+									<small>0</small>
+								</span>
+						</td>
+						<td>
+							<span>
+									<small>∑</small>
+									<small>0</small>
+								</span>
+						</td>
+						<td></td>
+						<td>
+							<span>
+									<small>∑</small>
+									<small>0.00</small>
+								</span>
+						</td>
+						<td>
+							<span>
+									<small>∑</small>
+									<small>0.00</small>
+								</span>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>-->
+				</table>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//交易委托点击样式
+		$("#deal_record_tab").on("mousedown", "tr", function() {
+			$(this).addClass("market_border");
+			var order = $(this).attr("order");
+			$("#entrust").attr("order", order);
+			$("#deal_record_tab tr").not(this).removeClass("market_border");
+
+		});
+
+		function entrust_info() {
+			$.post(globalUrl, {
+				nozzle: "entrust_info",
+				token: localStorage.getItem("token")
+			}, function(res) {
+				add_market(res.data);
+			});
+		};
+		entrust_info();
+		function add_market(data_arr) {
+			var color_class = "white";
+			$(".updata_element").remove();
+			for(var i = 0; i < data_arr.length; i++) {
+				var html = '<tr class="updata_element" order="' + data_arr[i].order + '">' +
+					'<td class="yellow">' + data_arr[i].contract + '</td>' + //合约代码
+					'<td class="red">' + data_arr[i].direction + '</td>' + //买卖
+					'<td class="red">' + data_arr[i].mold + '</td>' + //开平
+					'<td class="red">' + data_arr[i].status + '</td>' + //委托状态
+					'<td class="green">' + data_arr[i].price + '</td>' + //委托价格--
+					'<td class="green">' + data_arr[i].number + '</td>' + //委托手数
+					'<td class="green">' + data_arr[i].finish + '</td>' + //成交手数
+					'<td class="green">' + data_arr[i].cancel + '</td>' + //撤销手数
+					'<td class="green">' + data_arr[i].surplus + '</td>' + //剩余手数
+					'<td class="green">' + data_arr[i].frozen_fee + '</td>' + //冻结手续费
+					'<td class="red">' + data_arr[i].frozen_bond + '</td>' + //冻结保证金
+					'<td class="red">' + data_arr[i].info + '</td>' + //状态信息
+					'<td class="yellow">' + data_arr[i].pattern + '</td>' + //投保
+					'<td class="yellow">' + data_arr[i].time + '</td>' + //委托时间
+					'<td class="white">' + data_arr[i].order + '</td>' + //报单编号
+					'</tr>'
+				$("#deal_record_tab").append(html);
+			}
+		};
+	</script>
+
+</html>

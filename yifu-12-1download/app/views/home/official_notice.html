@@ -1,0 +1,20 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header">
+		<i class="header_i1 icon ion-chevron-left" ng-click="back()"></i>
+		<b>官方公告</b>
+	</header>
+	<ion-content class="top">
+		<ul class="offcial_ul">
+			<li ng-repeat="item in data" ng-click="go_statement()">
+				<p>{{item.title}}</p>
+				<div>
+					<span>{{item.time}}</span>
+					<!--<span>12:19</span>-->
+				</div>
+			</li>
+		</ul>
+		<div style="height: 5rem;">
+
+		</div>
+	</ion-content>
+</ion-view>

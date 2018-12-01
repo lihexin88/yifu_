@@ -1,0 +1,30 @@
+<ion-view view-title="恒瑞国际" class="csl_wrap">
+	<header class="header">
+		<img src="img/zuo.png" class="left_img" ng-click="back()" />
+		<b>云端止损止盈单</b>
+		<div class="loader">Loading...</div>
+		<img class="right_img" ng-if="refreshIf==0" ng-click="refresh()" src="img/shuaxin.png"/>
+	</header>
+	<ion-content class="top" overflow-scroll="true">
+		<div class="deal_list">
+			<div>
+				<ul class="ul_left">
+					<li>合约名称</li>
+					<li>原油1001</li>
+					<li>原油1001</li>
+				</ul>
+				<div class="ul_right">
+					<ul>
+						<li>
+							<span class="s_w0">买卖</span>
+							<span class="s_w1">手数</span>
+							<span class="s_w2">止损价</span>
+							<span class="s_w2">止盈价</span>
+							<span class="s_w2">浮动止损</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

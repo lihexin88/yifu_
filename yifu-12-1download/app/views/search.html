@@ -1,0 +1,29 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header">
+		<img src="img/zuo.png" class="left_img" ng-click="back()" />
+		<b>选择开户公司</b>
+	</header>
+	<ion-content class="top search_box" overflow-scroll="true">
+		<div class="company_nav ov_a">
+			<span ng-class="{true:'s_select',false:''}[c_id==1]" ng-click="navTap(1)">国际</span>
+			<span ng-class="{true:'s_select',false:''}[c_id==2]" ng-click="navTap(2)">国内</span>
+			<span ng-class="{true:'s_select',false:''}[c_id==3]" ng-click="navTap(3)">国际试用</span>
+			<span ng-class="{true:'s_select',false:''}[c_id==4]" ng-click="navTap(4)">国内试用</span>
+		</div>
+		<div class="d_search ov_a">
+			<span ng-class="{true:'opy',false:''}[bool]" class="f_l iconfont icon-iconfonticonfontsousuo1"></span>
+			<input class="f_l" type="text" ng-focus="bool=false" ng-blur="blur()" ng-change="inputSearch()" ng-model="inputData.con"/>
+			<span ng-class="{true:'opy',false:''}[bool]" class="f_r iconfont icon-cuohao" ng-click="inputClear()"></span>
+			<span ng-if="bool" class="tip iconfont icon-iconfonticonfontsousuo1"></span>
+		</div>
+		<div class="shim"></div>
+		<div class="company_list">
+			<ul>
+				<li ng-repeat="item in list" ng-click="select(item.name)">{{item.name}}</li>
+			</ul>
+		</div>
+		<div style="height: 5rem;">
+
+		</div>
+	</ion-content>
+</ion-view>

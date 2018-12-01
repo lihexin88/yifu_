@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="js/kline.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" title="main" href="css/main.css" />
+		<link rel="stylesheet alternate" type="text/css" title="main_light" href="css/main_light.css" />
+		<style type="text/css">
+			#chart_toolbar_theme {
+				display: none!important;
+			}
+		</style>
+		<script type="text/javascript">
+			function set_style(title) {
+				var i, a, main;
+				if(title) {
+					for(i = 0; a = document.getElementsByTagName('link')[i]; i++) {
+						if(a.getAttribute('rel').indexOf('style') != -1 && a.getAttribute('title')) {
+							a.disabled = true;
+							if(a.getAttribute('title') == title) {
+								window.localStorage.setItem("color", a.getAttribute('title'));
+								a.disabled = false;
+							}
+						}
+					}
+				}
+			};
+			var color = localStorage.getItem("color");
+			if(color == "main") {
+				set_style('main');
+			} else if(color == "main_light") {
+				set_style('main_light');
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="kline_container"></div>
+		<div class="left_cont">
+			<div class="left_title">
+				<p>IH(IH1812) <span class="transition up_bottom rotate"></span></p>
+				<ul>
+					<li>一档详情</li>
+					<li>五档详情</li>
+					<li>十档详情</li>
+				</ul>
+			</div>
+			<ul class="five_data">
+				<!--<li>
+					<span>卖五</span>
+					<span class="green">0.050</span>
+					<span class="yellow">0</span>
+				</li>
+				<li>
+					<span>卖四</span>
+					<span class="green">0.050</span>
+					<span class="yellow">0</span>
+				</li>
+				<li>
+					<span>卖三</span>
+					<span class="green">0.050</span>
+					<span class="yellow">0</span>
+				</li>-->
+				<li>
+					<span>卖二</span>
+					<span class="green">0.050</span>
+					<span class="yellow">0</span>
+				</li>
+				<li>
+					<span>卖一</span>
+					<span class="green">0.050</span>
+					<span class="yellow">1</span>
+				</li>
+			</ul>
+			<p class="line_span"><span></span><span></span></p>
+			<ul class="five_data five_buy">
+				<li>
+					<span>买一</span>
+					<span class="red">0.050</span>
+					<span class="yellow">2</span>
+				</li>
+				<li>
+					<span>买二</span>
+					<span class="red">0.050</span>
+					<span class="yellow">0</span>
+				</li>
+				<!--<li>
+					<span>买三</span>
+					<span class="red">0.050</span>
+					<span class="yellow">0</span>
+				</li>
+				<li>
+					<span>买四</span>
+					<span class="red">0.050</span>
+					<span class="yellow">0</span>
+				</li>
+				<li>
+					<span>买五</span>
+					<span class="red">0.050</span>
+					<span class="yellow">0</span>
+				</li>-->
+			</ul>
+			<div class="shop_view">
+				<p>
+					<span>最新</span>
+					<span class="red">94.215</span>
+				</p>
+				<p>
+					<span>结算</span>
+					<span class="red">94.215</span>
+				</p>
+			</div>
+			<div class="shop_view">
+				<p>
+					<span>涨跌</span>
+					<span class="red">0.045</span>
+				</p>
+				<p>
+					<span>昨结</span>
+					<span>94.215</span>
+				</p>
+			</div>
+			<div class="shop_view">
+				<p>
+					<span>幅度</span>
+					<span class="red">0.045</span>
+				</p>
+				<p>
+					<span>昨收</span>
+					<span>94.215</span>
+				</p>
+			</div>
+			<div class="shop_view">
+				<p>
+					<span>总手</span>
+					<span class="yellow">0.045</span>
+				</p>
+				<p>
+					<span>开盘</span>
+					<span class="green">94.215</span>
+				</p>
+			</div>
+			<div class="shop_view">
+				<p>
+					<span>现手</span>
+					<span class="yellow">0.045</span>
+				</p>
+				<p>
+					<span>最高</span>
+					<span class="red">94.215</span>
+				</p>
+			</div>
+			<div class="shop_view">
+				<p>
+					<span>涨停</span>
+					<span class="red">0.045</span>
+				</p>
+				<p>
+					<span>最低</span>
+					<span class="green">94.215</span>
+				</p>
+			</div>
+			<div class="shop_view">
+				<p>
+					<span>持仓</span>
+					<span class="yellow">0.045</span>
+				</p>
+				<p>
+					<span>跌停</span>
+					<span class="green">94.215</span>
+				</p>
+			</div>
+			<ul class="trade_data">
+				<li>
+					<span>时间</span>
+					<span>价格</span>
+					<span>现手</span>
+				</li>
+				<li>
+					<span>14:59:17</span>
+					<span class="green">2569.4</span>
+					<span>1</span>
+				</li>
+				<li>
+					<span>14:59:17</span>
+					<span class="green">2569.4</span>
+					<span>1</span>
+				</li>
+				<li>
+					<span>14:59:17</span>
+					<span class="green">2569.4</span>
+					<span>1</span>
+				</li>
+				<li>
+					<span>14:59:17</span>
+					<span class="green">2569.4</span>
+					<span>1</span>
+				</li>
+				<li>
+					<span>14:59:17</span>
+					<span class="green">2569.4</span>
+					<span>1</span>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.mousewheel.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/kline.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var width = $("body").width() - 261;
+		var height = $("body").height() - 10;
+		if(localStorage.getItem("symbol")) {
+			var symbol = localStorage.getItem("symbol");
+		} else {
+			var symbol = "IC1811";
+		};
+		var kline = new Kline({
+			element: "#kline_container",
+			width: width,
+			height: height,
+			theme: 'dark', // light/dark
+			language: 'zh-cn', // zh-cn/en-us/zh-tw
+			//				ranges: ["1w", "1d", "1h", "30m", "15m", "5m", "1m", "line"],
+			ranges: ["1w", "1d", "1h", "30m", "15m", "5m", "line"],
+			symbol: symbol,
+			symbolName: "COIN5_COIN4",
+			type: "poll", // poll/socket
+			url: "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var %20_" + symbol + "_=/InnerFuturesNewService.getFewMinLine?symbol=" + symbol + "&type=5",
+			limit: "5m",
+			intervalTime: 5000,
+			debug: false,
+			showTrade: false,
+			onResize: function(width, height) {}
+		});
+		kline.draw();
+
+		function change_url(symbol, line_type, type_key, type_val) {
+			if(type_val != "5" && type_val != "15" && type_val != "30" && type_val != "60") {
+				var url = "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var %20_" + symbol + "_=/InnerFuturesNewService." + line_type + "?symbol=" + symbol;
+
+			} else {
+				var url = "https://stock2.finance.sina.com.cn/futures/api/jsonp.php/var %20_" + symbol + "_=/InnerFuturesNewService." + line_type + "?symbol=" + symbol + "&" + type_key + type_val + "";
+			}
+			KlineIns.url = url;
+			KlineIns.limit = type_val;
+		};
+		$(window).resize(function () {
+			console.log(1);
+			var width = $("body").width() - 261;
+			var height = $("body").height() - 10;
+			kline.resize(width, height);
+		});
+		//选择 几档详情
+		$(".up_bottom").click(function() {
+			$(".up_bottom").toggleClass("rotate");
+			$(".left_title ul").slideToggle();
+		});
+		$(".left_title ul li").click(function() {
+			$(".up_bottom").toggleClass("rotate");
+			$(".left_title ul").slideToggle();
+		});
+	</script>
+
+</html>

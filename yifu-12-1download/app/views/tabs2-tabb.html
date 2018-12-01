@@ -1,0 +1,228 @@
+<ion-view view-title="恒瑞国际" class="bg_black pankou_wrap">
+	<header class="header">
+		<img src="img/zuo.png" class="left_img" ng-click="back()" />
+		<div class="order_top">
+			<span>盘口</span>
+			<span class="f_c_yellow">{{top_name}}</span>
+		</div>
+		<!--<img class="flash_img" src="img/shandian.png" ng-click="doDeal()"/>-->
+		<span class="flash_img iconfont icon-shandian" ng-class="{true:'f_c_yellow',false:''}[active_deal==true]" ng-click="doDeal()"></span>
+		<img class="right_img" src="img/set.png"  ng-click="showMenu()"/>
+	</header>
+	<ion-content class="top pankou_box" overflow-scroll="true">
+		<div>
+			<ul>
+				<li>
+					<div>
+						<span>卖价</span>
+						<span>{{info[0][0]}}</span>
+					</div>
+					<div>
+						<span>卖量</span>
+						<span>{{info[0][1]}}</span>
+					</div>
+				</li>
+				<li>
+					<div>
+						<span>买价</span>
+						<span>{{info[0][2]}}</span>
+					</div>
+					<div>
+						<span>买量</span>
+						<span>{{info[0][3]}}</span>
+					</div>
+				</li>
+				<li>
+					<div>
+						<span>最新</span>
+						<span>{{info[0][4]}}</span>
+					</div>
+					<div>
+						<span>涨跌</span>
+						<span>{{info[0][5]}}</span>
+					</div>
+				</li>
+				<li>
+					<div>
+						<span>开盘</span>
+						<span>{{info[0][6]}}</span>
+					</div>
+					<div>
+						<span>成交量</span>
+						<span>{{info[0][7]}}</span>
+					</div>
+				</li>
+				<li>
+					<div>
+						<span>最高</span>
+						<span>{{info[0][8]}}</span>
+					</div>
+					<div>
+						<span>持仓量</span>
+						<span>{{info[0][9]}}</span>
+					</div>
+				</li>
+				<li>
+					<div>
+						<span>最低</span>
+						<span>{{info[0][10]}}</span>
+					</div>
+					<div>
+						<span>日增量</span>
+						<span>{{info[0][11]}}</span>
+					</div>
+				</li>
+				<li>
+					<div>
+						<span>涨停</span>
+						<span>{{info[0][12]}}</span>
+					</div>
+					<div>
+						<span>跌停</span>
+						<span>{{info[0][13]}}</span>
+					</div>
+				</li>
+				<li>
+					<div>
+						<span>均价</span>
+						<span>{{info[0][14]}}</span>
+					</div>
+					<div>
+						<span>昨收</span>
+						<span>{{info[0][15]}}</span>
+					</div>
+				</li>
+				<li>
+					<div>
+						<span>结算</span>
+						<span>{{info[0][16]}}</span>
+					</div>
+					<div>
+						<span>昨结</span>
+						<span>{{info[0][17]}}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!--底部弹窗-->
+		<!--<div class="pankou_modal">-->
+			<!--<div>
+				<div class="pk_modal_top">
+					<div>
+						<span>手数</span>
+						<span>1</span>
+					</div>
+					<div>
+						<span>对手价</span>
+					</div>
+					<div class="d_tb">
+						<span>3935</span>
+						<span>买</span>
+					</div>
+					<div class="d_tb">
+						<span>3934</span>
+						<span>卖</span>
+					</div>
+					<div class="d_tb">
+						<span>无仓位</span>
+						<span>平</span>
+					</div>
+				</div>
+				
+				<div class="user_keyboard user_keyboard2">
+					<div>
+						<div class="top_head2">
+							<div class="ov_a">
+								<span class="f_l">手数输入</span>
+								<img class="f_r" src="img/jianpan.png" />
+							</div>
+							<div>最大开仓手数：买0，卖0</div>
+						</div>
+						<div class="kb_con2">
+							<table class="layui-table">
+								<tbody>
+									<tr>
+										<td class="kb_num">1</td>
+										<td class="kb_num">2</td>
+										<td class="kb_num">3</td>
+										<td class="td kb_add" rowspan="2">+</td>
+									</tr>
+									<tr>
+										<td class="kb_num">4</td>
+										<td class="kb_num">5</td>
+										<td class="kb_num">6</td>
+									</tr>
+									<tr>
+										<td class="kb_num">7</td>
+										<td class="kb_num">8</td>
+										<td class="kb_num">9</td>
+										<td class="td kb_decrease" rowspan="2">-</td>
+									</tr>
+									<tr>
+										<td class="kb_num" colspan="2">0</td>
+										<td class="td kb_delete">
+											<span class="iconfont icon-jianpanshanchu"></span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				
+				<div class="user_keyboard user_keyboard3">
+					<div>
+						<div class="top_head3">
+							<div class="ov_a">
+								<span class="f_l">价格输入</span>
+								<img class="f_r" src="img/jianpan.png" />
+							</div>
+							<div class="ov_a">
+								<span class="f_l">涨停：4090&nbsp;&nbsp;&nbsp;跌停：4090</span>
+								<span class="f_r">最小变动：1</span>
+							</div>
+						</div>
+						<div class="kb_con3 ov_a">
+							<div class="kb_left f_l">
+								<span>对手</span>
+								<span>买一</span>
+								<span>卖一</span>
+								<span>超价</span>
+								<span>市价</span>
+							</div>
+							<div class="kb_mid f_l">
+								<div>
+									<span>1</span>
+									<span>2</span>
+									<span>3</span>
+								</div>
+								<div>
+									<span>4</span>
+									<span>5</span>
+									<span>6</span>
+								</div>
+								<div>
+									<span>7</span>
+									<span>8</span>
+									<span>9</span>
+								</div>
+								<div>
+									<span>.</span>
+									<span>0</span>
+									<span class="d_icon">
+							<span class="iconfont icon-jianpanshanchu"></span>
+									</span>
+								</div>
+							</div>
+							<div class="kb_right f_l">
+								<span>最新</span>
+								<span class="calc">+</span>
+								<span class="calc">-</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>-->
+		<!--</div>-->
+	</ion-content>
+</ion-view>

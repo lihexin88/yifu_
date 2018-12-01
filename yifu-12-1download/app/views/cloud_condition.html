@@ -1,0 +1,27 @@
+<ion-view view-title="恒瑞国际" class="bg_black pankou_wrap">
+	<header class="header">
+		<img src="img/zuo.png" class="left_img" ng-click="back()" />
+		<b>云端条件单</b>
+		<img class="right_img" src="img/jiahao.png" ng-click="toAdd()"/>
+	</header>
+	<ion-content class="top" overflow-scroll="true">
+		<div class="cloud_condition_box">
+			<div class="d_tab">
+				<span ng-class="{true:'s_select',false:''}[c_id==1]" ng-click="navTap(1)">价格条件单</span>
+				<span ng-class="{true:'s_select',false:''}[c_id==2]" ng-click="navTap(2)">时间条件单</span>
+			</div>
+			<div class="d_con">
+				<ul>
+					<li>
+						<span>合约名称</span>
+						<span>条件</span>
+						<span>下单</span>
+					</li>
+				</ul>
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

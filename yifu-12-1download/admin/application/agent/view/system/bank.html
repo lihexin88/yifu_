@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    <style>
+        .red{
+            color:red;
+        }
+        .green{
+            color: #37ff7e;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">银行卡管理</a></li>
+        <li class="am-active">银行卡列表</li>
+        <li class="am-active"><a href="edit">添加</a></li>
+    </ol>
+    <div class="widget am-cf">
+        <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+        <div class="widget-body widget-body-lg am-fr">
+            <div class="am-scrollable-horizontal">
+                <table class="{$table}">
+                    <thead>
+                    <tr>
+                        <th>银行名称</th>
+                        <th>图片</th>
+                        <th>用户姓名</th>
+                        <th>银行卡号</th>
+                        <th>添加时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="list">
+                    {foreach $bank as $val}
+                    <tr class="text-c">
+                        <td>{$val['bank_name']}</td>
+                        <td class="red"><img src="{$val['bank_img']}" style="max-height: 50px;" alt=""></td>
+                        <td>{$val['real_name']}</td>
+                        <td>{$val['bank_card']}</td>
+                        <td>{$val['time']}</td>
+                        <td>
+                            <a href="edit?id={$val['id']}" >修改</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/foot" /}
+<script type="text/javascript">
+
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq(4).find('ul').show();
+        nav.eq(4).find('ul li').eq(1).find('a').addClass('active');
+    });
+
+</script>
+</body>
+</html>

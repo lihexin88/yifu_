@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">参数管理</a></li>
+        <li class="am-active">交易所列表</li>
+        <li><a href="../transaction/exchange_add.html?a={$a}&b={$b}">添加交易所</a></li>
+    </ol>
+    <div class="am-form-inline" role="form">
+        <span>日期范围：</span>
+        <div class="am-form-group ">
+            <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+                   data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+        </div>
+        <div class="am-form-group ">
+            <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+                   onfocus="this.blur()" value="{$arr.end_query}"/>
+        </div>
+        <div class="am-form-group ">
+            <input type="text" id="name" class="am-form-field am-input-sm" placeholder="请输入名称或者代码"
+                   value="{$arr.name}"/>
+        </div>
+        <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+        <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+    </div>
+    <div class="widget am-cf">
+        <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+        <div class="widget-body widget-body-lg am-fr">
+            <div class="am-scrollable-horizontal">
+                <table class="{$table}">
+                    <thead>
+                    <tr>
+                        <th>交易所编号</th>
+                        <th>交易所名称</th>
+                        <th>短码</th>
+                        <th>简称</th>
+                        <th>交易所类型</th>
+                        <th>状态</th>
+                        <th>排序</th>
+                        <th>添加时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="list" id="vo" empty="$empty"}
+                    <tr>
+                        <td>{$vo['id']}</td>
+                        <td>{$vo.name}</td>
+                        <th>{$vo.code}</th>
+                        <td>{$vo.short}</td>
+                        <td>{$vo.type}</td>
+                        {if condition="strtoupper($vo['status']) eq '0'"}
+                        <td><a href="#" onclick="mod_status({$vo.id},{$vo.status})"
+                               class="am-btn am-btn-warning am-btn-xs">{$vo.status_text}</a></td>
+                        {else /}
+                        <td><a href="#" onclick="mod_status({$vo.id},{$vo.status})"
+                               class="am-btn am-btn-success am-btn-xs">{$vo.status_text}</a></td>
+                        {/if}
+                        <td>{$vo.sort}</td>
+                        <td>{$vo.time}</td>
+                        <td>
+                            <a href="exchange_add?id={$vo.id}&a={$a}&b={$b}"
+                               class="am-btn am-btn-success am-btn-xs">信息修改</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    </tbody>
+                </table>
+                <div class="dataTables_info" id="DataTables_Table_1_info">
+                    <div class="am-pagination-left">{$page}</div>
+                </div>
+            </div>
+        </div>
+        {include file="public/content_foot" /}
+    </div>
+    {include file="public/foot" /}
+    <script type="text/javascript">
+        $(function () {
+            var nav = $('.left-sidebar li.sidebar-nav-link');
+            nav.removeClass("active");
+            nav.eq({$a}).find('ul').show();
+            nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+        });
+
+        function mod_status(id, status) {
+            // console.log(id, status);
+            $.ajax({
+                url: "{:url('Transaction/mod_status')}",
+                type: "post",
+                data: {'id': id, status: status},
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        layer.msg(r['msg']);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        layer.msg(r['msg']);
+                    }
+                }
+            });
+
+        }
+
+        function sub(id) {
+            $.ajax({
+                url: "{:url('Users/edit')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        layer.msg(r['msg']);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        layer.msg(r['msg']);
+                    }
+                }
+            });
+        }
+
+        function mold(id) {
+            $.ajax({
+                url: "{:url('Users/mold')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    if (r == 1) {
+                        alert_open('操作成功');
+                    } else {
+                        alert_msg('操作失败');
+                    }
+                }
+            });
+        }
+
+        function Derive_excel() {
+            $.ajax({
+                url: "{:url('Users/index')}",
+                type: "post",
+                data: {excel: 1},
+                success: function (r) {
+                }
+            });
+        }
+    </script>
+</body>
+</html>

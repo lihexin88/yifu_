@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>逸富 - 行情列表</title>
+		<link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" title="main" href="css/main.css" />
+		<link rel="stylesheet alternate" type="text/css" title="main_light" href="css/main_light.css" />
+		<script type="text/javascript">
+			function set_style(title) {
+				var i, a, main;
+				if(title) {
+					for(i = 0; a = document.getElementsByTagName('link')[i]; i++) {
+						if(a.getAttribute('rel').indexOf('style') != -1 && a.getAttribute('title')) {
+							a.disabled = true;
+							if(a.getAttribute('title') == title) {
+								window.localStorage.setItem("color", a.getAttribute('title'));
+								a.disabled = false;
+							}
+						}
+					}
+				}
+			};
+			var color = localStorage.getItem("color");
+			if(color == "main") {
+				set_style('main');
+			} else if(color == "main_light") {
+				set_style('main_light');
+			}
+		</script>
+	</head>
+
+	<body style="background: #000;">
+		<div class="market_box" data="" show="0" style="padding-bottom: 60px;">
+			<table class="market_table" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<th>合约名称</th>
+					<th>最新价</th>
+					<th>买一价</th>
+					<th>卖一价</th>
+					<th>买一量</th>
+					<th>卖一量</th>
+					<th>涨跌</th>
+					<th>幅度%</th>
+					<th>昨结算</th>
+					<th>成交量</th>
+					<th>持仓量</th>
+					<th>涨停</th>
+					<th>跌停</th>
+					<th>最高</th>
+					<th>今开</th>
+					<th>最低</th>
+					<th>昨收</th>
+					<th>昨持仓量</th>
+					<th>结算价</th>
+					<th>交易所</th>
+					<th>时间</th>
+				</tr>
+				<tbody class="tbody_table">
+
+				</tbody>
+			</table>
+		</div>
+	</body>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var zjs = [
+			['IC主力', 'nf_IC0', 'IC0', "中金所"],
+			['IC1810', 'nf_IC1810', 'IC1810', "中金所"],
+			['IC1811', 'nf_IC1811', 'IC1811', "中金所"],
+			['IC1812', 'nf_IC1812', 'IC1812', "中金所"],
+			['IC1903', 'nf_IC1903', 'IC1903', "中金所"],
+			['IH主力', 'nf_IH0', 'IH0', "中金所"],
+			['IH1810', 'nf_IH1810', 'IH1810', "中金所"],
+			['IH1811', 'nf_IH1811', 'IH1811', "中金所"],
+			['IH1812', 'nf_IH1812', 'IH1812', "中金所"],
+			['IH1903', 'nf_IH1903', 'IH1903', "中金所"],
+			['IF主力', 'nf_IF0', 'IF0', "中金所"],
+			['IF1810', 'nf_IF1810', 'IF1810', "中金所"],
+			['IF1811', 'nf_IF1811', 'IF1811', "中金所"],
+			['IF1812', 'nf_IF1812', 'IF1812', "中金所"],
+			['IF1903', 'nf_IF1903', 'IF1903', "中金所"],
+			['十债主力', 'nf_T0', 'T0', "中金所"],
+			['十债1812', 'nf_T1812', 'T1812', "中金所"],
+			['十债1903', 'nf_T1903', 'T1903', "中金所"],
+			['十债1906', 'nf_T1906', 'T1906', "中金所"],
+			['五债主力', 'nf_TF0', 'TF0', "中金所"],
+			['五债1812', 'nf_TF1812', 'TF1812', "中金所"],
+			['五债1903', 'nf_TF1903', 'TF1903', "中金所"],
+			['五债1906', 'nf_TF1906', 'TF1906', "中金所"],
+			['二债主力', 'nf_TS0', 'TS0', "中金所"],
+			['二债1812', 'nf_TS1812', 'TS1812', "中金所"],
+			['二债1903', 'nf_TS1903', 'TS1903', "中金所"],
+			['二债1906', 'nf_TS1906', 'TS1906', "中金所"]
+		];
+
+		function get_exchange_data(exchange_name) {
+			var contact_arr = [];
+			//index 判断是那个交易所
+			$.post(globalUrl, {
+				nozzle: "bourse",
+				token: localStorage.getItem("token")
+			}, function(res) {
+				var exchange_list = res.data.data;
+				var name_level = res.data.variety;
+				var contract_list = res.data.contract;
+				//添加交易所列表
+				$(".exchange_list", window.parent.document).attr("type", exchange_list[0].id);
+				$(".exchange_list > li", window.parent.document).remove();
+				for(var i = 0; i < exchange_list.length; i++) {
+					var str = '<li type="' + exchange_list[i].id + '">' + exchange_list[i].name + '</li>'
+					$(".exchange_list", window.parent.document).append(str);
+				};
+				$(".exchange_list > li:eq(0)", window.parent.document).addClass("exchange_listAct");
+				//添加分级列表
+				$(".contract_list > li", window.parent.document).remove();
+				for(var i = 0; i < name_level.length; i++) {
+					var html = '<li>' + name_level[i] + '</li>'
+					$(".contract_list", window.parent.document).append(html);
+				};
+				//判断交易所列表&分级列表有没有超出
+				window.parent.exchange_length();
+				window.parent.contact_length();
+				//渲染合约列表
+				for(var i = 0; i < contract_list.length; i++) {
+					var arr = [contract_list[i].name, contract_list[i].code, contract_list[i].short, contract_list[i].bourse_code, contract_list[i].bourse_name];
+					contact_arr.push(arr);
+				};
+				if(exchange_name == "中金所") {
+					price_data(contact_arr, exchange_name);
+				}
+
+			});
+		};
+		get_exchange_data("中金所");
+
+		function price_data(data, exchange_name) {
+			if(exchange_name == "芝期所" || exchange_name == "芝商所" || exchange_name == "纽金所" || exchange_name == "欧交所" || exchange_name == "港交所" || exchange_name == "纽商所" || exchange_name == "新加坡") {
+				//国外期货
+				add_abroad(data);
+			} else {
+				//国内期货
+				var codes = [];
+				$.each(data, function(item, value) {
+					codes.push(value[1]);
+				});
+				if(codes.length != 0) {
+					$.ajax({
+						cache: true,
+						url: 'https://hq.sinajs.cn/?list=' + codes,
+						type: 'GET',
+						dataType: 'script',
+						success: function() {
+							var data_arr = [];
+							if(exchange_name == "中金所") {
+								$.each(data, function(item, value) {
+									var elements = 'hq_str_' + value[1];
+									elements = eval(elements).split(",");
+									//最新价 - 结算价 /结算价 => 涨跌幅
+									//最新价 - 结算价  => 涨跌额
+									var up_val = parseInt((Number(elements[3]) - Number(elements[8])) * 100) / 100;
+									if(Number(elements[8]) == 0) {
+										var up_range = 0;
+									} else {
+										var up_range = parseInt(up_val / Number(elements[8]) * 10000) / 100;
+									}
+									elements.push(up_val);
+									elements.push(up_range);
+									data_arr.push(elements);
+								});
+							} else {
+								$.each(data, function(item, value) {
+									var elements = 'hq_str_' + value[1];
+									elements = eval(elements).split(",");
+									//最新价 - 结算价 /结算价 => 涨跌幅
+									//最新价 - 结算价  => 涨跌额
+									var up_val = parseInt((Number(elements[8]) - Number(elements[9])) * 100) / 100;
+									if(Number(elements[9]) == 0) {
+										var up_range = 0;
+									} else {
+										var up_range = parseInt(up_val / Number(elements[9]) * 10000) / 100;
+									}
+									elements.push(up_val);
+									elements.push(up_range);
+									data_arr.push(elements);
+								});
+							}
+							if(exchange_name == "中金所") {
+								//中金所
+								add_zjs(data_arr, data);
+							} else if(exchange_name == "郑商所" || exchange_name == "大商所" || exchange_name == "能源中心" || exchange_name == "上期所") {
+								//郑商所
+								add_zss(data_arr, data);
+							}
+						}
+					});
+				}
+			}
+		};
+		/*#list_table(iframe) js 行情列表操作 iframe内置元素  属于iframe的js iframe 获取不到 可以做特殊处理*/
+		/* #list_table(iframe) 行情列表操作 #list_table(iframe) js   end*/
+		//鼠标右键显示添加自选
+		$(".tbody_table").on("mousedown", "tr", function(event) {
+			var e = event || window.event;
+			var set = {
+				top: e.clientY + 25,
+				left: e.clientX + 30
+			};
+			if(set.top > 452) {
+				set.top -= 60;
+			}
+			if(set.left > 1009) {
+				set.left -= 149;
+			}
+			if(e.which == 3) {
+				//3 == 鼠标右键
+				$(this).addClass("market_border_special");
+				$(".tbody_table tr").not(this).removeClass("market_border_special");
+				$(".market_box").attr("data", $(this).index());
+				$(".right_module1", window.parent.document).offset(set);
+				$(".right_module1", window.parent.document).addClass("right_module_act1");
+
+			} else if(e.which == 1) {
+				set.top = -25;
+				$(this).addClass("market_border_special");
+				$(".tbody_table tr").not(this).removeClass("market_border_special");
+				$(".market_box").attr("data", $(this).index());
+				$(".right_module1", window.parent.document).offset(set);
+				$(".right_module1", window.parent.document).removeClass("right_module_act1");
+				//交易模块
+				var symbol = $(this).attr("short");
+				$("#symbol", window.parent.document).val(symbol);
+				var new_price = $(this).children().eq(1).html();
+				$(".buy_price", window.parent.document).val(new_price);
+				$(".new_price_val", window.parent.document).html(new_price);
+			}
+		});
+		//双击进入K线图
+		$(".tbody_table").on("dblclick", "tr", function(event) {
+			var symbol = $(this).attr("short");
+			if(symbol == "") {
+				window.localStorage.clear("symbol");
+			} else {
+				window.localStorage.setItem("symbol", $(this).attr("short"));
+			}
+
+			$("#list_table", window.parent.document).attr("src", "k_line.html");
+			$(".slider_text > li:eq(2)", window.parent.document).addClass("slider_textAct");
+			$(".slider_text > li", window.parent.document).not(".slider_text > li:eq(2)").removeClass("slider_textAct");
+			var length = $(".title_text1 li", window.parent.document).length;
+			$(".title_text1 li:eq(3)", window.parent.document).addClass("title_text1Act4");
+			for(var i = 1; i <= length; i++) {
+				var oter_class = "title_text1Act" + i;
+				if(i != 4) {
+					$(".title_text1 li", window.parent.document).removeClass(oter_class);
+				}
+			}
+		});
+	</script>
+
+</html>

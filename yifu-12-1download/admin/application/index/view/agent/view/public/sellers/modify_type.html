@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    {include file="public/form" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">店铺类型</a></li>
+        <li class="am-active">修改店铺类型</li>
+    </ol>
+    <div class="widget am-cf">
+        <form class="am-cf" id="form" onsubmit="return false">
+            <div class="am-panel am-panel-primary">
+                <div class="am-panel-hd">修改店铺类型</div>
+                <div class="am-panel-bd">
+                    <input type="hidden" name="id" value="{$list.id}"/>
+                    <div class="am-form-group">
+                        <span class="s1">类型名称：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="name" class="am-form-field am-input-sm" name="name"
+                                   value="{$list.name}"/>
+                        </label>
+                    </div>
+                </div>
+                <div class="am-panel-bd">
+                    <div class="am-form-group">
+                        <span class="s1">类型排序：</span>
+                        <label class="am-form-label">
+                            <input type="text" id="sort" class="am-form-field am-input-sm" name="sort"
+                                   value="{$list.sort}"/>
+                        </label>
+                        <span class="s2">数字越大，排序靠上</span>
+                    </div>
+                </div>
+                <div class="am-panel-bd">
+                    <div class="am-form-group">
+                        <span class="s1">是否展示：</span>
+                        <label class="am-form-label">
+                            <select name="status" title="" class="am-form-field am-input-sm">
+                                {if condition ="$list.status eq 0"}
+                                <option value="0" selected>隐藏</option>
+                                {else/}
+                                <option value="0">隐藏</option>
+                                {/if}
+                                {if condition ="$list.status eq 1"}
+                                <option value="1" selected>显示</option>
+                                {else/}
+                                <option value="1">显示</option>
+                                {/if}
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                    <button type="submit" class="am-btn am-btn-primary am-btn-sm">确定</button>
+                    <a href="seller_type.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    {include file="public/content_foot" /}
+</div>
+{include file="public/foot" /}
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq(2).find('ul').show();
+        nav.eq(2).find('ul li').eq(3).find('a').addClass('active');
+    });
+    $('.am-btn').click(function () {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('SellersOperate/type_handle')}",
+            type: 'post',
+            data: {arr: arr},
+            success: function (data) {
+                if (data['code'] == 1) {
+                    alert_open(data['msg']);
+                } else {
+                    alert_msg(data['msg']);
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

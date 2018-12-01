@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    <style>
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">会员管理</a></li>
+        <li class="am-active">下级代理</li>
+    </ol>
+    <div class="widget am-cf">
+        <div class="am-form-inline" role="form">
+            <span>日期范围：</span>
+            <div class="am-form-group ">
+                <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+                       data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+            </div>
+            <div class="am-form-group ">
+                <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+                       onfocus="this.blur()" value="{$arr.end_query}"/>
+            </div>
+            <div class="am-form-group ">
+                <input type="text" id="name" class="am-form-field am-input-sm" name="name" placeholder="请输入会员信息"
+                       value="{$arr.name}"/>
+            </div>
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+        </div>
+        <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+        <div class="widget-body widget-body-lg am-fr">
+            <div class="am-scrollable-horizontal">
+                <table class="{$table}">
+                    <thead>
+                    <tr>
+                        <th>用户账号</th>
+                        <th>手机号码</th>
+                        <th>姓名</th>
+                        <th>用户状态</th>
+                        <th>注册时间</th>
+                        <th>注册地址</th>
+                        <th>账户余额</th>
+                        <th>身份</th>
+                        <th>代理ID</th>
+                        <th>注册时间</th>
+                        <th>上次登录时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="list" id="vo" empty="$empty"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.phone}</td>
+                        <td>{$vo.real_name}</td>
+                        {if condition="$vo.status eq '已禁用'"}
+                        <td class="red">{$vo.status}</td>
+                        {else /}
+                        <td class="green">{$vo.status}</td>
+                        {/if}
+                        <td>{$vo.time}</td>
+                        <td>{$vo.login_ip}</td>
+                        <td>{$vo.account.account}</td>
+                        <td>{$vo.is_agent}</td>
+                        <td>{$vo.reid}</td>
+                        <td>{$vo.time}</td>
+                        <td>{$vo.login_time}</td>
+                        <td>
+                            <!-- <a href="rechange?id={$vo.id}" class="am-btn am-btn-success am-btn-xs">充值</a> -->
+                            {if condition="$vo.status eq '已启用'"}
+                            <a href="#" onclick="sub(id={$vo['id']})" class="am-btn am-btn-warning am-btn-xs">禁用</a>
+                            {else /}
+                            <a href="#" onclick="sub(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">启用</a>
+                            {/if}
+
+                            {if condition="$vo.frozen eq '冻结'"}
+                            <a href="#" onclick="sub2(id={$vo['id']})" class="am-btn am-btn-warning am-btn-xs">解冻</a>
+                            {else /}
+                            <a href="#" onclick="sub2(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">冻结</a>
+                            {/if}
+
+                            {if condition="$vo.is_forward eq '关闭提现'"}
+                            <a href="#" onclick="sub3(id={$vo['id']})" class="am-btn am-btn-warning am-btn-xs">打开提现</a>
+                            {else /}
+                            <a href="#" onclick="sub3(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">关闭提现</a>
+                            {/if}
+                            {if condition="$vo.is_agent eq '代理商'"}
+                            <a href="next_user?id={$vo.id}"  class="am-btn am-btn-success am-btn-xs">下级客户</a>
+                            <a href="next_agent?id={$vo.id}" class="am-btn am-btn-success am-btn-xs">下级代理</a>
+                            
+                            <a href="user_edit?id={$vo.id}" class="am-btn am-btn-warning am-btn-xs">修改</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                    <!-- <tr>
+                        <th colspan="8"></th>
+                        <th>{$sum}</th>
+                        <th colspan="4"></th>
+                    </tr> -->
+                    </tbody>
+                </table>
+                <div class="dataTables_info" id="DataTables_Table_1_info">
+                    <div class="am-pagination-left">{$page}</div>
+                </div>
+            </div>
+        </div>
+        {include file="public/content_foot" /}
+    </div>
+    <form action="{:url('Users/index')}" class="am-form-inline" role="form" id="form" method="get">
+        <input type="hidden" name="name"/>
+        <input type="hidden" name="start_query">
+        <input type="hidden" name="end_query">
+        <input type="hidden" name="status">
+        <input type="hidden" name="page">
+    </form>
+    {include file="public/foot" /}
+    <script type="text/javascript">
+        $(function () {
+            var nav = $('.left-sidebar li.sidebar-nav-link');
+            nav.removeClass("active");
+            nav.eq(1).find('ul').show();
+            nav.eq(1).find('ul li').eq(1).find('a').addClass('active');
+        });
+        function del(id) {
+            if (confirm("确定要删除吗？")) {
+                $.ajax({
+                    url: "{:url('Users/del')}",
+                    data: {id: id},
+                    type: "post",
+                    success: function (r) {
+                        if (r['code'] == 1) {
+                            alert_open(r['msg'])
+                        } else {
+                            alert_msg(r['msg']);
+                        }
+                    }
+                });
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function sub(id) {
+            $.ajax({
+                url: "{:url('Users/edit')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        layer.msg(r['msg']);
+                        setTimeout(function (){
+                            window.location.reload();
+                        },1500);
+                    } else {
+                        layer.msg(r['msg']);
+                    }
+                }
+            });
+        }
+        function sub1(id) {
+            $.ajax({
+                url: "{:url('Users/is_agent')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        layer.msg(r['msg']);
+                        setTimeout(function (){
+                            window.location.reload();
+                        },1500);
+                    } else {
+                        layer.msg(r['msg']);
+                    }
+                }
+            });
+        }
+        function sub2(id) {
+            $.ajax({
+                url: "{:url('Users/forzen_edit')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        layer.msg(r['msg']);
+                        setTimeout(function (){
+                            window.location.reload();
+                        },1500);
+                    } else {
+                        layer.msg(r['msg']);
+                    }
+                }
+            });
+        }
+        function sub3(id) {
+            $.ajax({
+                url: "{:url('Users/close_edit')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        layer.msg(r['msg']);
+                        setTimeout(function (){
+                            window.location.reload();
+                        },1500);
+                    } else {
+                        layer.msg(r['msg']);
+                    }
+                }
+            });
+        }
+        function mold(id) {
+            $.ajax({
+                url: "{:url('Users/mold')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    if (r == 1) {
+                        alert_open('操作成功');
+                    } else {
+                        alert_msg('操作失败');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

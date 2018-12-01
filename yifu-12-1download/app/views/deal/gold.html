@@ -1,0 +1,34 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header back_black">
+		<i class="header_i1 icon ion-chevron-left" ng-click="back()"></i>
+		<b class="white">出金入金</b>
+	</header>
+	<ion-content class="top" style="background:#ECECEC;" >
+		<div class="gold_box">
+			<div class="gold_input ma_bom25">
+				<span>转账金额</span>
+				<input type="text" value="" ng-model="inputData.money"/>
+			</div>
+			<div class="gold_input ma_bom25">
+				<span>币种</span>
+				<input type="text" value="人民币" disabled/>
+				<!--<select name="">
+					<option value="">人民币</option>
+					<option value="">美金</option>
+				</select>-->
+			</div>
+			<div class="gold_input">
+				<span>银行</span>
+				<input type="text" value="" ng-model="inputData.card" disabled/>
+			</div>
+			<div class="bind_card">
+				<a ui-sref="bind_card">设定签约银行</a>
+			</div>
+			<div class="gold_btn">
+				<button ng-click="recharge()">入金</button>
+				<button ng-click="forward()">出金</button>
+			</div>
+		</div>
+		<div style="height: 5rem;"></div>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,71 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header">
+		<b>新闻</b>
+	</header>
+	<ion-content class="top">
+		<div class="tab3_top">
+			<p ng-click="setCut(0)" ng-class="{'tab3_topAct':cut == 0}">新闻</p>
+			<p ng-click="setCut(1)" ng-class="{'tab3_topAct':cut == 1}">财经日历</p>
+		</div>
+		<!--新闻-->
+		<ul class="offcial_ul tab3_ul margin0" ng-show="cut == 0">
+			<li ng-repeat="item in new_list" ng-click="go_statement()">
+				<p>{{item.title}}</p>
+				<div>
+					<span>{{item.time}}</span>
+					<!--<span>12:19</span>-->
+				</div>
+			</li>
+		</ul>
+		<!--财经日历 calendar日历-->
+		<div class="tab3_calendar" ng-show="cut == 1">
+			<div class="calendar_title">上海黄金交易所递延方向（2018-08-01）</div>
+			<ul class="calendar_name">
+				<li>
+					<p>合约名称</p>
+					<p>交收方向</p>
+				</li>
+				<li>
+					<p>mAu(T+D)</p>
+					<p>多交付给空</p>
+				</li>
+				<li>
+					<p>Au(T+D)</p>
+					<p>多交付给空</p>
+				</li>
+				<li>
+					<p>Ag(T+D)</p>
+					<p>多交付给空</p>
+				</li>
+			</ul>
+			<div class="calendar_title">财经日历（2018-08-01）</div>
+			<div class="calendar_list">
+				<p>
+					<span>06:30</span>
+					<span class="ellipsis">新西兰7月ANZ招聘广告月率</span>
+					<i class="iconfont icon-icon-arrow-bottom2"></i>
+				</p>
+				<div>新西兰7月ANZ招聘广告月率 前值:-1.6% 结果:3.1% 爱仕达黄金时代看 </div>
+			</div>
+			<div class="calendar_list">
+				<p>
+					<span>08:30</span>
+					<span class="ellipsis">新西兰7月ANZ招聘广告月率</span>
+					<i class="iconfont icon-icon-arrow-bottom2"></i>
+				</p>
+				<div>新西兰7月ANZ招聘广告月率 前值:-1.6% 结果:3.1%  </div>
+			</div>
+			<div class="calendar_list">
+				<p>
+					<span>09:30</span>
+					<span class="ellipsis">新西兰7月ANZ招聘广告月率</span>
+					<i class="iconfont icon-icon-arrow-bottom2"></i>
+				</p>
+				<div>新西兰7月ANZ招聘广告月率 前值:-1.6% 结果:3.1%  </div>
+			</div>
+
+		</div>
+		<div style="height: 7.5rem;">
+		</div>
+	</ion-content>
+</ion-view>

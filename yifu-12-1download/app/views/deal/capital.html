@@ -1,0 +1,52 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header back_black">
+		<i class="header_i1 icon ion-chevron-left" ng-click="back()"></i>
+		<b class="white">资金明细</b>
+	</header>
+	<ion-content class="top" style="background: #3B4048;">
+		<ul class="capital_top">
+			<li>
+				<span>客户账号</span>
+				<span>{{data.phone.phone}}</span>
+			</li>
+			<li>
+				<span>总资金</span>
+				<span>{{data.account + data.frozen |number:2}}（美元）</span>
+			</li>
+			<li>
+				<span>可用资金</span>
+				<span>{{data.account}}（美元）</span>
+			</li>
+			<li>
+				<span>冻结资金</span>
+				<span>{{data.frozen}}（美元）</span>
+			</li>
+			<li>
+				<span>昨日权益</span>
+				<span>{{data.today}}</span>
+			</li>
+			<li>
+				<span>出入金</span>
+				<span>{{data.wit_total}}</span>
+			</li>
+			<li>
+				<span>手续费</span>
+				<span>{{data.fee}}</span>
+			</li>
+			<li>
+				<span>平仓盈亏</span>
+				<span>{{data.hold}}</span>
+			</li>
+			<li>
+				<span>持仓盈亏</span>
+				<span>{{data.close}}</span>
+			</li>
+			<li>
+				<span>当前权益</span>
+				<span>{{data.current}}</span>
+			</li>
+		</ul>
+		<div style="height: 5rem;"></div>
+	</ion-content>
+
+</ion-view>

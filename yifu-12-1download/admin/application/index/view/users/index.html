@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">会员管理</a></li>
+        <li class="am-active">会员账号</li>
+    </ol>
+    <div class="am-form-inline" role="form">
+        <span>日期范围：</span>
+        <div class="am-form-group ">
+            <input type="text" class="am-form-field am-input-sm" name="start" placeholder="请选择起始日期"
+                   data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+        </div>
+        <div class="am-form-group ">
+            <input type="text" class="am-form-field am-input-sm" name="end" placeholder="请选择结束日期" data-am-datepicker
+                   onfocus="this.blur()" value="{$arr.end_query}"/>
+        </div>
+        <div class="am-form-group ">
+            <input type="text" id="name" class="am-form-field am-input-sm" placeholder="请输入名称或手机号"
+                   value="{$arr.name}"/>
+        </div>
+        <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="info_query()">查询</button>
+        <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+        <!-- ,array('excel'=>1,'name'=>$name,'start_query'=>$start_query,'end_query'=>$end_query)) -->
+        <a href="{:url('index')}?excel=1&name={$name}&start_query={$start_query}&end_query={$end_query}">导出Excel表格</a>
+        <!-- <button type="button" class="am-btn am-btn-primary am-btn-sm" style="margin-left: 200px: " onclick="Derive_excel()">导出Excel表格</button> -->
+    </div>
+    <div class="widget am-cf">
+        <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+        <div class="widget-body widget-body-lg am-fr">
+            <div class="am-scrollable-horizontal">
+                <table class="{$table}">
+                    <thead>
+                    <tr>
+                        <th>用户ID</th>
+                        <th>手机号码</th>
+                        <th>昵称</th>
+                        <th>姓名</th>
+                        <th>用户状态</th>
+                        <th>身份证</th>
+                        <th>注册时间</th>
+                        <th>注册IP</th>
+                        <th>注册状态</th>
+                        <th>账户余额</th>
+                        <!--<th>注册信息</th>-->
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name="list" id="vo" empty="$empty"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.phone}</td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.real_name}</td>
+                        <td>{$vo.status}</td>
+                        <td>{$vo.card}</td>
+                        <td>{$vo.time}</td>
+                        <td>{$vo.login_ip}</td>
+                        <td>{$vo.real_status}</td>
+                        <td>{$vo.account.account}</td>
+                        <td>
+                            <a href="rechange?id={$vo.id}&a={$a}&b={$b}" class="am-btn am-btn-success am-btn-xs">充值</a>
+                            <a href="#" onclick="sub(id={$vo['id']})" class="am-btn am-btn-success am-btn-xs">修改状态</a>
+                            <a href="user_edit?id={$vo.id}&a={$a}&b={$b}"
+                               class="am-btn am-btn-success am-btn-xs">信息修改</a>
+                            <!-- <a href="http://hengrui.jinjifuweng.com/index/aotu_login?id={$vo.id}&token={$vo.token}" target="_blank" class="am-btn am-btn-success am-btn-xs">登录前台</a> -->
+                        </td>
+                    </tr>
+                    {/volist}
+                    <tr>
+                        <th colspan="9"></th>
+                        <th>{$sum}</th>
+                        <th colspan="4"></th>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="dataTables_info" id="DataTables_Table_1_info">
+                    <div class="am-pagination-left">{$page}</div>
+                </div>
+            </div>
+        </div>
+        {include file="public/content_foot" /}
+    </div>
+    <form action="{:url('Users/index')}" class="am-form-inline" role="form" id="form" method="get">
+        <input type="hidden" name="name"/>
+        <input type="hidden" name="start_query">
+        <input type="hidden" name="end_query">
+        <input type="hidden" name="status">
+        <input type="hidden" name="page">
+    </form>
+    {include file="public/foot" /}
+    <script type="text/javascript">
+        $(function () {
+            var nav = $('.left-sidebar li.sidebar-nav-link');
+            nav.removeClass("active");
+//        nav.eq(1).find('a').addClass("active");
+            nav.eq({$a}).find('ul').show();
+            nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+        });
+
+        function sub(id) {
+            $.ajax({
+                url: "{:url('Users/edit')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        layer.msg(r['msg']);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        layer.msg(r['msg']);
+                    }
+                }
+            });
+        }
+
+        //修改注册状态
+        function subs(id, type) {
+            $.ajax({
+                url: "{:url('Users/editReStatus')}",
+                type: "post",
+                data: {id: id, type: type},
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        layer.msg(r['msg']);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 1500);
+                    } else {
+                        layer.msg(r['msg']);
+                    }
+                }
+            });
+        }
+
+        function mold(id) {
+            $.ajax({
+                url: "{:url('Users/mold')}",
+                type: "post",
+                data: {id: id},
+                success: function (r) {
+                    if (r == 1) {
+                        alert_open('操作成功');
+                    } else {
+                        alert_msg('操作失败');
+                    }
+                }
+            });
+        }
+
+        function Derive_excel() {
+            $.ajax({
+                url: "{:url('Users/index')}",
+                type: "post",
+                data: {excel: 1},
+                success: function (r) {
+                }
+            });
+        }
+    </script>
+</body>
+</html>

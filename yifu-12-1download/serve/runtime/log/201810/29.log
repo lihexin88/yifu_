@@ -1,0 +1,1823 @@
+---------------------------------------------------------------
+[ 2018-10-29T19:07:51+08:00 ] 1.193.36.236 GET /index.php/recharge/record.html
+[ info ] yfserve.bjfable.com/index.php/recharge/record.html [运行时间：0.020282s][吞吐率：49.30req/s] [内存消耗：975.15kb] [文件加载：65]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'recharge',
+    2 => 'record',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://yfserve.bjfable.com/index.php/withdrawal/apply.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=aj7c1sjh6ukvb9ouls3obflkq5',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Recharge->record[ /www/web/test/yifu/serve/application/index/controller/Recharge.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/recharge/record.html [ array (
+  0 => 'user_info',
+  1 => 'user_account_info',
+  2 => 'record_page',
+  3 => 'record',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000427s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_config` [ RunTime:0.001469s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000301s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000336s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000203s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001416s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000418s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001556s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_recharge` [ RunTime:0.001614s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sn_recharge` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000240s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_recharge',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 3,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_recharge` WHERE  `uid` = 1 ORDER BY `time` DESC LIMIT 0,10 [ RunTime:0.000301s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_recharge',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 3,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_recharge` WHERE  `uid` = :where_AND_uid ORDER BY `time` DESC LIMIT 0,10 [Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-10-29T19:08:06+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003078s][吞吐率：324.89req/s] [内存消耗：501.77kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:08:06+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.003112s][吞吐率：321.35req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:08:57+08:00 ] 1.193.36.236 GET /index.php/withdrawal/apply.html
+[ info ] yfserve.bjfable.com/index.php/withdrawal/apply.html [运行时间：0.013628s][吞吐率：73.38req/s] [内存消耗：859.65kb] [文件加载：60]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'withdrawal',
+    2 => 'apply',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://yfserve.bjfable.com/index.php/recharge/record.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=aj7c1sjh6ukvb9ouls3obflkq5',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Withdrawal->apply[ /www/web/test/yifu/serve/application/index/controller/Withdrawal.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/withdrawal/apply.html [ array (
+  0 => 'user_info',
+  1 => 'user_account_info',
+  2 => 'user_account',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000451s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_config` [ RunTime:0.001386s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000243s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000178s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001408s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001232s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000204s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+---------------------------------------------------------------
+[ 2018-10-29T19:09:11+08:00 ] 1.193.36.236 POST /index.php/withdrawal/post_withdraw
+[ info ] yfserve.bjfable.com/index.php/withdrawal/post_withdraw [运行时间：0.026034s][吞吐率：38.41req/s] [内存消耗：980.38kb] [文件加载：62]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'withdrawal',
+    2 => 'post_withdraw',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '17',
+  'accept' => '*/*',
+  'origin' => 'http://yfserve.bjfable.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfserve.bjfable.com/index.php/withdrawal/apply.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=aj7c1sjh6ukvb9ouls3obflkq5',
+)
+[ info ] [ PARAM ] array (
+  'name' => '',
+  'amount' => '0.02',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Withdrawal->post_withdraw[ /www/web/test/yifu/serve/application/index/controller/Withdrawal.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000421s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_config` [ RunTime:0.001487s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000521s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000347s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000416s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001565s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000311s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001292s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000217s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_bank` [ RunTime:0.001275s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_bank` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000280s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_bank',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 2,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_bank` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000406s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_bank',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 2,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_bank` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000198s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_bank',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 2,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_withdraw` [ RunTime:0.001549s ]
+[ sql ] [ SQL ] INSERT INTO `sn_withdraw` (`uid` , `order` , `number` , `total` , `fee` , `name` , `card` , `time`) VALUES (1 , 'D596720181029190911596771256' , 0 , 0 , 0 , '建设银行' , '6127004232209478351' , 1540811351) [ RunTime:0.003348s ]
+---------------------------------------------------------------
+[ 2018-10-29T19:09:11+08:00 ] 1.193.36.236 GET /index.php/withdrawal/record
+[ info ] yfserve.bjfable.com/index.php/withdrawal/record [运行时间：0.018388s][吞吐率：54.38req/s] [内存消耗：976.18kb] [文件加载：65]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'withdrawal',
+    2 => 'record',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://yfserve.bjfable.com/index.php/withdrawal/apply.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=aj7c1sjh6ukvb9ouls3obflkq5',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\index\controller\Withdrawal->record[ /www/web/test/yifu/serve/application/index/controller/Withdrawal.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/withdrawal/record.html [ array (
+  0 => 'user_info',
+  1 => 'user_account_info',
+  2 => 'withdraw_page',
+  3 => 'withdraw_log',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000471s ] mysql:host=127.0.0.1;port=3306;dbname=futures;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_config` [ RunTime:0.001467s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_config` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000446s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_config',
+  'type' => 'system',
+  'possible_keys' => 'PRIMARY',
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user` [ RunTime:0.001668s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000298s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_user_account` [ RunTime:0.001297s ]
+[ sql ] [ SQL ] SELECT * FROM `sn_user_account` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_user_account',
+  'type' => 'const',
+  'possible_keys' => 'PRIMARY',
+  'key' => 'PRIMARY',
+  'key_len' => '4',
+  'ref' => 'const',
+  'rows' => 1,
+  'extra' => '',
+) ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sn_withdraw` [ RunTime:0.001379s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sn_withdraw` WHERE  `uid` = 1 LIMIT 1 [ RunTime:0.000217s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_withdraw',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 2,
+  'extra' => 'Using where',
+) ]
+[ sql ] [ SQL ] SELECT * FROM `sn_withdraw` WHERE  `uid` = 1 ORDER BY `time` DESC LIMIT 0,10 [ RunTime:0.000272s ]
+[ sql ] [ EXPLAIN : array (
+  'id' => 1,
+  'select_type' => 'SIMPLE',
+  'table' => 'sn_withdraw',
+  'type' => 'ALL',
+  'possible_keys' => NULL,
+  'key' => NULL,
+  'key_len' => NULL,
+  'ref' => NULL,
+  'rows' => 2,
+  'extra' => 'Using where; Using filesort',
+) ]
+[ warn ] SQL:SELECT * FROM `sn_withdraw` WHERE  `uid` = :where_AND_uid ORDER BY `time` DESC LIMIT 0,10 [Using where; Using filesort]
+---------------------------------------------------------------
+[ 2018-10-29T19:09:11+08:00 ] 1.193.36.236 GET /css/icon.png
+[ info ] yfserve.bjfable.com/css/icon.png [运行时间：0.004113s][吞吐率：243.13req/s] [内存消耗：299.41kb] [文件加载：43]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'css',
+    2 => 'icon.png',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://yfserve.bjfable.com/css/layer.css?v=3.0.3303',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=aj7c1sjh6ukvb9ouls3obflkq5',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:09:20+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003007s][吞吐率：332.56req/s] [内存消耗：501.77kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:09:20+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.002807s][吞吐率：356.26req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:09:21+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003164s][吞吐率：316.05req/s] [内存消耗：501.77kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:09:21+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.002886s][吞吐率：346.49req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:09:23+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003289s][吞吐率：304.05req/s] [内存消耗：501.77kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:09:24+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.003040s][吞吐率：328.97req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:09:40+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003150s][吞吐率：317.46req/s] [内存消耗：501.77kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:09:40+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.004288s][吞吐率：233.21req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:10:49+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003183s][吞吐率：314.18req/s] [内存消耗：501.77kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:10:49+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.002938s][吞吐率：340.36req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:11:03+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003242s][吞吐率：308.45req/s] [内存消耗：501.77kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:11:03+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.003113s][吞吐率：321.23req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:11:06+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003033s][吞吐率：329.69req/s] [内存消耗：501.77kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:11:07+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.002767s][吞吐率：361.42req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:19:49+08:00 ] 1.193.36.236 GET /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003018s][吞吐率：331.36req/s] [内存消耗：500.48kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=1f5bab0dc21cad6f5a8a588909b1d30a',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:19:49+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.002935s][吞吐率：340.72req/s] [内存消耗：359.11kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:19:51+08:00 ] 1.193.36.236 GET /favicon.ico
+[ info ] yfserve.bjfable.com/favicon.ico [运行时间：0.003679s][吞吐率：271.83req/s] [内存消耗：299.43kb] [文件加载：43]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'favicon.ico',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'image/webp,image/apng,image/*,*/*;q=0.8',
+  'referer' => 'http://yfserve.bjfable.com/index.php/login/login_index',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:19:54+08:00 ] 1.193.36.236 GET /
+[ info ] yfserve.bjfable.com/ [运行时间：0.002938s][吞吐率：340.36req/s] [内存消耗：500.42kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:19:54+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.004082s][吞吐率：244.97req/s] [内存消耗：359.11kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:20:28+08:00 ] 1.193.36.236 GET /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003348s][吞吐率：298.68req/s] [内存消耗：496.13kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:20:28+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.006906s][吞吐率：144.80req/s] [内存消耗：287.80kb] [文件加载：42]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'login',
+    1 => 'login_index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:20:33+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003248s][吞吐率：307.88req/s] [内存消耗：498.14kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'pragma' => 'no-cache',
+  'cache-control' => 'no-cache',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:20:33+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.003763s][吞吐率：265.75req/s] [内存消耗：287.68kb] [文件加载：42]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'login',
+    1 => 'login_index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:21:30+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.004395s][吞吐率：227.53req/s] [内存消耗：291.26kb] [文件加载：42]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'login',
+    1 => 'login_index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'token=undefined; yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=aj7c1sjh6ukvb9ouls3obflkq5',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:21:34+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.004706s][吞吐率：212.50req/s] [内存消耗：291.66kb] [文件加载：42]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'login',
+    1 => 'login_index',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:21:55+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.002771s][吞吐率：360.86req/s] [内存消耗：355.54kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:23:40+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003515s][吞吐率：284.49req/s] [内存消耗：501.69kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:23:40+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.002909s][吞吐率：343.74req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:23:41+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003055s][吞吐率：327.35req/s] [内存消耗：501.77kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:23:41+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.003213s][吞吐率：311.22req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:39:01+08:00 ] 1.193.36.236 POST /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003207s][吞吐率：311.82req/s] [内存消耗：501.77kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'content-length' => '24',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+  'nozzle' => 'index_info',
+  'token' => '',
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T19:39:02+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.003073s][吞吐率：325.42req/s] [内存消耗：358.96kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'origin' => 'http://yfweb.bjfable.com',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://yfweb.bjfable.com/',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T20:09:01+08:00 ] 1.193.36.236 GET /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003379s][吞吐率：295.94req/s] [内存消耗：523.74kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T20:09:01+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.004959s][吞吐率：201.65req/s] [内存消耗：375.92kb] [文件加载：49]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T20:10:47+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.004916s][吞吐率：203.42req/s] [内存消耗：356.13kb] [文件加载：49]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T20:12:40+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.004344s][吞吐率：230.20req/s] [内存消耗：352.59kb] [文件加载：49]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T20:12:43+08:00 ] 1.193.36.236 GET /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003380s][吞吐率：295.85req/s] [内存消耗：550.31kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T20:12:43+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.004385s][吞吐率：228.05req/s] [内存消耗：352.28kb] [文件加载：49]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T20:12:46+08:00 ] 1.193.36.236 GET /
+[ info ] yfserve.bjfable.com/ [运行时间：0.003698s][吞吐率：270.41req/s] [内存消耗：550.31kb] [文件加载：52]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T20:12:46+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.004310s][吞吐率：232.01req/s] [内存消耗：352.28kb] [文件加载：49]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-10-29T20:13:08+08:00 ] 1.193.36.236 GET /index.php/login/login_index
+[ info ] yfserve.bjfable.com/index.php/login/login_index [运行时间：0.003244s][吞吐率：308.27req/s] [内存消耗：383.70kb] [文件加载：47]
+[ info ] [ LANG ] /www/web/test/yifu/serve/thinkphp/lang/zh-cn.php
+[ info ] [ BIND ] 'index'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'login_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'yfserve.bjfable.com',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'cookie' => 'yunsuo_session_verify=a72828ba57f3420b5c2cec38e24bf9b3; PHPSESSID=7o0dnlsv9e06ie6j59em2ma7c3',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->login_index[ /www/web/test/yifu/serve/application/index/controller/Login.php ]
+[ info ] [ VIEW ] /www/web/test/yifu/serve/public/../application/index/view/login/login_index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File

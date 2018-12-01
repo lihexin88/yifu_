@@ -1,0 +1,24 @@
+<ion-view view-title="恒瑞国际" class="forget_pass_wrap">
+	<header class="header">
+		<img src="img/zuo.png" class="left_img" ng-click="back()" />
+		<b>修改交易密码</b>
+	</header>
+	<ion-content class="forget_pass_box top">
+		<div class="form">
+			<div>
+				<span class="f_l">原密码</span>
+				<input class="f_l" type="password" placeholder="请填写原密码" ng-model="inputData.old_pwd"/>
+			</div>
+			<div>
+				<span class="f_l">新密码</span>
+				<input class="f_l" type="password" placeholder="请填写新密码" ng-model="inputData.new_pwd"/>
+			</div>
+			<div>
+				<span class="f_l">确认密码</span>
+				<input class="f_l" type="password" placeholder="请填写新密码" ng-model="inputData.new_pwd1"/>
+			</div>
+			<button class="btn" ng-click="sub()">提交</button>
+		</div>
+	</ion-content>
+</ion-view>
+

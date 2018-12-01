@@ -1,0 +1,15 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header">
+		<i class="header_i1 icon ion-chevron-left" ng-click="back()"></i>
+		<b>指标参数设置</b>
+	</header>
+	<ion-content class="top">
+		<div class="set_box">
+			<div class="set_cont" ng-repeat="item in arr" ng-click="set_number()">
+				<span>{{item.name}}</span>
+				<span>{{item.value}}<i class="iconfont icon-you color737"></i></span>
+			</div>
+		</div>
+		<div style="height: 5rem;"></div>
+	</ion-content>
+</ion-view>

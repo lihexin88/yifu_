@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/modules.css">
+    <link rel="stylesheet" href="/static/css/question.css">
+    <style>
+        .h1, h1 {
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">会员管理</a></li>
+        <li class="am-active">会员反馈</li>
+    </ol>
+
+    <div class="am-form-inline" role="form">
+
+            <span>日期范围：</span>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="start" id="start_time" placeholder="请选择起始日期"
+
+                       data-am-datepicker onfocus="this.blur()" value="{$arr.start_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" class="am-form-field am-input-sm" name="end" id="end_time" placeholder="请选择结束日期" data-am-datepicker
+
+                       onfocus="this.blur()" value="{$arr.end_query}"/>
+
+            </div>
+
+            <div class="am-form-group ">
+
+                <input type="text" id="feedback_id" class="am-form-field am-input-sm" placeholder="请输入问题编号"
+
+                       value="{$arr.name}"/>
+
+            </div>
+            <div class="am-form-group ">
+
+                <input type="text" id="user_id" class="am-form-field am-input-sm" placeholder="请输入用户id"
+                	
+                       value=""/>
+
+            </div>
+
+            <button type="button" class="am-btn am-btn-primary am-btn-sm" onclick="query_feedback()">查询</button>
+
+            <button type="button" class="am-btn am-btn-warning am-btn-sm" onclick="clear_query()">清除查询</button>
+
+    </div>
+
+    <div class="widget am-cf">
+        <div class="feedback">
+            <form>
+                <table class="table table-bordered tablerecord table-hover">
+                    <thead>
+                    <tr>
+                        <th>用户id</th>
+                        <th>问题编号</th>
+                        <th>问题类别</th>
+                        <th>问题描述</th>
+                        <th>提交时间</th>
+                        <th>处理状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {volist name = "feedback_log" id = "feedback_log" key = "key"} 
+					{eq name = '$key%2' value= '0'}
+						<tr style="color: gray;">
+					{else /}
+						<tr>
+					{/eq}
+							<td>{$feedback_log.uid}</td>
+							<td>{$feedback_log.id}</td>
+							<td>{if condition="($feedback_log.type) eq 1"}交易{elseif condition="($feedback_log.type) eq 2"}出入金{else /}其他{/if}</td>
+							<td title="{$feedback_log.describe}">{if condition="(strlen($feedback_log.describe) lt 24 )"} {$feedback_log.describe} {else /} {:substr($feedback_log.describe,0,24)}... {/if}</td>
+							<td>{:date('Y-m-d H:i:s',$feedback_log.time)}</td>
+							<td>{if condition="($feedback_log.headle) eq 1"}已处理{else}待处理{/if}</td>
+							<td onclick="ondetail(this.id)" id = "{$feedback_log.id}">查看</td>
+						</tr>
+					{/volist}
+                    </tbody>
+                    
+                </table>
+                {$page}
+            </form>
+            <!--没有记录时显示-->
+            <div class="noRecord">{if condition="(empty($noRecord))"}最近没有反馈记录{else /}{/if}</div>
+            <!--没有记录时显示 end-->
+        </div>
+
+<div  id="myModal" style="display: none;top: 10px;position: fixed;z-index: 9999;left: 30%;" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" onclick="hiden_detial()" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    反馈记录详情
+                </h4>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>
+                        <span>问题编号：</span>
+                        <span id = "question_display_id">160</span>
+                    </li>
+                    <li>
+                        <span>问题类别：</span>
+                        <span id="question_display_type">交易</span>
+                    </li>
+                    <li>
+                        <span>提交时间：</span>
+                        <span id="question_display_create_time">2018-09-22 12:05</span>
+                    </li>
+                    <li>
+                        <span>解决时间：</span>
+                        <span id="question_display_done_time">-</span>
+                    </li>
+                    <li>
+                        <span>处理状态：</span>
+                        <span id="question_display_headle">待处理</span>
+                    </li>
+                </ul>
+                <div class="detailBox">
+                    <p>问题描述：</p>
+                    <textarea id="question_display_describe" disabled="disabled"></textarea>
+                </div>
+                <div class="detailBox">
+                    <p>处理意见：</p>
+                    <textarea id="question_display_headle_suggestion" ></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+            	<button type="button" style="float: left;" onclick="submit_this_question()" class="btn btnqure" data-dismiss="modal">
+                    提交
+                </button>
+                <button type="button" onclick="hiden_detial()" class="btn btnqure" data-dismiss="modal">
+                    取消
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/layui-v2.3.0/layui/layui.js"></script>
+<script src="/static/js/question.js"></script>
+<script src="/static/js/layer.js"></script>
+
+
+    </div>
+    {include file="public/content_foot" /}
+</div>
+<form action="{:url('feedback')}" class="am-form-inline" role="form" id="form" method="post">
+    <input type="hidden" id="form_start_time" name="start_query">
+    <input type="hidden" id="form_end_time" name="end_query">
+    <input type="hidden" name="question_id" id="form_feedback_id" />
+    <input type="hidden" name="uid" id="form_user_id" />
+</form>
+{include file="public/foot" /}
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+//        nav.eq(1).find('a').addClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+    function query_feedback()
+    {
+//  	var data = {"start_time":$("#start_time").val(),"end_time":$("#end_time").val()};
+//  	data['start_time'] = $("#start_time").val();
+//  	data['end_time'] = $("#end_time").val();
+//  	console.log(data);
+    	$("#form_start_time").val($("#start_time").val());
+    	$("#form_end_time").val($("#end_time").val());
+    	$("#form_feedback_id").val($("#feedback_id").val());
+    	$("#form_user_id").val($("#user_id").val());
+    	$("#form").submit();
+//  	console.log(data);
+    }
+    function submit_this_question()
+    {
+    	//问题id和问题处理意见
+    	var data = {"question_id":$("#question_display_id").html(),"question_suggest":$("#question_display_headle_suggestion").val()};
+    	console.log(data);
+		$.ajax({
+			type:"post",
+			data:data,
+			url:"edit_feedback",
+			success:function(result){
+				console.log(result);
+				if(result['code'] == 1){
+//					console.log(11111);
+					layer.alert("问题已处理",function(index){						
+						$("#myModal").slideUp(500);
+						location.reload();
+					});
+				}else{
+					layer.alert('问题处理失败~<br>请稍后再试！');
+				}
+			},
+			error:function(result){
+				console.log(result);
+			},
+			async:true
+		});
+    }
+</script>
+</body>
+</html>

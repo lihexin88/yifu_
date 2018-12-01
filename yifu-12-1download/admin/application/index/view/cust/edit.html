@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {include file="public/meta" /}
+
+    {include file="public/link" /}
+
+    {include file="public/form" /}
+
+</head>
+
+<body data-type="index" class="theme-white">
+
+<div class="am-g tpl-g">
+
+    {include file="public/header" /}
+
+    {include file="public/left" /}
+
+    {include file="public/content_top" /}
+
+    <ol class="am-breadcrumb" style="    margin-bottom: 0;">
+
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+
+        <li><a href="#">客服管理</a></li>
+
+        <li class="am-active">添加客服</li>
+
+    </ol>
+
+    <div class="widget am-cf">
+
+        <form class="am-cf" id="form" onsubmit="return false">
+
+            <div class="am-panel am-panel-primary">
+
+                <div class="am-panel-hd">基础信息</div>
+
+                <div class="am-panel-bd">
+
+                   
+
+                    <div class="am-form-group">
+
+                        <span class="s1">客服名称：</span>
+
+                        <label class="am-form-label">
+
+                            <input type="text" id="title" class="am-form-field am-input-sm" name="name" value="{$list.name}" />
+
+                        </label>
+
+                    </div>
+
+                     <div class="am-form-group">
+
+                        <span class="s1">客服QQ：</span>
+
+                        <label class="am-form-label">
+
+                            <input type="text" id="title" class="am-form-field am-input-sm" name="qq"/ value="{$list.qq}">
+
+                        </label>
+
+                    </div>
+                    <input type="hidden" id="title" class="am-form-field am-input-sm" name="id"/ value="{$list.id}">
+                    <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+
+                        <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub() ">确定</button>
+
+                        <a href="index.html" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{include file="public/foot" /}
+
+<script type="text/javascript" src="/static/ajaxupload.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+
+    });
+
+   function sub() {
+        var reg = /^[1-9][0-9]{4,9}$/gim;
+        var name = $("input[name='name']").val();
+        var id = $("input[name='id']").val();
+        var qq = $("input[name='qq']").val();
+        if(name == ""){
+            layer.msg('请输入客服名称!');
+        }else if(qq == ""){
+            layer.msg('请输入qq号');
+        }else if(!reg.test(qq)){
+            layer.msg('请输入正确的qq号!');
+        }else {
+             // var arr = parseFormJson("#form"); 
+            $.ajax({
+                url: "{:url('Cust/add_log')}",
+                data: {qq: qq,name: name ,id : id,},
+                type: "post",
+                success: function (r) {
+                    if (r['code'] == 1) {
+                        alert_open(r['msg'])
+                    } else {
+                        alert_msg(r['msg']);
+                    }
+                }
+            });
+               
+        }
+    }
+
+</script>
+
+
+
+</body>
+
+</html>

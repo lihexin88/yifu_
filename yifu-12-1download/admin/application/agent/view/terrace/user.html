@@ -1,0 +1,77 @@
+{include file="public/header" /}
+<title>平台管理</title>
+</head>
+<body>
+    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 平台管理 <span class="c-gray en">&gt;</span> 账号信息 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    <div class="page-container">
+        <table class="table table-border table-bordered table-bg table-hover table-sort">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="9">人员列表</th>
+                </tr>
+                <tr class="text-c">
+                    <!--<th width="25"><input type="checkbox" name="" value=""></th>-->
+                    <th width="40">id</th>
+                    <th width="40">代理名称</th>
+                    <th width="150">代理编号</th>
+                    <!--<th width="100">收益</th>-->
+                    <th width="150">已提现</th>
+                    <th width="100">可提现</th>
+                    <th width="100">统计时间</th>
+                    <th width="100">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-c">
+                    <!--<td><input type="checkbox" value="1" name=""></td>-->
+                    <td>{$list.id}</td> 
+                    <td>{$list.name}</td> 
+                    <td>{$list.num}</td> 
+                    <!--<td>{$list.num}</td>--> 
+                    <td>{$list.with}</td> 
+                    <td>{$list.account}</td> 
+                    <td>{$list.time|date="Y-m-d H:i:s",###}</td>
+                    <td>  
+                        <a title="编辑" href="javascript:;" onclick="member_edit('{$list.id}')" class="btn btn-primary" style="text-decoration:none"><i class="Hui-iconfont">提现</i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--_footer 作为公共模版分离出去-->
+    {include file="public/footer" /}
+
+    <!--请在下方写此页面业务相关的脚本-->
+    <script type="text/javascript" src="__ROOT__/static/admin/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+    <script type="text/javascript" src="__ROOT__/static/admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+    <script type="text/javascript" src="__ROOT__/static/admin/lib/laypage/1.2/laypage.js"></script>
+    <script type="text/javascript">
+//        $('.table-sort').dataTable({
+//            "aaSorting": [[1, "desc"]], //默认第几个排序
+//            "bStateSave": true, //状态保存
+//            "aoColumnDefs": [
+//                //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+//                {"orderable": false, "aTargets": [0]}// 制定列不参与排序
+//            ]
+//        });
+
+
+                            function member_edit(id) {
+                                $.get("{:url('Agent/Terrace/withdraw')}", {id: id},
+                                        function (abc) {
+                                            // console.log(abc);
+                                            layer.open({
+                                                type: 2,
+                                                title: '修改权利金比例',
+                                                shadeClose: true,
+                                                shade: false,
+                                                maxmin: true, //开启最大化最小化按钮
+                                                area: ['1073px', '376px'],
+                                                content: "withdraw"
+                                            });
+                                        }
+                                )
+                            }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{extend name="/base/index"}
+<!--左侧边--安全中心-->
+{block name="left_bar_security"}
+<li class="submeun-2"><i class="ioc active"></i>
+	<a class="l-m-icon active" href="/index.php/security/index.html">安全中心</a>
+	<span class="active"></span>
+</li>
+</ul>
+<h3 class="myaccount">我的资金</h3>
+<ul class="menu-son">
+{/block}
+<!--右侧显示内容--顶部-->
+{block name="right_bar_box_top"}
+<input type="hidden" id="ACTIVE_MENU" value="submeun-1" autocomplete="off">
+<div class="crumbs">
+	<div class="container"> 管理系统&nbsp;&gt;&nbsp;个人中心&nbsp;&gt;&nbsp;安全中心 </div>
+</div>
+{/block}
+<!--右侧显示内容-->
+{block name="right_bar_box"}
+<div class="r_main">
+	<div class="tbatil">
+		<ul>
+			<li style="display: none;">
+				<span class="mingzi">实名认证&nbsp;&nbsp;</span>
+				<div class="set_rightb">
+					<span style="">您已完成实名认证</span>
+					<div class="setright">
+						<span class="textsuccess">已认证</span>
+						<span style="color:gray;">&nbsp;|&nbsp;</span>
+						<a href="http://ef.jxpanjiu.com/security/realname.html?rec=info" name="flag">查看</a>
+					</div>
+				</div>
+			</li>
+			<li>
+				<span class="mingzi">修改密码&nbsp;&nbsp;</span>
+				<div class="set_rightb">
+					<span style="">您可以修改<span style="color:#090;">会员登录密码</span>。安全性高的密码可以使帐号更安全,建议您定期更换密码。</span>
+					<div class="setright">
+						<span class="textsuccess">已设置</span>
+						<span style="color:gray;">&nbsp;|&nbsp;</span>
+						<a href="loginpassword.html" name="flag">修改</a>
+					</div>
+				</div>
+			</li>
+			<li> <span class="mingzi">绑定银行卡&nbsp;&nbsp;</span>
+				{if condition="($is_user_bind) neq null"}				
+				<div class="set_rightb"> <span style="">银行卡已绑定</span>
+					<div class="setright"><span class="textsuccess">已绑定</span>
+						<span style="color:gray;">&nbsp;|&nbsp;</span>
+						<a href="/index.php/bank/bind.html" name="flag">修改</a>
+					</div>
+				</div>
+				{else /}
+				<div class="set_rightb"> <span style="">未绑定银行卡，暂时无法进行出入金操作，请先绑定银行卡</span>
+					<div class="setright"><span style="color: red;">未绑定</span>
+						<span style="color:gray;">&nbsp;|&nbsp;</span>
+						<a href="/index.php/bank/bind.html" name="flag">绑定</a>
+					</div>
+				</div>
+				{/if}
+			</li>
+		</ul>
+	</div>
+</div>
+{/block}

@@ -1,0 +1,184 @@
+<!--首部加载文件-->
+{block name="html_head"}
+<!DOCTYPE html>
+<html lang="en">
+{/block}
+{block name="header_load_file"}
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
+		<link href="__PUBLIC__/css/index.css" rel="stylesheet">
+		<link href="__PUBLIC__/css/common.css" rel="stylesheet">
+		<link href="__PUBLIC__/css/front.css" rel="stylesheet">
+		<link href="__PUBLIC__/css/home.css" rel="stylesheet">
+{/block}
+<!--标题-->
+{block name="title"}
+		<title></title>
+{/block}
+<!--头部结束-->
+{block name="head_end"}
+	</head>
+	<body>
+{/block}
+<!--自定义css样式-->
+{block name="self_css"}
+{/block}
+<!--header顶层   样式不变-->
+{block name="header_line"}
+		<div class="container-fluid header-1">
+			<div class="container h1-content">
+				<div class="col-md-5 text-left" style="float:left;">
+					<ul>
+						<li style="display:none"> <img src="__PUBLIC__/img/tel.png">服务电话： </li>
+						<li style="color:#fff;padding-left:10px;"><img src="__PUBLIC__/img/tel.png">客户服务热线</li>
+					</ul>
+				</div>
+				<div class="col-md-7 text-right" style="float:right;">
+					<a href="" >欢迎您，<span style="color: #0099FF;">{$user_info.name}</span><input type="text" value="{$user_info.id}" style="display: none;" id="user_id" /></a>
+					<a  id="logout" onclick="logout()">退出</a>
+				</div>
+			</div>
+		</div>
+{/block}
+<!--首部--开始-->
+{block name="header_banner_start"}
+		<div class="container-fluid">
+			<div class="container h2-content">
+				<div class="pull-left">
+					<a href="index_index.html"><img src="__PUBLIC__/img/logo.png"></a>
+				</div>
+{/block}
+<!--首部--个人中心-->
+{block name="header_person"}
+				<a class="ground-item" href="/index.php/home/index_index.html" style="text-decoration:none;">个人中心</a>
+{/block}
+<!--首部--入金-->
+{block name="header_recharge"}
+				<a class="ground-item" href="/index.php/recharge/index.html" style="text-decoration:none;">入金</a>
+{/block}
+<!--首部 -- 出金-->
+{block name="header_withdraw"}
+				<a class="ground-item" href="/index.php/withdrawal/apply.html" style="text-decoration:none;">出金</a>
+{/block}
+<!--首部--结束-->
+{block name="header_block_end"}
+			</div>
+		</div>
+{/block}
+<!--左侧边--开始-->
+{block name="left_bar_start"}
+		<div class="wrap">
+			<div class="container">
+				<div id="page-sidebar-menu">
+					<div class="menu-logo">个人中心</div>
+					<div class="menu">
+						<h3 class="mymoney">我的账户</h3>
+						<ul class="menu-son">
+{/block}
+<!--左侧边--我的主页-->
+{block name="left_bar_home"}
+							<li class="submeun-1"><i class="ioc"></i>
+								<a class="l-m-icon" href="/index.php/home/index_index.html">我的主页</a>
+							</li>
+{/block}
+<!--左侧边--安全中心-->
+{block name="left_bar_security"}
+							<li class="submeun-2"><i class="ioc"></i>
+								<a class="l-m-icon" href="/index.php/security/index.html">安全中心</a>
+							</li>
+						</ul>
+						<h3 class="myaccount">我的资金</h3>
+						<ul class="menu-son">
+{/block}
+<!--左侧边--入金-->
+{block name="left_bar_recharge"}
+							<li class="submeun-3"><i class="ioc"></i>
+								<a class="l-m-icon" href="/index.php/recharge/index.html">入金</a>
+							</li>
+{/block}
+<!--左侧边--出金-->
+{block name="left_bar_apply"}
+							<li class="submeun-4"><i class="ioc" style="top: 12px;"></i>
+								<a class="l-m-icon" href="/index.php/withdrawal/apply.html">出金</a>
+							</li>
+{/block}
+<!--左侧边--入金记录-->
+{block name="left_bar_recharge_record"}
+							<li class="submeun-5"><i class="ioc" style="top: 12px"></i>
+								<a class="l-m-icon" href="/index.php/recharge/record.html">入金记录</a>
+							</li>
+{/block}
+<!--左侧边--线下入金记录-->
+{block name="left_bar_offline"}
+							<li class="submeun-13"><i class="ioc"></i>
+								<a class="l-m-icon" href="/index.php/recharge/offlinetransferrecord.html">线下入金记录</a>
+							</li>
+{/block}
+<!--左侧边--出金记录-->
+{block name="left_bar_withdraw_record"}
+							<li class="submeun-6"><i class="ioc"></i>
+								<a class="l-m-icon" href="/index.php/withdrawal/record.html">出金记录</a>
+							</li>
+{/block}
+<!--左侧边结束-->
+{block name="left_bar_end"}
+						</ul>
+					</div>
+				</div>
+{/block}
+<!--右侧顶部开始-->
+{block name="right_bar_box_top_start"}
+				<div id="page-content-wrapper">
+{/block}
+<!--右侧显示内容--顶部-->
+{block name="right_bar_box_top"}
+					<input type="hidden" id="ACTIVE_MENU" value="submeun-1" autocomplete="off">
+					<div class="crumbs">
+						<div class="container"> 管理系统&nbsp;&gt;&nbsp;个人中心 </div>
+					</div>
+{/block}
+<!--右侧显示内容-->
+{block name="right_bar_box"}
+	
+{/block}
+<!--右侧显示内容结束-->
+{block name="right_bar_end"}
+				</div>
+			</div>
+		</div>
+{/block}
+<!--脚部	-->
+{block name="footer"}
+			<footer>
+				<div class="container footer">
+					<div class="col-md-6 text-center">
+						<img class="footer-log" src="__PUBLIC__/img/footlogo.png">
+					</div>
+					<div class="col-md-5">
+						<ul>
+							<li class="th">联系我们</li>
+							<li>我们在聆听，在服务中进步</li>
+							<li><img src="__PUBLIC__/img/footer-tel.png">国内客服热线：（工作日 8：30~17：30） </li>
+							<li><img src="__PUBLIC__/img/footer-adr.png">地址：</li>
+							<li style="">©&nbsp;2016-2018逸富版权所有</li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+{/block}
+{block name="footer_script"}
+			<script type="text/javascript" src="__PUBLIC__/js/jquery-2.1.4.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/js/login.js"></script>
+			<script type="text/javascript" src="__PUBLIC__/js/layer.js"></script>
+{/block}
+<!--自定义页面js-->
+{block name="self_js"}
+{/block}
+<!--结束-->
+{block name="end"}
+	</body>
+</html>
+{/block}

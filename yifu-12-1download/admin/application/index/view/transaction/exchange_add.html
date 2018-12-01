@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/meta" /}
+    {include file="public/link" /}
+    <style>
+        .am-input-sm {
+            font-size: 1.4rem !important;
+            width: 220px;
+        }
+    </style>
+</head>
+<body data-type="index" class="theme-white">
+<div class="am-g tpl-g">
+    {include file="public/header" /}
+    {include file="public/left" /}
+    {include file="public/content_top" /}
+    <ol class="am-breadcrumb">
+        <li><a href="../home/index.html" class="am-icon-home">首页</a></li>
+        <li><a href="#">参数管理</a></li>
+        <li class="am-active">添加/修改交易所</li>
+    </ol>
+    <form class="am-cf" id="form" onsubmit="return false">
+        <div class="widget am-cf">
+
+            <hr data-am-widget="divider" class="am-divider am-divider-default"/>
+            <div class="am-form-group">
+                <span class="s1">交易所名称：</span>
+                <label class="am-form-label">
+                    <input type="text" id="name" class="am-form-field am-input-sm" name="name"
+                           value="{$list['name']?$list['name']:''}"/>
+                </label>
+            </div>
+            <div class="am-form-group">
+                <span class="s1">交易所代码：</span>
+                <label class="am-form-label">
+                    <input type="text" id="code" class="am-form-field am-input-sm" name="code"
+                           value="{$list['code']?$list['code']:''}"/>
+                </label>
+            </div>
+            <div class="am-form-group">
+                <span class="s1">交易所简称：</span>
+                <label class="am-form-label">
+                    <input type="text" id="short" class="am-form-field am-input-sm" name="short"
+                           value="{$list['short']?$list['short']:''}"/>
+                </label>
+            </div>
+            <div class="am-form-group">
+                <span class="s1">交易所排序：</span>
+                <label class="am-form-label">
+                    <input type="text" id="sort" class="am-form-field am-input-sm" name="sort" placeholder="数字越小越靠前"
+                           value="{$list['sort']?$list['sort']:''}"/>
+                </label>
+            </div>
+            <div class="am-form-group">
+                <span class="s1">交易所类型：</span>
+                <label class="am-form-label">
+                    <select name="type" title="" class="am-form-field am-input-sm">
+                        {if condition="$list != ''"}
+                            {if condition="$list['type'] == 1"}
+                                    <option value="0">国内</option>
+                                    <option value="1" selected>国外</option>
+                            {else  /}
+                                    <option value="0" selected>国内</option>
+                                    <option value="1">国外</option>
+                            {/if}
+                        {else  /}
+                            <option value="0" selected>国内</option>
+                            <option value="1">国外</option>
+                        {/if}
+                    </select>
+                </label>
+            </div>
+            <input type="hidden" name="id" value="{$list['id']?$list['id']:'0'}">
+            <div class="am-panel-bd" style="padding-bottom: 1rem;margin-left: 13rem">
+                <button type="submit" class="am-btn am-btn-primary am-btn-sm" onclick="sub()">确定</button>
+                <a href="exchange.html?a={$a}&b={$b}" class="am-btn am-btn-secondary am-btn-sm">返回</a>
+            </div>
+        </div>
+        {include file="public/content_foot" /}
+</div>
+</form>
+{include file="public/foot" /}
+<script type="text/javascript">
+    $(function () {
+        var nav = $('.left-sidebar li.sidebar-nav-link');
+        nav.removeClass("active");
+        nav.eq({$a}).find('ul').show();
+        nav.eq({$a}).find('ul li').eq({$b}).find('a').addClass('active');
+    });
+
+    function sub() {
+        var arr = parseFormJson("#form");
+        $.ajax({
+            url: "{:url('Transaction/exchange_adds')}",
+            data: {arr: arr},
+            type: "post",
+            success: function (r) {
+                if (r['code'] == 1) {
+                    alert_msg(r['msg']);
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    alert_msg(r['msg']);
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<ion-view view-title="恒瑞国际" class="back_ec">
+	<header class="header back_black">
+		<i class="header_i1 icon ion-chevron-left" ng-click="back()"></i>
+		<b class="white">交易</b>
+		<i class="header_i2 iconfont icon-liebiao orange" ng-click="slider()" style="font-size: 1.25rem;"></i>
+	</header>
+	<ion-content class="top" overflow-scroll="true">
+		<!--侧边栏-->
+		<ul class="deal_slider">
+			<li ui-sref="capital">资金明细</li>
+			<li ui-sref="gold">出金入金</li>
+			<li ui-sref="deal_set">交易设置</li>
+			<li ng-click="exit_login()">退出登录</li>
+		</ul>
+		<!--侧边栏 end-->
+		<div class="deal_title">
+			<div class="deal_top ma_bom25">
+				<div class="deal_left">
+					<select class="ma_bom25" ng-change="change_bank()" ng-model="contract_id" ng-options="item.id as item.name for item in contract">
+					</select>
+					<!--<select class="ma_bom25">
+						<option value="">凤凰学院</option>
+						<option value="">超神学院</option>
+					</select>-->
+					<div class="ma_bom10">
+						<span>手数</span>
+						<i class="iconfont icon-jianhao orange"></i>
+						<input type="text" value="" ng-model="inputData.number"/>
+						<i class="iconfont icon-untitled44 orange"></i>
+					</div>
+					<div>
+						<span>价格</span>
+						<i class="iconfont icon-jianhao orange"></i>
+						<input type="text" value="" ng-model="inputData.price"/>
+						<i class="iconfont icon-untitled44 orange"></i>
+					</div>
+				</div>
+				<div class="deal_right">
+					<div>
+						<span>最新</span>
+						<span>25588</span>
+						<span>12</span>
+					</div>
+					<div>
+						<span>卖价</span>
+						<span class="green">25588</span>
+						<span>2</span>
+					</div>
+					<div>
+						<span>买价</span>
+						<span class="red">25588</span>
+						<span>1</span>
+					</div>
+				</div>
+			</div>
+			<div class="deal_bottom">
+				<div ng-click="buy()">
+					<p>25500</p>
+					<p>买</p>
+				</div>
+				<div ng-click="sell()">
+					<p>25322</p>
+					<p>卖</p>
+				</div>
+				<div ng-click="close()">
+					<p>无仓位</p>
+					<p>平</p>
+				</div>
+			</div>
+		</div>
+		<!--按钮列表-->
+		<ul class="btn_list">
+			<li ng-click="setCut(0)" ng-class="{'holdAct':cut == 0}">持仓</li>
+			<li ng-click="setCut(1)" ng-class="{'holdAct':cut == 1}">可撤</li>
+			<li ng-click="setCut(2)" ng-class="{'holdAct':cut == 2}">委托</li>
+			<li ng-click="setCut(3)" ng-class="{'holdAct':cut == 3}">成交</li>
+		</ul>
+		<!--按钮列表 end-->
+		<!--持仓-->
+		<div class="hold" ng-show="cut == 0">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<th>合约名称</th>
+					<th>多空</th>
+					<th>开仓均价</th>
+					<th>可用</th>
+					<th>浮动盈亏</th>
+					<th>止盈</th>
+					<th>止损</th>
+				</tr>
+				<tr ng-repeat="item in hold_list">
+					<td ng-click="hold_click()">{{item.contract.name}}</td>
+					<td ng-click="hold_click()">{{item.type}}</td>
+					<td ng-click="hold_click()">{{item.money}}</td>
+					<td ng-click="hold_click()">{{item.number}}</td>
+					<td ng-click="hold_click()">425</td>
+					<td ng-click="set_profit()">{{item.profit_close}}</td>
+					<td ng-click="set_lose()">{{item.lose_close}}</td>
+				</tr>
+			</table>
+		</div>
+		<!--持仓 end-->
+		<!--可撤-->
+		<div class="cancel" ng-show="cut == 1">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<th>合约名称</th>
+					<th>买卖</th>
+					<th>开平</th>
+					<th>挂单价格</th>
+					<th>剩余手数</th>
+					<th>操作</th>
+				</tr>
+				<tr ng-repeat="item in cancel_list">
+					<td>{{item.name}}</td>
+					<td>{{item.direction}}</td>
+					<td>{{item.type}}</td>
+					<td>{{item.price}}</td>
+					<td>{{item.number}}</td>
+					<td ng-click="cancel()" class="orange">撤单</td>
+				</tr>
+			</table>
+		</div>
+		<!--可撤 end-->
+		<!--委托 Entrust-->
+		<div class="cancel" ng-show="cut == 2">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<th>合约名称</th>
+					<th>状态</th>
+					<th>买卖</th>
+					<th>开平</th>
+					<th>委托价</th>
+					<th>数量</th>
+				</tr>
+				<tr ng-repeat="item in entrust_list">
+					<td>{{item.name}}</td>
+					<td>{{item.status}}</td>
+					<td>{{item.direction}}</td>
+					<td>{{item.type}}</td>
+					<td>{{item.price}}</td>
+					<td>{{item.number}}</td>
+				</tr>
+			</table>
+		</div>
+		<!--委托 end-->
+		<!--成交-->
+		<div class="cancel" ng-show="cut == 3">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<th>合约名称</th>
+					<th>买卖</th>
+					<th>开平</th>
+					<th>成交价格</th>
+					<th>成交量</th>
+					<th>成交时间</th>
+				</tr>
+				<tr ng-repeat="item in deal_list">
+					<td>{{item.name}}</td>
+					<td>{{item.direction}}</td>
+					<td>{{item.type}}</td>
+					<td>{{item.price}}</td>
+					<td>{{item.number}}</td>
+					<td>
+						<p>{{item.time[0]}}</p>
+						<p>{{item.time[1]}}</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!--成交 end-->
+		<div style="height: 5rem;"></div>
+	</ion-content>
+	<div class="market_cut">
+		<p ng-click="go_time()">分时</p>
+		<p ng-click="go_k()">K线</p>
+		<p class="market_cutAct">交易</p>
+	</div>
+</ion-view>
